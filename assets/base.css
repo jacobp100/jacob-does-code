@@ -1,0 +1,182 @@
+---
+---
+
+@font-face {
+  src: url("{{ site.baseurl }}/assets/CrimsonPro-Roman-VF.woff2");
+  font-family: "Crimson Pro";
+  font-style: normal;
+}
+
+:root {
+  --gutters: 12px;
+}
+
+body {
+  margin: 12px var(--gutters) 64px;
+  font: 16px/22px "Crimson Pro", serif;
+  background: var(--background);
+}
+
+h1 {
+  margin: 24px 0;
+  font-size: 32px;
+  line-height: 36px;
+}
+
+h2 {
+  margin: 24px 0 12px;
+  font-size: 28px;
+  line-height: 32px;
+}
+
+p {
+  margin: 12px 0;
+}
+
+a {
+  color: var(--primary, currentColor);
+  text-decoration: none;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+a:hover,
+a:active,
+a:focus {
+  text-decoration: underline;
+}
+
+.header {
+  margin: -12px 0 48px;
+  padding-top: 12px;
+}
+
+.header__logo {
+  display: block;
+  flex: none;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 18px;
+  letter-spacing: -1px;
+  text-transform: lowercase;
+  border-top: 4px solid currentColor;
+  padding: 6px 4px 0 0;
+}
+
+a.header__logo {
+  color: currentColor;
+  text-decoration: none;
+}
+
+.header__section {
+  flex: none;
+  margin: 0 0 0 24px;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 6px;
+  line-height: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: 0;
+}
+
+.header__section--last {
+  margin-left: auto;
+}
+
+.header__link {
+  flex: none;
+  display: block;
+  margin: 10px 24px 0 0;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.header__link:last-child {
+  margin-right: 0;
+}
+
+.app__logo {
+  width: 64px;
+  height: 64px;
+  background: currentColor;
+  border-radius: 18px;
+  fill: var(--background, white);
+}
+
+.app__carousel {
+  margin: 0 36px;
+  padding: 24px 0;
+  background: currentColor;
+}
+
+.app__slide {
+  margin-right: 12px;
+  border-radius: 6px;
+  width: 80vw;
+  height: calc(80vw * var(--aspect-ratio));
+  max-width: 200px;
+  max-height: calc(200px * var(--aspect-ratio));
+  --aspect-ratio: calc(2208 / 1242);
+}
+
+.app__slide:last-child {
+  margin-right: 0;
+}
+
+.u-scroll-horizontal {
+  display: flex;
+  margin-left: calc(-1 * var(--gutters)) !important;
+  margin-right: calc(-1 * var(--gutters)) !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.u-scroll-horizontal::before,
+.u-scroll-horizontal::after {
+  display: block;
+  content: "";
+  padding-right: var(--gutters);
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --gutters: 64px;
+  }
+
+  body {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  h1 {
+    margin: 24px 0;
+    font-size: 64px;
+    line-height: 68px;
+  }
+
+  h2 {
+    margin: 36px 0 12px;
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  p {
+    margin: 24px 0;
+  }
+
+  ul {
+    padding-left: 24px;
+    margin-left: -24px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --gutters: 128px;
+  }
+}

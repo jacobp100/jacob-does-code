@@ -43,3 +43,5 @@ Behind the scenes, SciLine uses the gold standard for equation rendering—LaTeX
   <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-4.jpg">
   <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-5.jpg">
 </div>
+
+<a href="https://itunes.apple.com/us/app/sciline-calculator/id1219218410?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2017-03-29&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>

@@ -25,3 +25,5 @@ You can add section markers to your songs to mark specific times in a song. Use 
   <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/pocket-jam-2.jpg">
   <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/pocket-jam-3.jpg">
 </div>
+
+<a href="https://itunes.apple.com/us/app/pocket-jam/id1153284525?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>

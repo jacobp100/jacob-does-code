@@ -22,3 +22,5 @@ Departure boards for UK railways. Provides online and offline results, and overv
   <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/rail-app-2.jpg">
   <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/rail-app-3.jpg">
 </div>
+
+<a href="https://itunes.apple.com/us/app/railapp/id1435522644?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2018-10-28&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>

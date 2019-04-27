@@ -13,7 +13,7 @@
 
 body {
   margin: 12px var(--gutters) 64px;
-  font: 16px/22px "Crimson Pro", serif;
+  font: 16px/21px "Crimson Pro", serif;
   background: var(--background);
 }
 
@@ -21,12 +21,14 @@ h1 {
   margin: 24px 0;
   font-size: 32px;
   line-height: 36px;
+  letter-spacing: -0.8px;
 }
 
 h2 {
   margin: 24px 0 12px;
   font-size: 28px;
   line-height: 32px;
+  letter-spacing: -0.3px;
 }
 
 p {
@@ -108,7 +110,7 @@ a.header__logo {
 }
 
 .app__carousel {
-  margin: 0 36px;
+  margin: 24px 0;
   padding: 24px 0;
   background: currentColor;
 }
@@ -150,19 +152,21 @@ a.header__logo {
 
   body {
     font-size: 24px;
-    line-height: 32px;
+    line-height: 30px;
   }
 
   h1 {
     margin: 24px 0;
     font-size: 64px;
     line-height: 68px;
+    letter-spacing: -1.6px;
   }
 
   h2 {
     margin: 36px 0 12px;
     font-size: 36px;
     line-height: 42px;
+    letter-spacing: -0.6px;
   }
 
   p {
@@ -172,6 +176,10 @@ a.header__logo {
   ul {
     padding-left: 24px;
     margin-left: -24px;
+  }
+
+  .app__carousel {
+    margin: 48px 0;
   }
 }
 

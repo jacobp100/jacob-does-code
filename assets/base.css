@@ -116,6 +116,7 @@ a.header__logo {
 }
 
 .app__slide {
+  flex: none;
   margin-right: 12px;
   border-radius: 6px;
   width: 80vw;

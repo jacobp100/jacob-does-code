@@ -47,6 +47,7 @@ h4 {
   margin: 12px 0 8px;
   font-size: 1em;
   font-weight: 580;
+  letter-spacing: 0.6px;
 }
 
 p,

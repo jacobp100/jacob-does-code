@@ -19,4 +19,4 @@ layout: page
 
 {:.title}
 
-# I do code. I also write apps, and am available for [hire]({{ site.baseurl }}/assets/cv.pdf).
+# I do code. I also write apps, and am available for [hire]({{ site.baseurl }}/cv).

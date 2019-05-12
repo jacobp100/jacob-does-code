@@ -7,6 +7,12 @@
   font-style: normal;
 }
 
+@font-face {
+  src: url("{{ site.baseurl }}/assets/CrimsonPro-Italic-VF.woff2");
+  font-family: "Crimson Pro";
+  font-style: italic;
+}
+
 :root {
   --gutters: 12px;
 }
@@ -145,7 +151,7 @@ a.header__logo {
   padding-right: var(--gutters);
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   :root {
     --gutters: 64px;
   }
@@ -183,7 +189,7 @@ a.header__logo {
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media (min-width: 1024px) {
   :root {
     --gutters: 128px;
   }

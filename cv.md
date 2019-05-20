@@ -86,6 +86,8 @@ li::before {
 }
 
 .lead {
+  font-size: inherit;
+  line-height: inherit;
   font-style: italic;
   font-weight: 350;
 }

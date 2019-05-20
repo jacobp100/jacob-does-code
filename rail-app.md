@@ -16,6 +16,7 @@ layout: page
 
 # Rail App
 
+{:.lead}
 Departure boards for UK railways. Provides online and offline results, and overview of journey stops. Note that this is for direct trains between stations only, and cannot plan routes.
 
 <div class="app__carousel u-scroll-horizontal">

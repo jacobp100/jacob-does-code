@@ -16,7 +16,15 @@ layout: page
 
 # Pocket Jam
 
+{:.lead}
 Pocket Jam is for musicians wanting to practice and play along with their favourite songs. Loop specific sections of songs, or change the pitch or tempo in real time.
+
+<div class="app__carousel u-scroll-horizontal">
+  <img alt="screenshot" class="app__slide" src="{{ site.baseurl }}/assets/pocket-jam-1.png">
+  <img alt="screenshot" class="app__slide" src="{{ site.baseurl }}/assets/pocket-jam-2.png">
+  <img alt="screenshot" class="app__slide" src="{{ site.baseurl }}/assets/pocket-jam-3.png">
+  <img alt="screenshot" class="app__slide" src="{{ site.baseurl }}/assets/pocket-jam-4.png">
+</div>
 
 If you want to play along to a song that's a bit too fast, or you know it already and want to master, you can change the tempo to any amount between half to double the original.
 
@@ -27,12 +35,5 @@ Looping lets you pick specific parts of the song you want to practise. Once enab
 And when looping isn't enough, you can use the speed trainer. With a loop set up up, you can have it start each loop playing slowly, and gradually get faster after each loop. You can customise how slow it starts, and how many loops it takes to reach the full tempo.
 
 Mark specific times in a song with section markers. It'll let you jump to parts or set up loops quicker.
-
-<div class="app__carousel u-scroll-horizontal">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/pocket-jam-1.png">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/pocket-jam-2.png">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/pocket-jam-3.png">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/pocket-jam-4.png">
-</div>
 
 <a href="https://itunes.apple.com/us/app/pocket-jam/id1153284525?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>

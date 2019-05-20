@@ -16,7 +16,16 @@ layout: page
 
 # SciLine
 
+{:.lead}
 SciLine is a fully-featured scientific calculator that lets you write your equations as you would on paper. Fractions look like fractions, exponents look like exponents, and square roots look like square roots.
+
+<div class="app__carousel u-scroll-horizontal">
+  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-1.jpg">
+  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-2.jpg">
+  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-3.jpg">
+  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-4.jpg">
+  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-5.jpg">
+</div>
 
 We’ve built in over 50 physical constants for easy access: from Boltzmann’s constant to the mass of a proton.
 
@@ -36,13 +45,5 @@ Behind the scenes, SciLine uses the gold standard for equation rendering—LaTeX
 - Degrees, arcminutes, and arcseconds
 - Dark mode
 - Unlimited calculation history
-
-<div class="app__carousel u-scroll-horizontal">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-1.jpg">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-2.jpg">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-3.jpg">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-4.jpg">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-5.jpg">
-</div>
 
 <a href="https://itunes.apple.com/us/app/sciline-calculator/id1219218410?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2017-03-29&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>

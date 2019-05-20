@@ -5,7 +5,8 @@ layout: page
 
 <style>
 :root {
-  --background: #DAEC57;
+  --background: #9733EE;
+  color: white;
 }
 </style>
 
@@ -15,16 +16,23 @@ layout: page
 
 # Pocket Jam
 
-Pocket Jam is for musicians wanting to play along with their favourite songs. It allows you to change both the pitch and tempo of your songs in real time — perfect for when you’re learning a song or when the song is in another tuning to your instrument.
+Pocket Jam is for musicians wanting to practice and play along with their favourite songs. Loop specific sections of songs, or change the pitch or tempo in real time.
 
-Looping lets you pick specific parts of the song you want to practise. And when you’re new parts, you can slow the tempo down and increase it with each loop.
+If you want to play along to a song that's a bit too fast, or you know it already and want to master, you can change the tempo to any amount between half to double the original.
 
-You can add section markers to your songs to mark specific times in a song. Use them to jump to a part quickly, or to quickly set up loops.
+If you don't have a capo to hand — or worse, the song is in a lower tuning than you, Pocket Jam has you covered. You can change the pitch up and down — in real time — to any amount of semitones up to an octave.
+
+Looping lets you pick specific parts of the song you want to practise. Once enabled, drag the left and right handles on the play bar to set the start and end of the loop, and it'll loop between them.
+
+And when looping isn't enough, you can use the speed trainer. With a loop set up up, you can have it start each loop playing slowly, and gradually get faster after each loop. You can customise how slow it starts, and how many loops it takes to reach the full tempo.
+
+Mark specific times in a song with section markers. It'll let you jump to parts or set up loops quicker.
 
 <div class="app__carousel u-scroll-horizontal">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/pocket-jam-1.jpg">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/pocket-jam-2.jpg">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/pocket-jam-3.jpg">
+  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/pocket-jam-1.png">
+  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/pocket-jam-2.png">
+  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/pocket-jam-3.png">
+  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/pocket-jam-4.png">
 </div>
 
 <a href="https://itunes.apple.com/us/app/pocket-jam/id1153284525?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>

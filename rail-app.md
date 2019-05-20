@@ -1,4 +1,5 @@
 ---
+title: Rail App
 layout: page
 ---
 

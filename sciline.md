@@ -1,4 +1,5 @@
 ---
+title: SciLine
 layout: page
 ---
 

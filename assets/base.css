@@ -162,6 +162,8 @@ a.header__logo {
 
 .app__modal {
   display: none;
+  background: black;
+  transition: background 1000ms;
 }
 
 .app__modal--active {
@@ -171,8 +173,16 @@ a.header__logo {
   left: 0;
   width: 100%;
   height: 100%;
-  background: black;
   object-fit: contain;
+}
+
+.app__modal .app__slide {
+  margin: 0 auto;
+  border-radius: 0;
+  width: auto;
+  height: 100%;
+  max-width: none;
+  max-height: none;
 }
 
 .u-scroll-horizontal {

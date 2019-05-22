@@ -20,10 +20,10 @@ layout: page
 Pocket Jam is for musicians wanting to practice and play along with their favourite songs. Loop specific sections of songs, or change the pitch or tempo in real time.
 
 <div class="app__carousel u-scroll-horizontal">
-  <img alt="screenshot" class="app__slide" src="{{ site.baseurl }}/assets/pocket-jam-1.png">
-  <img alt="screenshot" class="app__slide" src="{{ site.baseurl }}/assets/pocket-jam-2.png">
-  <img alt="screenshot" class="app__slide" src="{{ site.baseurl }}/assets/pocket-jam-3.png">
-  <img alt="screenshot" class="app__slide" src="{{ site.baseurl }}/assets/pocket-jam-4.png">
+  {% include carousel-slide.html src="assets/pocket-jam-1.png" %}
+  {% include carousel-slide.html src="assets/pocket-jam-2.png" %}
+  {% include carousel-slide.html src="assets/pocket-jam-3.png" %}
+  {% include carousel-slide.html src="assets/pocket-jam-4.png" %}
 </div>
 
 If you want to play along to a song that's a bit too fast, or you know it already and want to master, you can change the tempo to any amount between half to double the original.

@@ -1,31 +1,55 @@
-let modal;
-let scrollY = 0;
+let restore = null;
 
-const ensureModal = () => {
+const getModal = () => {
+  let modal = document.querySelector(".app__modal");
+
   if (modal == null) {
-    modal = new Image();
+    modal = document.createElement("div");
     modal.classList.add("app__modal");
     document.body.appendChild(modal);
   }
+
+  return modal;
+};
+
+const showModal = target => {
+  const source = target.cloneNode();
+  source.removeAttribute("data-modal");
+
+  const modal = getModal();
+  if (modal.lastChild != null) {
+    modal.replaceChild(source, modal.lastChild);
+  } else {
+    modal.appendChild(source);
+  }
+
+  modal.classList.add("app__modal--active");
+
+  restore = { scrollY: window.scrollY };
+  document.documentElement.classList.add("no-scroll");
+};
+
+const hideModal = () => {
+  const modal = getModal();
+
+  document.documentElement.classList.remove("no-scroll");
+  if (restore != null) window.scrollTo(0, restore.scrollY);
+
+  modal.classList.remove("app__modal--active");
 };
 
 window.addEventListener("click", e => {
-  if (e.target.classList.contains("app__slide")) {
-    ensureModal();
-    modal.setAttribute("src", e.target.getAttribute("src"));
-  } else if (e.target.classList.contains("app__modal")) {
-    ensureModal();
-  } else {
-    return;
-  }
+  let current = e.target;
 
-  if (!modal.classList.contains("app__modal--active")) {
-    scrollY = window.scrollY;
-    document.documentElement.classList.add("no-scroll");
-    modal.classList.add("app__modal--active");
-  } else {
-    document.documentElement.classList.remove("no-scroll");
-    window.scrollTo(0, scrollY);
-    modal.classList.remove("app__modal--active");
+  while (current != null) {
+    if (current.hasAttribute("data-modal")) {
+      showModal(current);
+      return;
+    } else if (current.classList.contains("app__modal")) {
+      hideModal();
+      return;
+    }
+
+    current = current.parentNode;
   }
 });

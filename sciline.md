@@ -20,11 +20,11 @@ layout: page
 SciLine is a fully-featured scientific calculator that lets you write your equations as you would on paper. Fractions look like fractions, exponents look like exponents, and square roots look like square roots.
 
 <div class="app__carousel u-scroll-horizontal">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-1.jpg">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-2.jpg">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-3.jpg">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-4.jpg">
-  <img class="app__slide" alt="screenshot" src="{{ site.baseurl }}/assets/sciline-5.jpg">
+  {% include carousel-slide.html src="assets/sciline-1.jpg" %}
+  {% include carousel-slide.html src="assets/sciline-2.jpg" %}
+  {% include carousel-slide.html src="assets/sciline-3.jpg" %}
+  {% include carousel-slide.html src="assets/sciline-4.jpg" %}
+  {% include carousel-slide.html src="assets/sciline-5.jpg" %}
 </div>
 
 We’ve built in over 50 physical constants for easy access: from Boltzmann’s constant to the mass of a proton.

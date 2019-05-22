@@ -170,7 +170,9 @@ React and React Native developer. Contributor to React Native, familiar with Swi
 
 #### JavaScript
 
-Specialist in <span class="smcp">javascript</span>, both in browser and with <span class="smcp">nodejs</span>. Fully up-to-date with everything from ES6 to ES2019, a user of <span class="smcp">typescript</span> and <span class="smcp">flow</span>, and I test with <span class="smcp">jest</span>. Favourite libraries and tools include <span class="smcp">lodash fp</span>, <span class="smcp">react</span> and <span class="smcp">react native</span>, <span class="smcp">redux</span>, <span class="smcp">rxjs</span>, <span class="smcp">d3</span>, <span class="smcp">eslint</span>, <span class="smcp">webpack</span>, <span class="smcp">babel</span>, and <span class="smcp">gulp</span>. Author of many React, React Native and <span class="smcp">css</span> packages on <span class="smcp">npm</span>. Have previous experience with angular.
+Specialist in <span class="smcp">javascript</span>, both in browser and with <span class="smcp">nodejs</span>. Fully up-to-date with everything from ES6 to ES2019, a user of <span class="smcp">typescript</span> and <span class="smcp">flow</span>, and I test with <span class="smcp">jest</span>.
+
+Favourite libraries and tools include <span class="smcp">lodash fp</span>, <span class="smcp">react</span> and <span class="smcp">react native</span>, <span class="smcp">redux</span>, <span class="smcp">rxjs</span>, <span class="smcp">d3</span>, <span class="smcp">eslint</span>, <span class="smcp">webpack</span>, <span class="smcp">babel</span>, and <span class="smcp">gulp</span>. Author of many React, React Native and <span class="smcp">css</span> packages on <span class="smcp">npm</span>.
 
 #### CSS
 

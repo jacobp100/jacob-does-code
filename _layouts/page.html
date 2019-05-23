@@ -1,9 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+  lang="en"
+  style="{% if page.primary %}--primary: {{ page.primary }};{% endif %}{% if page.color %}color: {{ page.color }};{% endif %}{% if page.background %}--background: {{ page.background }};{% endif %}"
+>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{{ page.title }}</title>
-  <link href="{{ site.baseurl }}/assets/base.css" rel="stylesheet" />
+  <style>
+    {% include base.css %}
+  </style>
+  {% if page.css %}
+  <link href="{{ site.baseurl }}/assets/{{ page.css }}.css" rel="stylesheet" />
+  {% endif %}
   <div class="header u-scroll-horizontal">
     <a href="{{ site.baseurl }}/" class="header__logo"
       >Jacob<br />does<br />code</a
@@ -16,6 +24,7 @@
     <a href="{{ site.baseurl }}/cv" class="header__link">CV</a>
     <a href="https://github.com/jacobp100" class="header__link">Github</a>
   </div>
-  {{ content }}
-  <script src="{{ site.baseurl }}/assets/base.js"></script>
+  {{ content }} {% if page.js %}
+  <script src="{{ site.baseurl }}/assets/{{page.js}}.js"></script>
+  {% endif %}
 </html>

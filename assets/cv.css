@@ -1,0 +1,227 @@
+:root {
+  --inset: 180px;
+  -webkit-text-size-adjust: 100%;
+}
+
+@supports (hyphens: auto) or (-webkit-hyphens: auto) {
+  p {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+}
+
+h1 {
+  margin: 0 0 56pt;
+  font-size: 24pt;
+  line-height: 26pt;
+  --font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4pt;
+}
+
+h2 {
+  border-top: 2px solid #333;
+  padding-top: 4px;
+  margin: 26pt 0 6pt;
+  font-size: 16pt;
+  line-height: 18pt;
+  text-transform: uppercase;
+  letter-spacing: 3pt;
+  --font-weight: 590;
+}
+
+h3 {
+  margin: 16pt 0 4pt;
+  font-size: 1em;
+  --font-weight: 610;
+  text-transform: uppercase;
+  letter-spacing: 1.8pt;
+}
+
+h3 time {
+  margin-left: 9pt;
+  float: right;
+}
+
+h3::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+h4 {
+  margin: 9pt 0 0;
+  font-size: 1em;
+  --font-weight: 580;
+  letter-spacing: 0.45pt;
+}
+
+p {
+  margin: 3pt 0;
+}
+
+ul {
+  margin: 6pt 0;
+}
+
+ul {
+  position: relative;
+  list-style-type: none;
+  --padding: 18pt;
+  padding-left: var(--padding);
+}
+
+li::before {
+  position: absolute;
+  left: 0;
+  margin-top: 1pt;
+  content: "\27b5";
+}
+
+li p {
+  margin: 0;
+}
+
+li p:not(:first-child) {
+  font-style: italic;
+  --font-weight: 350;
+  letter-spacing: 0.2pt;
+}
+
+.timelist {
+  padding: 0;
+}
+
+.timelist li::before {
+  display: none;
+}
+
+.timelist time::before {
+  content: "(";
+}
+
+.timelist time::after {
+  content: ")";
+}
+
+.lead {
+  font-style: italic;
+  --font-weight: 350;
+}
+
+.smcp {
+  text-transform: uppercase;
+  letter-spacing: 0.4pt;
+  font-size: 0.85em;
+  --font-weight: 480;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 18pt;
+    line-height: 22pt;
+  }
+
+  h1 {
+    font-size: 48pt;
+    line-height: 52pt;
+    letter-spacing: 16pt;
+    --font-weight: 600;
+  }
+
+  h2 {
+    font-size: 22pt;
+    line-height: 26pt;
+    margin-top: 48pt;
+    letter-spacing: 4pt;
+  }
+
+  .lead {
+    margin-top: 12pt;
+    margin-bottom: 12pt;
+    letter-spacing: 0.8pt;
+    --font-weight: 250;
+  }
+}
+
+@media screen and (min-width: 768px), print {
+  h1,
+  h2,
+  h3,
+  p {
+    margin-left: var(--inset);
+  }
+
+  h4 {
+    position: absolute;
+    width: calc(var(--inset) - 12pt);
+    margin: 0;
+    text-align: right;
+  }
+
+  ul {
+    margin-left: calc(var(--inset) - var(--padding));
+    --padding: 28pt;
+  }
+
+  .timelist {
+    margin-left: var(--inset);
+  }
+
+  .timelist li {
+    position: relative;
+  }
+
+  .timelist time {
+    position: absolute;
+    top: 1pt;
+    --padding: 9pt;
+    width: calc(var(--inset) - var(--padding));
+    right: calc(100% + var(--padding));
+    --font-weight: 480;
+    text-align: right;
+    font-size: 11pt;
+  }
+
+  .timelist time::before,
+  .timelist time::after {
+    content: none;
+  }
+}
+
+@page {
+  margin: 112pt 72pt;
+}
+
+@media print {
+  :root {
+    --inset: 80pt;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 28pt;
+    line-height: 30pt;
+    letter-spacing: 9pt;
+    page-break-after: avoid !important;
+  }
+
+  h2 {
+    margin-bottom: 6pt;
+    font-size: 14pt;
+    line-height: 18pt;
+    page-break-after: avoid !important;
+  }
+
+  h3 {
+    page-break-after: avoid !important;
+  }
+
+  .header {
+    display: none;
+  }
+}

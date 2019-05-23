@@ -1,18 +1,13 @@
 ---
 title: Pocket Jam
 layout: page
+css: app
+js: app
+color: white
+background: "#9733EE"
 ---
 
-<style>
-:root {
-  --background: #9733EE;
-  color: white;
-}
-</style>
-
-<svg viewBox="0 0 128 128" class="app__logo">
-  <use href="{{ site.baseurl }}/assets/apps.svg#pocket-jam" />
-</svg>
+{% include app-logo.svg icon="pocket-jam" %}
 
 # Pocket Jam
 

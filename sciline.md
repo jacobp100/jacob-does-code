@@ -1,18 +1,13 @@
 ---
 title: SciLine
 layout: page
+css: app
+js: app
+color: white
+background: "#0C2231"
 ---
 
-<style>
-:root {
-  --background: #0C2231;
-  color: white;
-}
-</style>
-
-<svg viewBox="0 0 128 128" class="app__logo">
-  <use href="{{ site.baseurl }}/assets/apps.svg#sciline" />
-</svg>
+{% include app-logo.svg icon="sciline" %}
 
 # SciLine
 

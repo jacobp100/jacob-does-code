@@ -1,0 +1,3 @@
+<svg viewBox="0 0 128 128" class="app__logo">
+  <use href="{{ site.baseurl }}/assets/apps.svg#{{ include.icon }}" />
+</svg>

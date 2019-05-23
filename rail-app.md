@@ -1,18 +1,13 @@
 ---
 title: Rail App
 layout: page
+css: app
+js: app
+color: white
+background: "#ED1E79"
 ---
 
-<style>
-:root {
-  --background: #ED1E79;
-  color: white;
-}
-</style>
-
-<svg viewBox="0 0 128 128" class="app__logo">
-  <use href="{{ site.baseurl }}/assets/apps.svg#rail-app" />
-</svg>
+{% include app-logo.svg icon="rail-app" %}
 
 # Rail App
 

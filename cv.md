@@ -31,6 +31,8 @@ Github at [https://github.com/jacobp100](https://github.com/jacobp100)
 
 ### Apps
 
+Product pages at [https://jacobdoescode.com](https://jacobdoescode.com)
+
 - [Pocket Jam]({{ site.baseurl }}/pocket-jam)
 
   Music playback app written in React Native for the UI, and Swift for music playback
@@ -50,36 +52,36 @@ Github at [https://github.com/jacobp100](https://github.com/jacobp100)
 
 ## Experience
 
-### Zoopla, Tower Bridge<time>2018</time>
+### Zoopla, Tower Bridge<time>Sep &rsquo;18</time>
 
-Full stack development on the new stack for the property search and new homes pages, using React and Vue.
+Started as a senior developer on the search results page team doing full stack development using Node, Express, Handlebars, and vanilla JavaScript on the client. Moved to the new homes team to build a Vue.js app for portfolio pages detailing new property developments. Used Nuxt to deliver a universal (isomorphic) web app with fully responsive styling using <span class="smcp">SCSS</span>.
 
-### Our Star Club, Fitzrovia<time>2018</time>
+### Our Star Club, Fitzrovia<time>Jun &rsquo;18&ndash;Sep &rsquo;18</time>
 
-Architected React web and React Native applications for a sports-based social media platform. Set up key infrastructure and guided the team through native development. Implemented many native code libraries in both Swift and Java where existing React Native bindings were not available.
+Architected React web and React Native applications for _Otro_&mdash;a sports-based social media platform. Set up key infrastructure and guided the team through native development. We used Fastlane and CircleCI for automated testing and TestFlight deployment. Integrated many native code libraries in both Swift and Java where existing React Native bindings were not available.
 
-### Concentra, St Paul&rsquo;s<time>2017–2018</time>
+### Concentra, St Paul&rsquo;s<time>Aug &rsquo;17&ndash;Jun &rsquo;18</time>
 
-Senior developer working on a web application specialising in visualising large organisational hierarchies with over 500,000 people, and making it fully interactive at 60fps. Used D3, React, Redux, among other libraries.
+Senior developer working on a the _OrgVue_ web app specialising in visualising large organisational hierarchies with over 500,000 people, and being fully interactive with drag and drop between both the <span class="smcp">UI</span> and visualisations. Developed a platform to render organisation charts in-browser at 60fps, while also allowing fully native PowerPoint export to allow consultants to tweak the design before giving a presentation. Used D3, React, Redux, and React-<span class="smcp">DND</span>, among other libraries.
 
 ### Other Places
 
 {:.timelist}
 
-- Autotrip <time>2016–2017</time>
+- Autotrip <time>2016&ndash;2017</time>
 
   Developed an interactive mapping webapp using React and Leaflet
 
-- Tido Music <time>2015–2016</time>
+- Tido Music <time>2015&ndash;2016</time>
 
   Worked on a music notation engine in pure JavaScript
 
-- Geneity <time>2014–2015</time>
+- Geneity <time>2014&ndash;2015</time>
 
   Fullstack development on betting websites using Python and JavaScript
 
 ## Education
 
-### University of York<time>2011–2014</time>
+### University of York<time>2011&ndash;2014</time>
 
 First Class honours BSc in Theoretical Physics.

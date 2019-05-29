@@ -11,6 +11,11 @@
   }
 }
 
+body {
+  font-size: 12pt;
+  line-height: 16pt;
+}
+
 h1 {
   margin: 0 0 56pt;
   font-size: 24pt;
@@ -32,8 +37,9 @@ h2 {
 }
 
 h3 {
-  margin: 16pt 0 4pt;
+  margin: 16pt 0 3pt;
   font-size: 1em;
+  line-height: inherit;
   --font-weight: 610;
   text-transform: uppercase;
   letter-spacing: 1.8pt;
@@ -191,7 +197,7 @@ li p:not(:first-child) {
 }
 
 @page {
-  margin: 112pt 72pt;
+  margin: 80pt 72pt;
 }
 
 @media print {

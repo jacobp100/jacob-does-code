@@ -210,21 +210,27 @@ li p:not(:first-child) {
   }
 
   h1 {
+    margin-bottom: 72pt;
     font-size: 28pt;
     line-height: 30pt;
     letter-spacing: 9pt;
-    page-break-after: avoid !important;
+    break-after: avoid !important;
   }
 
   h2 {
     margin-bottom: 6pt;
     font-size: 14pt;
     line-height: 18pt;
-    page-break-after: avoid !important;
+    break-after: avoid !important;
   }
 
   h3 {
-    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  body > p:nth-child(16) {
+    /* break-after doesn't work in Chrome - I just need this for PDF export */
+    margin-bottom: 48pt;
   }
 
   .header {

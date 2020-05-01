@@ -99,8 +99,7 @@ If you don&rsquo;t? You can _add your own_ &mdash; and even give your own symbol
 Available on iOS and Android
 
 <div class="store-links">
-  <a href="https://itunes.apple.com/us/app/pocket-jam/id1153284525?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
-  <a href="https://itunes.apple.com/us/app/pocket-jam/id1153284525?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
+  <a href="https://apps.apple.com/gb/app/technicalc-calculator/id1504965415" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
 
 {:.legal-links}
 [Privacy Policy]({{ site.baseurl }}/privacy)

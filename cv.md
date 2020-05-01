@@ -9,7 +9,7 @@ css: cv
 ## Skills
 
 {:.lead}
-Senior JavaScript developer specialising in React and React Native. Contributor to React Native, good with Swift, Objective C, and some Java on Android
+Senior JavaScript developer specialising in React and React Native. Contributor to React Native, experienced with iOS devlopment, SwiftUI & Swift, and Objective C
 
 #### JavaScript
 
@@ -27,21 +27,29 @@ Knowledgable of python, with experience in web frameworks, including <span class
 
 ## Experience
 
-### Zoopla, Tower Bridge<time>Sep &rsquo;18</time>
+### WonderBill, Covent Carden<time>Nov &rsquo;19&ndash;Present</time>
+
+Worked on a team building a household bill aggregation app in React Native. Worked with designers and other members of the tech team to build new screens and a new component library to achieve better visual consistency, improve user experience, and address tech debt at the same time.
+
+### Red Deer, Baker Street<time>Jun &rsquo;19&ndash;Nov &rsquo;19</time>
+
+Worked as part of a team to build a data vis application with React, Redux, and D3 for visualising market data for a hedgefund. Set up key infrastructure to bridge the old jQuery site to the new React components, enabling a gradual migration.
+
+### Zoopla, Tower Bridge<time>Sep &rsquo;18&ndash;Jun &rsquo;19</time>
 
 Senior developer doing full stack development on various consumer-facing projects. Used many technologies, including Node, Express, Handlebars, <span class="smcp">SCSS</span>, vanilla JavaScript, React (Preact), and VueJS with Nuxt for a universal (isomorphic) web app.
 
 ### Our Star Club, Fitzrovia<time>Jun &rsquo;18&ndash;Sep &rsquo;18</time>
 
-Architected both React web and React Native applications for _Otro_&mdash;a sports-based social media platform. Set up key infrastructure and guided the team through native development. Used Fastlane and CircleCI for automated testing and TestFlight deployment. Integrated many native code libraries in both Swift and Java where existing React Native bindings were not available.
-
-### Concentra, St Paul&rsquo;s<time>Aug &rsquo;17&ndash;Jun &rsquo;18</time>
-
-Senior developer working on a the _OrgVue_ web app specialising in data visualisation of large enterprises, using D3, React, Redux, and React-<span class="smcp">DND</span>, among other libraries. Developed a fully interactive app capable of visualising organisation hierarchies with 500,000 employees, with drag and drop between both the <span class="smcp">UI</span> and visualisations. Developed a platform to render organisation charts in-browser at 60fps, also allowing fully native PowerPoint export.
+Architected both React web and React Native applications for _Otro_&mdash;a sports-based social media platform. Set up key infrastructure and guided the team through native development. Integrated many native code libraries in both Swift and Java where existing React Native bindings were not available.
 
 ### Other Places
 
 {:.timelist}
+
+- Concentra <time>2017&ndash;2018</time>
+
+  Developed a React & D3-based data vis app capable of visualising organisation hierarchies of over 100k employees at 60fps in the browser, and with PowerPoint export
 
 - Autotrip <time>2016&ndash;2017</time>
 
@@ -67,18 +75,18 @@ Product pages at [https://jacobdoescode.com](https://jacobdoescode.com)
 
   Music playback app written in React Native for the UI, and Swift for music playback
 
-- [SciLine]({{ site.baseurl }}/sciline)
+- [TechniCalc]({{ site.baseurl }}/technicalc)
 
-  Scientific calculator app using iOS using Objective C and Swift for UI, and my own open-source calculation engine written in ReasonML (OCaml)
+  Scientific calculator React Native UI, and my own open-source calculation engine written in ReasonML (OCaml)
 
-- [Rail App]({{ site.baseurl }}/rail-app)
+- [Key Lines](https://apps.apple.com/us/app/key-lines-keyboard-midi-player/id1506390976)
 
-  Rail timetables app in React Native for UI and Objective C for offline timetables
+  Piano sheet music reader written in SwiftUI and UIKit
 
 ### Blog Posts
 
-- [You Aren&rsquo;t Using Redux Middleware Enough](https://medium.com/@jacobp100/you-arent-using-redux-middleware-enough-94ffe991e6)
-- [You Aren&rsquo;t Using Redux with Observables Enough](https://medium.com/@jacobp100/you-arent-using-redux-with-observables-enough-b59329c5a3af)
+- [A Primer in ReasonML](https://medium.com/@jacobp100/a-primer-in-reasonml-a8f8ae269286)
+- [Polymorphic Variants in ReasonML](https://medium.com/@jacobp100/polymorphic-variants-in-reasonml-d15038c2f92c)
 
 ## Education
 

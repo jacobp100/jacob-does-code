@@ -197,7 +197,7 @@ li p:not(:first-child) {
 }
 
 @page {
-  margin: 80pt 72pt;
+  margin: 60pt 72pt;
 }
 
 @media print {
@@ -210,7 +210,7 @@ li p:not(:first-child) {
   }
 
   h1 {
-    margin-bottom: 72pt;
+    margin-bottom: 60pt;
     font-size: 28pt;
     line-height: 30pt;
     letter-spacing: 9pt;
@@ -226,11 +226,6 @@ li p:not(:first-child) {
 
   h3 {
     break-after: avoid !important;
-  }
-
-  body > p:nth-child(16) {
-    /* break-after doesn't work in Chrome - I just need this for PDF export */
-    margin-bottom: 48pt;
   }
 
   .header {

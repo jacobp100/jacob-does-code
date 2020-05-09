@@ -56,19 +56,6 @@ hr {
   fill: var(--background, white);
 }
 
-/* Only needed when the background is not white */
-.main-content {
-  margin: 96px calc(-1 * var(--gutters));
-  padding: 96px calc(1 * var(--gutters));
-  background: var(--color);
-  color: black;
-}
-
-.main-content h2,
-.main-content em {
-  color: var(--background);
-}
-
 .block {
   margin: 64px 0;
 }

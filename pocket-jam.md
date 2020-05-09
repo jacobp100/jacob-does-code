@@ -2,8 +2,7 @@
 title: Pocket Jam
 layout: page
 css: app
-color: white
-background: "#FC427B"
+primary: "#FC427B"
 ---
 
 {% include app-logo.svg icon="pocket-jam" %}
@@ -18,8 +17,6 @@ Jam sessions with the device in your pocket
 {:/}
 
 {::options parse_block_html="true" /}
-
-<section class="main-content">
 
 ## Practise any song.
 
@@ -87,15 +84,13 @@ With a loop set up up, you can use the _speed trainer_ to have it start each loo
 
 ## Skip to the good bit.
 
-Set up section markers in your song for the bits that are important to you.
+Set up _section markers_ in your song for the bits that are important to you.
 
 Use them to jump to the section in playback, or to set up loops between sections faster.
 
 </div>
 
 </div>
-
-</section>
 
 # Get it now
 

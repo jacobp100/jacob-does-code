@@ -31,7 +31,7 @@ em {
 
 hr {
   margin: 64px auto;
-  height: 1px;
+  height: var(--hairline-width);
   border: none;
   background: currentColor;
   opacity: 0.05;

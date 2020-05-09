@@ -9,6 +9,12 @@
   <style>
     {% include base.css %}
   </style>
+  <script>
+    document.documentElement.style.setProperty(
+      "--hairline-width",
+      1 / (window.devicePixelRatio || 1) + "px"
+    );
+  </script>
   {% if page.css %}
   <link href="{{ site.baseurl }}/assets/{{ page.css }}.css" rel="stylesheet" />
   {% endif %}

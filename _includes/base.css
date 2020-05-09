@@ -75,6 +75,7 @@ a:focus {
   padding: 6px 4px 0 0;
 }
 
+/* Override a:pseudo specificity */
 a.header__logo {
   color: currentColor;
   text-decoration: none;

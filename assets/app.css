@@ -1,127 +1,148 @@
-html.no-scroll,
-.no-scroll body {
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
+h1,
+h2,
+p,
+hr {
+  max-width: 800px;
 }
 
 h1 {
-  margin: 24px 0;
+  margin: 12px auto;
   font-size: 32px;
   line-height: 36px;
-  letter-spacing: -0.8px;
+  --font-weight: 700;
+  text-align: center;
 }
 
 h2 {
-  margin: 24px 0 12px;
-  font-size: 28px;
-  line-height: 32px;
-  letter-spacing: -0.3px;
+  margin: 12px auto;
+  font-size: 24px;
+  line-height: 30px;
 }
 
 p {
-  margin: 12px 0;
+  margin: 24px auto;
 }
 
-ul {
-  padding-left: 20px;
+em {
+  font: inherit;
+  --font-weight: 500;
+  color: var(--primary);
+}
+
+hr {
+  margin: 64px auto;
+  height: 1px;
+  border: none;
+  background: currentColor;
+  opacity: 0.05;
 }
 
 .lead {
-  font-size: 20px;
-  line-height: 26px;
+  margin: 12px auto 64px;
+  font-size: 16px;
+  line-height: 20px;
+  --font-weight: 500;
+  color: var(--primary);
+  text-align: center;
 }
 
 .app__logo {
-  width: 60px;
-  height: 60px;
-  background: currentColor;
-  border-radius: 18px;
+  display: block;
+  margin: 0 auto 48px;
+  width: 120px;
+  height: 120px;
+  background: var(--primary, currentColor);
+  border-radius: 30%;
   fill: var(--background, white);
 }
 
-.app__carousel {
-  margin: 24px 0;
-  padding: 24px 0;
-  background: currentColor;
+/* Only needed when the background is not white */
+.main-content {
+  margin: 96px calc(-1 * var(--gutters));
+  padding: 96px calc(1 * var(--gutters));
+  background: var(--color);
+  color: black;
 }
 
-.app__slide {
+.main-content h2,
+.main-content em {
+  color: var(--background);
+}
+
+.block {
+  margin: 64px 0;
+}
+
+.promo {
   display: block;
-  flex: none;
-  margin-right: 12px;
-  border-radius: 6px;
-  width: 80vw;
-  height: calc(80vw * var(--aspect-ratio));
-  max-width: 200px;
-  max-height: calc(200px * var(--aspect-ratio));
-  --aspect-ratio: calc(2208 / 1242);
+  margin: 12px auto 72px;
+  max-width: 100%;
 }
 
-.app__slide:last-child {
-  margin-right: 0;
-}
-
-.app__modal {
-  display: none;
-  background: black;
-}
-
-.app__modal--active {
+.preview {
   display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
+  margin: 0 auto 12px;
+  object-fit: cover;
+  object-position: center top;
+  max-width: 400px;
+  max-height: 200px;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
-.app__modal .app__slide {
-  display: block;
-  margin: 0 auto;
-  border-radius: 0;
-  width: auto;
-  height: 100%;
-  max-width: none;
-  max-height: none;
+.preview--bottom {
+  object-position: center bottom;
+}
+
+.store-links {
+  text-align: center;
+}
+
+.legal-links {
+  font-size: 12px;
+  line-height: 18px;
 }
 
 @media (min-width: 768px) {
   body {
     font-size: 24px;
-    line-height: 30px;
-  }
-
-  h1 {
-    margin: 24px 0;
-    font-size: 64px;
-    line-height: 68px;
-    letter-spacing: -1.6px;
-  }
-
-  h2 {
-    margin: 36px 0 12px;
-    font-size: 36px;
-    line-height: 42px;
-    letter-spacing: -0.6px;
+    line-height: 34px;
   }
 
   p {
-    margin: 24px 0;
+    margin: 32px auto;
   }
 
-  ul {
-    padding-left: 24px;
-    margin-left: -24px;
+  h1 {
+    font-size: 48px;
+    line-height: 54px;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 44px;
   }
 
   .lead {
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 20px;
+    line-height: 24px;
   }
 
-  .app__carousel {
-    margin: 48px 0;
+  .block {
+    display: flex;
+    align-items: center;
+  }
+
+  .block--reverse {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+
+  .preview {
+    object-fit: contain;
+    max-height: 400px;
+  }
+
+  .block__content {
+    flex: 1;
   }
 }

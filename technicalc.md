@@ -1,9 +1,8 @@
 ---
 title: TechniCalc
 layout: page
-css: technicalc
-color: black
-background: white
+css: app
+primary: "#0652dd"
 ---
 
 {% include app-logo.svg icon="technicalc" %}
@@ -21,9 +20,9 @@ A smart calculator for a smart phone
 
 The modern interface that makes a clean break from traditional pocket calculators. Equations are entered in a natural way, adhering to every detail of hand-written maths.
 
-The _advanced maths engine_ also makes this the only calculator you&rsquo;ll ever need.
+The _advanced maths engine_ also makes this the only calculator you'll ever need.
 
-You&rsquo;ll find your garden variety logs, sins, and cosines &mdash; but for when you need it, the engine has full support for imaginary numbers, vectors, matrices, sums and products, and differentiation and integration.
+You'll find your garden variety logs, sins, and cosines &mdash; but for when you need it, the engine has full support for imaginary numbers, vectors, matrices, sums and products, and differentiation and integration.
 
 ---
 
@@ -37,7 +36,7 @@ You&rsquo;ll find your garden variety logs, sins, and cosines &mdash; but for wh
 
 <div class="block__content">
 
-## Converting between units couldn&rsquo;t be simpler &mdash; or more powerful.
+## Converting between units couldn't be simpler &mdash; or more powerful.
 
 All the units you would expect are supported, and you can combine them infinitely.
 
@@ -81,11 +80,11 @@ Even find a root for any given equation.
 
 <div class="block__content">
 
-## Every constant you&rsquo;ll ever need, built right in
+## Every constant you'll ever need, built right in
 
-With over 100 constants built in, no matter whether you&rsquo;re doing engineering, physics, or chemistry, you&rsquo;ll find every constant you need.
+With over 100 constants built in, no matter whether you're doing engineering, physics, or chemistry, you'll find every constant you need.
 
-If you don&rsquo;t? You can _add your own_ &mdash; and even give your own symbol.
+If you don't? You can _add your own_ &mdash; and even give your own symbol.
 
 </div>
 
@@ -100,6 +99,7 @@ Available on iOS and Android
 
 <div class="store-links">
   <a href="https://apps.apple.com/gb/app/technicalc-calculator/id1504965415" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
+  <a href="https://play.google.com/store/apps/details?id=com.technicalc&hl=en&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1" style="display:inline-block;overflow:hidden;background:url(https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png) center center/155px 60px;width:135px;height:40px;"></a>
 
 {:.legal-links}
 [Privacy Policy]({{ site.baseurl }}/privacy)

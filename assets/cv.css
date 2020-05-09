@@ -11,9 +11,18 @@
   }
 }
 
+.header__section {
+  /* So we don't load Inter UI */
+  font-family: sans-serif;
+}
+
+.header__link {
+  --font-weight: 300;
+  font-size: 18px;
+}
+
 body {
-  font-size: 12pt;
-  line-height: 16pt;
+  font: 12pt/16pt "Crimson Pro", serif;
 }
 
 h1 {

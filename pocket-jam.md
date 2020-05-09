@@ -2,9 +2,8 @@
 title: Pocket Jam
 layout: page
 css: app
-js: app
 color: white
-background: "#9733EE"
+background: "#FC427B"
 ---
 
 {% include app-logo.svg icon="pocket-jam" %}
@@ -12,23 +11,101 @@ background: "#9733EE"
 # Pocket Jam
 
 {:.lead}
-Pocket Jam is for musicians wanting to practice and play along with their favourite songs. Loop specific sections of songs, or change the pitch or tempo in real time.
+Jam sessions with the device in your pocket
 
-<div class="app__carousel u-scroll-horizontal">
-  {% include carousel-slide.html src="assets/pocket-jam-1.png" %}
-  {% include carousel-slide.html src="assets/pocket-jam-2.png" %}
-  {% include carousel-slide.html src="assets/pocket-jam-3.png" %}
-  {% include carousel-slide.html src="assets/pocket-jam-4.png" %}
+{::nomarkdown}
+<img class="promo" src="{{ site.baseurl }}/assets/pocket-jam-promo.png" alt="App Screenshots">
+{:/}
+
+{::options parse_block_html="true" /}
+
+<section class="main-content">
+
+## Practise any song.
+
+You can play any song in your iTunes library &mdash; that's music transferred from your computer to your device.
+
+Or add anything that shows up in the Files app. That's your Safari downloads, iCloud, or other providers like Dropbox (provided you have their app).
+
+---
+
+{::options parse_block_html="true" /}
+
+<div class="block">
+
+{::nomarkdown}
+<img class="preview" src="{{ site.baseurl }}/assets/pocket-jam-preview-1.png" alt="Section looping">
+{:/}
+
+<div class="block__content">
+
+## Change songs for your instrument and ability.
+
+You no longer have to retune your instrument if a song is in a different tuning to you &mdash; and you no longer need a capo. Now you can transpose the song any amount of semitones up to an octave.
+
+When a song is too fast or slow, you can control that too. Change the tempo anywhere between half and double the original.
+
+All in _real time_.
+
 </div>
 
-If you want to play along to a song that's a bit too fast, or you know it already and want to master, you can change the tempo to any amount between half to double the original.
+</div>
 
-If you don't have a capo to hand — or worse, the song is in a lower tuning than you, Pocket Jam has you covered. You can change the pitch up and down — in real time — to any amount of semitones up to an octave.
+---
 
-Looping lets you pick specific parts of the song you want to practise. Once enabled, drag the left and right handles on the play bar to set the start and end of the loop, and it'll loop between them.
+{::options parse_block_html="true" /}
 
-And when looping isn't enough, you can use the speed trainer. With a loop set up up, you can have it start each loop playing slowly, and gradually get faster after each loop. You can customise how slow it starts, and how many loops it takes to reach the full tempo.
+<div class="block block--reverse">
 
-Mark specific times in a song with section markers. It'll let you jump to parts or set up loops quicker.
+{::nomarkdown}
+<img class="preview preview--bottom" src="{{ site.baseurl }}/assets/pocket-jam-preview-2.png" alt="Section looping">
+{:/}
 
-<a href="https://itunes.apple.com/us/app/pocket-jam/id1153284525?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
+<div class="block__content">
+
+## Loop sections. Practise until perfect.
+
+Looping lets you pick specific parts of the song you want to practise. Just drag the left and right handles on the play bar to set the start and end of the loop.
+
+With a loop set up up, you can use the _speed trainer_ to have it start each loop playing slowly, and gradually speed up after each loop. Tweak how slow it starts, and how many loops it takes to reach the full tempo.
+
+</div>
+
+</div>
+
+---
+
+{::options parse_block_html="true" /}
+
+<div class="block block">
+
+{::nomarkdown}
+<img class="preview" src="{{ site.baseurl }}/assets/pocket-jam-preview-3.png" alt="Section looping">
+{:/}
+
+<div class="block__content">
+
+## Skip to the good bit.
+
+Set up section markers in your song for the bits that are important to you.
+
+Use them to jump to the section in playback, or to set up loops between sections faster.
+
+</div>
+
+</div>
+
+</section>
+
+# Get it now
+
+{:.lead}
+Available for iPhone and iPad
+
+<div class="store-links">
+  <a href="https://itunes.apple.com/us/app/pocket-jam/id1153284525?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
+
+{:.legal-links}
+[Privacy Policy]({{ site.baseurl }}/privacy)
+
+</div>

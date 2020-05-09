@@ -1,0 +1,15 @@
+.app__logo {
+  width: 60px;
+  height: 60px;
+  background: black;
+  fill: white;
+  border-radius: 30%;
+}
+
+.grid {
+  display: grid;
+  margin: 72px 0;
+  grid-template-columns: repeat(auto-fill, 300px);
+  column-gap: 32px;
+  row-gap: 32px;
+}

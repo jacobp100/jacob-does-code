@@ -2,6 +2,7 @@
 title: Freebies
 layout: page
 css: freebies
+primary: "#FC427B"
 ---
 
 # Freebies

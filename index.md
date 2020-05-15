@@ -2,7 +2,7 @@
 title: Jacob Does Code
 layout: page
 css: index
-primary: "#E84393"
+primary: "#FC427B"
 ---
 
 # I do code. I also write apps, and am available for [hire]({{ site.baseurl }}/cv).

@@ -16,7 +16,7 @@ primary: "#6AB04C"
 # Key Lines
 
 {:.lead}
-Jam sessions with the device in your pocket
+Sheet music and piano practise reimagined
 
 {::nomarkdown}
 <img class="promo" src="{{ site.baseurl }}/assets/key-lines-promo.png" alt="App Screenshots">

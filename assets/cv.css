@@ -122,7 +122,7 @@ li p:not(:first-child) {
 
 .lead {
   font-size: 16pt;
-  line-height: 21pt;
+  line-height: 20pt;
   font-style: italic;
   --font-weight: 350;
 }

@@ -121,6 +121,8 @@ li p:not(:first-child) {
 }
 
 .lead {
+  font-size: 16pt;
+  line-height: 21pt;
   font-style: italic;
   --font-weight: 350;
 }
@@ -155,8 +157,10 @@ li p:not(:first-child) {
   .lead {
     margin-top: 12pt;
     margin-bottom: 12pt;
+    font-size: 22pt;
+    line-height: 24pt;
     letter-spacing: 0.8pt;
-    --font-weight: 250;
+    --font-weight: 200;
   }
 }
 
@@ -235,6 +239,15 @@ li p:not(:first-child) {
 
   h3 {
     break-after: avoid !important;
+  }
+
+  .lead {
+    letter-spacing: 0.09pt;
+    --font-weight: 200;
+  }
+
+  .lead strong {
+    --font-weight: 600;
   }
 
   .header {

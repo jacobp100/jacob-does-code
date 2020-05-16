@@ -6,10 +6,10 @@ css: cv
 
 # Jacob Parker
 
-## Skills
-
 {:.lead}
-Senior JavaScript developer specialising in React and React Native. Contributor to React Native, experienced with iOS devlopment, SwiftUI & Swift, and Objective C
+Senior frontend and mobile developer specialising in both **React** and **React Native**. Skilled in all things JavaScript and CSS, and experience in iOS devlopment, SwiftUI & Swift, and Objective-C.
+
+## Skills
 
 #### JavaScript
 
@@ -20,10 +20,6 @@ Favourite libraries and tools include <span class="smcp">React</span> and <span 
 #### CSS
 
 Skilled in vanilla <span class="smcp">CSS</span>, <span class="smcp">SASS</span>, and <span class="smcp">postCSS</span> setup. Also experienced with JavaScript solutions, including <span class="smcp">CSS Modules</span>, and am a collaborator on <span class="smcp">Styled Components</span>. Experience in responsive design, bootstrap, foundation, <span class="smcp">BEM</span>, and progressive enhancement.
-
-#### Python
-
-Knowledgable of python, with experience in web frameworks, including <span class="smcp">Flask</span>, and data analysis libraries <span class="smcp">Numpy</span> and <span class="smcp">Scipy</span>. Contributed to <span class="smcp">Pygments</span> syntax highlighting project, used by O&rsquo;Reily for their book publishing.
 
 ## Experience
 
@@ -73,15 +69,15 @@ Product pages at [https://jacobdoescode.com](https://jacobdoescode.com)
 
 - [Pocket Jam]({{ site.baseurl }}/pocket-jam)
 
-  Music playback app written in React Native for the UI, and Swift for music playback
-
-- [TechniCalc]({{ site.baseurl }}/technicalc)
-
-  Scientific calculator React Native UI, and my own open-source calculation engine written in ReasonML (OCaml)
+  Music app written in React Native for the UI, and Swift for music playback
 
 - [Key Lines](https://apps.apple.com/us/app/key-lines-keyboard-midi-player/id1506390976)
 
-  Piano sheet music reader written in SwiftUI and UIKit
+  Interactive piano sheet music reader written in SwiftUI and UIKit
+
+- [TechniCalc]({{ site.baseurl }}/technicalc)
+
+  Scientific calculator using React Native for UI, and my own open-source calculation engine written in ReasonML (OCaml)
 
 ### Blog Posts
 

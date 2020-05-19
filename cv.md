@@ -7,7 +7,7 @@ css: cv
 # Jacob Parker
 
 {:.lead}
-Senior frontend and mobile developer specialising in both **React** and **React Native**. Skilled in all things JavaScript and CSS, and experience in iOS devlopment, SwiftUI & Swift, and Objective-C.
+Senior frontend and mobile with over **6 years React** and **5 years React Native** experience. Skilled in all things JavaScript and CSS, with experience in iOS development, including SwiftUI & Swift, and Objective-C.
 
 ## Skills
 
@@ -45,7 +45,7 @@ Architected both React web and React Native applications for _Otro_&mdash;a spor
 
 - Concentra <time>2017&ndash;2018</time>
 
-  Developed a React & D3-based data vis app capable of visualising organisation hierarchies of over 100k employees at 60fps in the browser, and with PowerPoint export
+  Developed a React & D3-based data vis app capable of visualising organisation hierarchies of over 100k employees at 60fps in browser, with PowerPoint export
 
 - Autotrip <time>2016&ndash;2017</time>
 

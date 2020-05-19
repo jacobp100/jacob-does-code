@@ -223,7 +223,8 @@ li p:not(:first-child) {
   }
 
   h1 {
-    margin-bottom: 60pt;
+    padding-top: 24pt;
+    margin-bottom: 54pt;
     font-size: 28pt;
     line-height: 30pt;
     letter-spacing: 9pt;
@@ -242,8 +243,11 @@ li p:not(:first-child) {
   }
 
   .lead {
-    letter-spacing: 0.09pt;
-    --font-weight: 200;
+    /* Parameters set to get good text wrapping */
+    margin-bottom: 36pt;
+    font-size: 16.5pt;
+    letter-spacing: 0.5pt;
+    --font-weight: 300;
   }
 
   .lead strong {

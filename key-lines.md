@@ -24,7 +24,7 @@ Sheet music and piano practise reimagined
 
 ## Open any song.
 
-Key Lines works with any MIDI file.
+Key Lines works with any MIDI file. They're the industry standard, and _super-easy_ to get hold of.
 
 Pieces are displayed as you would play them on a keyboard, so there is _no learning curve_ to get started.
 

@@ -59,7 +59,7 @@ With a loop set up up, you can use the _speed trainer_ to have it start each loo
 <div class="block block--reverse">
 
 {::nomarkdown}
-<img class="preview" src="{{ site.baseurl }}/assets/key-lines-preview-2.png" alt="Section looping">
+<img class="preview" src="{{ site.baseurl }}/assets/key-lines-preview-2.png" alt="Bookmarks">
 {:/}
 
 <div class="block__content">
@@ -85,7 +85,7 @@ Use your finger or Apple Pencil to _freehand draw anywhere_ in the piece to anno
 <div class="block block">
 
 {::nomarkdown}
-<img class="preview" src="{{ site.baseurl }}/assets/key-lines-preview-3.png" alt="Section looping">
+<img class="preview" src="{{ site.baseurl }}/assets/key-lines-preview-3.png" alt="Playback customisation">
 {:/}
 
 <div class="block__content">

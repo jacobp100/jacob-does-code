@@ -5,4 +5,4 @@ css: index
 primary: "#FC427B"
 ---
 
-# I do code. I also write apps, and am available for [hire]({{ site.baseurl }}/cv).
+# I do code. I also write apps, and am available for [hire](/cv).

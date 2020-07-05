@@ -67,7 +67,7 @@ Github at [https://github.com/jacobp100](https://github.com/jacobp100)
 
 Product pages at [https://jacobdoescode.com](https://jacobdoescode.com)
 
-- [Pocket Jam]({{ site.baseurl }}/pocket-jam)
+- [Pocket Jam](/pocket-jam)
 
   Music app written in React Native for the UI, and Swift for music playback
 
@@ -75,7 +75,7 @@ Product pages at [https://jacobdoescode.com](https://jacobdoescode.com)
 
   Interactive piano sheet music reader written in SwiftUI and UIKit
 
-- [TechniCalc]({{ site.baseurl }}/technicalc)
+- [TechniCalc](/technicalc)
 
   Scientific calculator using React Native for UI, and my own open-source calculation engine written in ReasonML (OCaml)
 

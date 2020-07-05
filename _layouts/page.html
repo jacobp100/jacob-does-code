@@ -16,23 +16,21 @@
     );
   </script>
   {% if page.css %}
-  <link href="{{ site.baseurl }}/assets/{{ page.css }}.css" rel="stylesheet" />
+  <link href="/assets/{{ page.css }}.css" rel="stylesheet" />
   {% endif %}
   <div class="header u-scroll-horizontal">
-    <a href="{{ site.baseurl }}/" class="header__logo"
-      >Jacob<br />does<br />code</a
-    >
+    <a href="/" class="header__logo">Jacob<br />does<br />code</a>
     <div class="header__section">Apps</div>
-    <a href="{{ site.baseurl }}/pocket-jam" class="header__link">Pocket Jam</a>
-    <a href="{{ site.baseurl }}/key-lines" class="header__link">Key Lines</a>
-    <a href="{{ site.baseurl }}/technicalc" class="header__link">TechniCalc</a>
-    <a href="{{ site.baseurl }}/freebies" class="header__link">Freebies</a>
+    <a href="/pocket-jam" class="header__link">Pocket Jam</a>
+    <a href="/key-lines" class="header__link">Key Lines</a>
+    <a href="/technicalc" class="header__link">TechniCalc</a>
+    <a href="/freebies" class="header__link">Freebies</a>
     <div class="header__section header__section--last">Contact</div>
-    <a href="{{ site.baseurl }}/blog" class="header__link">Blog</a>
+    <a href="/blog" class="header__link">Blog</a>
     <a href="https://github.com/jacobp100" class="header__link">Github</a>
-    <a href="{{ site.baseurl }}/cv" class="header__link">CV</a>
+    <a href="/cv" class="header__link">CV</a>
   </div>
   {{ content }} {% if page.js %}
-  <script src="{{ site.baseurl }}/assets/{{page.js}}.js"></script>
+  <script src="/assets/{{ page.js }}.js"></script>
   {% endif %}
 </html>

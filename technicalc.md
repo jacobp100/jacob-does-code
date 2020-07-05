@@ -13,7 +13,7 @@ primary: "#0652dd"
 A smart calculator for a smart phone
 
 {::nomarkdown}
-<img class="promo" src="{{ site.baseurl }}/assets/technicalc-promo.png" alt="App Screenshots">
+<img class="promo" src="/assets/technicalc-promo.png" alt="App Screenshots">
 {:/}
 
 ## TechniCalc is every bit functional as it is beautiful.
@@ -31,7 +31,7 @@ You'll find your garden variety logs, sins, and cosines &mdash; but for when you
 <div class="block">
 
 {::nomarkdown}
-<img class="preview" src="{{ site.baseurl }}/assets/technicalc-preview-1.png" alt="Unit conversion">
+<img class="preview" src="/assets/technicalc-preview-1.png" alt="Unit conversion">
 {:/}
 
 <div class="block__content">
@@ -53,7 +53,7 @@ _Kilogram-meters-per-second-squared_ to something else? Also check.
 <div class="block block--reverse">
 
 {::nomarkdown}
-<img class="preview" src="{{ site.baseurl }}/assets/technicalc-preview-2.png" alt="Equation solver">
+<img class="preview" src="/assets/technicalc-preview-2.png" alt="Equation solver">
 {:/}
 
 <div class="block__content">
@@ -75,7 +75,7 @@ Even find a root for any given equation.
 <div class="block">
 
 {::nomarkdown}
-<img class="preview" src="{{ site.baseurl }}/assets/technicalc-preview-3.png" alt="Constants">
+<img class="preview" src="/assets/technicalc-preview-3.png" alt="Constants">
 {:/}
 
 <div class="block__content">
@@ -102,6 +102,6 @@ Available on iOS and Android
   <a href="https://play.google.com/store/apps/details?id=com.technicalc&hl=en&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1" style="display:inline-block;overflow:hidden;background:url(https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png) center center/155px 60px;width:135px;height:40px;"></a>
 
 {:.legal-links}
-[Privacy Policy]({{ site.baseurl }}/privacy)
+[Privacy Policy](/privacy)
 
 </div>

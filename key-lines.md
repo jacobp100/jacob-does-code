@@ -19,7 +19,7 @@ primary: "#6AB04C"
 Sheet music and piano practise reimagined
 
 {::nomarkdown}
-<img class="promo" src="{{ site.baseurl }}/assets/key-lines-promo.png" alt="App Screenshots">
+<img class="promo" src="/assets/key-lines-promo.png" alt="App Screenshots">
 {:/}
 
 ## Open any song.
@@ -37,7 +37,7 @@ Scroll through a piece for _interactive playback_ to help you either find or stu
 <div class="block">
 
 {::nomarkdown}
-<img class="preview" src="{{ site.baseurl }}/assets/key-lines-preview-1.png" alt="Section looping">
+<img class="preview" src="/assets/key-lines-preview-1.png" alt="Section looping">
 {:/}
 
 <div class="block__content">
@@ -59,7 +59,7 @@ With a loop set up up, you can use the _speed trainer_ to have it start each loo
 <div class="block block--reverse">
 
 {::nomarkdown}
-<img class="preview" src="{{ site.baseurl }}/assets/key-lines-preview-2.png" alt="Bookmarks">
+<img class="preview" src="/assets/key-lines-preview-2.png" alt="Bookmarks">
 {:/}
 
 <div class="block__content">
@@ -85,7 +85,7 @@ Use your finger or Apple Pencil to _freehand draw anywhere_ in the piece to anno
 <div class="block block">
 
 {::nomarkdown}
-<img class="preview" src="{{ site.baseurl }}/assets/key-lines-preview-3.png" alt="Playback customisation">
+<img class="preview" src="/assets/key-lines-preview-3.png" alt="Playback customisation">
 {:/}
 
 <div class="block__content">
@@ -111,6 +111,6 @@ Available for iOS and macOS
   <a href="https://apps.apple.com/us/app/key-lines-keyboard-midi-player/id1506390976?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2020-04-06&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
 
 {:.legal-links}
-[Privacy Policy]({{ site.baseurl }}/privacy)
+[Privacy Policy](/privacy)
 
 </div>

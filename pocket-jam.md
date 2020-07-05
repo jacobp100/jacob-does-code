@@ -13,7 +13,7 @@ primary: "#FC427B"
 Jam sessions with the device in your pocket
 
 {::nomarkdown}
-<img class="promo" src="{{ site.baseurl }}/assets/pocket-jam-promo.png" alt="App Screenshots">
+<img class="promo" src="/assets/pocket-jam-promo.png" alt="App Screenshots">
 {:/}
 
 {::options parse_block_html="true" /}
@@ -31,7 +31,7 @@ Or add anything that shows up in the Files app. That's your Safari downloads, iC
 <div class="block">
 
 {::nomarkdown}
-<img class="preview" src="{{ site.baseurl }}/assets/pocket-jam-preview-1.png" alt="Section looping">
+<img class="preview" src="/assets/pocket-jam-preview-1.png" alt="Section looping">
 {:/}
 
 <div class="block__content">
@@ -55,7 +55,7 @@ All in _real time_.
 <div class="block block--reverse">
 
 {::nomarkdown}
-<img class="preview preview--bottom" src="{{ site.baseurl }}/assets/pocket-jam-preview-2.png" alt="Section looping">
+<img class="preview preview--bottom" src="/assets/pocket-jam-preview-2.png" alt="Section looping">
 {:/}
 
 <div class="block__content">
@@ -77,7 +77,7 @@ With a loop set up up, you can use the _speed trainer_ to have it start each loo
 <div class="block block">
 
 {::nomarkdown}
-<img class="preview" src="{{ site.baseurl }}/assets/pocket-jam-preview-3.png" alt="Section looping">
+<img class="preview" src="/assets/pocket-jam-preview-3.png" alt="Section looping">
 {:/}
 
 <div class="block__content">
@@ -101,6 +101,6 @@ Available for iPhone and iPad
   <a href="https://itunes.apple.com/us/app/pocket-jam/id1153284525?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
 
 {:.legal-links}
-[Privacy Policy]({{ site.baseurl }}/privacy)
+[Privacy Policy](/privacy)
 
 </div>

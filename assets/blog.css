@@ -87,8 +87,9 @@ pre code {
 }
 
 @media (max-width: 767px) {
+  /* On the iPhone SE, the code elements can cause sideways scroll */
   p > code {
-    line-break: break-word;
+    word-break: break-all;
   }
 }
 

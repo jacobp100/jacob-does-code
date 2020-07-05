@@ -93,7 +93,7 @@ My colour palette is quite limited here, so I added a pink. Because the blue is 
 
 [See on App Store](https://apps.apple.com/gb/app/technicalc-calculator/id1504965415)
 
-<iframe scrolling="no" frameborder="0" id="player" src="https://www.figma.com/embed?embed_host=oembed&amp;referrer=https%3A%2F%2Fmedium.com&amp;url=https%3A%2F%2Fwww.figma.com%2Ffile%2FfcqMYeJLFY8KIBrXWw97nw%2FApp-Listing%3Fnode-id%3D0%3A1" allowfullscreen="true"></iframe>
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FLmqbaoqaAqkhL0cp0iDDuh%2FApp-Listing%3Fnode-id%3D29%253A121&chrome=DOCUMENTATION" allowfullscreen></iframe>
 
 ### Key Lines
 
@@ -103,4 +103,4 @@ This also includes macOS screenshots!
 
 [See on App Store](https://apps.apple.com/gb/app/key-lines-keyboard-midi-player/id1506390976)
 
-<iframe src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.figma.com%2Fembed%3Fembed_host%3Doembed%26url%3Dhttps%3A%2F%2Fwww.figma.com%2Ffile%2FLmqbaoqaAqkhL0cp0iDDuh%2FApp-Listing%3Fnode-id%3D29%253A121&amp;display_name=Figma&amp;url=https%3A%2F%2Fwww.figma.com%2Ffile%2FLmqbaoqaAqkhL0cp0iDDuh%2FApp-Listing%3Fnode-id%3D29%253A121&amp;image=https%3A%2F%2Fapi-cdn.figma.com%2Fresize%2Fthumbnails%2F04986249-c237-4e92-aaa5-3e8eb5e4a4e3%3Fheight%3D398%26bucket%3Dfigma-alpha&amp;key=a19fcc184b9711e1b4764040d3dc5c07&amp;type=text%2Fhtml&amp;schema=figma" allowfullscreen="" frameborder="0" height="450" width="800" title="App Listing" class="s t u eg ai" scrolling="auto"></iframe>
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FfcqMYeJLFY8KIBrXWw97nw%2FApp-Listing%3Fnode-id%3D0%253A1&chrome=DOCUMENTATION" allowfullscreen></iframe>

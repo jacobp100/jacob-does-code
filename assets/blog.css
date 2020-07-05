@@ -1,0 +1,252 @@
+/* Colour scheme from https://material.io/design/color/the-color-system.html#tools-for-picking-colors */
+:root {
+  --gutters: max(12px, (100vw - var(--max-width)) / 2);
+  --max-width: 800px;
+  --primary: #673ab7;
+}
+
+h1 {
+  margin: 48px 0 32px;
+  font-size: 36px;
+  line-height: 52px;
+  letter-spacing: -0.8px;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 42px 0 18px;
+  font-size: 26px;
+  line-height: 34px;
+  letter-spacing: -0.3px;
+  font-weight: 700;
+}
+
+h3 {
+  margin: 42px 0 18px;
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: -0.18px;
+  font-weight: 600;
+}
+
+p {
+  margin: 18px 0;
+}
+
+strong {
+  font-weight: 600;
+}
+
+ul,
+ol {
+  margin: 24px 0;
+  padding-left: 32px;
+  margin-left: calc(-32 * min(max(var(--gutters) - 32px, 0px), 1px));
+}
+
+li {
+  position: relative;
+  margin: 2px 0;
+  list-style: none;
+}
+
+li::before {
+  position: absolute;
+  content: "👉";
+  right: calc(100% + 12px);
+}
+
+blockquote {
+  margin: 32px 24px 32px 48px;
+  font-size: 22px;
+  line-height: 32px;
+  font-weight: 300;
+  font-style: italic;
+  color: #9e9e9e;
+}
+
+code {
+  font-size: 0.9em;
+  font-family: monospace;
+  padding: 0 3px;
+  background-color: #f5f5f5;
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+}
+
+pre code {
+  display: block;
+  width: 100vw;
+  margin: 48px calc(-1 * var(--gutters));
+  padding: 18px var(--gutters);
+  background-color: #fafafa;
+  border: 1px solid #f5f5f5;
+  border-width: 1px 0;
+  border-radius: 0;
+  overflow-x: scroll;
+}
+
+/* https://github.com/jwarby/jekyll-pygments-themes/blob/master/github.css (then run through cssnano) */
+.highlight .hll {
+  background-color: #ffc;
+}
+.highlight .c {
+  color: #998;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .k,
+.highlight .o {
+  color: #000;
+  font-weight: 700;
+}
+.highlight .cm {
+  color: #998;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999;
+  font-weight: 700;
+  font-style: italic;
+}
+.highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999;
+  font-weight: 700;
+  font-style: italic;
+}
+.highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+.highlight .ge {
+  color: #000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #a00;
+}
+.highlight .gh {
+  color: #999;
+}
+.highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+.highlight .go {
+  color: #888;
+}
+.highlight .gp {
+  color: #555;
+}
+.highlight .gs {
+  font-weight: 700;
+}
+.highlight .gu {
+  color: #aaa;
+}
+.highlight .gt {
+  color: #a00;
+}
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr {
+  color: #000;
+  font-weight: 700;
+}
+.highlight .kt {
+  color: #458;
+  font-weight: 700;
+}
+.highlight .m {
+  color: #099;
+}
+.highlight .s {
+  color: #d01040;
+}
+.highlight .na {
+  color: teal;
+}
+.highlight .nb {
+  color: #0086b3;
+}
+.highlight .nc {
+  color: #458;
+  font-weight: 700;
+}
+.highlight .no {
+  color: teal;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: 700;
+}
+.highlight .ni {
+  color: purple;
+}
+.highlight .ne,
+.highlight .nf,
+.highlight .nl {
+  color: #900;
+  font-weight: 700;
+}
+.highlight .nn {
+  color: #555;
+}
+.highlight .nt {
+  color: navy;
+}
+.highlight .nv {
+  color: teal;
+}
+.highlight .ow {
+  color: #000;
+  font-weight: 700;
+}
+.highlight .w {
+  color: #bbb;
+}
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo {
+  color: #099;
+}
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx {
+  color: #d01040;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d01040;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .bp {
+  color: #999;
+}
+.highlight .vc,
+.highlight .vg,
+.highlight .vi {
+  color: teal;
+}
+.highlight .il {
+  color: #099;
+}

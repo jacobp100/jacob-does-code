@@ -1,0 +1,106 @@
+---
+title: A Guide to App Store Screenshots
+layout: page
+css: blog
+---
+
+<style>
+iframe {
+width: calc(var(--inner-width) * 1);
+height: calc(var(--inner-width) * 0.66);
+--inner-width: calc(100vw - 2 * var(--gutters));
+}
+</style>
+
+# A Guide to App Store Screenshots
+
+Screenshots are your best resource for promoting and showcasing your app before somebody has bought or downloaded it. In this post, I will mostly be talking iOS &mdash; but a lot can be transferred to Android too. Also a disclaimer: a lot of this post is my personal opinion!
+
+Firstly, you must provide screenshots for:
+
+- iPhone 11 Pro Max
+- iPhone 8 Plus
+- iPad Pro 12.9&quot; (both 2nd and 3rd gen) &mdash; only if you support iPad
+
+You can provide more, but it's not really neccesary. And just between us, you can submit the exact same screenshots for the iPad 2nd and 3rd gen. Apple won't notice &mdash; and neither will your users.
+
+The screenshots appear in the search results at roughly &frac14; size, in the app listing page at &frac12; size, then users can tap into them and view them at around 90% size.
+
+You can upload portrait or landscape screenshots &mdash; but you can't really mix and match. If you pick portrait, iPhone users will see the first 3 previews in the search results, and iPad users will see the first 2. If you pick landscape, users will only ever see 1.
+
+> Do not use landscape screenshots unless you really know what you're doing!
+
+(or are making screenshots for macOS &mdash; then you don't get a choice)
+
+A lot of apps will upload direct screenshots of the app. However, most add additional text and other content in the borders. By not doing this, not only does your app not look as polished as your competition, but you're also missing out on an opportunity to communicate the apps features. Users are unlikely to actually read your app description, so screenshots are your primary way to communicate information about your app.
+If you don't have any experience in design programs, there are tonnes of screenshot generators out there. Two I've used are,
+
+- [Previewed](https://previewed.app/screenshots/appstore/)
+- [App Mockup](https://app-mockup.com)
+
+But I strongly encourage you to use a design program like Figma. I've attached some of my layouts at the end of this post!
+
+## Text
+
+It's a good idea to ensure it's legible from the app search page. As they appear ¼th the full size in this page, you'll need to make your text larger, more legible, and take up less space (so your screenshots are still visible). My rules of thumb are:
+
+- 48pt&ndash;64pt on iPhone, 72pt&ndash;96pt on iPad
+- Sans-serif fonts (Inter UI is my go-to)
+- Bold to black weights
+- Tight letter spacings and line heights (~&minus;5% and ~1.1, respectively)
+
+Avoid treating your screenshots as a list of bullet points. Do add a header to each screenshot, but add a couple of lines of body copy too!
+
+On the first few screenshots, keep this body copy short &mdash; around 2&ndash;3 lines. But from the forth screenshot onwards (third onwards on iPad), users will be in the app listing page or viewing the screenshots at full size. Here, you don't have to worry about legibility at small sizes, and anyone viewing them is already interested in your app. You can start adding some with more detailed information, maybe going up to 5 lines &mdash; but still mix it in with a few screenshots with short and snappy copy.
+
+Mix the text alignment up. Don't centre all your text &mdash; especially body copy that spans more than 3 lines. Consider sometimes aligning text with other elements in the screenshot.
+
+Consider the aesthetics of your text too! Try to make all line lengths within in a header or body paragraph roughly the same. You might need to change some words to achieve this &mdash; and you might end up with different copy on iPhone and iPad. You'll find using design programs will make this easier than the screenshot generators.
+
+## Colour
+
+Hopefully you already have a colour scheme in your app or from your icon. If you don't &mdash; or your palette is too limited for marketing material &mdash; you'll need to make one. My favourite place to make palettes is from Flat UI Colors. Pick one of the palettes, then (importantly) pick a few select swatches you want to use &mdash; don't use the whole palette!
+
+Be creative with colour! Don't make use the same background and text colour on each screenshot. Mix and match, and even add additional shapes to get some more colour in.
+
+## Device Frames
+
+One thing you'll see frequently is screenshots being embedded in device frames. This is a matter of taste &mdash; and I do or don't depending on what style I'm going for in my screenshots.
+
+If you aren't familiar with any design tools, the screenshot generators will do this for you.
+
+If you're in a design program, head on over to Facebook Design, and download their device frames. To use them, import your screenshot at full size, import the related device frame for your screenshot in the layer above, and then centre the screenshot and device frame &mdash; which will give pixel perfect alignment. Group them if you want to resize!
+
+## Minor Details
+
+It's convention on iOS to have the time set to 9:41 on screenshots (it's the time the iPhone was announced). To do this, you can run this command in your simulator:
+
+```
+xcrun simctl status_bar booted override --time "2007-01-09T09:41:00+00:00"
+```
+
+## My Templates
+
+As promised, I said I would attach the templates for my screenshots! You can open them in Figma if you want to take a closer look at anything.
+
+Importantly, I break some of the guidelines I set out in this post, and that's okay! You will have other constraints when designing. They're guidelines, not rules.
+
+### TechniCalc
+
+For this, I'm aiming mostly at people with a strong background in maths. I want to differentiate it from the many other scientific calculators by the features &mdash; so I made sure I had a page of features be visible from the search results page.
+
+My colour palette is quite limited here, so I added a pink. Because the blue is so prominent, it's hard to add more colour &mdash; and as a result, it's hard to create depth with colour. I added device frames to compensate for this.
+
+[See on App Store](https://apps.apple.com/gb/app/technicalc-calculator/id1504965415)
+
+<iframe scrolling="no" frameborder="0" id="player" src="https://www.figma.com/embed?embed_host=oembed&amp;referrer=https%3A%2F%2Fmedium.com&amp;url=https%3A%2F%2Fwww.figma.com%2Ffile%2FfcqMYeJLFY8KIBrXWw97nw%2FApp-Listing%3Fnode-id%3D0%3A1" allowfullscreen="true"></iframe>
+
+### Key Lines
+
+The palette for this is also limited, but the green here is much more neutral, so I can add a lot more colours to the colour palette. I use these colours extensively, adding overlays to create depth. I don’t need device frames here, but I did need to add shadows to the screenshots so they don’t blend into the background. A small tip — always add multiple, overlaid shadows to make them look more realistic!
+
+This also includes macOS screenshots!
+
+[See on App Store](https://apps.apple.com/gb/app/key-lines-keyboard-midi-player/id1506390976)
+
+<iframe src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.figma.com%2Fembed%3Fembed_host%3Doembed%26url%3Dhttps%3A%2F%2Fwww.figma.com%2Ffile%2FLmqbaoqaAqkhL0cp0iDDuh%2FApp-Listing%3Fnode-id%3D29%253A121&amp;display_name=Figma&amp;url=https%3A%2F%2Fwww.figma.com%2Ffile%2FLmqbaoqaAqkhL0cp0iDDuh%2FApp-Listing%3Fnode-id%3D29%253A121&amp;image=https%3A%2F%2Fapi-cdn.figma.com%2Fresize%2Fthumbnails%2F04986249-c237-4e92-aaa5-3e8eb5e4a4e3%3Fheight%3D398%26bucket%3Dfigma-alpha&amp;key=a19fcc184b9711e1b4764040d3dc5c07&amp;type=text%2Fhtml&amp;schema=figma" allowfullscreen="" frameborder="0" height="450" width="800" title="App Listing" class="s t u eg ai" scrolling="auto"></iframe>

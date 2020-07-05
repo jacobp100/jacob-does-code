@@ -9,6 +9,7 @@ h1 {
   margin: 12px auto;
   font-size: 32px;
   line-height: 36px;
+  letter-spacing: -1.1px;
   --font-weight: 700;
   text-align: center;
 }
@@ -17,6 +18,7 @@ h2 {
   margin: 12px auto;
   font-size: 24px;
   line-height: 30px;
+  letter-spacing: -0.2px;
 }
 
 p {
@@ -41,6 +43,7 @@ hr {
   margin: 12px auto 64px;
   font-size: 16px;
   line-height: 20px;
+  letter-spacing: -0.1px;
   --font-weight: 500;
   color: var(--primary);
   text-align: center;
@@ -102,16 +105,19 @@ hr {
   h1 {
     font-size: 48px;
     line-height: 54px;
+    letter-spacing: -1.6px;
   }
 
   h2 {
     font-size: 32px;
     line-height: 44px;
+    letter-spacing: -0.8px;
   }
 
   .lead {
     font-size: 20px;
     line-height: 24px;
+    letter-spacing: -0.1px;
   }
 
   .block {

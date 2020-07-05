@@ -86,6 +86,12 @@ pre code {
   overflow-x: scroll;
 }
 
+@media (max-width: 767px) {
+  p > code {
+    line-break: auto;
+  }
+}
+
 /* https://github.com/jwarby/jekyll-pygments-themes/blob/master/github.css (then run through cssnano) */
 .highlight .hll {
   background-color: #ffc;

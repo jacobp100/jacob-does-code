@@ -67,22 +67,22 @@ Github at [https://github.com/jacobp100](https://github.com/jacobp100)
 
 Product pages at [https://jacobdoescode.com](https://jacobdoescode.com)
 
-- [Pocket Jam](/pocket-jam)
+- [Pocket Jam](https://jacobdoescode.com/pocket-jam)
 
   Music app written in React Native for the UI, and Swift for music playback
 
-- [Key Lines](https://apps.apple.com/us/app/key-lines-keyboard-midi-player/id1506390976)
+- [Key Lines](https://jacobdoescode.com/key-lines)
 
   Interactive piano sheet music reader written in SwiftUI and UIKit
 
-- [TechniCalc](/technicalc)
+- [TechniCalc](https://jacobdoescode.com/technicalc)
 
   Scientific calculator using React Native for UI, and my own open-source calculation engine written in ReasonML (OCaml)
 
 ### Blog Posts
 
-- [A Primer in ReasonML](https://medium.com/@jacobp100/a-primer-in-reasonml-a8f8ae269286)
-- [Polymorphic Variants in ReasonML](https://medium.com/@jacobp100/polymorphic-variants-in-reasonml-d15038c2f92c)
+- [A Primer in ReasonML](https://jacobdoescode.com/2020/04/08/a-primer-in-reason-ml.html)
+- [Polymorphic Variants in ReasonML](https://jacobdoescode.com/2019/11/01/polymorphic-variants-in-reason-ml.html)
 
 ## Education
 

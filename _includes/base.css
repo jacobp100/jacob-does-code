@@ -46,11 +46,12 @@
 }
 
 :root {
+  --gutter-top: 12px;
   --gutters: 12px;
 }
 
 body {
-  margin: 12px var(--gutters) 64px;
+  margin: var(--gutter-top) var(--gutters) 64px;
   font: 18px/26px Inter, sans-serif;
   background: var(--background);
   color: var(--color, black);

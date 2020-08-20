@@ -37,3 +37,6 @@ markdown: kramdown
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# My customisations
+permalink: pretty

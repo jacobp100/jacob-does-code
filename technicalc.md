@@ -3,6 +3,7 @@ title: TechniCalc
 layout: page
 css: app
 primary: "#0652dd"
+banner: "technicalc-banner.html"
 ---
 
 {% include app-logo.svg icon="technicalc" %}
@@ -105,3 +106,7 @@ Available on iOS and Android
 [Privacy Policy](/privacy)
 
 </div>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-svg.js"></script>
+<style>{%include technicalc.css %}</style>
+<script>{% include technicalc.js %}</script>

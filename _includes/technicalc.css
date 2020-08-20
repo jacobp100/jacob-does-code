@@ -52,12 +52,21 @@
 
 .result__input > *,
 .result__output > * {
-  margin: 32px 0 !important;
-  text-align: left !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100px;
+  margin: 0 !important;
 }
 
 .result__output > * {
-  text-align: right !important;
+  justify-content: flex-end;
+}
+
+.result__input > svg,
+.result__output > svg {
+  display: block;
+  margin: 0 !important;
 }
 
 .result__spinner {

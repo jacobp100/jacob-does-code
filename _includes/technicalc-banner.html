@@ -1,19 +1,20 @@
-<div id="result" class="result--hidden result--form-hidden">
+<div
+  id="computation"
+  class="computation computation--hidden computation--form-hidden"
+>
   <div>
-    <button class="result__close">Close</button>
-    <h3 class="result__header">Computation</h3>
+    <button class="computation__close">Close</button>
+    <h3 class="computation__header">Computation</h3>
   </div>
 
-  <div class="result__maths-container">
-    <div class="result__input result--loading"></div>
-    <div class="result__output result--loading"></div>
-    {% include technicalc-spinner.svg %}
-  </div>
-
-  <div class="result__button-container">
-    <a href="#" class="result__open-in-app">Open in App</a>
-    <button class="result__toggle-display-mode">
-      <svg class="result__toggle-display-mode-icon" viewBox="0 0 16 16">
+  <div class="computation__maths-container">
+    <div class="computation__input computation--loading"></div>
+    <div class="computation__result computation--loading"></div>
+    <div class="computation__spinner">
+      {% include technicalc-spinner.svg %}
+    </div>
+    <button class="computation__toggle-display-mode">
+      <svg class="computation__toggle-display-mode-icon" viewBox="0 0 16 16">
         <circle cx="2" cy="8" r="2" fill="currentColor" />
         <circle cx="8" cy="8" r="2" fill="currentColor" />
         <circle cx="14" cy="8" r="2" fill="currentColor" />
@@ -22,33 +23,43 @@
     </button>
   </div>
 
-  <form class="result__form">
-    <div class="result__radio-options">
-      <label class="result__radio-option">
-        <input type="radio" name="style" value="natural" />
-        <span>{% include technicalc-natural.svg %}</span>
-        Natural
-      </label>
-      <label class="result__radio-option">
-        <input type="radio" name="style" value="decimal" checked />
-        <span>{% include technicalc-decimal.svg %}</span>
-        Decimal
-      </label>
-      <label class="result__radio-option">
-        <input type="radio" name="style" value="scientific" />
-        <span>{% include technicalc-scientific.svg %}</span>
-        Scientific
-      </label>
-    </div>
+  <div class="computation__form-container">
+    <form class="computation__form">
+      <div class="computation__radio-options">
+        <label class="computation__radio-option">
+          <input type="radio" name="style" value="natural" />
+          <span>{% include technicalc-natural.svg %}</span>
+          Natural
+        </label>
+        <label class="computation__radio-option">
+          <input type="radio" name="style" value="decimal" checked />
+          <span>{% include technicalc-decimal.svg %}</span>
+          Decimal
+        </label>
+        <label class="computation__radio-option">
+          <input type="radio" name="style" value="scientific" />
+          <span>{% include technicalc-scientific.svg %}</span>
+          Scientific
+        </label>
+      </div>
 
-    <label class="result__slider">
-      Decimal Places
-      <input type="range" name="precision" min="0" max="12" />
-    </label>
+      <label class="computation__slider">
+        Decimal Places
+        <input type="range" name="precision" min="0" max="12" value="8" />
+      </label>
 
-    <label class="result__checkbox">
-      <input type="checkbox" name="digitGrouping" checked />
-      Digit Grouping
-    </label>
-  </form>
+      <label class="computation__checkbox">
+        <input type="checkbox" name="digitGrouping" checked />
+        Digit Grouping
+      </label>
+    </form>
+  </div>
+
+  <div class="computation__footer">
+    <p class="computation__footer-copy">
+      This equation was created with TechniCalc. <em>Scroll down</em> to learn
+      more.
+    </p>
+    <a href="#" class="computation__open-in-app">Open in App</a>
+  </div>
 </div>

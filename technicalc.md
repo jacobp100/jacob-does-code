@@ -81,7 +81,7 @@ Even find a root for any given equation.
 
 <div class="block__content">
 
-## Every constant you'll ever need, built right in
+## Every constant you'll ever need, built right in.
 
 With over 100 constants built in, no matter whether you're doing engineering, physics, or chemistry, you'll find every constant you need.
 
@@ -107,6 +107,5 @@ Available on iOS and Android
 
 </div>
 
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-svg.js"></script>
 <style>{%include technicalc.css %}</style>
 <script>{% include technicalc.js %}</script>

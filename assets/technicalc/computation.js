@@ -79,15 +79,12 @@ const worker = new Worker("/assets/technicalc/worker.js");
 
 const decodeArray = (array) => (array != null ? JSON.parse(array) : []);
 
-const decodeCustomAtoms = (customAtoms) =>
-  customAtoms.map(({ mml, value }) => ({ mml, value: Value.decode(value) }));
-
 const input =
   elements.length !== 0
     ? Editor.decode({
         elements,
         unitConversions: decodeArray(unitConversions),
-        customAtoms: decodeCustomAtoms(decodeArray(customAtoms)),
+        customAtoms: decodeArray(customAtoms),
         variables: decodeArray(variables),
       })
     : null;

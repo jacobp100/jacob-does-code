@@ -1,7 +1,4 @@
-<div
-  id="computation"
-  class="computation computation--hidden computation--form-hidden"
->
+<div id="computation" class="computation computation--form-hidden" hidden>
   <div>
     <button class="computation__close">Close</button>
     <h3 class="computation__header">Computation</h3>
@@ -63,3 +60,8 @@
     <a href="#" class="computation__open-in-app">Open in App</a>
   </div>
 </div>
+<script type="module" async>
+  if (location.search.length > 1) {
+    import("/assets/technicalc/computation.js");
+  }
+</script>

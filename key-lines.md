@@ -20,7 +20,7 @@ primary: "#6AB04C"
 Sheet music and piano practise reimagined
 
 {::nomarkdown}
-<img class="promo" src="/assets/key-lines/promo.png" width="4174" height="2349" alt="App Screenshots">
+<img class="promo" src="/assets/key-lines/promo.png" width="2048" height="1153" alt="App Screenshots">
 {:/}
 
 ## Open any song.

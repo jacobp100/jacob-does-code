@@ -1,17 +1,17 @@
-<svg width="24" height="24" viewBox="0 0 24 24">
-  <circle cx="12" cy="12" r="11" stroke-width="1" stroke="currentColor" fill="none">
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="12" r="11" stroke-width="1" stroke="black" fill="none">
     <animateTransform attributeName="transform" type="translate" values="12 12" dur="2s" additive="sum" repeatCount="indefinite" />
     <animateTransform attributeName="transform" type="rotate" values="30" dur="2s" additive="sum" repeatCount="indefinite" />
     <animateTransform attributeName="transform" type="scale" values="0 1; 1 1; 0 1" dur="2s" additive="sum" repeatCount="indefinite" />
     <animateTransform attributeName="transform" type="translate" values="-12 -12" dur="2s" additive="sum" repeatCount="indefinite" />
   </circle>
-  <circle cx="12" cy="12" r="8" stroke-width="1" stroke="currentColor" fill="none">
+  <circle cx="12" cy="12" r="8" stroke-width="1" stroke="black" fill="none">
     <animateTransform attributeName="transform" type="translate" values="12 12" dur="3s" additive="sum" repeatCount="indefinite" />
     <animateTransform attributeName="transform" type="rotate" values="-30" dur="3s" additive="sum" repeatCount="indefinite" />
     <animateTransform attributeName="transform" type="scale" values="0 1; 1 1; 0 1" dur="3s" additive="sum" repeatCount="indefinite" />
     <animateTransform attributeName="transform" type="translate" values="-12 -12" dur="3s" additive="sum" repeatCount="indefinite" />
   </circle>
-  <circle cx="12" cy="12" r="5" stroke-width="1" stroke="currentColor" fill="none">
+  <circle cx="12" cy="12" r="5" stroke-width="1" stroke="black" fill="none">
     <animateTransform attributeName="transform" type="translate" values="12 12" dur="4s" additive="sum" repeatCount="indefinite" />
     <animateTransform attributeName="transform" type="rotate" values="60" dur="4s" additive="sum" repeatCount="indefinite" />
     <animateTransform attributeName="transform" type="scale" values="0 1; 1 1; 0 1" dur="4s" additive="sum" repeatCount="indefinite" />

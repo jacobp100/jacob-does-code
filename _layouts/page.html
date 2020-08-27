@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html
   lang="en"
-  style="{% if page.primary %}--primary: {{ page.primary }};{% endif %}{% if page.color %}--color: {{ page.color }};{% endif %}{% if page.background %}--background: {{ page.background }};{% endif %}"
+  style="
+    {%- if page.primary -%}--primary: {{ page.primary }};{%- endif -%}
+    {%- if page.color -%}--color: {{ page.color }};{%- endif -%}
+    {%- if page.background -%}--background: {{ page.background }};{%- endif -%}
+  "
 >
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{{ page.title }}</title>
-  {% if page.description %}
+  {%- if page.description -%}
   <meta name="description" content="{{ page.description }}" />
-  {% endif %}
+  {%- endif -%}
   <style>
-    {% include base.css %}
+    {%- capture css -%}
+    {%- include base.css -%}
+    {%- endcapture -%}
+    {{- css | scssify -}}
   </style>
   <script async>
     document.documentElement.style.setProperty(
@@ -18,9 +25,10 @@
       1 / (window.devicePixelRatio || 1) + "px"
     );
   </script>
-  {% if page.css %}
+  {%- if page.css -%}
   <link href="/assets/{{ page.css }}.css" rel="stylesheet" />
-  {% endif %} {% if page.banner %} {% include {{ page.banner }} %} {% endif %}
+  {%- endif -%} {%- if page.banner -%} {%- include {{ page.banner }} -%} {%-
+  endif -%}
   <div class="header u-scroll-horizontal">
     <a href="/" class="header__logo">Jacob<br />does<br />code</a>
     <div class="header__section">Apps</div>
@@ -33,12 +41,12 @@
     <a href="https://github.com/jacobp100" class="header__link">Github</a>
     <a href="/cv" class="header__link">CV</a>
   </div>
-  {{ content }} {% if page.date %}
+  {{ content }} {%- if page.date -%}
   <span class="published-on">
     Published on
     <time datetime="{{ page.date }}">
-      {{ page.date | date_to_long_string: "ordinal" }}
+      {{- page.date | date_to_long_string: "ordinal" -}}
     </time>
   </span>
-  {% endif %}
+  {%- endif -%}
 </html>

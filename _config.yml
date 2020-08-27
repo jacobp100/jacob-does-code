@@ -40,3 +40,7 @@ markdown: kramdown
 
 # My customisations
 permalink: pretty
+
+# Used for minifying the base css
+sass:
+  style: compressed

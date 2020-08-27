@@ -71,8 +71,8 @@
   margin: 0 !important;
 }
 
-.computation__input > svg,
-.computation__result > svg {
+.computation__input svg,
+.computation__result svg {
   display: block;
   margin: 0 !important;
 }
@@ -187,6 +187,7 @@
 
 .computation__radio-option svg {
   display: block;
+  fill: currentColor;
 }
 
 .computation__radio-option input:active + span {

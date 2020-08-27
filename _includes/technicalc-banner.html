@@ -7,12 +7,12 @@
   <div class="computation__maths-container">
     <div class="computation__input computation--loading"></div>
     <div class="computation__result computation--loading"></div>
-    <div class="computation__spinner">{% include technicalc-spinner.svg %}</div>
+    <div class="computation__spinner">
+      <img alt="Loading" src="/assets/technicalc/spinner.svg" />
+    </div>
     <button class="computation__toggle-display-mode">
       <svg class="computation__toggle-display-mode-icon" viewBox="0 0 16 16">
-        <circle cx="2" cy="8" r="2" fill="currentColor" />
-        <circle cx="8" cy="8" r="2" fill="currentColor" />
-        <circle cx="14" cy="8" r="2" fill="currentColor" />
+        <use href="/assets/technicalc/sprites.svg#ellipsis" />
       </svg>
       Display Mode
     </button>
@@ -23,17 +23,29 @@
       <div class="computation__radio-options">
         <label class="computation__radio-option">
           <input type="radio" name="style" value="natural" />
-          <span>{% include technicalc-natural.svg %}</span>
+          <span>
+            <svg width="31" height="35">
+              <use href="/assets/technicalc/sprites.svg#format-natural" />
+            </svg>
+          </span>
           Natural
         </label>
         <label class="computation__radio-option">
           <input type="radio" name="style" value="decimal" checked />
-          <span>{% include technicalc-decimal.svg %}</span>
+          <span>
+            <svg width="25" height="12">
+              <use href="/assets/technicalc/sprites.svg#format-decimal" />
+            </svg>
+          </span>
           Decimal
         </label>
         <label class="computation__radio-option">
           <input type="radio" name="style" value="scientific" />
-          <span>{% include technicalc-scientific.svg %}</span>
+          <span>
+            <svg width="77" height="15">
+              <use href="/assets/technicalc/sprites.svg#format-scientific" />
+            </svg>
+          </span>
           Scientific
         </label>
       </div>

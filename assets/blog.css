@@ -86,6 +86,10 @@ pre code {
   overflow-x: scroll;
 }
 
+.published-on {
+  color: #9e9e9e;
+}
+
 @media (max-width: 767px) {
   /* On the iPhone SE, the code elements can cause sideways scroll */
   p > code {

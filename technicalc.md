@@ -1,5 +1,6 @@
 ---
 title: TechniCalc
+description: A smart calculator for a smart phone
 layout: page
 css: app
 primary: "#0652dd"
@@ -99,8 +100,8 @@ If you don't? You can _add your own_ &mdash; and even give your own symbol.
 Available on iOS and Android
 
 <div class="store-links">
-  <a href="https://apps.apple.com/gb/app/technicalc-calculator/id1504965415" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
-  <a href="https://play.google.com/store/apps/details?id=com.technicalc&hl=en&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1" style="display:inline-block;overflow:hidden;background:url(https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png) center center/155px 60px;width:135px;height:40px;"></a>
+  <a title="App Store" href="https://apps.apple.com/gb/app/technicalc-calculator/id1504965415" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
+  <a title="Google Play Store" href="https://play.google.com/store/apps/details?id=com.technicalc&hl=en&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1" style="display:inline-block;overflow:hidden;background:url(https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png) center center/155px 60px;width:135px;height:40px;"></a>
 
 {:.legal-links}
 [Privacy Policy](/privacy)

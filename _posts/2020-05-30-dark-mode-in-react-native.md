@@ -6,7 +6,7 @@ css: blog
 
 # Dark Mode in React Native
 
-Last year, both Android and iOS announced they would be getting dark mode in their next major updates &mdash; and in September, those updates were released. You'll need to be on at least iOS 13, or Android 10 &mdash; although some Android 9 phones seem to support dark mode anyway.
+Half way through 2019, both Android and iOS announced they would be getting dark mode in their next major updates &mdash; and in September of that year, those updates were released. You'll need to be on at least iOS 13, or Android 10 &mdash; although some Android 9 phones seem to support dark mode anyway.
 
 From the design perspective, it is a much more complicated than just making the text white and the background black. To complicate it further, the individual platform guidelines for dark mode differ. For example, iOS will slightly tweak accent colours very slightly in dark mode, where Android will recommend using different accent colours, and using them in different places too. iOS also has a set of elevated colours that are different to the base colours in dark mode, and identical to the base colours in light mode. However, you don't have to follow the guidelines to the letter &mdash; especially if your app is heavily branded. They are worth a read for ideas nevertheless.
 

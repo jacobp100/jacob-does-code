@@ -200,7 +200,7 @@
 }
 
 .computation__checkbox {
-  display: block;
+  display: flex; /* Remove spaces inserted by html */
   margin: var(--spacing) 0;
   --font-weight: 350;
 }

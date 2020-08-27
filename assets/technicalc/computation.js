@@ -1,133 +1,109 @@
-/* global MathJax, Qs, Client */
-import "/assets/technicalc/dist/client.js";
+// @ts-check
+/// <reference path="./computation.d.ts" />
+import "https://unpkg.com/mathjax@3.1.0/es5/mml-svg.js";
 import "https://unpkg.com/qs@6.9.4/dist/qs.js";
+import "/assets/technicalc/dist/client.js";
 
 const { Editor, Value, Work } = Client;
 
-const computationContainer = document.getElementById("computation");
-const inputContainer = computationContainer.querySelector(
-  ".computation__input"
-);
-const resultContainer = computationContainer.querySelector(
-  ".computation__result"
-);
-const form = computationContainer.querySelector(".computation__form");
+const container = document.getElementById("computation");
+/** @type {HTMLFormElement} */
+const form = container.querySelector(".computation__form");
 
-/* Load styles */
-const technicalcStyles = document.createElement("link");
-technicalcStyles.setAttribute("rel", "stylesheet");
-technicalcStyles.setAttribute("href", "/assets/technicalc/computation.css");
-technicalcStyles.addEventListener("load", () => {
-  computationContainer.removeAttribute("hidden");
-});
-document.head.append(technicalcStyles);
+/**
+ * @template T
+ * @param {HTMLElement} element
+ * @param {(arg0: T, arg1: any) => any} formatter
+ * @returns {function(Result<T, any> | null): void}
+ */
+const setComputationRow = (element, formatter) => (result) => {
+  if (result == null) {
+    return;
+  }
 
-/* Load MathJax */
-const mathJaxScript = document.createElement("script");
-mathJaxScript.setAttribute("id", "MathJax-script");
-mathJaxScript.setAttribute("async", "");
-mathJaxScript.setAttribute(
-  "src",
-  "https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-svg.js"
-);
-document.body.append(mathJaxScript);
+  element.classList.remove("computation--loading");
 
-const getFormattingOptions = () => {
+  if (result.type === "error") {
+    element.innerHTML = "Error";
+    return;
+  }
+
   const formData = new FormData(form);
-  const style = {
+  const formattingOptions = {
     style: formData.get("style"),
     precision: Number(formData.get("precision")),
     digitGrouping: formData.get("digitGrouping") != null,
   };
-  return style;
-};
 
-const setContainerMml = (element, mml) => {
-  element.classList.remove("computation--loading");
+  const mml = formatter(result.value, formattingOptions);
   element.innerHTML = mml;
 
-  if (window.MathJax != null) {
+  const MathJax = window.MathJax;
+  if (MathJax != null && MathJax.typeset != null) {
     MathJax.typeset();
   }
 };
 
-const setContainerError = (element) => {
-  element.classList.remove("computation--loading");
-  element.innerHTML = "Error";
-};
+const setInput = setComputationRow(
+  container.querySelector(".computation__input"),
+  Editor.toMml
+);
 
-const setInput = (input) => {
-  const inputMml = Editor.toMml(input, getFormattingOptions());
-  setContainerMml(inputContainer, inputMml);
-};
-
-const setResult = (result) => {
-  const resultMml = Value.toMml(result, getFormattingOptions());
-  setContainerMml(resultContainer, resultMml);
-};
+const setResult = setComputationRow(
+  container.querySelector(".computation__result"),
+  Value.toMml
+);
 
 const search = window.location.search.slice("?".length);
-computationContainer
+container
   .querySelector(".computation__open-in-app")
   .setAttribute("href", `technicalc://editor?${search}`);
 
-const { elements = "", unitConversions, customAtoms, variables } = Qs.parse(
-  search
-);
+const { elements, unitConversions, customAtoms, variables } = Qs.parse(search);
 
-const worker = new Worker("/assets/technicalc/worker.js");
-
+/** @param {string} array */
 const decodeArray = (array) => (array != null ? JSON.parse(array) : []);
 
-const input =
-  elements.length !== 0
+/** @type {Client.Elements | undefined} */
+const inputValue =
+  typeof elements === "string" && elements.length !== 0
     ? Editor.decode({
         elements,
         unitConversions: decodeArray(unitConversions),
         customAtoms: decodeArray(customAtoms),
         variables: decodeArray(variables),
       })
-    : null;
+    : undefined;
 
-if (input != null) {
-  setInput(input);
-} else {
-  setContainerError(inputContainer);
-}
+/** @type {Result<Client.Elements, null>} */
+const input =
+  inputValue != null
+    ? { type: "ok", value: inputValue }
+    : { type: "error", error: null };
+
+setInput(input);
 
 const [parsingError, parsedValue] =
-  input != null ? Editor.parse(input) : [null, null];
+  input.type === "ok" ? Editor.parse(input.value) : [null, null];
 if (parsingError == null && parsedValue != null) {
   const work = Work.calculate(parsedValue);
-  worker.postMessage(work);
-} else {
-  setContainerError(resultContainer);
+  TechnicalcWorker.postMessage(work);
 }
 
-let result;
-worker.onmessage = (e) => {
+/** @type {Result<Client.ValueResolved, null> | null} */
+let result = null;
+
+/** @param {ServiceWorkerMessageEvent} e */
+TechnicalcWorker.onmessage = (e) => {
   const data = e.data;
-  if (data.error === true) {
-    setContainerError(resultContainer);
-  } else {
-    result = Value.decode(data.results[0]);
-    setResult(result);
-  }
+  result =
+    data.error !== true
+      ? { type: "ok", value: Value.decode(data.results[0]) }
+      : { type: "error", error: null };
+  setResult(result);
 };
 
 form.addEventListener("change", () => {
   setInput(input);
-
-  if (result != null) {
-    setResult(result);
-  }
-});
-
-document.addEventListener("click", (e) => {
-  const { target } = e;
-  if (target.classList.contains("computation__close")) {
-    computationContainer.setAttribute("hidden", "");
-  } else if (target.classList.contains("computation__toggle-display-mode")) {
-    computationContainer.classList.toggle("computation--form-hidden");
-  }
+  setResult(result);
 });

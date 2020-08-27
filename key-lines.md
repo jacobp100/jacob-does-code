@@ -1,5 +1,6 @@
 ---
 title: Key Lines
+description: Sheet music and piano practise reimagined
 layout: page
 css: app
 primary: "#6AB04C"
@@ -108,7 +109,7 @@ _Percussion tracks_ play along side the active track, or can be swapped out for 
 Available for iOS and macOS
 
 <div class="store-links">
-  <a href="https://apps.apple.com/us/app/key-lines-keyboard-midi-player/id1506390976?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2020-04-06&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
+  <a title="App Store" href="https://apps.apple.com/us/app/key-lines-keyboard-midi-player/id1506390976?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2020-04-06&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
 
 {:.legal-links}
 [Privacy Policy](/privacy)

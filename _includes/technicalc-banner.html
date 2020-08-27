@@ -7,9 +7,7 @@
   <div class="computation__maths-container">
     <div class="computation__input computation--loading"></div>
     <div class="computation__result computation--loading"></div>
-    <div class="computation__spinner">
-      {% include technicalc-spinner.svg %}
-    </div>
+    <div class="computation__spinner">{% include technicalc-spinner.svg %}</div>
     <button class="computation__toggle-display-mode">
       <svg class="computation__toggle-display-mode-icon" viewBox="0 0 16 16">
         <circle cx="2" cy="8" r="2" fill="currentColor" />
@@ -62,6 +60,32 @@
 </div>
 <script type="module" async>
   if (location.search.length > 1) {
+    const computationContainer = document.getElementById("computation");
+
+    /* Styles */
+    const styles = document.createElement("link");
+    styles.setAttribute("rel", "stylesheet");
+    styles.setAttribute("href", "/assets/technicalc/computation.css");
+    styles.addEventListener("load", () => {
+      computationContainer.removeAttribute("hidden");
+    });
+    document.head.append(styles);
+
+    /* Minimal JS */
+    document.addEventListener("click", (e) => {
+      const { target } = e;
+      if (target.classList.contains("computation__close")) {
+        computationContainer.setAttribute("hidden", "");
+      } else if (
+        target.classList.contains("computation__toggle-display-mode")
+      ) {
+        computationContainer.classList.toggle("computation--form-hidden");
+      }
+    });
+
+    /* Full JS loaded async */
+    /* Worker initialzed here to increase parallelism */
+    window.TechnicalcWorker = new Worker("/assets/technicalc/worker.js");
     import("/assets/technicalc/computation.js");
   }
 </script>

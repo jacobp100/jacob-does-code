@@ -6,6 +6,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{{ page.title }}</title>
+  {% if page.description %}
+  <meta name="description" content="{{ page.description }}" />
+  {% endif %}
   <style>
     {% include base.css %}
   </style>
@@ -30,7 +33,12 @@
     <a href="https://github.com/jacobp100" class="header__link">Github</a>
     <a href="/cv" class="header__link">CV</a>
   </div>
-  {{ content }} {% if page.js %}
-  <script src="/assets/{{ page.js }}.js"></script>
+  {{ content }} {% if page.date %}
+  <span class="published-on">
+    Published on
+    <time datetime="{{ page.date }}">
+      {{ page.date | date_to_long_string: "ordinal" }}
+    </time>
+  </span>
   {% endif %}
 </html>

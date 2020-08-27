@@ -1,5 +1,6 @@
 ---
 title: Pocket Jam
+description: Jam sessions with the device in your pocket
 layout: page
 css: app
 primary: "#FC427B"
@@ -98,7 +99,7 @@ Use them to jump to the section in playback, or to set up loops between sections
 Available for iPhone and iPad
 
 <div class="store-links">
-  <a href="https://itunes.apple.com/us/app/pocket-jam/id1153284525?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
+  <a title="App Store" href="https://itunes.apple.com/us/app/pocket-jam/id1153284525?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
 
 {:.legal-links}
 [Privacy Policy](/privacy)

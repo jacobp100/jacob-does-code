@@ -20,7 +20,7 @@ primary: "#6AB04C"
 Sheet music and piano practise reimagined
 
 {::nomarkdown}
-<img class="promo" src="/assets/key-lines/promo.png" width="2048" height="1153" alt="App Screenshots">
+{% include picture.html baseUrl="/assets/key-lines/promo" class="promo" width="2048" height="1153" alt="App Screenshots" %}
 {:/}
 
 ## Open any song.
@@ -38,7 +38,7 @@ Scroll through a piece for _interactive playback_ to help you either find or stu
 <div class="block">
 
 {::nomarkdown}
-<img class="preview" src="/assets/key-lines/preview-1.png" alt="Section looping">
+{% include picture.html baseUrl="/assets/key-lines/preview-1" class="preview" alt="Section looping" %}
 {:/}
 
 <div class="block__content">
@@ -60,7 +60,7 @@ With a loop set up up, you can use the _speed trainer_ to have it start each loo
 <div class="block block--reverse">
 
 {::nomarkdown}
-<img class="preview" src="/assets/key-lines/preview-2.png" alt="Bookmarks">
+{% include picture.html baseUrl="/assets/key-lines/preview-2" class="preview" alt="Bookmarks" %}
 {:/}
 
 <div class="block__content">
@@ -86,7 +86,7 @@ Use your finger or Apple Pencil to _freehand draw anywhere_ in the piece to anno
 <div class="block block">
 
 {::nomarkdown}
-<img class="preview" src="/assets/key-lines/preview-3.png" alt="Playback customisation">
+{% include picture.html baseUrl="/assets/key-lines/preview-3" class="preview" alt="Playback customisation" %}
 {:/}
 
 <div class="block__content">

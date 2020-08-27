@@ -15,7 +15,7 @@ banner: "technicalc-banner.html"
 A smart calculator for a smart phone
 
 {::nomarkdown}
-<img class="promo" src="/assets/technicalc/promo.png" width="2048" height="1419" alt="App Screenshots">
+{% include picture.html baseUrl="/assets/technicalc/promo" class="promo" width="2048" height="1419" alt="App Screenshots" %}
 {:/}
 
 ## TechniCalc is every bit functional as it is beautiful.
@@ -33,7 +33,7 @@ You'll find your garden variety logs, sins, and cosines &mdash; but for when you
 <div class="block">
 
 {::nomarkdown}
-<img class="preview" src="/assets/technicalc/preview-1.png" alt="Unit conversion">
+{% include picture.html baseUrl="/assets/technicalc/preview-1" class="preview" alt="Unit conversion" %}
 {:/}
 
 <div class="block__content">
@@ -55,7 +55,7 @@ _Kilogram-meters-per-second-squared_ to something else? Also check.
 <div class="block block--reverse">
 
 {::nomarkdown}
-<img class="preview" src="/assets/technicalc/preview-2.png" alt="Equation solver">
+{% include picture.html baseUrl="/assets/technicalc/preview-2" class="preview" alt="Equation solver" %}
 {:/}
 
 <div class="block__content">
@@ -77,7 +77,7 @@ Even find a root for any given equation.
 <div class="block">
 
 {::nomarkdown}
-<img class="preview" src="/assets/technicalc/preview-3.png" alt="Constants">
+{% include picture.html baseUrl="/assets/technicalc/preview-3" class="preview" alt="Constants" %}
 {:/}
 
 <div class="block__content">

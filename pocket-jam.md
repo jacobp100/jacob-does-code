@@ -14,7 +14,7 @@ primary: "#FC427B"
 Jam sessions with the device in your pocket
 
 {::nomarkdown}
-<img class="promo" src="/assets/pocket-jam/promo.png" width="2048" height="1519" alt="App Screenshots">
+{% include picture.html baseUrl="/assets/pocket-jam/promo" class="promo" width="2048" height="1519" alt="App Screenshots" %}
 {:/}
 
 {::options parse_block_html="true" /}
@@ -32,7 +32,7 @@ Or add anything that shows up in the Files app. That's your Safari downloads, iC
 <div class="block">
 
 {::nomarkdown}
-<img class="preview" src="/assets/pocket-jam/preview-1.png" alt="Section looping">
+{% include picture.html baseUrl="/assets/pocket-jam/preview-1" class="preview" alt="Section looping" %}
 {:/}
 
 <div class="block__content">
@@ -56,7 +56,7 @@ All in _real time_.
 <div class="block block--reverse">
 
 {::nomarkdown}
-<img class="preview preview--bottom" src="/assets/pocket-jam/preview-2.png" alt="Section looping">
+{% include picture.html baseUrl="/assets/pocket-jam/preview-2" class="preview preview--bottom" alt="Section looping" %}
 {:/}
 
 <div class="block__content">
@@ -78,7 +78,7 @@ With a loop set up up, you can use the _speed trainer_ to have it start each loo
 <div class="block block">
 
 {::nomarkdown}
-<img class="preview" src="/assets/pocket-jam/preview-3.png" alt="Section looping">
+{% include picture.html baseUrl="/assets/pocket-jam/preview-3" class="preview" alt="Section looping" %}
 {:/}
 
 <div class="block__content">

@@ -15,7 +15,7 @@ banner: "technicalc-banner.html"
 A smart calculator for a smart phone
 
 {::nomarkdown}
-<img class="promo" src="/assets/technicalc/promo.png" alt="App Screenshots">
+<img class="promo" src="/assets/technicalc/promo.png" width="2788" height="2068" alt="App Screenshots">
 {:/}
 
 ## TechniCalc is every bit functional as it is beautiful.

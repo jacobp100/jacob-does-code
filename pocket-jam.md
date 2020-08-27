@@ -14,7 +14,7 @@ primary: "#FC427B"
 Jam sessions with the device in your pocket
 
 {::nomarkdown}
-<img class="promo" src="/assets/pocket-jam/promo.png" alt="App Screenshots">
+<img class="promo" src="/assets/pocket-jam/promo.png" width="2788" height="2068" alt="App Screenshots">
 {:/}
 
 {::options parse_block_html="true" /}

@@ -13,7 +13,7 @@ primary: "#FC427B"
 {:.lead}
 Jam sessions with the device in your pocket
 
-{% include picture.html baseUrl="/assets/pocket-jam/promo" class="promo" alt="App Screenshots"%}
+{% include picture.html baseUrl="/assets/pocket-jam/promo" class="promo" width="2048" height="1519" alt="App Screenshots" %}
 
 {::options parse_block_html="true" /}
 

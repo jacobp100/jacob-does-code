@@ -14,7 +14,7 @@ banner: "technicalc/banner.html"
 {:.lead}
 A smart calculator for a smart phone
 
-{% include picture.html baseUrl="/assets/technicalc/promo" class="promo" width="2048" height="1419" alt="App Screenshots" %}
+{% include picture.html baseUrl="/assets/technicalc/promo" class="promo" width="2048" height="1519" alt="App Screenshots" %}
 
 ## TechniCalc is every bit functional as it is beautiful.
 

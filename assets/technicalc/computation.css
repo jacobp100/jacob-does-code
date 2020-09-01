@@ -76,7 +76,6 @@
   background: var(--primary);
   color: white;
   border-radius: 99px;
-  outline: none;
 }
 
 .computation__toggle-display-mode {

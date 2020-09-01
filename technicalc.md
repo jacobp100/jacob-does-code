@@ -4,7 +4,7 @@ description: A smart calculator for a smart phone
 layout: page
 css: app
 primary: "#0652dd"
-banner: "technicalc/banner.html"
+banner: "technicalc/computation.html"
 ---
 
 {% include app-logo.svg icon="technicalc" %}

@@ -1,8 +1,8 @@
 if (location.search.length > 1) {
-  const computationContainer = document.getElementById("computation");
-  computationContainer.removeAttribute("hidden");
+  const container = document.getElementById("computation");
+  container.removeAttribute("hidden");
 
-  const loadHtml = fetch("/technicalc-banner").then((res) => res.text());
+  const loadHtml = fetch("/technicalc-computation").then((res) => res.text());
 
   const loadStyles = new Promise((res) => {
     const styles = document.createElement("link");
@@ -19,17 +19,17 @@ if (location.search.length > 1) {
   document.addEventListener("click", (e) => {
     const { target } = e;
     if (target.classList.contains("computation__close")) {
-      computationContainer.setAttribute("hidden", "");
+      container.setAttribute("hidden", "");
     } else if (target.classList.contains("computation__toggle-display-mode")) {
-      computationContainer.classList.toggle("computation--form-hidden");
+      container.classList.toggle("computation--form-hidden");
     }
   });
 
   const loadBanner = Promise.all([loadHtml, loadStyles]).then(([markup]) => {
-    computationContainer.innerHTML = markup;
+    container.innerHTML = markup;
   });
 
   Promise.all([loadFullJs, loadBanner]).then(([computationModule]) => {
-    computationModule.default({ container: computationContainer, worker });
+    computationModule.default({ container, worker });
   });
 }

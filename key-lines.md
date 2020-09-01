@@ -6,12 +6,6 @@ css: app
 primary: "#6AB04C"
 ---
 
-<style>
-.disclaimer {
-  opacity: 0.1;
-}
-</style>
-
 {% include app-logo.svg icon="key-lines" %}
 
 # Key Lines
@@ -19,9 +13,7 @@ primary: "#6AB04C"
 {:.lead}
 Sheet music and piano practise reimagined
 
-{::nomarkdown}
 {% include picture.html baseUrl="/assets/key-lines/promo" class="promo" width="2048" height="1153" alt="App Screenshots" %}
-{:/}
 
 ## Open any song.
 
@@ -33,15 +25,7 @@ Scroll through a piece for _interactive playback_ to help you either find or stu
 
 ---
 
-{::options parse_block_html="true" /}
-
-<div class="block">
-
-{::nomarkdown}
-{% include picture.html baseUrl="/assets/key-lines/preview-1" class="preview" alt="Section looping" %}
-{:/}
-
-<div class="block__content">
+{% capture content %}
 
 ## Loop sections. Practise until perfect.
 
@@ -49,21 +33,17 @@ Looping lets you pick specific parts of the piece you want to practise. Just dra
 
 With a loop set up up, you can use the _speed trainer_ to have it start each loop playing slowly, and gradually speed up after each loop. Tweak how slow it starts, and how many loops it takes to reach the full tempo.
 
-</div>
+{% endcapture %}
 
-</div>
+{% include app-block.md
+  content=content
+  baseUrl="/assets/key-lines/preview-1"
+  alt="Section looping"
+%}
 
 ---
 
-{::options parse_block_html="true" /}
-
-<div class="block block--reverse">
-
-{::nomarkdown}
-{% include picture.html baseUrl="/assets/key-lines/preview-2" class="preview" alt="Bookmarks" %}
-{:/}
-
-<div class="block__content">
+{% capture content %}
 
 ## Make your mark. Annotate anywhere.
 
@@ -73,23 +53,20 @@ Use your finger or Apple Pencil to _freehand draw anywhere_ in the piece to anno
 
 {:.disclaimer}
 
-\* iPad only
+<span style="opacity:0.1;">\* iPad only</span>
 
-</div>
+{% endcapture %}
 
-</div>
+{% include app-block.md
+  content=content
+  baseUrl="/assets/key-lines/preview-2"
+  alt="Bookmarks"
+  reverse=true
+%}
 
 ---
 
-{::options parse_block_html="true" /}
-
-<div class="block block">
-
-{::nomarkdown}
-{% include picture.html baseUrl="/assets/key-lines/preview-3" class="preview" alt="Playback customisation" %}
-{:/}
-
-<div class="block__content">
+{% capture content %}
 
 ## Customise every aspect of playback.
 
@@ -97,21 +74,18 @@ View every track within a MIDI file, and _change the key and tempo_ to your liki
 
 _Percussion tracks_ play along side the active track, or can be swapped out for a standard click _metronome_, or silenced entirely.
 
-</div>
+{% endcapture %}
 
-</div>
+{% include app-block.md
+  content=content
+  baseUrl="/assets/key-lines/preview-3"
+  alt="Playback customisation"
+%}
 
 ---
 
-# Get it now
-
-{:.lead}
-Available for iOS and macOS
-
-<div class="store-links">
-  <a title="App Store" href="https://apps.apple.com/us/app/key-lines-keyboard-midi-player/id1506390976?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2020-04-06&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
-
-{:.legal-links}
-[Privacy Policy](/privacy)
-
-</div>
+{% include app-footer.md
+  title="Get it now"
+  subtitle="Available for iOS and macOS"
+  app-store-href="https://apps.apple.com/us/app/key-lines-keyboard-midi-player/id1506390976"
+%}

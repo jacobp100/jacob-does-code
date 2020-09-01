@@ -12,23 +12,18 @@
   <title>{{ page.title }}</title>
   {%- if page.description -%}
   <meta name="description" content="{{ page.description }}" />
-  {%- endif -%}
-  <style>
-    {%- capture css -%}
-    {%- include base.css -%}
-    {%- endcapture -%}
-    {{- css | scssify -}}
-  </style>
+  {%- endif -%} {%- comment -%}
+  <!-- CSS -->
+  {%- endcomment -%} {%- capture css -%} {%- include base.css -%} {%- if
+  page.css -%} {%- include {{ page.css }}.css -%} {%- endif -%} {%- endcapture
+  -%} {%- include inline-style.html content=css -%}
   <script async>
     document.documentElement.style.setProperty(
       "--hairline-width",
       1 / (window.devicePixelRatio || 1) + "px"
     );
   </script>
-  {%- if page.css -%}
-  <link href="/assets/{{ page.css }}.css" rel="stylesheet" />
-  {%- endif -%} {%- if page.banner -%} {%- include {{ page.banner }} -%} {%-
-  endif -%}
+  {%- if page.banner -%} {%- include {{ page.banner }} -%} {%- endif -%}
   <div class="header u-scroll-horizontal">
     <a href="/" class="header__logo">Jacob<br />does<br />code</a>
     <div class="header__section">Apps</div>
@@ -41,7 +36,9 @@
     <a href="https://github.com/jacobp100" class="header__link">Github</a>
     <a href="/cv" class="header__link">CV</a>
   </div>
-  {{ content }} {%- if page.date -%}
+  {{ content }} {%- comment -%}
+  <!-- Dato -->
+  {%- endcomment -%} {%- if page.date -%}
   <span class="published-on">
     Published on
     <time datetime="{{ page.date }}">

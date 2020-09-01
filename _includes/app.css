@@ -90,6 +90,7 @@ hr {
 }
 
 .legal-links {
+  text-align: center;
   font-size: 12px;
   line-height: 18px;
 }
@@ -101,7 +102,7 @@ hr {
   }
 
   p {
-    margin: 32px auto;
+    margin: 24px auto;
   }
 
   h1 {

@@ -1,0 +1,7 @@
+{%- comment -%} This is as flaky as it looks {%- endcomment -%}
+<script>
+  {%- capture js -%}
+  {%- include {{ include.src }} -%}
+  {%- endcapture -%}
+  {{- js | remove: "  " | strip_newlines -}}
+</script>

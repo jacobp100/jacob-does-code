@@ -13,9 +13,7 @@ primary: "#FC427B"
 {:.lead}
 Jam sessions with the device in your pocket
 
-{::nomarkdown}
-{% include picture.html baseUrl="/assets/pocket-jam/promo" class="promo" width="2048" height="1519" alt="App Screenshots" %}
-{:/}
+{% include picture.html baseUrl="/assets/pocket-jam/promo" class="promo" alt="App Screenshots"%}
 
 {::options parse_block_html="true" /}
 
@@ -27,15 +25,7 @@ Or add anything that shows up in the Files app. That's your Safari downloads, iC
 
 ---
 
-{::options parse_block_html="true" /}
-
-<div class="block">
-
-{::nomarkdown}
-{% include picture.html baseUrl="/assets/pocket-jam/preview-1" class="preview" alt="Section looping" %}
-{:/}
-
-<div class="block__content">
+{% capture content %}
 
 ## Change songs for your instrument and ability.
 
@@ -45,21 +35,17 @@ When a song is too fast or slow, you can control that too. Change the tempo anyw
 
 All in _real time_.
 
-</div>
+{% endcapture %}
 
-</div>
+{% include app-block.md
+  content=content
+  baseUrl="/assets/pocket-jam/preview-1"
+  alt="Section looping"
+%}
 
 ---
 
-{::options parse_block_html="true" /}
-
-<div class="block block--reverse">
-
-{::nomarkdown}
-{% include picture.html baseUrl="/assets/pocket-jam/preview-2" class="preview preview--bottom" alt="Section looping" %}
-{:/}
-
-<div class="block__content">
+{% capture content %}
 
 ## Loop sections. Practise until perfect.
 
@@ -67,21 +53,18 @@ Looping lets you pick specific parts of the song you want to practise. Just drag
 
 With a loop set up up, you can use the _speed trainer_ to have it start each loop playing slowly, and gradually speed up after each loop. Tweak how slow it starts, and how many loops it takes to reach the full tempo.
 
-</div>
+{% endcapture %}
 
-</div>
+{% include app-block.md
+  content=content
+  baseUrl="/assets/pocket-jam/preview-2"
+  alt="Section looping"
+  reverse=true
+%}
 
 ---
 
-{::options parse_block_html="true" /}
-
-<div class="block block">
-
-{::nomarkdown}
-{% include picture.html baseUrl="/assets/pocket-jam/preview-3" class="preview" alt="Section looping" %}
-{:/}
-
-<div class="block__content">
+{% capture content %}
 
 ## Skip to the good bit.
 
@@ -89,19 +72,18 @@ Set up _section markers_ in your song for the bits that are important to you.
 
 Use them to jump to the section in playback, or to set up loops between sections faster.
 
-</div>
+{% endcapture %}
 
-</div>
+{% include app-block.md
+  content=content
+  baseUrl="/assets/pocket-jam/preview-3"
+  alt="Section looping"
+%}
 
-# Get it now
+---
 
-{:.lead}
-Available for iPhone and iPad
-
-<div class="store-links">
-  <a title="App Store" href="https://itunes.apple.com/us/app/pocket-jam/id1153284525?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
-
-{:.legal-links}
-[Privacy Policy](/privacy)
-
-</div>
+{% include app-footer.md
+  title="Get it now"
+  subtitle="Available for iPhone and iPad"
+  app-store-href="https://itunes.apple.com/us/app/pocket-jam/id1153284525"
+%}

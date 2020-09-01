@@ -17,6 +17,7 @@
   font-style: normal;
   font-named-instance: "Regular";
   src: url("/assets/fonts/Inter-roman.var.woff2");
+  font-display: fallback;
 }
 
 @font-face {
@@ -26,6 +27,7 @@
   font-style: italic;
   font-named-instance: "Regular";
   src: url("/assets/fonts/Inter-italic.var.woff2");
+  font-display: fallback;
 }
 
 *,
@@ -52,7 +54,7 @@
 
 body {
   margin: var(--gutter-top) var(--gutters) 64px;
-  font: 18px/26px Inter, sans-serif;
+  font: 18px/26px Inter, system-ui, -apple-system, sans-serif;
   background: var(--background);
   color: var(--color, black);
 }

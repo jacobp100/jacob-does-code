@@ -1,0 +1,59 @@
+---
+---
+
+<div>
+  <button class="computation__close">Close</button>
+  <h3 class="computation__header">Computation</h3>
+</div>
+
+<div class="computation__maths-container">
+  <div class="computation__input computation--loading"></div>
+  <div class="computation__result computation--loading"></div>
+  <div class="computation__spinner">{%- include technicalc/spinner.svg -%}</div>
+  <button class="computation__toggle-display-mode">
+    <span class="computation__toggle-display-mode-icon">
+      {%- include technicalc/ellipsis.svg -%}
+    </span>
+    Display Mode
+  </button>
+</div>
+
+<div class="computation__form-container">
+  <form class="computation__form">
+    <div class="computation__radio-options">
+      <label class="computation__radio-option">
+        <input type="radio" name="style" value="natural" />
+        <span>{%- include technicalc/format-natural.svg -%}</span>
+        Natural
+      </label>
+      <label class="computation__radio-option">
+        <input type="radio" name="style" value="decimal" checked />
+        <span>{%- include technicalc/format-decimal.svg -%}</span>
+        Decimal
+      </label>
+      <label class="computation__radio-option">
+        <input type="radio" name="style" value="scientific" />
+        <span>{%- include technicalc/format-scientific.svg -%}</span>
+        Scientific
+      </label>
+    </div>
+
+    <label class="computation__slider">
+      Decimal Places
+      <input type="range" name="precision" min="0" max="12" value="8" />
+    </label>
+
+    <label class="computation__checkbox">
+      <input type="checkbox" name="digitGrouping" checked />
+      Digit Grouping
+    </label>
+  </form>
+</div>
+
+<div class="computation__footer">
+  <p class="computation__footer-copy">
+    This equation was created with TechniCalc. <em>Scroll down</em> to learn
+    more.
+  </p>
+  <a href="#" class="computation__open-in-app">Open in App</a>
+</div>

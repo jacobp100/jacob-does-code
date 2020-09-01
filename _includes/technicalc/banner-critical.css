@@ -1,0 +1,13 @@
+.computation {
+  display: flex;
+  flex-direction: column;
+  margin: calc(-1 * var(--gutter-top)) calc(-1 * var(--gutters))
+    var(--gutter-top);
+  padding: var(--padding-bottom) var(--gutters);
+  min-height: 100vh;
+  --padding-bottom: 24px;
+}
+
+.computation[hidden] {
+  display: none;
+}

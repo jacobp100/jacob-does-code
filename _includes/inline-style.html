@@ -1,0 +1,12 @@
+<style>
+  {%- if include.content -%}
+  {{- include.content | scssify -}}
+  {%- endif -%}
+
+  {%- if include.src -%}
+  {%- capture css -%}
+  {%- include {{ include.src }} -%}
+  {%- endcapture -%}
+  {{- css | scssify -}}
+  {%- endif -%}
+</style>

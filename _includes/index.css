@@ -6,3 +6,9 @@ h1 {
   letter-spacing: -2.5px;
   max-width: 420px;
 }
+
+@supports (font-family: -apple-system) {
+  h1 {
+    letter-spacing: -1px;
+  }
+}

@@ -4,7 +4,7 @@ description: A smart calculator for a smart phone
 layout: page
 css: app
 primary: "#0652dd"
-banner: "technicalc-banner.html"
+banner: "technicalc/banner.html"
 ---
 
 {% include app-logo.svg icon="technicalc" %}
@@ -14,9 +14,7 @@ banner: "technicalc-banner.html"
 {:.lead}
 A smart calculator for a smart phone
 
-{::nomarkdown}
 {% include picture.html baseUrl="/assets/technicalc/promo" class="promo" width="2048" height="1419" alt="App Screenshots" %}
-{:/}
 
 ## TechniCalc is every bit functional as it is beautiful.
 
@@ -28,15 +26,7 @@ You'll find your garden variety logs, sins, and cosines &mdash; but for when you
 
 ---
 
-{::options parse_block_html="true" /}
-
-<div class="block">
-
-{::nomarkdown}
-{% include picture.html baseUrl="/assets/technicalc/preview-1" class="preview" alt="Unit conversion" %}
-{:/}
-
-<div class="block__content">
+{% capture content %}
 
 ## Converting between units couldn't be simpler &mdash; or more powerful.
 
@@ -46,19 +36,17 @@ _Meters_ to _yards_? check.
 
 _Kilogram-meters-per-second-squared_ to something else? Also check.
 
-</div>
+{% endcapture %}
 
-</div>
+{% include app-block.md
+  content=content
+  baseUrl="/assets/technicalc/preview-1"
+  alt="Unit conversion"
+%}
 
-{::options parse_block_html="true" /}
+---
 
-<div class="block block--reverse">
-
-{::nomarkdown}
-{% include picture.html baseUrl="/assets/technicalc/preview-2" class="preview" alt="Equation solver" %}
-{:/}
-
-<div class="block__content">
+{% capture content %}
 
 ## Solvers give you answers. Fast.
 
@@ -68,19 +56,18 @@ Find the intersection of multiple lines or planes.
 
 Even find a root for any given equation.
 
-</div>
+{% endcapture %}
 
-</div>
+{% include app-block.md
+  content=content
+  baseUrl="/assets/technicalc/preview-2"
+  alt="Equation solver"
+  reverse=true
+%}
 
-{::options parse_block_html="true" /}
+---
 
-<div class="block">
-
-{::nomarkdown}
-{% include picture.html baseUrl="/assets/technicalc/preview-3" class="preview" alt="Constants" %}
-{:/}
-
-<div class="block__content">
+{% capture content %}
 
 ## Every constant you'll ever need, built right in.
 
@@ -88,22 +75,19 @@ With over 100 constants built in, no matter whether you're doing engineering, ph
 
 If you don't? You can _add your own_ &mdash; and even give your own symbol.
 
-</div>
+{% endcapture %}
 
-</div>
+{% include app-block.md
+  content=content
+  baseUrl="/assets/technicalc/preview-3"
+  alt="Constants"
+%}
 
 ---
 
-# Get it now
-
-{:.lead}
-Available on iOS and Android
-
-<div class="store-links">
-  <a title="App Store" href="https://apps.apple.com/gb/app/technicalc-calculator/id1504965415" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?releaseDate=2016-09-17&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
-  <a title="Google Play Store" href="https://play.google.com/store/apps/details?id=com.technicalc&hl=en&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1" style="display:inline-block;overflow:hidden;background:url(https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png) center center/155px 60px;width:135px;height:40px;"></a>
-
-{:.legal-links}
-[Privacy Policy](/privacy)
-
-</div>
+{% include app-footer.md
+  title="Get it now"
+  subtitle="Available on iOS and Android"
+  app-store-href="https://apps.apple.com/gb/app/technicalc-calculator/id1504965415"
+  google-play-href="https://play.google.com/store/apps/details?id=com.technicalc&hl=en&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+%}

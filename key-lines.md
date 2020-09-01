@@ -84,8 +84,12 @@ _Percussion tracks_ play along side the active track, or can be swapped out for 
 
 ---
 
-{% include app-footer.md
-  title="Get it now"
-  subtitle="Available for iOS and macOS"
-  app-store-href="https://apps.apple.com/us/app/key-lines-keyboard-midi-player/id1506390976"
-%}
+# Get it now
+
+{:.lead}
+Available for iOS and macOS
+
+{% include app-links.md app-store-href="https://apps.apple.com/us/app/key-lines-keyboard-midi-player/id1506390976" %}
+
+{:.legal-links}
+[Privacy Policy](/privacy)

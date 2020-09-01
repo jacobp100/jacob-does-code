@@ -15,8 +15,6 @@ Jam sessions with the device in your pocket
 
 {% include picture.html baseUrl="/assets/pocket-jam/promo" class="promo" width="2048" height="1519" alt="App Screenshots" %}
 
-{::options parse_block_html="true" /}
-
 ## Practise any song.
 
 You can play any song in your iTunes library &mdash; that's music transferred from your computer to your device.
@@ -82,8 +80,12 @@ Use them to jump to the section in playback, or to set up loops between sections
 
 ---
 
-{% include app-footer.md
-  title="Get it now"
-  subtitle="Available for iPhone and iPad"
-  app-store-href="https://itunes.apple.com/us/app/pocket-jam/id1153284525"
-%}
+# Get it now
+
+{:.lead}
+Available for iPhone and iPad
+
+{% include app-links.md app-store-href="https://itunes.apple.com/us/app/pocket-jam/id1153284525" %}
+
+{:.legal-links}
+[Privacy Policy](/privacy)

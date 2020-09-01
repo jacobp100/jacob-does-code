@@ -85,9 +85,15 @@ If you don't? You can _add your own_ &mdash; and even give your own symbol.
 
 ---
 
-{% include app-footer.md
-  title="Get it now"
-  subtitle="Available on iOS and Android"
+# Get it now
+
+{:.lead}
+Available on iOS and Android
+
+{% include app-links.md
   app-store-href="https://apps.apple.com/gb/app/technicalc-calculator/id1504965415"
   google-play-href="https://play.google.com/store/apps/details?id=com.technicalc&hl=en&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
 %}
+
+{:.legal-links}
+[Privacy Policy](/privacy)

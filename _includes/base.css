@@ -1,32 +1,32 @@
 @font-face {
-  src: url("/assets/fonts/CrimsonPro-Roman-VF.woff2");
-  font-family: "Crimson Pro";
+  src: url(/assets/fonts/CrimsonPro-Roman-VF.woff2);
+  font-family: Crimson Pro;
   font-style: normal;
 }
 
 @font-face {
-  src: url("/assets/fonts/CrimsonPro-Italic-VF.woff2");
-  font-family: "Crimson Pro";
+  src: url(/assets/fonts/CrimsonPro-Italic-VF.woff2);
+  font-family: Crimson Pro;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "Inter";
+  font-family: Inter;
   font-weight: 100 900;
   font-display: swap;
   font-style: normal;
   font-named-instance: "Regular";
-  src: url("/assets/fonts/Inter-roman.var.woff2");
+  src: url(/assets/fonts/Inter-roman.var.woff2);
   font-display: fallback;
 }
 
 @font-face {
-  font-family: "Inter";
+  font-family: Inter;
   font-weight: 100 900;
   font-display: swap;
   font-style: italic;
   font-named-instance: "Regular";
-  src: url("/assets/fonts/Inter-italic.var.woff2");
+  src: url(/assets/fonts/Inter-italic.var.woff2);
   font-display: fallback;
 }
 
@@ -48,6 +48,9 @@
 }
 
 :root {
+  --primary: var(--primary-light);
+  --color: black;
+  --background: white;
   --gutter-top: 12px;
   --gutters: 12px;
 }
@@ -55,8 +58,8 @@
 body {
   margin: var(--gutter-top) var(--gutters) 64px;
   font: 18px/26px Inter, system-ui, -apple-system, sans-serif;
+  color: var(--color);
   background: var(--background);
-  color: var(--color, black);
 }
 
 a {
@@ -135,6 +138,14 @@ a.header__logo {
   display: block;
   content: "";
   padding-right: var(--gutters);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color: white;
+    --background: black;
+    --primary: var(--primary-dark, var(--primary-light));
+  }
 }
 
 @media (min-width: 768px) {

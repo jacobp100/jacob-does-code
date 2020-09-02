@@ -56,7 +56,7 @@ hr {
   height: 120px;
   background: var(--primary, currentColor);
   border-radius: 30%;
-  fill: var(--background, white);
+  fill: white;
 }
 
 .block {
@@ -67,8 +67,7 @@ hr {
   display: block;
   margin: 12px auto 72px;
   max-width: 100%;
-  /* !important to stop CloudFlare stripping this out */
-  height: auto !important;
+  height: auto;
 }
 
 .preview {

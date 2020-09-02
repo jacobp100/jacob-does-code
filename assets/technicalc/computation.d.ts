@@ -2,8 +2,8 @@ type Result<Value, Error> =
   | { type: "ok"; value: Value }
   | { type: "error"; error: Error };
 
-interface Window {
-  MathJax: {typeset: (() => void) | undefined} | undefined;
+declare namespace MathJax {
+  const typeset: () => void;
 }
 
 declare namespace Qs {

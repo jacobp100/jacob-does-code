@@ -2,9 +2,8 @@
 <html
   lang="en"
   style="
-    {%- if page.primary -%}--primary: {{ page.primary }};{%- endif -%}
-    {%- if page.color -%}--color: {{ page.color }};{%- endif -%}
-    {%- if page.background -%}--background: {{ page.background }};{%- endif -%}
+    {%- if page.primary -%}--primary-light: {{ page.primary }};{%- endif -%}
+    {%- if page.primary-dark -%}--primary-dark: {{ page.primary-dark }};{%- endif -%}
   "
 >
   <meta charset="utf-8" />
@@ -37,7 +36,7 @@
     <a href="/cv" class="header__link">CV</a>
   </div>
   {{ content }} {%- comment -%}
-  <!-- Dato -->
+  <!-- Date -->
   {%- endcomment -%} {%- if page.date -%}
   <span class="published-on">
     Published on

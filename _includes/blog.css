@@ -2,7 +2,9 @@
 :root {
   --gutters: max(12px, (100vw - var(--max-width)) / 2);
   --max-width: 800px;
-  --primary: #673ab7;
+  /* Defined here so all blog posts use these colours */
+  --primary-light: #673ab7;
+  --primary-dark: #8861cd; /* # 12% lighter */
 }
 
 h1 {
@@ -52,8 +54,12 @@ li {
 
 li::before {
   position: absolute;
-  content: "👉";
+  content: var(--bullet, "👉");
   right: calc(100% + 12px);
+}
+
+li[data-bullet] {
+  --bullet: attr(data-bullet);
 }
 
 blockquote {
@@ -63,6 +69,18 @@ blockquote {
   font-weight: 300;
   font-style: italic;
   color: #9e9e9e;
+}
+
+table {
+  margin: 24px;
+  border-collapse: separate;
+  border-spacing: 12px 0;
+}
+
+thead th {
+  border-bottom: var(--hairline-width) solid;
+  --font-weight: 600;
+  text-align: left;
 }
 
 code {

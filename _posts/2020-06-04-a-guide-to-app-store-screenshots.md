@@ -22,7 +22,7 @@ Firstly, you must provide screenshots for:
 - iPhone 8 Plus
 - iPad Pro 12.9&quot; (both 2nd and 3rd gen) &mdash; only if you support iPad
 
-You can provide more, but it's not really neccesary. And just between us, you can submit the exact same screenshots for the iPad 2nd and 3rd gen. Apple won't notice &mdash; and neither will your users.
+You can provide more, but it's not really necessary. And just between us, you can submit the exact same screenshots for the iPad 2nd and 3rd gen. Apple won't notice &mdash; and neither will your users.
 
 The screenshots appear in the search results at roughly &frac14; size, in the app listing page at &frac12; size, then users can tap into them and view them at around 90% size.
 

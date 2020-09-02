@@ -39,10 +39,7 @@ export default ({ container, worker }) => {
     const mml = formatter(result.value, formattingOptions);
     element.innerHTML = mml;
 
-    const MathJax = window.MathJax;
-    if (MathJax != null && MathJax.typeset != null) {
-      MathJax.typeset();
-    }
+    MathJax.typeset();
   };
 
   const setInput = setComputationRow(

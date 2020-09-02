@@ -4,6 +4,7 @@ description: A smart calculator for a smart phone
 layout: page
 css: app
 primary: "#0652dd"
+primary-dark: "#2771f9" # 12% lighter
 banner: "technicalc/computation.html"
 ---
 

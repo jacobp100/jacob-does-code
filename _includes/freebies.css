@@ -1,15 +1,35 @@
+h1 {
+  margin: 32px 0 18px;
+  font-size: 36px;
+  line-height: 52px;
+  letter-spacing: -0.8px;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 18px 0 12px;
+  font-size: 26px;
+  line-height: 34px;
+  letter-spacing: -0.3px;
+  font-weight: 700;
+}
+
+p {
+  margin: 12px 0;
+}
+
 .app__logo {
   width: 60px;
   height: 60px;
-  background: black;
-  fill: white;
+  background: var(--color);
+  fill: var(--background);
   border-radius: 30%;
 }
 
 .grid {
   display: grid;
   margin: 72px 0;
-  grid-template-columns: repeat(auto-fill, 300px);
+  grid-template-columns: repeat(auto-fill, 200px);
   column-gap: 32px;
   row-gap: 32px;
 }

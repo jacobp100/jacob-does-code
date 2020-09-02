@@ -25,11 +25,11 @@ if (location.search.length > 1) {
     }
   });
 
-  const loadBanner = Promise.all([loadHtml, loadStyles]).then(([markup]) => {
+  const loadContent = Promise.all([loadHtml, loadStyles]).then(([markup]) => {
     container.innerHTML = markup;
   });
 
-  Promise.all([loadFullJs, loadBanner]).then(([computationModule]) => {
+  Promise.all([loadFullJs, loadContent]).then(([computationModule]) => {
     computationModule.default({ container, worker });
   });
 }

@@ -58,9 +58,13 @@ export default ({ container, worker }) => {
     .querySelector(".computation__open-in-app")
     .setAttribute("href", `technicalc://editor?${search}`);
 
-  const { elements, unitConversions, customAtoms, variables } = Qs.parse(
-    search
-  );
+  const {
+    elements: legacyElementsQuery,
+    q: elements = legacyElementsQuery,
+    unitConversions,
+    customAtoms,
+    variables,
+  } = Qs.parse(search);
 
   /** @param {string} array */
   const decodeArray = (array) => (array != null ? JSON.parse(array) : []);

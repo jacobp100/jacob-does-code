@@ -34,6 +34,7 @@ export default ({ container, worker }) => {
       style: formData.get("style"),
       precision: Number(formData.get("precision")),
       digitGrouping: formData.get("digitGrouping") != null,
+      base: Number(formData.get("base")),
     };
 
     const mml = formatter(result.value, formattingOptions);

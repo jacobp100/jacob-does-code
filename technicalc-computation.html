@@ -24,29 +24,50 @@
       <label class="computation__radio-option">
         <input type="radio" name="style" value="natural" />
         <span>{%- include technicalc/format-natural.svg -%}</span>
-        Natural
+        <span class="computation__radio-option-label-hidden">Natural</span>
       </label>
       <label class="computation__radio-option">
         <input type="radio" name="style" value="decimal" checked />
         <span>{%- include technicalc/format-decimal.svg -%}</span>
-        Decimal
+        <span class="computation__radio-option-label-hidden">Decimal</span>
       </label>
       <label class="computation__radio-option">
         <input type="radio" name="style" value="scientific" />
         <span>{%- include technicalc/format-scientific.svg -%}</span>
-        Scientific
+        <span class="computation__radio-option-label-hidden">Scientific</span>
       </label>
     </div>
+
+    <label class="computation__checkbox">
+      <input type="checkbox" name="digitGrouping" checked />
+      Digit Grouping
+    </label>
 
     <label class="computation__slider">
       Decimal Places
       <input type="range" name="precision" min="0" max="12" value="8" />
     </label>
 
-    <label class="computation__checkbox">
-      <input type="checkbox" name="digitGrouping" checked />
-      Digit Grouping
-    </label>
+      <div class="computation__radio-options">
+        <span class="computation__radio-option-title">Base</span>
+        <label class="computation__radio-option">
+          <input type="radio" name="base" value="2" />
+          <span>2</span>
+        </label>
+        <label class="computation__radio-option">
+          <input type="radio" name="base" value="8" />
+          <span>8</span>
+        </label>
+        <label class="computation__radio-option">
+          <input type="radio" name="base" value="10" checked />
+          <span>10</span>
+        </label>
+        <label class="computation__radio-option">
+          <input type="radio" name="base" value="16" />
+          <span>16</span>
+        </label>
+      </div>
+    </div>
   </form>
 </div>
 

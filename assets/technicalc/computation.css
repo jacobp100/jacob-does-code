@@ -327,6 +327,10 @@
     --form-background: #080808;
   }
 
+  .computation__spinner {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
   .computation__form {
     border-color: #111;
   }

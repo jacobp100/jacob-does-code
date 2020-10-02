@@ -1,5 +1,9 @@
 /* .computation defined inline in technicalc-banner.html */
 
+:root {
+  --form-background: #f4f4f4;
+}
+
 .computation__close {
   float: right;
   margin: 0;
@@ -133,7 +137,7 @@
   --spacing: 24px;
   /* For --form-hidden */
   width: 100%;
-  background: white;
+  background: var(--background);
 }
 
 .computation--form-hidden .computation__form {
@@ -199,7 +203,7 @@
 }
 
 .computation__radio-option input:checked + span {
-  background: #f4f4f4;
+  background: var(--form-background);
   color: var(--primary);
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
 }
@@ -281,7 +285,7 @@
   width: 100%;
   height: 6px;
   border-radius: 99px;
-  background: #f4f4f4;
+  background: var(--form-background);
 }
 
 /* Copied above - iOS 13 Safari won't parse the rule if there are -moz selectors */
@@ -289,7 +293,7 @@
   width: 100%;
   height: 6px;
   border-radius: 99px;
-  background: #f4f4f4;
+  background: var(--form-background);
 }
 
 /**********
@@ -315,5 +319,20 @@
   .computation__footer-copy {
     flex: 1;
     margin-right: 12px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --form-background: #080808;
+  }
+
+  .computation__form {
+    border-color: #111;
+  }
+
+  .computation--form-hidden .computation__toggle-display-mode {
+    background: #111;
+    color: #333;
   }
 }

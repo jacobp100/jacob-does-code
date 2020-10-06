@@ -74,7 +74,7 @@ Even find a root for any given equation.
 
 With over 100 constants built in, no matter whether you're doing engineering, physics, or chemistry, you'll find every constant you need.
 
-If you don't? You can _add your own_ &mdash; and even give your own symbol.
+If you don't find one? You can _add your own_ &mdash; and even give it your own symbol.
 
 {% endcapture %}
 

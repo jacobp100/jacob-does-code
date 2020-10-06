@@ -15,15 +15,14 @@
   <!-- CSS -->
   {%- endcomment -%} {%- capture css -%} {%- include base.css -%} {%- if
   page.css -%} {%- include {{ page.css }}.css -%} {%- endif -%} {%- endcapture
-  -%} {%- include inline-style.html content=css -%}
-  <script async>
-    document.documentElement.style.setProperty(
-      "--hairline-width",
-      1 / (window.devicePixelRatio || 1) + "px"
-    );
-  </script>
-  {%- if page.banner -%} {%- include {{ page.banner }} -%} {%- endif -%}
-  <div class="header u-scroll-horizontal">
+  -%} {%- include inline-style.html content=css -%} {%- comment -%}
+  <!-- JS -->
+  {%- endcomment -%} {%- include inline-script.html src="set-hairline-width.js"
+  async=true -%} {%- comment -%}
+  <!-- Additional HTML -->
+  {%- endcomment -%} {%- if page.banner -%} {%- include {{ page.banner }} -%}
+  {%- endif -%}
+  <div class="header">
     <a href="/" class="header__logo">Jacob<br />does<br />code</a>
     <div class="header__section">Apps</div>
     <a href="/pocket-jam" class="header__link">Pocket Jam</a>

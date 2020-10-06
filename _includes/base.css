@@ -74,8 +74,19 @@ a:focus {
 }
 
 .header {
-  margin: -12px 0 48px;
+  display: flex;
   padding-top: 12px;
+  margin: -12px calc(-1 * var(--gutters)) 48px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.header::before,
+.header::after {
+  display: block;
+  content: "";
+  padding-right: var(--gutters);
 }
 
 .header__logo {
@@ -122,22 +133,6 @@ a.header__logo {
 
 .header__link:last-child {
   margin-right: 0;
-}
-
-.u-scroll-horizontal {
-  display: flex;
-  margin-left: calc(-1 * var(--gutters)) !important;
-  margin-right: calc(-1 * var(--gutters)) !important;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-
-.u-scroll-horizontal::before,
-.u-scroll-horizontal::after {
-  display: block;
-  content: "";
-  padding-right: var(--gutters);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,7 +1,11 @@
 {%- comment -%} This is as flaky as it looks {%- endcomment -%}
-<script>
+<script {%- if include.async %} async{% endif -%}>
   {%- capture js -%}
+  {%- if include.src -%}
   {%- include {{ include.src }} -%}
+  {%- else -%}
+  {{- include.content -}}
+  {%- endif -%}
   {%- endcapture -%}
   {{- js | remove: "  " | strip_newlines -}}
 </script>

@@ -8,7 +8,7 @@ css: blog
 
 Polymorphic variants are one of the more unique features of OCaml (or ReasonML if you prefer). These are actually one of the things that aren't documented ReasonML site, but they can be really useful nonetheless.
 
-At their simplest, they exact the same as regular variants. The first difference is that these variants begin with a `` ` `` character. They can also be used without a type definition. Let's find the index of a pair of brackets in a list of characters.
+At their simplest, they work exactly the same as regular variants. The first difference is that these variants begin with a `` ` `` character. They can also be used without a type definition. Let's find the index of a pair of brackets in a list of characters.
 
 ```reasonml
 let firstBracketPair = inputChars => {
@@ -23,7 +23,7 @@ let firstBracketPair = inputChars => {
     | (_, []) =>
       None
     };
-  inputChars(`NoBrackets, inputChars, 0);
+  iter(`NoBrackets, inputChars, 0);
 };
 ```
 
@@ -31,17 +31,18 @@ In the above example, we could have defined a type just for the iteration state,
 
 ## Diving Deeper
 
-Unlike when defining the types for regular variants, you can build polymorphic variants of other variants. Other than the backtick for each name, the types for polymorphic variants also need square brackets around.
+Unlike when defining the types for regular variants, you can build polymorphic variants using other variants. Other than the backtick for each name, the types for polymorphic variants also need square brackets around them.
 
 ```reasonml
 type primary = [ | `Red | `Green | `Blue];
 type colorFunctions = [ | `Rgb(int, int, int) | `Hsl(int, int, int)];
+/* Combiles both the variants primary and colorFunctions */
 type colors = [ primary | colorFunctions];
 ```
 
 Now that our types are a bit more complicated, you'll want to actually write the type definitions. You'll be able to compile without them, but when you do get errors &mdash; especially with large types &mdash; the error messages will be multiple pages on your terminal and won't help you at all.
 
-The above example is a common way for articles to demonstrate polymorphic variants. But it's not a great example &mdash; this could be a regular variant type, and it would be better that way. So I'm going to give two examples of cases where polymorphic variants actually helped.
+The above example is a common way for articles to demonstrate polymorphic variants. But it's not a great example &mdash; this could be a regular variant type, and it might be better that way. So I'm going to give two examples of cases where polymorphic variants actually helped.
 
 ## Units of Measure
 
@@ -89,7 +90,7 @@ Say we have a numeric type that's more complicated than a float. Maybe it's an e
 
 ```reasonml
 type scalar = [ | `Fraction(int, int) | `Decimal(float)];
-type value = [ scalar | `Vector(list(scalar)) | `nan];
+type value = [ scalar | `Vector(list(scalar)) | `NaN];
 
 let addScalar = (a, b) =>
   switch (a, b) {
@@ -106,17 +107,11 @@ let add = (a, b) =>
   switch (a, b) {
   | (#scalar as a, #scalar as b) => addScalar(a, b)
   | (`Vector(a), `Vector(b)) => `Vector(List.map2(addScalar))
-  | _ => `nan
+  | _ => `NaN
   };
 ```
 
 In the same manner as the previous examples, we _could_ use regular variants here, but it would be less nice for the same reasons.
-
-## Bonus Fact: Serialisation with BuckleScript
-
-A neat fact about polymorphic variant types that when run through BuckleScript, they can be serialised and deserialised via `JSON.stringify` and `JSON.parse` (assuming that values they wrap can be too). Surprisingly, this is not true of regular variant types (unless they don't wrap any values).
-
-If you want simple serialisation, you can't go wrong with record types, tuples, and polymorphic variants.
 
 ## Performance
 

@@ -5,4 +5,4 @@ css: index
 primary: "#FC427B"
 ---
 
-# I do code. I also write apps, and am available for [hire](/cv).
+# Home to [Pocket Jam](/pocket-jam), [TechniCalc](/technicalc), and [Key Lines](/key-lines)

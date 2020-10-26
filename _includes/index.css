@@ -4,7 +4,11 @@ h1 {
   line-height: 52px;
   font-weight: 600;
   letter-spacing: -2.5px;
-  max-width: 420px;
+  max-width: 340px;
+}
+
+a {
+  white-space: nowrap;
 }
 
 @supports (font-family: -apple-system) {

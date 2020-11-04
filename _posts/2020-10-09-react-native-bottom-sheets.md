@@ -168,6 +168,10 @@ And that's it for dismissing non-scrolling content &mdash; it's actually very sm
 
 ## Dismissing Scrolling Content
 
+> This method has flaws in it relating to iOS's ability to drag scrollbars. The issues can only be fixed in native code, which you can find in my new package, [react-native-scroll-pan-gesture](https://github.com/jacobp100/react-native-scroll-pan-gesture).
+>
+> Nonetheless, I've left this section in-tact.
+
 In the UX section, I mentioned how it was possible to switch between scrolling gestures and interactive dismissal gestures.
 
 In the code, however, these gestures are never turned on or off. They run at the same time, for the same duration. Neither gesture is ever disabled &mdash; we only hide the effects of the gesture that is not the 'current' gesture.

@@ -86,10 +86,29 @@ If you don't find one? You can _add your own_ &mdash; and even give it your own 
 
 ---
 
+{% capture content %}
+
+## Leave your formula book at home.
+
+Whether you struggle to remember your equations &mdash; or just struggle to type it in &mdash; you can add them all to memory.
+
+You can even add symbols to remind you what &mdash; and where &mdash; to fill in when you insert them.
+
+{% endcapture %}
+
+{% include app-block.md
+  content=content
+  baseUrl="/assets/technicalc/preview-4"
+  alt="Equations"
+  reverse=true
+%}
+
+---
+
 # Get it now
 
 {:.lead}
-Available on iOS and Android
+Available on iOS, macOS, and Android
 
 {% include app-links.md
   app-store-href="https://apps.apple.com/gb/app/technicalc-calculator/id1504965415"

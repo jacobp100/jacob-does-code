@@ -6,29 +6,20 @@ declare namespace MathJax {
   const typeset: () => void;
 }
 
-declare namespace Qs {
-  const parse: (input: string) => any;
-}
-
 declare namespace Client {
-  type Elements = "ClientElements";
+  type Element = "ClientElement";
   type ValueUnresolved = "ClientValueUnresolved";
   type ValueResolved = "ClientValueResolved";
   type Work = "ClientWork";
 
-  const Editor: {
-    toMml: (elements: Elements) => string;
-    parse: (elements: Elements) => [null, ValueUnresolved] | [any, null];
-    decode: (encoded: {
-      elements: string;
-      unitConversions: any[];
-      customAtoms: any[];
-      variables: any[];
-    }) => Elements | undefined;
+  const Elements: {
+    decode: (encoded: string) => Element[] | undefined;
+    toMml: (elements: Element[]) => string;
+    parse: (elements: Element[]) => [null, ValueUnresolved] | [any, null];
   };
   const Value: {
     toMml: (value: ValueResolved) => string;
-    decode: (encoded: any) => ValueResolved;
+    decode: (encoded: any) => ValueResolved | undefined;
   };
   const Work: {
     calculate: (value: ValueUnresolved) => Work;

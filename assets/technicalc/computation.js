@@ -1,10 +1,17 @@
 // @ts-check
 /// <reference path="./computation.d.ts" />
 import "https://unpkg.com/mathjax@3.1.0/es5/mml-svg.js";
-import "https://unpkg.com/qs@6.9.4/dist/qs.js";
 import "/assets/technicalc/dist/client.js";
 
-const { Editor, Value, Work } = Client;
+const { Elements, Value, Work } = Client;
+
+/**
+ * @template T
+ * @param {T} value
+ * @returns {Result<T, null>}
+ * */
+const resultOfOption = (value) =>
+  value != null ? { type: "ok", value } : { type: "error", error: null };
 
 /** @param {{container: HTMLElement, worker: Worker}} params */
 export default ({ container, worker }) => {
@@ -45,7 +52,7 @@ export default ({ container, worker }) => {
 
   const setInput = setComputationRow(
     container.querySelector(".computation__input"),
-    Editor.toMml
+    Elements.toMml
   );
 
   const setResult = setComputationRow(
@@ -58,53 +65,31 @@ export default ({ container, worker }) => {
     .querySelector(".computation__open-in-app")
     .setAttribute("href", `technicalc://editor?${search}`);
 
-  const {
-    elements: legacyElementsQuery,
-    q: elements = legacyElementsQuery,
-    unitConversions,
-    customAtoms,
-    variables,
-  } = Qs.parse(search);
-
-  /** @param {string} array */
-  const decodeArray = (array) => (array != null ? JSON.parse(array) : []);
-
-  /** @type {Client.Elements | undefined} */
-  const inputValue =
-    typeof elements === "string" && elements.length !== 0
-      ? Editor.decode({
-          elements,
-          unitConversions: decodeArray(unitConversions),
-          customAtoms: decodeArray(customAtoms),
-          variables: decodeArray(variables),
-        })
-      : undefined;
-
-  /** @type {Result<Client.Elements, null>} */
-  const input =
-    inputValue != null
-      ? { type: "ok", value: inputValue }
-      : { type: "error", error: null };
+  const input = resultOfOption(
+    search.length !== 0 ? Elements.decode(search) : undefined
+  );
 
   setInput(input);
-
-  const [parsingError, parsedValue] =
-    input.type === "ok" ? Editor.parse(input.value) : [null, null];
-  if (parsingError == null && parsedValue != null) {
-    const work = Work.calculate(parsedValue);
-    worker.postMessage(work);
-  }
 
   /** @type {Result<Client.ValueResolved, null> | null} */
   let result = null;
 
+  const [parsingError, parsedValue] =
+    input.type === "ok" ? Elements.parse(input.value) : [null, null];
+  if (parsingError == null && parsedValue != null) {
+    const work = Work.calculate(parsedValue);
+    worker.postMessage(work);
+  } else {
+    result = resultOfOption(undefined);
+    setResult(result);
+  }
+
   /** @param {ServiceWorkerMessageEvent} e */
   worker.onmessage = (e) => {
     const data = e.data;
-    result =
-      data.error !== true
-        ? { type: "ok", value: Value.decode(data.results[0]) }
-        : { type: "error", error: null };
+    result = resultOfOption(
+      data.didError !== true ? Value.decode(data.results[0]) : undefined
+    );
     setResult(result);
   };
 

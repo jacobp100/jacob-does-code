@@ -3,8 +3,7 @@
   --gutters: max(12px, (100vw - var(--max-width)) / 2);
   --max-width: 800px;
   /* Defined here so all blog posts use these colours */
-  --primary-light: #673ab7;
-  --primary-dark: #8861cd; /* # 12% lighter */
+  --primary: var(--blog);
 }
 
 h1 {

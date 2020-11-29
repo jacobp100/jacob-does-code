@@ -48,7 +48,14 @@
 }
 
 :root {
-  --primary: var(--primary-light);
+  --pocket-jam: #f97f51;
+  --piano-tabs: #fc427b;
+  --technicalc-light: #0652dd;
+  --technicalc-dark: #2771f9; /* 12% lighter */
+  --technicalc: var(--technicalc-light);
+  --freebies: #a3cb38;
+  --blog: #ed4c67;
+  --primary: currentColor;
   --color: black;
   --background: white;
   --gutter-top: 12px;
@@ -137,9 +144,9 @@ a.header__logo {
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --technicalc: var(--technicalc-dark);
     --color: white;
     --background: black;
-    --primary: var(--primary-dark, var(--primary-light));
   }
 }
 

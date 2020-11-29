@@ -1,0 +1,3 @@
+<svg viewBox="0 0 60 60" class="{{- include.class | default: 'app__logo' -}}" role="img" aria-label="Logo">
+  {%- include icons/{{ include.icon }}.svg -%}
+</svg>

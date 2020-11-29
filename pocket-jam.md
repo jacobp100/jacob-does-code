@@ -1,17 +1,17 @@
 ---
 title: Pocket Jam
-description: Jam sessions with the device in your pocket
+description: Jam sessions you can carry in your pocket
 layout: page
 css: app
-primary: "#FC427B"
+primary: "var(--pocket-jam)"
 ---
 
-{% include app-logo.svg icon="pocket-jam" %}
+{% include icon.svg icon="pocket-jam" %}
 
 # Pocket Jam
 
 {:.lead}
-Jam sessions with the device in your pocket
+Jam sessions you can carry in your pocket
 
 {% include picture.html baseUrl="/assets/pocket-jam/promo" class="promo" width="2048" height="1519" alt="App Screenshots" %}
 
@@ -86,6 +86,10 @@ Use them to jump to the section in playback, or to set up loops between sections
 Available for iPhone and iPad
 
 {% include app-links.md app-store-href="https://itunes.apple.com/us/app/pocket-jam/id1153284525" %}
+
+---
+
+{% include better-together.md %}
 
 {:.legal-links}
 [Privacy Policy](/privacy)

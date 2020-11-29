@@ -4,6 +4,7 @@ h1 {
   line-height: 52px;
   letter-spacing: -0.8px;
   font-weight: 700;
+  color: var(--primary);
 }
 
 h2 {
@@ -12,10 +13,16 @@ h2 {
   line-height: 34px;
   letter-spacing: -0.3px;
   font-weight: 700;
+  color: var(--primary);
 }
 
 p {
   margin: 12px 0;
+}
+
+.legal-links {
+  font-size: 12px;
+  line-height: 18px;
 }
 
 .app__logo {
@@ -24,6 +31,7 @@ p {
   background: var(--color);
   fill: var(--background);
   border-radius: 30%;
+  opacity: 0.33;
 }
 
 .grid {

@@ -1,23 +1,23 @@
 ---
-title: Key Lines
+title: Piano Tabs
 description: Sheet music and piano practise reimagined
 layout: page
 css: app
-primary: "#6AB04C"
+primary: "var(--piano-tabs)"
 ---
 
-{% include app-logo.svg icon="key-lines" %}
+{% include icon.svg icon="piano-tabs" %}
 
-# Key Lines
+# Piano Tabs
 
 {:.lead}
 Sheet music and piano practise reimagined
 
-{% include picture.html baseUrl="/assets/key-lines/promo" class="promo" width="2048" height="1153" alt="App Screenshots" %}
+{% include picture.html baseUrl="/assets/piano-tabs/promo" class="promo" width="2048" height="1153" alt="App Screenshots" %}
 
 ## Open any song.
 
-Key Lines works with any MIDI file. They're the industry standard, and _super-easy_ to get hold of.
+Piano Tabs works with any MIDI file. They're the industry standard, and _super-easy_ to get hold of.
 
 Pieces are displayed as you would play them on a keyboard, so there is _no learning curve_ to get started.
 
@@ -37,7 +37,7 @@ With a loop set up up, you can use the _speed trainer_ to have it start each loo
 
 {% include app-block.md
   content=content
-  baseUrl="/assets/key-lines/preview-1"
+  baseUrl="/assets/piano-tabs/preview-1"
   alt="Section looping"
 %}
 
@@ -58,7 +58,7 @@ Use your finger or Apple Pencil to _freehand draw anywhere_ in the piece to anno
 
 {% include app-block.md
   content=content
-  baseUrl="/assets/key-lines/preview-2"
+  baseUrl="/assets/piano-tabs/preview-2"
   alt="Bookmarks"
   reverse=true
 %}
@@ -77,7 +77,7 @@ _Percussion tracks_ play along side the active track, or can be swapped out for 
 
 {% include app-block.md
   content=content
-  baseUrl="/assets/key-lines/preview-3"
+  baseUrl="/assets/piano-tabs/preview-3"
   alt="Playback customisation"
 %}
 
@@ -88,7 +88,11 @@ _Percussion tracks_ play along side the active track, or can be swapped out for 
 {:.lead}
 Available for iOS and macOS
 
-{% include app-links.md app-store-href="https://apps.apple.com/us/app/key-lines-keyboard-midi-player/id1506390976" %}
+{% include app-links.md app-store-href="https://apps.apple.com/us/app/piano-tabs-midi-player/id1506390976" %}
+
+---
+
+{% include better-together.md %}
 
 {:.legal-links}
 [Privacy Policy](/privacy)

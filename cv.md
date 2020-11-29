@@ -71,7 +71,7 @@ Product pages at [https://jacobdoescode.com](https://jacobdoescode.com)
 
   Music app written in React Native for the UI, and Swift for music playback
 
-- [Key Lines](https://jacobdoescode.com/key-lines)
+- [Piano Tabs](https://jacobdoescode.com/piano-tabs)
 
   Interactive piano sheet music reader written in SwiftUI and UIKit
 

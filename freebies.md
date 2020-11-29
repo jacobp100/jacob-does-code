@@ -2,7 +2,7 @@
 title: Freebies
 layout: page
 css: freebies
-primary: "#FC427B"
+primary: "var(--freebies)"
 ---
 
 # Freebies
@@ -15,7 +15,7 @@ All the apps below are free. Some are even open source.
 
 <div class="grid__tile">
 
-{% include app-logo.svg icon="rail-app" %}
+{% include icon.svg icon="rail-app" %}
 
 ## Rail App
 
@@ -27,7 +27,7 @@ View live and offline UK rail timetables.
 
 <div class="grid__tile">
 
-{% include app-logo.svg icon="za" %}
+{% include icon.svg icon="za" %}
 
 ## Za
 
@@ -39,7 +39,7 @@ Scrabble dictionary.
 
 <div class="grid__tile">
 
-{% include app-logo.svg icon="reason-ml" %}
+{% include icon.svg icon="reason-ml" %}
 
 ## ReasonML
 
@@ -52,3 +52,6 @@ Playground for Reason programming language.
 </div>
 
 </div>
+
+{:.legal-links}
+[Privacy Policy](/privacy)

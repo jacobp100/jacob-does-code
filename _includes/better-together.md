@@ -4,11 +4,14 @@
   <span style="color: var(--pocket-jam);">Together</span>
 </h1>
 
-<p class="lead" style="color: inherit;">
-  Get <a href="/pocket-jam" style="color: var(--pocket-jam);">Pocket Jam</a> and
-  <a href="/piano-tabs" style="color: var(--piano-tabs);">Piano Tabs</a> together and save 30%
-</p>
+{:.lead style="color: inherit;"}
+Get [Pocket Jam](/pocket-jam){:style="color: var(--pocket-jam);"} and [Pocket Jam](/piano-tabs){:style="color: var(--piano-tabs);"} together and save 30%
 
+{:style="text-align:center;"}
+Coming soon
+
+{% comment %}
 {% include app-links.md
-app-store-href="https://apps.apple.com/us/app/piano-tabs-midi-player/id1506390976"
+app-store-href="https://apps.apple.com/us/app-bundle/super-music-bundle/id1542101429"
 %}
+{% endcomment %}

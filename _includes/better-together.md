@@ -7,11 +7,4 @@
 {:.lead style="color: inherit;"}
 Get [Pocket Jam](/pocket-jam){:style="color: var(--pocket-jam);"} and [Pocket Jam](/piano-tabs){:style="color: var(--piano-tabs);"} together and save 30%
 
-{:style="text-align:center;"}
-Coming soon
-
-{% comment %}
-{% include app-links.md
-app-store-href="https://apps.apple.com/us/app-bundle/super-music-bundle/id1542101429"
-%}
-{% endcomment %}
+{% include app-links.md app-store-href="https://apps.apple.com/us/app-bundle/id1542101429?mt=8" %}

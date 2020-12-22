@@ -84,7 +84,7 @@ export default ({ container, worker }) => {
     setResult(result);
   }
 
-  /** @param {ServiceWorkerMessageEvent} e */
+  /** @param {MessageEvent<any>} e */
   worker.onmessage = (e) => {
     const data = e.data;
     result = resultOfOption(

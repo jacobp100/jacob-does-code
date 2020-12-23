@@ -68,11 +68,12 @@ type Props = ImgHTMLAttributes<any> & {
 export default ({ src, children: _, ...props }: Props) => {
   const images = compressImages(src);
 
-  const extension = path.extname(src).slice(".".length);
-  const source = writeSiteAsset(images.source, { extension });
+  const source = writeSiteAsset(images.source, {
+    extension: path.extname(src),
+  });
   const webp =
     images.webp != null
-      ? writeSiteAsset(images.webp, { extension: "webp" })
+      ? writeSiteAsset(images.webp, { extension: ".webp" })
       : null;
 
   const imgBase = (

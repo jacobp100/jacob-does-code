@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import { ExternalCss, InlineCss, InlineJs } from "../components";
+import TechnicalcComputation from "../includes/TechnicalcComputation";
 
 const Header = ({ children }: { children: any }) => (
   <div className="header">{children}</div>
@@ -40,6 +41,7 @@ type Props = {
   description?: string;
   "inline-css"?: string;
   "external-css"?: string;
+  banner?: string;
   primary?: string;
   children: JSX.Element;
 };
@@ -49,6 +51,7 @@ export default ({
   description,
   "inline-css": inlineCss,
   "external-css": externalCss,
+  banner,
   primary,
   children,
 }: Props) => (
@@ -63,6 +66,7 @@ export default ({
       {externalCss && <ExternalCss src={`${externalCss}.css`} />}
     </head>
     <body>
+      {banner === "TechnicalcComputation" && <TechnicalcComputation />}
       <Header>
         <HeaderLogo />
         <HeaderSection>Apps</HeaderSection>

@@ -1,5 +1,5 @@
 import { readAsset } from "../core/assets";
-import js from "./util/js";
+import transformJs from "./util/transformJs";
 
 type Props = {
   src: string;
@@ -7,6 +7,6 @@ type Props = {
 
 export default ({ src }: Props) => {
   const content = readAsset(src);
-  const output = js(content);
+  const output = transformJs(content);
   return <script dangerouslySetInnerHTML={{ __html: output }} />;
 };

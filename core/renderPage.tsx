@@ -13,5 +13,5 @@ export default (contents: string, filename: string) => {
       <Markdown content={content} />
     </Layout>
   );
-  writeSiteAsset("<!DOCTYPE HTML>" + html, { filename, extension: "html" });
+  writeSiteAsset("<!DOCTYPE HTML>" + html, { filename, extension: ".html" });
 };

@@ -4,7 +4,7 @@ description: A smart calculator for a smart phone
 layout: page
 inline-css: app
 primary: "var(--technicalc)"
-banner: "technicalc/computation.html"
+banner: "TechnicalcComputation"
 ---
 
 <Icon name="technicalc" />

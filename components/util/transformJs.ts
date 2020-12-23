@@ -7,6 +7,11 @@ export default (input: string): string => {
     return input;
   }
 
-  const { code } = minify(input);
+  const { code, error } = minify(input);
+
+  if (error) {
+    throw new Error(error);
+  }
+
   return code;
 };

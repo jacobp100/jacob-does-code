@@ -44,7 +44,7 @@ export const writeSiteAsset = (
       ? stringHash(content).toString(16)
       : stringHash(content.toString("hex")).toString(16),
     extension,
-  ].join(".");
+  ].join("");
 
   if (filename.includes("/")) {
     const dir = sitePath(path.join(outputFilename, ".."));

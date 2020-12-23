@@ -1,5 +1,5 @@
 import { readAsset, writeSiteAsset } from "../core/assets";
-import js from "./util/js";
+import transformJs from "./util/transformJs";
 
 type Props = {
   src: string;
@@ -7,7 +7,7 @@ type Props = {
 
 export default ({ src }: Props) => {
   const content = readAsset(src);
-  const code = js(content);
-  const outputSrc = writeSiteAsset(code, { extension: "js" });
+  const code = transformJs(content);
+  const outputSrc = writeSiteAsset(code, { extension: ".js" });
   return <script src={outputSrc} />;
 };

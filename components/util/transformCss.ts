@@ -9,8 +9,7 @@ export default (input: string) => {
 
   css = css.replace(/url\(['"]?\/([^'")]+)['"]?\)/g, (_, url) => {
     const asset = readAssetBuffer(url);
-    const extension = path.extname(url).slice(".".length);
-    const source = writeSiteAsset(asset, { extension });
+    const source = writeSiteAsset(asset, { extension: path.extname(url) });
     return `url(${source})`;
   });
 

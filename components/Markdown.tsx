@@ -3,6 +3,8 @@ import unified from "unified";
 // @ts-ignore
 import parse from "remark-parse";
 // @ts-ignore
+import highlight from "remark-highlight.js";
+// @ts-ignore
 import mdx from "remark-mdx";
 // @ts-ignore
 import squeezeParagraphs from "remark-squeeze-paragraphs";
@@ -13,32 +15,21 @@ import html from "remark-html";
 // @ts-ignore
 import posthtml from "posthtml";
 // @ts-ignore
-import renderStaticReact from "posthtml-static-react";
 // @ts-ignore
 import minifier from "posthtml-minifier";
 import { includePath } from "../core/assets";
+// @ts-ignore
+import renderStaticReact from "./util/posthtml-static-react";
 import * as components from ".";
-
-const getReactComponentInclude = (name: string) => {
-  // @ts-ignore
-  const buildInComponent = components[name];
-  if (buildInComponent != null) {
-    return buildInComponent;
-  }
-
-  const modulePath = includePath(name);
-  if (modulePath != null) {
-    return require(modulePath).default;
-  }
-
-  return undefined;
-};
 
 const includes = new Proxy(
   {},
   {
-    has: (_, component) => getReactComponentInclude(component as any) != null,
-    get: (_, component) => getReactComponentInclude(component as any),
+    has: () => true,
+    get: (_, name) => {
+      // @ts-ignore
+      return components[name] ?? require(includePath(name)!).default;
+    },
   }
 );
 
@@ -51,6 +42,7 @@ type Props = {
 export default ({ tagName: TagName = "div", className, content }: Props) => {
   let __html = unified()
     .use(parse)
+    .use(highlight)
     .use(mdx)
     .use(squeezeParagraphs)
     .use(smartypants)

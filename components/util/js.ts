@@ -1,6 +1,6 @@
 // @ts-ignore
 import { minify } from "uglify-js";
-import dev from "../core/dev";
+import dev from "../../core/dev";
 
 export default (input: string): string => {
   if (dev) {

@@ -2,7 +2,7 @@
 title: Pocket Jam
 description: Jam sessions you can carry in your pocket
 layout: page
-css: app
+inline-css: app
 primary: "var(--pocket-jam)"
 ---
 

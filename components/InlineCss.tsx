@@ -1,5 +1,5 @@
 import { readAsset } from "../core/assets";
-import css from "./css";
+import css from "./util/css";
 
 type Props = {
   src: string;

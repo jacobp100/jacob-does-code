@@ -1,7 +1,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
 // @ts-ignore
 import frontmatter from "frontmatter";
-import { Markdown } from "../_components";
+import { Markdown } from "../components";
 import { requireLayout, writeSiteAsset } from "./assets";
 
 export default (contents: string, filename: string) => {

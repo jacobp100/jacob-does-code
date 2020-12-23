@@ -2,7 +2,7 @@ import AppLinks from "./AppLinks";
 import AppStoreLink from "./AppStoreLink";
 
 export default () => (
-  <div>
+  <>
     <h1>
       <span style={{ color: "var(--piano-tabs)" }}>Better</span>{" "}
       <span style={{ opacity: 0.2 }}>&hearts;</span>{" "}
@@ -28,5 +28,5 @@ export default () => (
         reuseSvg
       />
     </AppLinks>
-  </div>
+  </>
 );

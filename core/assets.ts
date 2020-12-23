@@ -12,13 +12,13 @@ const modulePath = (directory: string, filename: string) =>
     .find((candidate) => fs.existsSync(candidate));
 
 export const includePath = cache<string, string | undefined>((filename) => {
-  return modulePath("_includes", filename);
+  return modulePath("includes", filename);
 });
 export const requireInclude = (filename: string) =>
   require(includePath(filename)!).default;
 
 export const layoutPath = cache<string, string | undefined>((filename) => {
-  return modulePath("_layouts", filename);
+  return modulePath("layouts", filename);
 });
 export const requireLayout = (filename: string) =>
   require(layoutPath(filename)!).default;
@@ -26,9 +26,9 @@ export const requireLayout = (filename: string) =>
 export const assetPath = (filename: string) =>
   path.join(__dirname, "../assets", filename);
 export const readAsset = (filename: string): string =>
-  fs.readFileSync(path.join(__dirname, "../assets", filename), "utf8");
+  fs.readFileSync(assetPath(filename), "utf8");
 export const readAssetBuffer = (filename: string): Buffer =>
-  fs.readFileSync(path.join(__dirname, "../assets", filename));
+  fs.readFileSync(assetPath(filename));
 
 export const sitePath = (filename: string) =>
   path.join(__dirname, "../site", filename);
@@ -45,6 +45,11 @@ export const writeSiteAsset = (
       : stringHash(content.toString("hex")).toString(16),
     extension,
   ].join(".");
+
+  if (filename.includes("/")) {
+    const dir = sitePath(path.join(outputFilename, ".."));
+    fs.mkdirSync(dir, { recursive: true });
+  }
 
   fs.writeFileSync(sitePath(outputFilename), content);
 

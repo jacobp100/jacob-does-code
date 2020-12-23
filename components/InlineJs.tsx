@@ -1,5 +1,5 @@
 import { readAsset } from "../core/assets";
-import js from "./js";
+import js from "./util/js";
 
 type Props = {
   src: string;

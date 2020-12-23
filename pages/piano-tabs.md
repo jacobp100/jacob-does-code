@@ -2,7 +2,7 @@
 title: Piano Tabs
 description: Sheet music and piano practise reimagined
 layout: page
-css: app
+inline-css: app
 primary: "var(--piano-tabs)"
 ---
 

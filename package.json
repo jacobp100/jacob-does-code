@@ -1,0 +1,50 @@
+{
+  "name": "jdc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn run build --dev",
+    "build": "babel-node index.tsx --extensions '.ts,.tsx'"
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/preset-typescript": "^7.12.7",
+    "@silvenon/remark-smartypants": "^1.0.0",
+    "@types/classnames": "^2.2.11",
+    "@types/node": "^14.14.14",
+    "@types/react": "^17.0.0",
+    "classnames": "^2.2.6",
+    "csso": "^4.2.0",
+    "deasync": "^0.1.21",
+    "express": "^4.17.1",
+    "frontmatter": "^0.0.3",
+    "glob": "^7.1.6",
+    "image-size": "^0.9.3",
+    "imagemin": "^7.0.1",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-pngquant": "^9.0.1",
+    "imagemin-webp": "^6.0.0",
+    "posthtml": "^0.15.1",
+    "posthtml-minifier": "^0.1.0",
+    "posthtml-static-react": "^1.0.1",
+    "prettier": "^2.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "remark": "^13.0.0",
+    "remark-html": "^13.0.1",
+    "remark-mdx": "^1.6.22",
+    "remark-parse": "^9.0.0",
+    "remark-squeeze-paragraphs": "^4.0.0",
+    "string-hash": "^1.1.3",
+    "typescript": "^4.1.3",
+    "uglify-js": "^3.12.3",
+    "unified": "^9.2.0"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^17.0.0"
+  }
+}

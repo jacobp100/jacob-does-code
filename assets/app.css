@@ -1,0 +1,143 @@
+h1,
+h2,
+p,
+hr {
+  max-width: 800px;
+}
+
+h1 {
+  margin: 12px auto;
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: -1.1px;
+  --font-weight: 700;
+  text-align: center;
+}
+
+h2 {
+  margin: 12px auto;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: -0.2px;
+}
+
+p {
+  margin: 24px auto;
+}
+
+em {
+  font: inherit;
+  --font-weight: 500;
+  color: var(--primary);
+}
+
+hr {
+  margin: 64px auto;
+  height: var(--hairline-width);
+  border: none;
+  background: currentColor;
+  opacity: 0.05;
+}
+
+.lead {
+  margin: 12px auto 64px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.1px;
+  --font-weight: 500;
+  color: var(--primary);
+  text-align: center;
+}
+
+.app__logo {
+  display: block;
+  margin: 0 auto 48px;
+  width: 120px;
+  height: 120px;
+  background: var(--primary, currentColor);
+  border-radius: 30%;
+  fill: white;
+}
+
+.block {
+  margin: 64px 0;
+}
+
+.promo {
+  display: block;
+  margin: 12px auto 72px;
+  max-width: 100%;
+  height: auto;
+}
+
+.preview {
+  display: block;
+  margin: 0 auto 12px;
+  object-fit: cover;
+  object-position: center top;
+  max-width: 400px;
+  max-height: 200px;
+  width: 100%;
+}
+
+.preview--bottom {
+  object-position: center bottom;
+}
+
+.store-links {
+  text-align: center;
+}
+
+.legal-links {
+  text-align: center;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  p {
+    margin: 24px auto;
+  }
+
+  h1 {
+    font-size: 48px;
+    line-height: 54px;
+    letter-spacing: -1.6px;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 44px;
+    letter-spacing: -0.8px;
+  }
+
+  .lead {
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.1px;
+  }
+
+  .block {
+    display: flex;
+    align-items: center;
+  }
+
+  .block--reverse {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+
+  .preview {
+    object-fit: contain;
+    max-height: 400px;
+  }
+
+  .block__content {
+    flex: 1;
+  }
+}

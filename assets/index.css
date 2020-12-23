@@ -1,0 +1,68 @@
+.links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.link {
+  position: relative;
+  background-color: currentColor;
+  overflow: hidden;
+}
+
+.link--pocket-jam {
+  color: var(--pocket-jam);
+}
+
+.link--piano-tabs {
+  color: var(--piano-tabs);
+}
+
+.link--technicalc {
+  color: var(--technicalc);
+}
+
+.link--freebies {
+  color: var(--freebies);
+}
+
+.link--blog {
+  color: var(--blog);
+}
+
+.link__app {
+  display: block;
+  width: 100%;
+  fill: white;
+  transform-origin: center;
+  transition-duration: 300ms;
+}
+
+.link__title {
+  display: block;
+  position: absolute;
+  width: 100%;
+  bottom: 0.5em;
+  text-align: center;
+  --font-weight: 600;
+  color: white;
+}
+
+.link__title--discretionary {
+  visibility: hidden;
+  transform: scale(0);
+  transition-duration: 300ms;
+}
+
+.link .link__app {
+  transform-origin: center;
+  transition-duration: 300ms;
+}
+
+.link:hover .link__app {
+  transform: translateY(-1em);
+}
+
+.link:hover .link__title--discretionary {
+  visibility: visible;
+  transform: scale(1);
+}

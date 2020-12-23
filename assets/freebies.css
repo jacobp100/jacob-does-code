@@ -1,0 +1,43 @@
+h1 {
+  margin: 32px 0 18px;
+  font-size: 36px;
+  line-height: 52px;
+  letter-spacing: -0.8px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+h2 {
+  margin: 18px 0 12px;
+  font-size: 26px;
+  line-height: 34px;
+  letter-spacing: -0.3px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+p {
+  margin: 12px 0;
+}
+
+.legal-links {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.app__logo {
+  width: 60px;
+  height: 60px;
+  background: var(--color);
+  fill: var(--background);
+  border-radius: 30%;
+  opacity: 0.33;
+}
+
+.grid {
+  display: grid;
+  margin: 72px 0;
+  grid-template-columns: repeat(auto-fill, 200px);
+  column-gap: 32px;
+  row-gap: 32px;
+}

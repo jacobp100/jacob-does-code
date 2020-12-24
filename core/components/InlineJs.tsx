@@ -1,5 +1,5 @@
-import { readAsset } from "../core/assets";
-import transformJs from "./util/transformJs";
+import { readAsset } from "../assets";
+import transformJs from "../transformJs";
 
 type Props = {
   src: string;

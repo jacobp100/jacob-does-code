@@ -5,8 +5,6 @@ import parse from "remark-parse";
 // @ts-ignore
 import highlight from "remark-highlight.js";
 // @ts-ignore
-import mdx from "remark-mdx";
-// @ts-ignore
 import squeezeParagraphs from "remark-squeeze-paragraphs";
 // @ts-ignore
 import smartypants from "@silvenon/remark-smartypants";
@@ -15,21 +13,18 @@ import html from "remark-html";
 // @ts-ignore
 import posthtml from "posthtml";
 // @ts-ignore
-// @ts-ignore
 import minifier from "posthtml-minifier";
-import { includePath } from "../core/assets";
+import { requireComponent } from "../assets";
 // @ts-ignore
-import renderStaticReact from "./util/posthtml-static-react";
+import renderStaticReact from "../posthtml-static-react";
 import * as components from ".";
 
 const includes = new Proxy(
   {},
   {
     has: () => true,
-    get: (_, name) => {
-      // @ts-ignore
-      return components[name] ?? require(includePath(name)!).default;
-    },
+    // @ts-ignore
+    get: (_, name) => components[name] ?? requireComponent(name),
   }
 );
 
@@ -43,7 +38,6 @@ export default ({ tagName: TagName = "div", className, content }: Props) => {
   let __html = unified()
     .use(parse)
     .use(highlight)
-    .use(mdx)
     .use(squeezeParagraphs)
     .use(smartypants)
     .use(html)
@@ -60,7 +54,7 @@ export default ({ tagName: TagName = "div", className, content }: Props) => {
 
   const postHtmlResult = posthtml()
     .use(renderStaticReact("", includes))
-    .use(minifier({ collapseWhitespace: true }))
+    .use(minifier({ collapseWhitespace: true, removeComments: true }))
     .process(__html, { sync: true });
   // @ts-ignore
   __html = postHtmlResult.html;

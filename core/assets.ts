@@ -11,28 +11,27 @@ const modulePath = (directory: string, filename: string) =>
     )
     .find((candidate) => fs.existsSync(candidate));
 
-export const includePath = cache<string, string | undefined>((filename) => {
-  return modulePath("includes", filename);
+const componentPath = cache<string, string | undefined>((filename) => {
+  return modulePath("components", filename);
 });
-export const requireInclude = (filename: string) =>
-  require(includePath(filename)!).default;
+export const requireComponent = (filename: string) =>
+  require(componentPath(filename)!).default;
 
-export const layoutPath = cache<string, string | undefined>((filename) => {
+const layoutPath = cache<string, string | undefined>((filename) => {
   return modulePath("layouts", filename);
 });
 export const requireLayout = (filename: string) =>
   require(layoutPath(filename)!).default;
 
-export const assetPath = (filename: string) =>
+const assetPath = (filename: string) =>
   path.join(__dirname, "../assets", filename);
 export const readAsset = (filename: string): string =>
   fs.readFileSync(assetPath(filename), "utf8");
 export const readAssetBuffer = (filename: string): Buffer =>
   fs.readFileSync(assetPath(filename));
 
-export const sitePath = (filename: string) =>
+const sitePath = (filename: string) =>
   path.join(__dirname, "../site", filename);
-
 export const writeSiteAsset = (
   content: Buffer | string,
   { filename = "", extension }: { filename?: string; extension: string }

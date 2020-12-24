@@ -67,6 +67,7 @@ hr {
   display: block;
   margin: 12px auto 72px;
   max-width: 100%;
+  max-width: min(1024px, 100%);
   height: auto;
 }
 

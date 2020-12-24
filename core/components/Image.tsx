@@ -11,9 +11,9 @@ import imageminPngquant from "imagemin-pngquant";
 // @ts-ignore
 import imageminWebp from "imagemin-webp";
 import imageSize from "image-size";
-import { readAssetBuffer, writeSiteAsset } from "../core/assets";
-import cache from "../core/cache";
-import dev from "../core/dev";
+import { readAssetBuffer, writeSiteAsset } from "../assets";
+import cache from "../cache";
+import dev from "../dev";
 
 const runImageMin = (input: Buffer, options: any): Buffer => {
   let output: Buffer | null;

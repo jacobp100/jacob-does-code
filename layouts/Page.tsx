@@ -1,6 +1,6 @@
 import classnames from "classnames";
-import { ExternalCss, InlineCss, InlineJs } from "../components";
-import TechnicalcComputation from "../includes/TechnicalcComputation";
+import { ExternalCss, InlineCss, InlineJs } from "../core/components";
+import TechnicalcComputation from "../components/TechnicalcComputation";
 
 const Header = ({ children }: { children: any }) => (
   <div className="header">{children}</div>
@@ -49,20 +49,25 @@ type Props = {
 export default ({
   title,
   description,
-  "inline-css": inlineCss,
+  "inline-css": inlineCss = "",
   "external-css": externalCss,
   banner,
   primary,
   children,
 }: Props) => (
-  <html style={{ "--primary": primary } as any}>
+  <html style={{ "--primary": primary } as any} lang="en">
     <head>
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width,initial-scale=1" />
       {description && <meta name="description" content={description} />}
       <InlineJs src="set-hairline-width.js" />
-      <InlineCss src={inlineCss ? `base.css,${inlineCss}.css` : "base.css"} />
+      <InlineCss
+        src={["base", ...inlineCss?.split(",")]
+          .filter((file) => file.length > 0)
+          .map((file) => `${file}.css`)
+          .join(",")}
+      />
       {externalCss && <ExternalCss src={`${externalCss}.css`} />}
     </head>
     <body>

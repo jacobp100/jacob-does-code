@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { Image } from "../components";
+import { Image } from "../core/components";
 
 export default ({ src, alt, reverse, children }: any) => (
   <div className={classnames("block", reverse != null && "block--reverse")}>

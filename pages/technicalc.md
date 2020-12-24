@@ -2,7 +2,7 @@
 title: TechniCalc
 description: A smart calculator for a smart phone
 layout: page
-inline-css: app
+inline-css: app,technicalc/computation-critical
 primary: "var(--technicalc)"
 banner: "TechnicalcComputation"
 ---

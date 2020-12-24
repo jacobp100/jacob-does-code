@@ -1,8 +1,8 @@
 import * as path from "path";
 // @ts-ignore
 import csso from "csso";
-import { readAssetBuffer, writeSiteAsset } from "../../core/assets";
-import dev from "../../core/dev";
+import { readAssetBuffer, writeSiteAsset } from "./assets";
+import dev from "./dev";
 
 export default (input: string) => {
   let css = input;

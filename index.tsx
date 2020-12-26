@@ -8,7 +8,7 @@ fs.rmdirSync(sitePath, { recursive: true });
 fs.mkdirSync(sitePath);
 
 [...pages, ...posts].forEach((file) => {
-  console.log(`Compiling ${file.title ?? file.name}`);
+  console.log(`Compiling ${file.title ?? file.url}`);
   const contents = fs.readFileSync(file.filename, "utf8");
-  renderPage(contents, file.name);
+  renderPage(contents, file.url);
 });

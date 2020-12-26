@@ -15,7 +15,7 @@ const title = (filename: string): string | undefined => {
 };
 
 type File = {
-  name: string;
+  url: string;
   title: string | undefined;
   filename: string;
   date: number | undefined;
@@ -25,7 +25,7 @@ export const pages: File[] = (glob.sync(
   path.join(__dirname, "../pages/*.md")
 ) as string[]).map(
   (filename): File => ({
-    name: name(filename),
+    url: name(filename),
     title: title(filename),
     filename,
     date: undefined,
@@ -37,7 +37,7 @@ export const posts: File[] = (glob.sync(
 ) as string[])
   .map(
     (filename): File => ({
-      name: name(filename).replace(
+      url: name(filename).replace(
         /^(\d{4})-(\d{2})-(\d{2})-(.*)$/,
         "$1/$2/$3/$4"
       ),

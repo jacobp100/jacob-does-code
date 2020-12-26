@@ -1,5 +1,5 @@
 import * as path from "path";
-import postcss from "postcss";
+import postcss, { root } from "postcss";
 // @ts-ignore
 import transformClasses from "postcss-transform-classes";
 // @ts-ignore
@@ -8,12 +8,18 @@ import { readAssetBuffer, writeSiteAsset } from "./assets";
 import { variable, className } from "./css";
 import dev from "./dev";
 
-const transformUrls = (input: string) =>
-  input.replace(/url\(['"]?\/assets\/([^'")]+)['"]?\)/g, (_, url) => {
-    const asset = readAssetBuffer(url);
-    const source = writeSiteAsset(asset, { extension: path.extname(url) });
-    return `url(${source})`;
+const transformUrls = () => (root: any) => {
+  root.walkDecls((decl: any) => {
+    decl.value = (decl.value as string).replace(
+      /url\(['"]?\/assets\/([^'")]+)['"]?\)/g,
+      (_, url) => {
+        const asset = readAssetBuffer(url);
+        const source = writeSiteAsset(asset, { extension: path.extname(url) });
+        return `url(${source})`;
+      }
+    );
   });
+};
 
 const transformVariables = ({ transform }: any) => (root: any) => {
   root.walkDecls((decl: any) => {
@@ -33,17 +39,12 @@ const transformVariables = ({ transform }: any) => (root: any) => {
   });
 };
 
-const transformClassNamesVairables = (input: string) =>
-  postcss([
+export default (input: string) => {
+  let css = postcss([
+    transformUrls(),
     transformClasses({ transform: className }),
     transformVariables({ transform: variable }),
   ]).process(input).css;
-
-export default (input: string) => {
-  let css = input;
-
-  css = transformUrls(css);
-  css = transformClassNamesVairables(css);
 
   if (dev) {
     return css;

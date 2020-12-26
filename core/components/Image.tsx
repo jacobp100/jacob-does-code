@@ -15,34 +15,37 @@ import syncPromise from "../syncPromise";
 import dev from "../dev";
 import { className } from "../css";
 
-const basePlugins = [
-  imageminJpegtran(),
-  imageminPngquant({
-    quality: [0.6, 0.8],
-  }),
-];
-
-const webpPlugins = [imageminWebp({ quality: 50 })];
-
 type ImageResult = {
-  source: Buffer;
-  webp: Buffer | null;
+  source: string;
+  webp: string | null;
   width: number | undefined;
   height: number | undefined;
 };
 
-const compressImages = cache<string, ImageResult>((src) => {
+const process = cache<string, ImageResult>((src) => {
   const buffer = readAssetBuffer(src);
   const { width, height } = imageSize(buffer);
 
   if (dev) {
-    return { source: buffer, webp: null, width, height };
+    const source = writeSiteAsset(buffer, {
+      extension: path.extname(src),
+    });
+    return { source, webp: null, width, height };
   }
 
   const result = syncPromise(
     Promise.all([
-      imagemin.buffer(buffer, { plugins: basePlugins }),
-      imagemin.buffer(buffer, { plugins: webpPlugins }),
+      imagemin.buffer(buffer, {
+        plugins: [
+          imageminJpegtran(),
+          imageminPngquant({
+            quality: [0.6, 0.8],
+          }),
+        ],
+      }),
+      imagemin.buffer(buffer, {
+        plugins: [imageminWebp({ quality: 50 })],
+      }),
     ])
   );
 
@@ -50,11 +53,19 @@ const compressImages = cache<string, ImageResult>((src) => {
     throw result.error ?? new Error("Unknown error");
   }
 
-  let [source, webp] = result.value;
+  let [sourceBuffer, webpBuffer] = result.value;
 
   // Check we actually making savings
-  source = source.length < buffer.length ? source : buffer;
-  webp = webp.length < source.length ? webp : null;
+  sourceBuffer = sourceBuffer.length < buffer.length ? sourceBuffer : buffer;
+  webpBuffer = webpBuffer.length < sourceBuffer.length ? webpBuffer : null;
+
+  const source = writeSiteAsset(sourceBuffer, {
+    extension: path.extname(src),
+  });
+  const webp =
+    webpBuffer != null
+      ? writeSiteAsset(webpBuffer, { extension: ".webp" })
+      : null;
 
   return { source, webp, width, height };
 });
@@ -64,15 +75,7 @@ type Props = ImgHTMLAttributes<any> & {
 };
 
 export default ({ src, children: _, ...props }: Props) => {
-  const images = compressImages(src);
-
-  const source = writeSiteAsset(images.source, {
-    extension: path.extname(src),
-  });
-  const webp =
-    images.webp != null
-      ? writeSiteAsset(images.webp, { extension: ".webp" })
-      : null;
+  const { source, webp, width, height } = process(src);
 
   const imgBase = (
     <img
@@ -81,8 +84,8 @@ export default ({ src, children: _, ...props }: Props) => {
       className={
         props.className != null ? className(props.className) : undefined
       }
-      width={props.width === "compute" ? images.width : props.width}
-      height={props.height === "compute" ? images.height : props.height}
+      width={props.width === "compute" ? width : props.width}
+      height={props.height === "compute" ? height : props.height}
     />
   );
 

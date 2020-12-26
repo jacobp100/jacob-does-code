@@ -9,7 +9,7 @@ export default ({ src, alt, reverse, children }: any) => (
       reverse != null && className("block--reverse")
     )}
   >
-    <Image src={src} className={className("preview")} alt={alt} />
+    <Image src={src} className="preview" alt={alt} />
     <div className={className("block__content")}>{children}</div>
   </div>
 );

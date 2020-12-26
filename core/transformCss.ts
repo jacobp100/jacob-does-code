@@ -1,5 +1,5 @@
 import * as path from "path";
-import postcss, { root } from "postcss";
+import postcss, { Root } from "postcss";
 // @ts-ignore
 import transformClasses from "postcss-transform-classes";
 // @ts-ignore
@@ -8,9 +8,9 @@ import { readAssetBuffer, writeSiteAsset } from "./assets";
 import { variable, className } from "./css";
 import dev from "./dev";
 
-const transformUrls = () => (root: any) => {
-  root.walkDecls((decl: any) => {
-    decl.value = (decl.value as string).replace(
+const transformUrls = () => (root: Root) => {
+  root.walkDecls((decl) => {
+    decl.value = decl.value.replace(
       /url\(['"]?\/assets\/([^'")]+)['"]?\)/g,
       (_, url) => {
         const asset = readAssetBuffer(url);
@@ -21,13 +21,13 @@ const transformUrls = () => (root: any) => {
   });
 };
 
-const transformVariables = ({ transform }: any) => (root: any) => {
-  root.walkDecls((decl: any) => {
+const transformVariables = ({ transform }: any) => (root: Root) => {
+  root.walkDecls((decl) => {
     if (decl.prop.startsWith("--")) {
       decl.prop = transform(decl.prop);
     }
 
-    decl.value = (decl.value as string).replace(
+    decl.value = decl.value.replace(
       /var\s*\(\s*(--[_a-z0-9-]+)\s*(?:,\s*([^)]+))?\)/gi,
       (_, name, fallback) => {
         const transformed = transform(name);

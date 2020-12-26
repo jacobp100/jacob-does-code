@@ -1,9 +1,9 @@
-import { readAsset } from "../core/assets";
+import { className } from "../core/css";
 
 type Props = {
   children: any;
 };
 
 export default ({ children }: Props) => {
-  return <p className="store-links">{children}</p>;
+  return <p className={className("store-links")}>{children}</p>;
 };

@@ -1,9 +1,10 @@
 import classnames from "classnames";
 import { ExternalCss, InlineCss, InlineJs } from "../core/components";
 import TechnicalcComputation from "../components/TechnicalcComputation";
+import { className, variable } from "../core/css";
 
 const Header = ({ children }: { children: any }) => (
-  <div className="header">{children}</div>
+  <div className={className("header")}>{children}</div>
 );
 
 const HeaderSection = ({
@@ -14,14 +15,17 @@ const HeaderSection = ({
   children: string;
 }) => (
   <div
-    className={classnames("header__section", last && "header__section--last")}
+    className={classnames(
+      className("header__section"),
+      last && className("header__section--last")
+    )}
   >
     {children}
   </div>
 );
 
 const HeaderLogo = () => (
-  <a href="/" className="header__logo">
+  <a href="/" className={className("header__logo")}>
     Jacob
     <br />
     does
@@ -31,7 +35,7 @@ const HeaderLogo = () => (
 );
 
 const HeaderLink = ({ href, children }: { href: string; children: string }) => (
-  <a href={href} className="header__link">
+  <a href={href} className={className("header__link")}>
     {children}
   </a>
 );
@@ -55,7 +59,16 @@ export default ({
   primary,
   children,
 }: Props) => (
-  <html style={{ "--primary": primary } as any} lang="en">
+  <html
+    style={
+      {
+        [variable("--primary")]: primary?.startsWith("var(")
+          ? primary.replace(/--[a-z-]+/, variable)
+          : primary,
+      } as any
+    }
+    lang="en"
+  >
     <head>
       <title>{title}</title>
       <meta charSet="utf-8" />

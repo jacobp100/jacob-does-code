@@ -15,6 +15,7 @@ import posthtml from "posthtml";
 // @ts-ignore
 import minifier from "posthtml-minifier";
 import { requireComponent } from "../assets";
+import transformHtml from "../transformHtml";
 // @ts-ignore
 import renderStaticReact from "../posthtml-static-react";
 import * as components from ".";
@@ -51,6 +52,8 @@ export default ({ tagName: TagName = "div", className, content }: Props) => {
     .replace(/<p>(<[A-Z][\S\s]*?)<\/p>/gm, "$1")
     // Fix empty paragraphs
     .replace(/<p><\/p>/g, "");
+
+  __html = transformHtml(__html, { minify: false });
 
   const postHtmlResult = posthtml()
     .use(renderStaticReact("", includes))

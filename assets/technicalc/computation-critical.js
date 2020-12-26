@@ -20,10 +20,12 @@ if (location.search.length > 1) {
 
   document.addEventListener("click", (e) => {
     const { target } = e;
-    if (target.classList.contains("computation__close")) {
+    if (target.classList.contains(CSS_CLASSES["computation__close"])) {
       container.setAttribute("hidden", "");
-    } else if (target.classList.contains("computation__toggle-display-mode")) {
-      container.classList.toggle("computation--form-hidden");
+    } else if (
+      target.classList.contains(CSS_CLASSES["computation__toggle-display-mode"])
+    ) {
+      container.classList.toggle(CSS_CLASSES["computation--form-hidden"]);
     }
   });
 

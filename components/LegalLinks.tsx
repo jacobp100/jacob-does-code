@@ -1,5 +1,7 @@
+import { className } from "../core/css";
+
 export default () => (
-  <p className="legal-links">
+  <p className={className("legal-links")}>
     <a href="/privacy">Privacy Policy</a>
   </p>
 );

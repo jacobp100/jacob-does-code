@@ -1,21 +1,30 @@
+import { className, variable } from "../core/css";
 import AppLinks from "./AppLinks";
 import AppStoreLink from "./AppStoreLink";
 
 export default () => (
   <>
     <h1>
-      <span style={{ color: "var(--piano-tabs)" }}>Better</span>{" "}
+      <span style={{ color: `var(${variable("--piano-tabs")})` }}>Better</span>{" "}
       <span style={{ opacity: 0.2 }}>&hearts;</span>{" "}
-      <span style={{ color: "var(--pocket-jam)" }}>Together</span>
+      <span style={{ color: `var(${variable("--pocket-jam")})` }}>
+        Together
+      </span>
     </h1>
 
-    <p className="lead" style={{ color: "inherit" }}>
+    <p className={className("lead")} style={{ color: "inherit" }}>
       Get{" "}
-      <a href="/pocket-jam" style={{ color: "var(--pocket-jam)" }}>
+      <a
+        href="/pocket-jam"
+        style={{ color: `var(${variable("--pocket-jam")})` }}
+      >
         Pocket Jam
       </a>{" "}
       and{" "}
-      <a href="/piano-tabs" style={{ color: "var(--piano-tabs)" }}>
+      <a
+        href="/piano-tabs"
+        style={{ color: `var(${variable("--piano-tabs")})` }}
+      >
         Piano Tabs
       </a>{" "}
       together and save 30%

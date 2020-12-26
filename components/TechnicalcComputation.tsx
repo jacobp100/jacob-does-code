@@ -1,10 +1,15 @@
+import classnames from "classnames";
 import { InlineJs } from "../core/components";
+import { className } from "../core/css";
 
 export default () => (
   <>
     <div
       id="computation"
-      className="computation computation--form-hidden"
+      className={classnames(
+        className("computation"),
+        className("computation--form-hidden")
+      )}
       hidden
     />
     <InlineJs src="technicalc/computation-critical.js" />

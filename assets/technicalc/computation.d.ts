@@ -1,3 +1,6 @@
+declare const CSS_VARS: Record<string, string>;
+declare const CSS_CLASSES: Record<string, string>;
+
 type Result<Value, Error> =
   | { type: "ok"; value: Value }
   | { type: "error"; error: Error };

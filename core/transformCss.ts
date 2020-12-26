@@ -9,7 +9,7 @@ import { variable, className } from "./css";
 import dev from "./dev";
 
 const transformUrls = (input: string) =>
-  input.replace(/url\(['"]?\/([^'")]+)['"]?\)/g, (_, url) => {
+  input.replace(/url\(['"]?\/assets\/([^'")]+)['"]?\)/g, (_, url) => {
     const asset = readAssetBuffer(url);
     const source = writeSiteAsset(asset, { extension: path.extname(url) });
     return `url(${source})`;

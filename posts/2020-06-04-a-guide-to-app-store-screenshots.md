@@ -5,12 +5,12 @@ inline-css: blog
 ---
 
 <style>
-iframe {
-width: calc(var(--inner-width) * 1);
-height: calc(var(--inner-width) * 0.66);
-border: 1px solid rgba(0, 0, 0, 0.1);
---inner-width: calc(100vw - 2 * var(--gutters));
-}
+  iframe {
+    width: calc(var(--inner-width) * 1);
+    height: calc(var(--inner-width) * 0.66);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    --inner-width: calc(100vw - 2 * var(--gutters));
+  }
 </style>
 
 # A Guide to App Store Screenshots

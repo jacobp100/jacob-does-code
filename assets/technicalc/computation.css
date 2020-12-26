@@ -12,19 +12,28 @@
   color: inherit;
   font: inherit;
   background: none;
-  font-size: 14px;
-  line-height: 16px;
+  /* font-size: 14px;
+  line-height: 16px; */
   --font-weight: 400;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  /* letter-spacing: 1px;
+  text-transform: uppercase; */
   opacity: 0.5;
 }
 
 .computation__header {
   margin: 0 0 16px;
+  /* font-size: 14px;
+  line-height: 16px; */
+  --font-weight: 800;
+  /* letter-spacing: 1px;
+  text-transform: uppercase; */
+}
+
+/* https://github.com/css/csso/issues/429 */
+.computation__close,
+.computation__header {
   font-size: 14px;
   line-height: 16px;
-  --font-weight: 800;
   letter-spacing: 1px;
   text-transform: uppercase;
 }

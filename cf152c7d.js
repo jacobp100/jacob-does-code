@@ -16,7 +16,7 @@ const resultOfOption = (value) =>
 /** @param {{container: HTMLElement, worker: Worker}} params */
 export default ({ container, worker }) => {
   /** @type {HTMLFormElement} */
-  const form = container.querySelector(".computation__form");
+  const form = container.querySelector("." + "O");
 
   /**
    * @template T
@@ -29,7 +29,7 @@ export default ({ container, worker }) => {
       return;
     }
 
-    element.classList.remove("computation--loading");
+    element.classList.remove("J");
 
     if (result.type === "error") {
       element.innerHTML = "Error";
@@ -51,18 +51,18 @@ export default ({ container, worker }) => {
   };
 
   const setInput = setComputationRow(
-    container.querySelector(".computation__input"),
+    container.querySelector("." + "I"),
     Elements.toMml
   );
 
   const setResult = setComputationRow(
-    container.querySelector(".computation__result"),
+    container.querySelector("." + "K"),
     Value.toMml
   );
 
   const search = window.location.search.slice("?".length);
   container
-    .querySelector(".computation__open-in-app")
+    .querySelector("." + "X")
     .setAttribute("href", `technicalc://editor?${search}`);
 
   const input = resultOfOption(

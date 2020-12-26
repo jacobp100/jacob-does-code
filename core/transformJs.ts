@@ -18,8 +18,9 @@ const transformCssClassNames = (input: string) =>
   });
 
 const transformJsImports = (content: string): string => {
-  return content.replace(/\/assets\/([^'"]+)/g, (_, asset) => {
+  const transformAsset = (asset: string) => {
     const extension = path.extname(asset);
+
     switch (extension) {
       case ".js": {
         const js = transformJsNoMinify(readAsset(asset));
@@ -37,7 +38,25 @@ const transformJsImports = (content: string): string => {
       default:
         return writeSiteAsset(readAsset(asset), { extension });
     }
-  });
+  };
+
+  // FIXME: This needs a real babel plugin
+  return content
+    .replace(
+      /require\.resolve\(\s*['"]\/assets\/([^'"]+)['"]\s*\)/g,
+      (_, asset) => JSON.stringify(transformAsset(asset))
+    )
+    .replace(
+      /import\(\s*['"]\/assets\/([^'"]+)['"]\s*\)/g,
+      (_, asset) => `import(${JSON.stringify(transformAsset(asset))})`
+    )
+    .replace(
+      /import([^'"]*)['"]\/assets\/([^'"]+)['"]/g,
+      (_, maybeSpecifiersAndFrom, asset) =>
+        `import ${maybeSpecifiersAndFrom} ${JSON.stringify(
+          transformAsset(asset)
+        )}`
+    );
 };
 
 const transformJsNoMinify = (input: string) => {

@@ -2,21 +2,24 @@ if (location.search.length > 1) {
   const container = document.getElementById("computation");
   container.removeAttribute("hidden");
 
-  const loadHtml = fetch("/assets/technicalc/computation.html").then((res) =>
-    res.text()
-  );
+  const loadHtml = fetch(
+    require.resolve("/assets/technicalc/computation.html")
+  ).then((res) => res.text());
 
   const loadStyles = new Promise((res) => {
     const styles = document.createElement("link");
     styles.setAttribute("rel", "stylesheet");
-    styles.setAttribute("href", "/assets/technicalc/computation.css");
+    styles.setAttribute(
+      "href",
+      require.resolve("/assets/technicalc/computation.css")
+    );
     styles.addEventListener("load", () => res());
     document.head.append(styles);
   });
 
   const loadFullJs = import("/assets/technicalc/computation.js");
 
-  const worker = new Worker("/assets/technicalc/worker.js");
+  const worker = new Worker(require.resolve("/assets/technicalc/worker.js"));
 
   document.addEventListener("click", (e) => {
     const { target } = e;

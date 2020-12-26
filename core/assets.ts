@@ -4,12 +4,19 @@ import * as path from "path";
 import stringHash from "string-hash";
 import cache from "./cache";
 
-const modulePath = (directory: string, filename: string) =>
-  [".js", ".jsx", ".ts", ".tsx"]
+const modulePath = (directory: string, filename: string) => {
+  const output = [".js", ".jsx", ".ts", ".tsx"]
     .map((extension) =>
       path.join(__dirname, "..", directory, `${filename}${extension}`)
     )
     .find((candidate) => fs.existsSync(candidate));
+
+  if (output == null) {
+    throw new Error(`Failed to find file ${filename} in ${directory}`);
+  }
+
+  return output;
+};
 
 const componentPath = cache<string, string | undefined>((filename) => {
   return modulePath("components", filename);

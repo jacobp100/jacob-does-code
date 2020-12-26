@@ -14,11 +14,10 @@ import transformHtml from "../transformHtml";
 
 type Props = {
   tagName?: string;
-  className?: string;
   content: string;
 };
 
-export default ({ tagName: TagName = "div", className, content }: Props) => {
+export default ({ tagName: TagName = "div", content }: Props) => {
   let __html = unified()
     .use(parse)
     .use(highlight)
@@ -39,5 +38,5 @@ export default ({ tagName: TagName = "div", className, content }: Props) => {
   __html = transformHtml(__html);
 
   // @ts-ignore
-  return <TagName className={className} dangerouslySetInnerHTML={{ __html }} />;
+  return <TagName dangerouslySetInnerHTML={{ __html }} />;
 };

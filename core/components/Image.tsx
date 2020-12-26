@@ -1,8 +1,6 @@
 import type { ImgHTMLAttributes } from "react";
 import * as path from "path";
 // @ts-ignore
-import deasync from "deasync";
-// @ts-ignore
 import imagemin from "imagemin";
 // @ts-ignore
 import imageminJpegtran from "imagemin-jpegtran";
@@ -13,19 +11,9 @@ import imageminWebp from "imagemin-webp";
 import imageSize from "image-size";
 import { readAssetBuffer, writeSiteAsset } from "../assets";
 import cache from "../cache";
+import syncPromise from "../syncPromise";
 import dev from "../dev";
-
-const runImageMin = (input: Buffer, options: any): Buffer => {
-  let output: Buffer | null;
-
-  imagemin.buffer(input, options).then((res: any) => {
-    output = res;
-  });
-
-  deasync.loopWhile(() => output == null);
-
-  return output!;
-};
+import { className } from "../css";
 
 const basePlugins = [
   imageminJpegtran(),
@@ -51,8 +39,18 @@ const compressImages = cache<string, ImageResult>((src) => {
     return { source: buffer, webp: null, width, height };
   }
 
-  let source = runImageMin(buffer, { plugins: basePlugins });
-  let webp: Buffer | null = runImageMin(buffer, { plugins: webpPlugins });
+  const result = syncPromise(
+    Promise.all([
+      imagemin.buffer(buffer, { plugins: basePlugins }),
+      imagemin.buffer(buffer, { plugins: webpPlugins }),
+    ])
+  );
+
+  if (result.type !== "ok") {
+    throw result.error ?? new Error("Unknown error");
+  }
+
+  let [source, webp] = result.value;
 
   // Check we actually making savings
   source = source.length < buffer.length ? source : buffer;
@@ -80,6 +78,9 @@ export default ({ src, children: _, ...props }: Props) => {
     <img
       src={source}
       {...props}
+      className={
+        props.className != null ? className(props.className) : undefined
+      }
       width={props.width === "compute" ? images.width : props.width}
       height={props.height === "compute" ? images.height : props.height}
     />

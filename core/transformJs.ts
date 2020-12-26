@@ -1,12 +1,11 @@
 import * as path from "path";
-// @ts-ignore
-import deasync from "deasync";
 import { minify } from "terser";
 import { readAsset, writeSiteAsset } from "./assets";
 import transformCss from "./transformCss";
 import transformHtml from "./transformHtml";
 import { variable, className } from "./css";
 import dev from "./dev";
+import syncPromise from "./syncPromise";
 
 const transformCssVairables = (input: string) =>
   input.replace(/CSS_VARS\[['"]([^'"]*)['"]\]/g, (_, name) => {
@@ -73,28 +72,19 @@ const transformJs = (input: string) => {
     return js;
   }
 
-  let result: string | undefined = undefined!;
-  let error: Error | undefined = undefined!;
+  const result = syncPromise(minify(js));
 
-  minify(js)
-    .then((res) => {
-      if (res.code != null) {
-        result = res.code;
-      } else {
-        error = new Error("Unknown error");
-      }
-    })
-    .catch((e) => {
-      result = e ?? new Error("Unknown error");
-    });
-
-  deasync.loopWhile(() => result == null && error == null);
-
-  if (error) {
-    throw error;
+  if (result.type !== "ok") {
+    throw result.error ?? new Error("Unknown error");
   }
 
-  js = result!;
+  const code = result.value.code;
+
+  if (code == null) {
+    throw new Error("Unknown error");
+  }
+
+  js = code;
 
   return js;
 };

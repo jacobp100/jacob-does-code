@@ -1,16 +1,4 @@
 @font-face {
-  src: url(/assets/fonts/CrimsonPro-Roman-VF.woff2);
-  font-family: Crimson Pro;
-  font-style: normal;
-}
-
-@font-face {
-  src: url(/assets/fonts/CrimsonPro-Italic-VF.woff2);
-  font-family: Crimson Pro;
-  font-style: italic;
-}
-
-@font-face {
   font-family: Inter;
   font-weight: 100 900;
   font-display: swap;

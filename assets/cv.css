@@ -1,3 +1,15 @@
+@font-face {
+  src: url(/assets/fonts/CrimsonPro-Roman-VF.woff2);
+  font-family: Crimson Pro;
+  font-style: normal;
+}
+
+@font-face {
+  src: url(/assets/fonts/CrimsonPro-Italic-VF.woff2);
+  font-family: Crimson Pro;
+  font-style: italic;
+}
+
 :root {
   --inset: 180px;
   -webkit-text-size-adjust: 100%;

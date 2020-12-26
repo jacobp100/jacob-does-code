@@ -1,4 +1,4 @@
 /* global Worker */
-importScripts(require.resolve("/assets/technicalc/dist/worker.js"));
+importScripts(require.resolve("/assets/technicalc/dist/worker.min.js"));
 
 Worker.make(self);

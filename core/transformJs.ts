@@ -1,6 +1,7 @@
 import * as path from "path";
 // @ts-ignore
-import { minify } from "uglify-js";
+import deasync from "deasync";
+import { minify } from "terser";
 import { readAsset, writeSiteAsset } from "./assets";
 import transformCss from "./transformCss";
 import transformHtml from "./transformHtml";
@@ -23,8 +24,11 @@ const transformJsImports = (content: string): string => {
 
     switch (extension) {
       case ".js": {
-        const js = transformJsNoMinify(readAsset(asset));
-        // HACK: Don't compress since import statements fail in uglify
+        const js = transformJs(readAsset(asset));
+        return writeSiteAsset(js, { extension: ".js" });
+      }
+      case ".min.js": {
+        const js = readAsset(asset);
         return writeSiteAsset(js, { extension: ".js" });
       }
       case ".css": {
@@ -59,27 +63,42 @@ const transformJsImports = (content: string): string => {
     );
 };
 
-const transformJsNoMinify = (input: string) => {
+const transformJs = (input: string) => {
   let js = input;
   js = transformCssVairables(js);
   js = transformCssClassNames(js);
   js = transformJsImports(js);
+
+  if (dev) {
+    return js;
+  }
+
+  let result: string | undefined = undefined!;
+  let error: Error | undefined = undefined!;
+
+  if (!dev) {
+    minify(js)
+      .then((res) => {
+        if (res.code != null) {
+          result = res.code;
+        } else {
+          error = new Error("Unknown error");
+        }
+      })
+      .catch((e) => {
+        result = e ?? new Error("Unknown error");
+      });
+
+    deasync.loopWhile(() => result == null && error == null);
+
+    if (error) {
+      throw error;
+    }
+
+    js = result!;
+  }
+
   return js;
 };
 
-export default (input: string): string => {
-  let output = transformJsNoMinify(input);
-
-  if (dev) {
-    return output;
-  }
-
-  const result = minify(output);
-  output = result.code;
-
-  if (result.error) {
-    throw new Error(result.error);
-  }
-
-  return output;
-};
+export default transformJs;

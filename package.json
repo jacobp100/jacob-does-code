@@ -47,8 +47,8 @@
     "remark-rehype": "^8.0.0",
     "remark-squeeze-paragraphs": "^4.0.0",
     "string-hash": "^1.1.3",
+    "terser": "^5.5.1",
     "typescript": "^4.1.3",
-    "uglify-js": "^3.12.3",
     "unified": "^9.2.0"
   },
   "devDependencies": {

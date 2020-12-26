@@ -1,20 +1,20 @@
 // @ts-check
 /// <reference path="./computation.d.ts" />
 import "https://unpkg.com/mathjax@3.1.0/es5/mml-svg.js";
-import "/assets/technicalc/dist/client.js";
-
-const { Elements, Value, Work } = Client;
-
-/**
- * @template T
- * @param {T} value
- * @returns {Result<T, null>}
- * */
-const resultOfOption = (value) =>
-  value != null ? { type: "ok", value } : { type: "error", error: null };
+import "/assets/technicalc/dist/client.min.js";
 
 /** @param {{container: HTMLElement, worker: Worker}} params */
 export default ({ container, worker }) => {
+  const { Elements, Value, Work } = Client;
+
+  /**
+   * @template T
+   * @param {T} value
+   * @returns {Result<T, null>}
+   * */
+  const resultOfOption = (value) =>
+    value != null ? { type: "ok", value } : { type: "error", error: null };
+
   /** @type {HTMLFormElement} */
   const form = container.querySelector("." + CSS_CLASSES["computation__form"]);
 

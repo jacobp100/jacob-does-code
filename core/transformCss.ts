@@ -17,7 +17,7 @@ export default (input: string) => {
     return css;
   }
 
-  css = csso.minify(css, { forceMediaMerge: true }).css;
+  css = csso.minify(css).css;
 
   return css;
 };

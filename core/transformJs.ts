@@ -76,27 +76,25 @@ const transformJs = (input: string) => {
   let result: string | undefined = undefined!;
   let error: Error | undefined = undefined!;
 
-  if (!dev) {
-    minify(js)
-      .then((res) => {
-        if (res.code != null) {
-          result = res.code;
-        } else {
-          error = new Error("Unknown error");
-        }
-      })
-      .catch((e) => {
-        result = e ?? new Error("Unknown error");
-      });
+  minify(js)
+    .then((res) => {
+      if (res.code != null) {
+        result = res.code;
+      } else {
+        error = new Error("Unknown error");
+      }
+    })
+    .catch((e) => {
+      result = e ?? new Error("Unknown error");
+    });
 
-    deasync.loopWhile(() => result == null && error == null);
+  deasync.loopWhile(() => result == null && error == null);
 
-    if (error) {
-      throw error;
-    }
-
-    js = result!;
+  if (error) {
+    throw error;
   }
+
+  js = result!;
 
   return js;
 };

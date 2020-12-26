@@ -3,27 +3,30 @@ const server = require("react-dom/server");
 
 const matchHelper = require("posthtml-match-helper");
 
+const { isReactComponent } = require("./htmlUtil");
+
 const attrToProp = {
   class: "className",
   for: "htmlFor",
 };
 
-const isReactComponent = (tag, components) =>
-  /^[A-Z]/.test(tag) && tag in components;
-
 function toReact(node, components) {
   const tag = node.tag;
   const attrs = node.attrs;
-  const element = isReactComponent(tag, components) ? components[tag] : tag;
-  const props = {
-    key: Math.random().toString(32).slice(2),
-  };
+  const element = isReactComponent(tag) ? components[tag] : tag;
 
-  if (attrs) {
-    Object.keys(attrs).map(function (attr) {
+  let props = Object.assign(
+    { key: Math.random().toString(32).slice(2) },
+    attrs
+  );
+
+  if (typeof element === "string") {
+    const nextProps = {};
+    Object.entries(props).forEach(([attr, value]) => {
       const prop = attr in attrToProp ? attrToProp[attr] : attr;
-      props[prop] = attrs[attr];
+      nextProps[prop] = value;
     });
+    props = nextProps;
   }
 
   let children = null;
@@ -38,7 +41,7 @@ function toReact(node, components) {
 
 module.exports = function (matcher, components) {
   return function posthtmlStaticReact(tree) {
-    tree.match(matchHelper(matcher), function (node) {
+    tree.match(matchHelper(matcher), (node) => {
       if (isReactComponent(node.tag, components)) {
         return server.renderToStaticMarkup(toReact(node, components));
       } else {

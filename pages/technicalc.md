@@ -13,7 +13,7 @@ banner: "TechnicalcComputation"
 
 <Lead>A smart calculator for a smart phone</Lead>
 
-<Image src="/technicalc/promo.png" class="promo" alt="App Screenshots" width="compute" height="compute" />
+<Image src="/technicalc/promo.png" className="promo" alt="App Screenshots" width="compute" height="compute" />
 
 ## TechniCalc is every bit functional as it is beautiful.
 

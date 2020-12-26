@@ -4,8 +4,34 @@ import posthtml from "posthtml";
 // @ts-ignore
 import minifier from "posthtml-minifier";
 import { readAssetBuffer, writeSiteAsset } from "./assets";
+// @ts-ignore
+import renderStaticReact from "./posthtml-static-react";
+import * as components from "./components";
+import { requireComponent } from "./assets";
 import { className } from "./css";
-import dev from "./dev";
+import { isReactComponent } from "./htmlUtil";
+
+const includes = new Proxy(
+  {},
+  {
+    has: () => true,
+    // @ts-ignore
+    get: (_, name) => components[name] ?? requireComponent(name),
+  }
+);
+
+const transformClassNames = () => (tree: any) => {
+  tree.walk((node: any) => {
+    const classes = !isReactComponent(node.tag)
+      ? node.attrs?.class?.split(/\s+/).map(className).join(" ")
+      : null;
+    if (classes != null) {
+      node.attrs.class = classes;
+    }
+
+    return node;
+  });
+};
 
 const transformVideoComponents = () => (tree: any) =>
   tree.match([{ tag: "source" }], (node: any) => {
@@ -23,24 +49,13 @@ const transformVideoComponents = () => (tree: any) =>
     return node;
   });
 
-export default (input: string, { minify = true } = {}) => {
-  // FIXME: use posthtml or something
-  let html = input;
-
-  html = html.replace(/class="([^"]*)"/g, (_, classes) => {
-    const transformed = classes.split(/\s+/g).map(className).join(" ");
-    return `class="${transformed}"`;
-  });
-
-  let builder = posthtml().use(transformVideoComponents());
-  if (!dev && minify) {
-    builder = builder.use(
-      minifier({ collapseWhitespace: true, removeComments: true })
-    );
-  }
-  const postHtmlResult = builder.process(html, { sync: true });
+export default (input: string) => {
+  const postHtmlResult = posthtml()
+    .use(transformClassNames())
+    .use(transformVideoComponents())
+    .use(renderStaticReact("", includes))
+    .use(minifier({ collapseWhitespace: true, removeComments: true }))
+    .process(input, { sync: true });
   // @ts-ignore
-  html = postHtmlResult.html;
-
-  return html;
+  return postHtmlResult.html as string;
 };

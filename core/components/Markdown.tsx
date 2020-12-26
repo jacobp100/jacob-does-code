@@ -10,24 +10,7 @@ import squeezeParagraphs from "remark-squeeze-paragraphs";
 import smartypants from "@silvenon/remark-smartypants";
 // @ts-ignore
 import html from "remark-html";
-// @ts-ignore
-import posthtml from "posthtml";
-// @ts-ignore
-import minifier from "posthtml-minifier";
-import { requireComponent } from "../assets";
 import transformHtml from "../transformHtml";
-// @ts-ignore
-import renderStaticReact from "../posthtml-static-react";
-import * as components from ".";
-
-const includes = new Proxy(
-  {},
-  {
-    has: () => true,
-    // @ts-ignore
-    get: (_, name) => components[name] ?? requireComponent(name),
-  }
-);
 
 type Props = {
   tagName?: string;
@@ -53,14 +36,7 @@ export default ({ tagName: TagName = "div", className, content }: Props) => {
     // Fix empty paragraphs
     .replace(/<p><\/p>/g, "");
 
-  __html = transformHtml(__html, { minify: false });
-
-  const postHtmlResult = posthtml()
-    .use(renderStaticReact("", includes))
-    .use(minifier({ collapseWhitespace: true, removeComments: true }))
-    .process(__html, { sync: true });
-  // @ts-ignore
-  __html = postHtmlResult.html;
+  __html = transformHtml(__html);
 
   // @ts-ignore
   return <TagName className={className} dangerouslySetInnerHTML={{ __html }} />;

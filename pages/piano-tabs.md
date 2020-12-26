@@ -12,7 +12,7 @@ primary: "var(--piano-tabs)"
 
 <Lead>Sheet music and piano practise reimagined</Lead>
 
-<Image src="/piano-tabs/promo.png" class="promo" alt="App Screenshots" width="compute" height="compute" />
+<Image src="/piano-tabs/promo.png" className="promo" alt="App Screenshots" width="compute" height="compute" />
 
 ## Open any song.
 

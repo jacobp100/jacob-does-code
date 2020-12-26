@@ -58,45 +58,44 @@ export default ({
   banner,
   primary,
   children,
-}: Props) => (
-  <html
-    style={
-      {
-        [variable("--primary")]: primary?.startsWith("var(")
-          ? primary.replace(/--[a-z-]+/, variable)
-          : primary,
-      } as any
-    }
-    lang="en"
-  >
-    <head>
-      <title>{title}</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width,initial-scale=1" />
-      {description && <meta name="description" content={description} />}
-      <InlineJs src="set-hairline-width.js" />
-      <InlineCss
-        src={["base", ...inlineCss?.split(",")]
-          .filter((file) => file.length > 0)
-          .map((file) => `${file}.css`)
-          .join(",")}
-      />
-      {externalCss && <ExternalCss src={`${externalCss}.css`} />}
-    </head>
-    <body>
-      {banner === "TechnicalcComputation" && <TechnicalcComputation />}
-      <Header>
-        <HeaderLogo />
-        <HeaderSection>Apps</HeaderSection>
-        <HeaderLink href="/pocket-jam">Pocket Jam</HeaderLink>
-        <HeaderLink href="/piano-tabs">Piano Tabs</HeaderLink>
-        <HeaderLink href="/technicalc">TechniCalc</HeaderLink>
-        <HeaderLink href="/freebies">Freebies</HeaderLink>
-        <HeaderSection last>Developement</HeaderSection>
-        <HeaderLink href="/blog">Blog</HeaderLink>
-        <HeaderLink href="https://github.com/jacobp100">Github</HeaderLink>
-      </Header>
-      {children}
-    </body>
-  </html>
-);
+}: Props) => {
+  const style: any = {
+    [variable("--primary")]: primary?.startsWith("var(")
+      ? primary.replace(/--[a-z-]+/, variable)
+      : primary,
+  };
+
+  return (
+    <html style={style} lang="en">
+      <head>
+        <title>{title}</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        {description && <meta name="description" content={description} />}
+        <InlineJs src="set-hairline-width.js" />
+        <InlineCss
+          src={["base", ...inlineCss?.split(",")]
+            .filter((file) => file.length > 0)
+            .map((file) => `${file}.css`)
+            .join(",")}
+        />
+        {externalCss && <ExternalCss src={`${externalCss}.css`} />}
+      </head>
+      <body>
+        {banner === "TechnicalcComputation" && <TechnicalcComputation />}
+        <Header>
+          <HeaderLogo />
+          <HeaderSection>Apps</HeaderSection>
+          <HeaderLink href="/pocket-jam">Pocket Jam</HeaderLink>
+          <HeaderLink href="/piano-tabs">Piano Tabs</HeaderLink>
+          <HeaderLink href="/technicalc">TechniCalc</HeaderLink>
+          <HeaderLink href="/freebies">Freebies</HeaderLink>
+          <HeaderSection last>Developement</HeaderSection>
+          <HeaderLink href="/blog">Blog</HeaderLink>
+          <HeaderLink href="https://github.com/jacobp100">Github</HeaderLink>
+        </Header>
+        {children}
+      </body>
+    </html>
+  );
+};

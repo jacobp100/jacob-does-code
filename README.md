@@ -18,13 +18,11 @@ Rendering React components can be a bit flaky. This is because I can't find a ma
 
 Each page is rendered synchronously, and asset optimisation does the same. It's not yet possible to optimise multiple assets at the same time because react-dom/server doesn't support suspense yet. When it does, I'd expect a decent build perf win if this gets fixed. Also because of this, I've tended to prefer build tools that are synchronous to the best tools available.
 
-JS and CSS assets don't have proper bundlers, so asset references are hacked in (regexp). But they are minified.
+JS and CSS assets don't have "proper" bundlers - there's only ways to transform urls to point to the correct assets - not embed assets within them. CSS uses the url syntax. JS works out-of-the-box for import declarations and expressions, and needs you to use `require.resolve` for urls not part of import statements or expressions. Given enough time, `@import` in CSS and `import` declarations in JS would bundle the resources, and `url` functions and `import` expressions (or `require.resolve` calls) would map to asset references.
 
-CSS uses the url syntax. JS works out-of-the-box for import statements and expressions, and needs you to use `require.resolve` for urls not part of import statements or expressions.
+Referencing assets from HTML is a bit flaky. Video elements work as-is (because I needed them to). The elements `<script>`, `<style>`, `<link>`, and `<img>` equivalent React components that do optimisation. And finally, `<a href>` works as-is for pages, because page names don't get mangled - but won't work for asset links.
 
-Referencing assets from HTML is flaky too. Video elements work as-is. The elements `<script>`, `<style>`, `<link>`, and `<img>` equivalent React components that do optimisation. And finally, `<a href>` works as-is for pages, because page names don't get mangled - but won't work for asset links.
-
-This last two point are less a time investment, and more a conceptual question. CSS works without any special extensions. JS relies special extensions. Markdown is half-and-half extensions via React components and some HTML elements working out the box. At what point do you extend languages?
+This last point less a time investment, and more a conceptual question. CSS works without any special extensions. JS relies a few special extensions. Markdown is half-and-half extensions via React components and some HTML elements working out the box. Where should these asset references be handled?
 
 And just to note,
 

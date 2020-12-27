@@ -2,7 +2,8 @@
 title: TechniCalc
 description: A smart calculator for a smart phone
 layout: page
-inline-css: app,technicalc/computation-critical
+inline-css: app,lightbox,technicalc/computation-critical
+external-js-defer: lightbox
 primary: "var(--technicalc)"
 banner: "TechnicalcComputation"
 ---
@@ -12,6 +13,8 @@ banner: "TechnicalcComputation"
 # TechniCalc
 
 <Lead>A smart calculator for a smart phone</Lead>
+
+<VideoLightBox src="/assets/technicalc/trailer.mp4" type="video/mp4" />
 
 <Image src="/assets/technicalc/promo.png" className="promo" alt="App Screenshots" width="compute" height="compute" />
 

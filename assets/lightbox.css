@@ -1,0 +1,51 @@
+html.lightbox-modal-open,
+html.lightbox-modal-open body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.lightbox__button {
+  display: block;
+  margin: 48px auto;
+  border: 0;
+  padding: 6px 36px;
+  font: inherit;
+  background: var(--primary);
+  color: var(--background);
+  border-radius: 99px;
+}
+
+.lightbox__modal {
+  display: none;
+}
+
+.lightbox__modal--open {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 48px 12px;
+  background: white;
+}
+
+.lightbox__close {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  background: none;
+  color: currentColor;
+  z-index: 1;
+}
+
+.lightbox__video {
+  display: block;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+}

@@ -1,5 +1,10 @@
 import { format } from "date-fns";
-import { ExternalCss, InlineCss, InlineJs } from "../core/components";
+import {
+  ExternalCss,
+  ExternalJs,
+  InlineCss,
+  InlineJs,
+} from "../core/components";
 import type { File } from "../core/files";
 import { className, classNames, variable } from "../core/css";
 import TechnicalcComputation from "../components/TechnicalcComputation";
@@ -44,6 +49,7 @@ type Props = {
   description?: string;
   "inline-css"?: string;
   "external-css"?: string;
+  "external-js-defer"?: string;
   banner?: string;
   primary?: string;
   children: JSX.Element;
@@ -55,6 +61,7 @@ export default ({
   description,
   "inline-css": inlineCss = "",
   "external-css": externalCss,
+  "external-js-defer": externalJsDefer,
   banner,
   primary,
   children,
@@ -80,6 +87,9 @@ export default ({
             .join(",")}
         />
         {externalCss && <ExternalCss src={`/assets/${externalCss}.css`} />}
+        {externalJsDefer && (
+          <ExternalJs src={`/assets/${externalJsDefer}.js`} defer />
+        )}
       </head>
       <body>
         {banner === "TechnicalcComputation" && <TechnicalcComputation />}

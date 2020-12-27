@@ -47,5 +47,7 @@ const flatten = (input: ClassNames): string[] => {
   }
 };
 
-export const classNames = (...input: ClassNames[]) =>
-  input.flatMap(flatten).map(className).join(" ");
+export const classNames = (...input: ClassNames[]) => {
+  const out = input.flatMap(flatten).map(className).join(" ");
+  return out.length > 0 ? out : undefined;
+};

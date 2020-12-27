@@ -20,7 +20,7 @@ const includes = new Proxy(
 
 const transformClassNames = () => (tree: any) =>
   tree.walk((node: any) => {
-    if (isReactComponent(node.tag) && node.attrs?.class != null) {
+    if (!isReactComponent(node.tag) && node.attrs?.class != null) {
       node.attrs.class = classNames(node.attrs.class);
     }
 

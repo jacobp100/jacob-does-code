@@ -1,5 +1,5 @@
 import * as path from "path";
-import { readAsset, writeSiteAsset } from "./assets";
+import { readAsset, readAssetBuffer, writeSiteAsset } from "./assets";
 import transformCss from "./transformCss";
 import transformJs from "./transformJs";
 import transformHtml from "./transformHtml";
@@ -23,6 +23,11 @@ export default (asset: string) => {
     case ".html": {
       const html = transformHtml(readAsset(asset));
       return writeSiteAsset(html, { extension: ".html" });
+    }
+    case ".mp3":
+    case ".mp4": {
+      const buffer = readAssetBuffer(asset);
+      return writeSiteAsset(buffer, { extension });
     }
     default:
       return writeSiteAsset(readAsset(asset), { extension });

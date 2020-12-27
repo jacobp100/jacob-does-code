@@ -21,9 +21,7 @@ The app has always had a bottom sheet menu navigation system, which lets you alw
 
 Now in the latest update, you'll be able to dismiss them by swiping down &mdash; much like the bottom sheet in Apple Maps.
 
-<video controls width="300">
-  <source src="/assets/posts/technicalc-bottom-sheet.mp4" type="video/mp4">
-</video>
+<Video controls="controls" width="300" src="/assets/posts/technicalc-bottom-sheet.mp4" type="video/mp4"></Video>
 
 There are libraries that do this to some extent already. For example, [react-native-modalize](https://github.com/jeremybarbet/react-native-modalize). However, as my menus behave like a card stack, and you can see the previous menus behind the current menu, I need something custom.
 

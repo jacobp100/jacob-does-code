@@ -31,23 +31,9 @@ const transformClassNames = () => (tree: any) =>
     return node;
   });
 
-const transformVideoComponents = () => (tree: any) =>
-  tree.match([{ tag: "source" }], (node: any) => {
-    const asset = node.attrs.src?.startsWith("/assets/")
-      ? node.attrs.src
-      : undefined;
-
-    if (asset != null) {
-      node.attrs.src = transformAsset(asset);
-    }
-
-    return node;
-  });
-
 export default (input: string) => {
   const postHtmlResult = posthtml()
     .use(transformClassNames())
-    .use(transformVideoComponents())
     .use(renderStaticReact("", includes))
     .use(minifier({ collapseWhitespace: true, removeComments: true }))
     .process(input, { sync: true });

@@ -20,7 +20,7 @@ Each page is rendered synchronously, and asset optimisation does the same. It's 
 
 JS and CSS assets don't have "proper" bundlers - there's only ways to transform urls to point to the correct assets - not embed assets within them. CSS uses the url syntax. JS works out-of-the-box for import declarations and expressions, and needs you to use `require.resolve` for urls not part of import statements or expressions. Given enough time, `@import` in CSS and `import` declarations in JS would bundle the resources, and `url` functions and `import` expressions (or `require.resolve` calls) would map to asset references.
 
-Referencing assets from HTML is a bit flaky. Video elements work as-is (because I needed them to). The elements `<script>`, `<style>`, `<link>`, and `<img>` equivalent React components that do optimisation. And finally, `<a href>` works as-is for pages, because page names don't get mangled - but won't work for asset links.
+Referencing assets requires React components to do the lifting. The elements `<script>`, `<style>`, `<link>`, `<img>`, and `<video>` equivalent React components that do optimisation. And finally, `<a href>` works as-is for pages, because page names don't get mangled - but won't work for asset links.
 
 This last point less a time investment, and more a conceptual question. CSS works without any special extensions. JS relies a few special extensions. Markdown is half-and-half extensions via React components and some HTML elements working out the box. Where should these asset references be handled?
 

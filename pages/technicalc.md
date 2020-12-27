@@ -13,7 +13,7 @@ banner: "TechnicalcComputation"
 
 <Lead>A smart calculator for a smart phone</Lead>
 
-<Image src="/technicalc/promo.png" className="promo" alt="App Screenshots" width="compute" height="compute" />
+<Image src="/assets/technicalc/promo.png" className="promo" alt="App Screenshots" width="compute" height="compute" />
 
 ## TechniCalc is every bit functional as it is beautiful.
 
@@ -25,7 +25,7 @@ You'll find your garden variety logs, sins, and cosines &mdash; but for when you
 
 ---
 
-<AppBlock src="/technicalc/preview-1.png" alt="Unit conversion">
+<AppBlock src="/assets/technicalc/preview-1.png" alt="Unit conversion">
 
 ## Converting between units couldn't be simpler &mdash; or more powerful.
 
@@ -39,7 +39,7 @@ _Kilogram-meters-per-second-squared_ to something else? Also check.
 
 ---
 
-<AppBlock src="/technicalc/preview-2.png" alt="Equation solver" reverse>
+<AppBlock src="/assets/technicalc/preview-2.png" alt="Equation solver" reverse>
 
 ## Solvers give you answers. Fast.
 
@@ -53,7 +53,7 @@ Even find a root for any given equation.
 
 ---
 
-<AppBlock src="/technicalc/preview-3.png" alt="Constants" >
+<AppBlock src="/assets/technicalc/preview-3.png" alt="Constants" >
 
 ## Every constant you'll ever need, built right in.
 
@@ -65,7 +65,7 @@ If you don't find one? You can _add your own_ &mdash; and even give it your own 
 
 ---
 
-<AppBlock src="/technicalc/preview-4.png" alt="Equations" reverse>
+<AppBlock src="/assets/technicalc/preview-4.png" alt="Equations" reverse>
 
 ## Leave your formula book at home.
 

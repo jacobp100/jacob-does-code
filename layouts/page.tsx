@@ -72,14 +72,14 @@ export default ({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         {description && <meta name="description" content={description} />}
-        <InlineJs src="set-hairline-width.js" />
+        <InlineJs src="/assets/set-hairline-width.js" />
         <InlineCss
-          src={["base", ...inlineCss?.split(",")]
+          src={["base", ...inlineCss.split(",")]
             .filter((file) => file.length > 0)
-            .map((file) => `${file}.css`)
+            .map((file) => `/assets/${file}.css`)
             .join(",")}
         />
-        {externalCss && <ExternalCss src={`${externalCss}.css`} />}
+        {externalCss && <ExternalCss src={`/assets/${externalCss}.css`} />}
       </head>
       <body>
         {banner === "TechnicalcComputation" && <TechnicalcComputation />}

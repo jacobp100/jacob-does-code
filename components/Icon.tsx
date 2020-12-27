@@ -7,7 +7,7 @@ type Props = SVGProps<any> & {
 };
 
 export default ({ name, className: _className = "app__logo" }: Props) => {
-  const svg = readAsset(`icons/${name}.svg`);
+  const svg = readAsset(`/assets/icons/${name}.svg`);
   return (
     <svg
       viewBox="0 0 60 60"

@@ -5,7 +5,7 @@ type Props = {
 };
 
 export default ({ href }: Props) => {
-  const googlePlaySvg = readAsset("store-badges/google-play.svg");
+  const googlePlaySvg = readAsset("/assets/store-badges/google-play.svg");
 
   return (
     <a

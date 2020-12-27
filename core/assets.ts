@@ -30,8 +30,12 @@ const layoutPath = cache<string, string | undefined>((filename) => {
 export const requireLayout = (filename: string) =>
   require(layoutPath(filename)!).default;
 
-const assetPath = (filename: string) =>
-  path.join(__dirname, "../assets", filename);
+const assetPath = (filename: string) => {
+  if (!filename.startsWith("/assets/")) {
+    throw new Error(`Expected ${filename} to start with /asset`);
+  }
+  return path.join(__dirname, `..${filename}`);
+};
 export const readAsset = (filename: string): string =>
   fs.readFileSync(assetPath(filename), "utf8");
 export const readAssetBuffer = (filename: string): Buffer =>

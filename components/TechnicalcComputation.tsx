@@ -12,6 +12,6 @@ export default () => (
       )}
       hidden
     />
-    <InlineJs src="technicalc/computation-critical.js" />
+    <InlineJs src="/assets/technicalc/computation-critical.js" />
   </>
 );

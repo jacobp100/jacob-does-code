@@ -7,8 +7,8 @@ type Props = {
 
 export default ({ reuseSvg, href }: Props) => {
   const appStoreSvg = reuseSvg
-    ? readAsset("store-badges/app-store-reused.svg")
-    : readAsset("store-badges/app-store.svg");
+    ? readAsset("/assets/store-badges/app-store-reused.svg")
+    : readAsset("/assets/store-badges/app-store.svg");
 
   return (
     <a

@@ -1,13 +1,12 @@
-import * as path from "path";
 // @ts-ignore
 import posthtml from "posthtml";
 // @ts-ignore
 import minifier from "posthtml-minifier";
-import { readAssetBuffer, writeSiteAsset } from "./assets";
 // @ts-ignore
 import renderStaticReact from "./posthtml-static-react";
 import * as components from "./components";
 import { requireComponent } from "./assets";
+import transformAsset from "./transformAsset";
 import { className } from "./css";
 import { isReactComponent } from "./htmlUtil";
 
@@ -20,7 +19,7 @@ const includes = new Proxy(
   }
 );
 
-const transformClassNames = () => (tree: any) => {
+const transformClassNames = () => (tree: any) =>
   tree.walk((node: any) => {
     const classes = !isReactComponent(node.tag)
       ? node.attrs?.class?.split(/\s+/).map(className).join(" ")
@@ -31,19 +30,15 @@ const transformClassNames = () => (tree: any) => {
 
     return node;
   });
-};
 
 const transformVideoComponents = () => (tree: any) =>
   tree.match([{ tag: "source" }], (node: any) => {
-    const filename = (node.attrs.src as string | undefined)?.match(
-      /^\/assets\/(.*)$/
-    )?.[1];
+    const asset = node.attrs.src?.startsWith("/assets/")
+      ? node.attrs.src
+      : undefined;
 
-    if (filename != null) {
-      const assetUrl = writeSiteAsset(readAssetBuffer(filename), {
-        extension: path.extname(filename),
-      });
-      node.attrs.src = assetUrl;
+    if (asset != null) {
+      node.attrs.src = transformAsset(asset);
     }
 
     return node;

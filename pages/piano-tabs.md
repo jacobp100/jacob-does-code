@@ -12,7 +12,7 @@ primary: "var(--piano-tabs)"
 
 <Lead>Sheet music and piano practise reimagined</Lead>
 
-<Image src="/piano-tabs/promo.png" className="promo" alt="App Screenshots" width="compute" height="compute" />
+<Image src="/assets/piano-tabs/promo.png" className="promo" alt="App Screenshots" width="compute" height="compute" />
 
 ## Open any song.
 
@@ -24,7 +24,7 @@ Scroll through a piece for _interactive playback_ to help you either find or stu
 
 ---
 
-<AppBlock src="/piano-tabs/preview-1.png" alt="Section looping">
+<AppBlock src="/assets/piano-tabs/preview-1.png" alt="Section looping">
 
 ## Loop sections. Practise until perfect.
 
@@ -36,7 +36,7 @@ With a loop set up up, you can use the _speed trainer_ to have it start each loo
 
 ---
 
-<AppBlock src="/piano-tabs/preview-2.png" alt="Bookmarks" reverse>
+<AppBlock src="/assets/piano-tabs/preview-2.png" alt="Bookmarks" reverse>
 
 ## Make your mark. Annotate anywhere.
 
@@ -50,7 +50,7 @@ Use your finger or Apple Pencil to _freehand draw anywhere_ in the piece to anno
 
 ---
 
-<AppBlock src="/piano-tabs/preview-3.png" alt="Playback customisation">
+<AppBlock src="/assets/piano-tabs/preview-3.png" alt="Playback customisation">
 
 ## Customise every aspect of playback.
 

@@ -164,7 +164,11 @@ hr {
   }
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1600px) {
+  .block {
+    gap: 72px;
+  }
+
   .preview {
     --max-size: 500px;
   }

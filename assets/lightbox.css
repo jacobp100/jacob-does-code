@@ -11,7 +11,7 @@ html.lightbox-modal-open body {
   padding: 6px 36px;
   font: inherit;
   background: var(--primary);
-  color: var(--background);
+  color: white;
   border-radius: 99px;
 }
 

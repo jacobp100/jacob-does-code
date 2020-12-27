@@ -12,7 +12,7 @@ import imageSize from "image-size";
 import { readAssetBuffer, writeSiteAsset } from "../assets";
 import cache from "../cache";
 import syncPromise from "../syncPromise";
-import { classNames } from "../css";
+import { ClassNames, classNames } from "../css";
 import dev from "../dev";
 
 type ImageResult = {
@@ -72,7 +72,7 @@ const process = cache<string, ImageResult>((src) => {
 
 type Props = Omit<ImgHTMLAttributes<any>, "className"> & {
   src: string;
-  className: any;
+  className: ClassNames;
 };
 
 export default ({ src, children: _, ...props }: Props) => {

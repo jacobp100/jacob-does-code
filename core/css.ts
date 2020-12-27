@@ -35,7 +35,9 @@ export const variable = (input: string) => {
 export const className = (input: string) =>
   getGeneratedName(classNamesStore, input);
 
-const flatten = (input: any): string[] => {
+export type ClassNames = string | boolean | null | undefined | ClassNames[];
+
+const flatten = (input: ClassNames): string[] => {
   if (Array.isArray(input)) {
     return input.flatMap(flatten);
   } else if (typeof input === "string" && input.length > 0) {
@@ -45,5 +47,5 @@ const flatten = (input: any): string[] => {
   }
 };
 
-export const classNames = (...input: any) =>
+export const classNames = (...input: ClassNames[]) =>
   input.flatMap(flatten).map(className).join(" ");

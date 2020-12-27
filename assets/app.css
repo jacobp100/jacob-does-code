@@ -15,14 +15,16 @@ h1 {
 }
 
 h2 {
-  margin: 12px auto;
+  margin: 24px auto;
   font-size: 24px;
-  line-height: 30px;
+  line-height: 32px;
+  --font-weight: 600;
   letter-spacing: -0.2px;
 }
 
 p {
   margin: 24px auto;
+  color: #636366;
 }
 
 em {
@@ -73,7 +75,7 @@ hr {
 
 .preview {
   display: block;
-  margin: 0 auto 12px;
+  margin: 0 auto 48px;
   object-fit: cover;
   object-position: center top;
   max-width: 400px;
@@ -83,6 +85,11 @@ hr {
 
 .preview--bottom {
   object-position: center bottom;
+}
+
+.preview--center-contain {
+  object-fit: contain;
+  object-position: center;
 }
 
 .store-links {
@@ -98,7 +105,7 @@ hr {
 @media (min-width: 768px) {
   body {
     font-size: 24px;
-    line-height: 34px;
+    line-height: 32px;
   }
 
   p {
@@ -107,13 +114,13 @@ hr {
 
   h1 {
     font-size: 48px;
-    line-height: 54px;
+    line-height: 52px;
     letter-spacing: -1.6px;
   }
 
   h2 {
     font-size: 32px;
-    line-height: 44px;
+    line-height: 36px;
     letter-spacing: -0.8px;
   }
 
@@ -124,21 +131,50 @@ hr {
   }
 
   .block {
-    display: flex;
+    display: grid;
+    grid: auto / max-content 1fr;
     align-items: center;
+    gap: 48px;
   }
 
   .block--reverse {
-    flex-direction: row-reverse;
+    grid-template-columns: 1fr max-content;
+  }
+
+  .block--reverse .block__content {
     text-align: right;
+    order: -1;
   }
 
   .preview {
-    object-fit: contain;
-    max-height: 400px;
+    margin: 0;
+    object-fit: initial;
+    width: auto;
+    height: auto;
+    max-width: var(--max-size);
+    max-height: var(--max-size);
+    --max-size: 300px;
+  }
+}
+
+@media (min-width: 1366px) {
+  .promo {
+    margin: 36px auto 128px;
   }
 
-  .block__content {
-    flex: 1;
+  .preview {
+    --max-size: 400px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .preview {
+    --max-size: 500px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  p {
+    color: #aeaeb2;
   }
 }

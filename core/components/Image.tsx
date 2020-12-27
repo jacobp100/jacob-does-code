@@ -70,9 +70,11 @@ const process = cache<string, ImageResult>((src) => {
   return { source, webp, width, height };
 });
 
-type Props = Omit<ImgHTMLAttributes<any>, "className"> & {
+type Props = Omit<ImgHTMLAttributes<any>, "className" | "width" | "height"> & {
   src: string;
   className: ClassNames;
+  width: number | "compute";
+  height: number | "compute";
 };
 
 export default ({ src, children: _, ...props }: Props) => {

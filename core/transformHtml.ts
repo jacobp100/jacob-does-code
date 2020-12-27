@@ -6,7 +6,6 @@ import minifier from "posthtml-minifier";
 import renderStaticReact from "./posthtml-static-react";
 import * as components from "./components";
 import { requireComponent } from "./assets";
-import transformAsset from "./transformAsset";
 import { className } from "./css";
 import { isReactComponent } from "./htmlUtil";
 

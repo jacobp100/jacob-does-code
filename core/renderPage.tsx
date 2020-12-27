@@ -1,17 +1,23 @@
+import * as fs from "fs";
 import { renderToStaticMarkup } from "react-dom/server";
 // @ts-ignore
 import frontmatter from "frontmatter";
-import { Markdown } from "./components";
+import type { File } from "./files";
 import { requireLayout, writeSiteAsset } from "./assets";
+import { Markdown } from "./components";
 
-export default (contents: string, filename: string) => {
+export default (file: File) => {
+  const contents = fs.readFileSync(file.filename, "utf8");
   const { data, content } = frontmatter(contents);
   // @ts-ignore
   const Layout = requireLayout(data.layout);
   const html = renderToStaticMarkup(
-    <Layout {...data}>
+    <Layout {...data} file={file}>
       <Markdown content={content} />
     </Layout>
   );
-  writeSiteAsset("<!DOCTYPE HTML>" + html, { filename, extension: ".html" });
+  writeSiteAsset("<!DOCTYPE HTML>" + html, {
+    filename: file.url,
+    extension: ".html",
+  });
 };

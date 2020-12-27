@@ -24,6 +24,7 @@
     "classnames": "^2.2.6",
     "css-class-generator": "^2.0.0",
     "csso": "^4.2.0",
+    "date-fns": "^2.16.1",
     "deasync": "^0.1.21",
     "express": "^4.17.1",
     "frontmatter": "^0.0.3",

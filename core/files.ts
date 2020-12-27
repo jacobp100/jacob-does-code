@@ -14,7 +14,7 @@ const title = (filename: string): string | undefined => {
   return data.title;
 };
 
-type File = {
+export type File = {
   url: string;
   title: string | undefined;
   filename: string;

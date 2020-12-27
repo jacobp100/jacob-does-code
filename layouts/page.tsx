@@ -1,7 +1,9 @@
+import { format } from "date-fns";
 import classnames from "classnames";
 import { ExternalCss, InlineCss, InlineJs } from "../core/components";
-import TechnicalcComputation from "../components/TechnicalcComputation";
+import type { File } from "../core/files";
 import { className, variable } from "../core/css";
+import TechnicalcComputation from "../components/TechnicalcComputation";
 
 const Header = ({ children }: { children: any }) => (
   <div className={className("header")}>{children}</div>
@@ -41,6 +43,7 @@ const HeaderLink = ({ href, children }: { href: string; children: string }) => (
 );
 
 type Props = {
+  file: File;
   title: string;
   description?: string;
   "inline-css"?: string;
@@ -51,6 +54,7 @@ type Props = {
 };
 
 export default ({
+  file,
   title,
   description,
   "inline-css": inlineCss = "",
@@ -95,6 +99,14 @@ export default ({
           <HeaderLink href="https://github.com/jacobp100">Github</HeaderLink>
         </Header>
         {children}
+        {file?.date != null && (
+          <span className={className("published-on")}>
+            Published on{" "}
+            <time dateTime={new Date(file.date).toISOString()}>
+              {format(new Date(file.date), "do MMMM yyyy")}
+            </time>
+          </span>
+        )}
       </body>
     </html>
   );

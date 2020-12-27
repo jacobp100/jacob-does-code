@@ -9,6 +9,5 @@ fs.mkdirSync(sitePath);
 
 [...pages, ...posts].forEach((file) => {
   console.log(`Compiling ${file.title ?? file.url}`);
-  const contents = fs.readFileSync(file.filename, "utf8");
-  renderPage(contents, file.url);
+  renderPage(file);
 });

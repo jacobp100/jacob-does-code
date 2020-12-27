@@ -103,9 +103,9 @@ pre code {
   overflow-x: scroll;
 }
 
-/* .published-on {
+.published-on {
   color: #9e9e9e;
-} */
+}
 
 @media (prefers-color-scheme: dark) {
   code {

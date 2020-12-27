@@ -12,8 +12,8 @@ import imageSize from "image-size";
 import { readAssetBuffer, writeSiteAsset } from "../assets";
 import cache from "../cache";
 import syncPromise from "../syncPromise";
+import { classNames } from "../css";
 import dev from "../dev";
-import { className } from "../css";
 
 type ImageResult = {
   source: string;
@@ -70,8 +70,9 @@ const process = cache<string, ImageResult>((src) => {
   return { source, webp, width, height };
 });
 
-type Props = ImgHTMLAttributes<any> & {
+type Props = Omit<ImgHTMLAttributes<any>, "className"> & {
   src: string;
+  className: any;
 };
 
 export default ({ src, children: _, ...props }: Props) => {
@@ -81,11 +82,7 @@ export default ({ src, children: _, ...props }: Props) => {
     <img
       src={source}
       {...props}
-      className={
-        props.className != null
-          ? props.className.split(/\s+/).map(className).join(" ")
-          : undefined
-      }
+      className={classNames(props.className)}
       width={props.width === "compute" ? width : props.width}
       height={props.height === "compute" ? height : props.height}
     />

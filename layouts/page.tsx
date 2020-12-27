@@ -1,8 +1,7 @@
 import { format } from "date-fns";
-import classnames from "classnames";
 import { ExternalCss, InlineCss, InlineJs } from "../core/components";
 import type { File } from "../core/files";
-import { className, variable } from "../core/css";
+import { className, classNames, variable } from "../core/css";
 import TechnicalcComputation from "../components/TechnicalcComputation";
 
 const Header = ({ children }: { children: any }) => (
@@ -17,17 +16,14 @@ const HeaderSection = ({
   children: string;
 }) => (
   <div
-    className={classnames(
-      className("header__section"),
-      last && className("header__section--last")
-    )}
+    className={classNames("header__section", last && "header__section--last")}
   >
     {children}
   </div>
 );
 
 const HeaderLogo = () => (
-  <a href="/" className={className("header__logo")}>
+  <a href="/" className={classNames("header__logo")}>
     Jacob
     <br />
     does
@@ -37,7 +33,7 @@ const HeaderLogo = () => (
 );
 
 const HeaderLink = ({ href, children }: { href: string; children: string }) => (
-  <a href={href} className={className("header__link")}>
+  <a href={href} className={classNames("header__link")}>
     {children}
   </a>
 );

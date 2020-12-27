@@ -2,8 +2,8 @@
 import cssClassGenerator from "css-class-generator";
 import dev from "./dev";
 
-const variables = new Map<string, string>();
-const classNames = new Map<string, string>();
+const variablesStore = new Map<string, string>();
+const classNamesStore = new Map<string, string>();
 
 const getGeneratedName = (store: Map<string, string>, input: string) => {
   if (dev) {
@@ -25,8 +25,25 @@ export const variable = (input: string) => {
     throw new Error(`Expected variable "${input}" to start with --`);
   }
 
-  const output = `--${getGeneratedName(variables, input.slice("--".length))}`;
+  const output = `--${getGeneratedName(
+    variablesStore,
+    input.slice("--".length)
+  )}`;
   return output;
 };
 
-export const className = (input: string) => getGeneratedName(classNames, input);
+export const className = (input: string) =>
+  getGeneratedName(classNamesStore, input);
+
+const flatten = (input: any): string[] => {
+  if (Array.isArray(input)) {
+    return input.flatMap(flatten);
+  } else if (typeof input === "string" && input.length > 0) {
+    return input.split(/\s+/);
+  } else {
+    return [];
+  }
+};
+
+export const classNames = (...input: any) =>
+  input.flatMap(flatten).map(className).join(" ");

@@ -6,7 +6,7 @@ import minifier from "posthtml-minifier";
 import renderStaticReact from "./posthtml-static-react";
 import * as components from "./components";
 import { requireComponent } from "./assets";
-import { className } from "./css";
+import { classNames } from "./css";
 import { isReactComponent } from "./htmlUtil";
 
 const includes = new Proxy(
@@ -20,11 +20,8 @@ const includes = new Proxy(
 
 const transformClassNames = () => (tree: any) =>
   tree.walk((node: any) => {
-    const classes = !isReactComponent(node.tag)
-      ? node.attrs?.class?.split(/\s+/).map(className).join(" ")
-      : null;
-    if (classes != null) {
-      node.attrs.class = classes;
+    if (isReactComponent(node.tag) && node.attrs?.class != null) {
+      node.attrs.class = classNames(node.attrs.class);
     }
 
     return node;

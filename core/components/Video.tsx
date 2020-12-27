@@ -1,5 +1,13 @@
+import * as path from "path";
 import type { VideoHTMLAttributes } from "react";
-import transformAsset from "../transformAsset";
+import { readAssetBuffer, writeSiteAsset } from "../assets";
+import cache from "../cache";
+
+const process = cache<string, string>((src) => {
+  return writeSiteAsset(readAssetBuffer(src), {
+    extension: path.extname(src),
+  });
+});
 
 type Props = VideoHTMLAttributes<any> & {
   src: string;
@@ -8,6 +16,6 @@ type Props = VideoHTMLAttributes<any> & {
 
 export default ({ src, type, ...props }: Props) => (
   <video {...props}>
-    <source src={transformAsset(src)} type={type} />
+    <source src={process(src)} type={type} />
   </video>
 );

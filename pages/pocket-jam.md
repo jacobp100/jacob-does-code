@@ -36,7 +36,7 @@ All in _real time_.
 
 ---
 
-<AppBlock src="/assets/pocket-jam/preview-2.png" alt="Section looping" reverse>
+<AppBlock src="/assets/pocket-jam/preview-2.png" alt="Section looping" layout="reverse" imagePosition="bottom">
 
 ## Loop sections. Practise until perfect.
 

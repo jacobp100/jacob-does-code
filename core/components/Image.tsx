@@ -82,7 +82,9 @@ export default ({ src, children: _, ...props }: Props) => {
       src={source}
       {...props}
       className={
-        props.className != null ? className(props.className) : undefined
+        props.className != null
+          ? props.className.split(/\s+/).map(className).join(" ")
+          : undefined
       }
       width={props.width === "compute" ? width : props.width}
       height={props.height === "compute" ? height : props.height}

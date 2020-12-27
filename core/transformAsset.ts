@@ -24,12 +24,7 @@ export default (asset: string) => {
       const html = transformHtml(readAsset(asset));
       return writeSiteAsset(html, { extension: ".html" });
     }
-    case ".mp3":
-    case ".mp4": {
-      const buffer = readAssetBuffer(asset);
-      return writeSiteAsset(buffer, { extension });
-    }
     default:
-      return writeSiteAsset(readAsset(asset), { extension });
+      return writeSiteAsset(readAssetBuffer(asset), { extension });
   }
 };

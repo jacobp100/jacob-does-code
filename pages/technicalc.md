@@ -39,7 +39,7 @@ _Kilogram-meters-per-second-squared_ to something else? Also check.
 
 ---
 
-<AppBlock src="/assets/technicalc/preview-2.png" alt="Equation solver" reverse>
+<AppBlock src="/assets/technicalc/preview-2.png" alt="Equation solver" layout="reverse">
 
 ## Solvers give you answers. Fast.
 
@@ -65,7 +65,7 @@ If you don't find one? You can _add your own_ &mdash; and even give it your own 
 
 ---
 
-<AppBlock src="/assets/technicalc/preview-4.png" alt="Equations" reverse>
+<AppBlock src="/assets/technicalc/preview-4.png" alt="Equations" layout="reverse" imagePosition="bottom">
 
 ## Leave your formula book at home.
 

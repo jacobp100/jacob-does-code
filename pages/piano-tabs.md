@@ -36,7 +36,7 @@ With a loop set up up, you can use the _speed trainer_ to have it start each loo
 
 ---
 
-<AppBlock src="/assets/piano-tabs/preview-2.png" alt="Bookmarks" reverse>
+<AppBlock src="/assets/piano-tabs/preview-2.png" alt="Bookmarks" layout="reverse">
 
 ## Make your mark. Annotate anywhere.
 

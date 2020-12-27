@@ -132,13 +132,10 @@ hr {
 
   .block {
     display: grid;
-    grid: auto / max-content 1fr;
+    grid: auto / auto auto;
     align-items: center;
+    justify-content: center;
     gap: 48px;
-  }
-
-  .block--reverse {
-    grid-template-columns: 1fr max-content;
   }
 
   .block--reverse .block__content {

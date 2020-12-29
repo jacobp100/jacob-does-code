@@ -39,11 +39,17 @@ function toReact(node, components) {
   return React.createElement(element, props, children);
 }
 
-module.exports = function (matcher, components) {
+module.exports = function (matcher, components, { Wrapper } = {}) {
   return function posthtmlStaticReact(tree) {
     tree.match(matchHelper(matcher), (node) => {
       if (isReactComponent(node.tag, components)) {
-        return server.renderToStaticMarkup(toReact(node, components));
+        let jsx = toReact(node, components);
+
+        if (Wrapper != null) {
+          jsx = React.createElement(Wrapper, {}, jsx);
+        }
+
+        return server.renderToStaticMarkup(jsx);
       } else {
         return node;
       }

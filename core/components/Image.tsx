@@ -1,5 +1,5 @@
 import type { ImgHTMLAttributes } from "react";
-import * as path from "path";
+import path from "path";
 // @ts-ignore
 import imagemin from "imagemin";
 // @ts-ignore
@@ -9,8 +9,8 @@ import imageminPngquant from "imagemin-pngquant";
 // @ts-ignore
 import imageminWebp from "imagemin-webp";
 import imageSize from "image-size";
-import { readAssetBuffer, writeSiteAsset } from "../assets";
-import cache from "../cache";
+import useContent, { writeSiteAsset } from "../useContent";
+import { cache2 } from "../cache";
 import syncPromise from "../syncPromise";
 import { ClassNames, classNames } from "../css";
 import dev from "../dev";
@@ -22,8 +22,7 @@ type ImageResult = {
   height: number | undefined;
 };
 
-const process = cache<string, ImageResult>((src) => {
-  const buffer = readAssetBuffer(src);
+const process = cache2<Buffer, string, ImageResult>((buffer, src) => {
   const { width, height } = imageSize(buffer);
 
   if (dev) {
@@ -78,7 +77,9 @@ type Props = Omit<ImgHTMLAttributes<any>, "className" | "width" | "height"> & {
 };
 
 export default ({ src, children: _, ...props }: Props) => {
-  const { source, webp, width, height } = process(src);
+  const content = useContent();
+  const buffer = content.assetBuffer(src);
+  const { source, webp, width, height } = process(buffer, src);
 
   const imgBase = (
     <img

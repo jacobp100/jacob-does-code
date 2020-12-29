@@ -1,5 +1,5 @@
 import type { SVGProps } from "react";
-import { readAsset } from "../core/assets";
+import useContent from "../core/useContent";
 import { classNames } from "../core/css";
 
 type Props = SVGProps<any> & {
@@ -7,7 +7,8 @@ type Props = SVGProps<any> & {
 };
 
 export default ({ name, className = "app__logo" }: Props) => {
-  const svg = readAsset(`/assets/icons/${name}.svg`);
+  const svg = useContent().asset(`/assets/icons/${name}.svg`);
+
   return (
     <svg
       viewBox="0 0 60 60"

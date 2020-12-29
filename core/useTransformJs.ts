@@ -5,12 +5,14 @@ import traverse from "@babel/traverse";
 import generate from "@babel/generator";
 import * as t from "@babel/types";
 import { minify } from "terser";
+import useTransformAsset from "./useTransformAsset";
 import { variable, className } from "./css";
-import transformAsset from "./transformAsset";
 import syncPromise from "./syncPromise";
 import dev from "./dev";
 
-const transformJs = (input: string) => {
+export default (input: string) => {
+  const transformAsset = useTransformAsset();
+
   const ast = parse(input, {
     sourceType: "module",
   });
@@ -54,11 +56,7 @@ const transformJs = (input: string) => {
     },
   });
 
-  return generate(ast).code;
-};
-
-export default (input: string) => {
-  let js = transformJs(input);
+  let js = generate(ast).code;
 
   if (dev) {
     return js;

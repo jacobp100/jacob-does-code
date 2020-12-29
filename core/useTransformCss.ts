@@ -3,17 +3,21 @@ import postcss, { AtRule, Declaration, Root, Rule } from "postcss";
 import transformClasses from "postcss-transform-classes";
 // @ts-ignore
 import csso from "csso";
-import transformAsset from "./transformAsset";
+import useTransformAsset from "./useTransformAsset";
 import { variable, className } from "./css";
 import dev from "./dev";
 
-const transformUrls = () => (root: Root) => {
-  root.walkDecls((decl) => {
-    decl.value = decl.value.replace(
-      /url\(['"]?(\/assets\/[^'")]+)['"]?\)/g,
-      (_, url) => `url(${transformAsset(url)})`
-    );
-  });
+const transformUrls = () => {
+  const transformAsset = useTransformAsset();
+
+  return (root: Root) => {
+    root.walkDecls((decl) => {
+      decl.value = decl.value.replace(
+        /url\(['"]?(\/assets\/[^'")]+)['"]?\)/g,
+        (_, url) => `url(${transformAsset(url)})`
+      );
+    });
+  };
 };
 
 const transformVariables = ({ transform }: any) => (root: Root) =>
@@ -146,7 +150,7 @@ export default (input: string) => {
     transformUrls(),
     transformClasses({ transform: className }),
     transformVariables({ transform: variable }),
-    optimizeVariableDeclarations(),
+    // optimizeVariableDeclarations(),
   ]).process(input).css;
 
   if (dev) {

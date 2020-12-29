@@ -1,4 +1,4 @@
-import { readAsset } from "../core/assets";
+import useContent from "../core/useContent";
 
 type Props = {
   href?: string;
@@ -6,9 +6,10 @@ type Props = {
 };
 
 export default ({ reuseSvg, href }: Props) => {
-  const appStoreSvg = reuseSvg
-    ? readAsset("/assets/store-badges/app-store-reused.svg")
-    : readAsset("/assets/store-badges/app-store.svg");
+  const assetPath = reuseSvg
+    ? "/assets/store-badges/app-store-reused.svg"
+    : "/assets/store-badges/app-store.svg";
+  const appStoreSvg = useContent().asset(assetPath);
 
   return (
     <a

@@ -17,7 +17,7 @@ export default ({ src, type }: Props) => (
     >
       {"\u{25B6}"}&ensp;Play Video
     </button>
-    <div className={className("lightbox__modal")}>
+    <div className={className("lightbox__modal")} hidden>
       <button type="button" className={className("lightbox__close")}>
         <svg viewBox="0 0 60 60" width={60} height={60}>
           <path

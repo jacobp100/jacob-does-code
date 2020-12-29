@@ -1,11 +1,13 @@
-import { readAsset } from "../core/assets";
+import useContent from "../core/useContent";
 
 type Props = {
   href?: string;
 };
 
 export default ({ href }: Props) => {
-  const googlePlaySvg = readAsset("/assets/store-badges/google-play.svg");
+  const googlePlaySvg = useContent().asset(
+    "/assets/store-badges/google-play.svg"
+  );
 
   return (
     <a

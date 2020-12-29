@@ -1,9 +1,10 @@
-import { readAsset, writeSiteAsset } from "../assets";
+import useContent, { writeSiteAsset } from "../useContent";
 import cache from "../cache";
-import transformCss from "../transformCss";
+import transformCss from "../useTransformCss";
 
 const process = cache((src: string) => {
-  const input = src.split(",").map(readAsset).join("\n");
+  const content = useContent();
+  const input = src.split(",").map(content.asset).join("\n");
   const output = transformCss(input);
   const href = writeSiteAsset(output, { extension: ".css" });
   return href;

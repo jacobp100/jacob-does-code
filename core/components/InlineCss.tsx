@@ -1,12 +1,13 @@
-import { readAsset } from "../assets";
-import transformCss from "../transformCss";
+import useContent from "../useContent";
+import useTransformCss from "../useTransformCss";
 
 type Props = {
   src: string;
 };
 
 export default ({ src }: Props) => {
-  const input = src.split(",").map(readAsset).join("\n");
-  const output = transformCss(input);
+  const content = useContent();
+  const input = src.split(",").map(content.asset).join("\n");
+  const output = useTransformCss(input);
   return <style dangerouslySetInnerHTML={{ __html: output }} />;
 };

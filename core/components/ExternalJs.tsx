@@ -1,11 +1,11 @@
 import type { ScriptHTMLAttributes } from "react";
-import { readAsset, writeSiteAsset } from "../assets";
+import useContent, { writeSiteAsset } from "../useContent";
 import cache from "../cache";
-import transformJs from "../transformJs";
+import useTransformJs from "../useTransformJs";
 
 const process = cache((src: string) => {
-  const content = readAsset(src);
-  const code = transformJs(content);
+  const js = useContent().asset(src);
+  const code = useTransformJs(js);
   return writeSiteAsset(code, { extension: ".js" });
 });
 

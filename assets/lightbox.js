@@ -2,7 +2,11 @@ const modal = document.querySelector("." + CSS_CLASSES["lightbox__modal"]);
 const video = document.querySelector("." + CSS_CLASSES["lightbox__video"]);
 
 const toggleModal = (open) => {
-  modal.classList.toggle(CSS_CLASSES["lightbox__modal--open"], open);
+  if (open) {
+    modal.removeAttribute("hidden");
+  } else {
+    modal.setAttribute("hidden", "");
+  }
 
   document.documentElement.classList.toggle(
     CSS_CLASSES["lightbox-modal-open"],

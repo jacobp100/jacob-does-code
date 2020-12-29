@@ -15,12 +15,7 @@ html.lightbox-modal-open body {
   border-radius: 99px;
 }
 
-.lightbox__modal {
-  display: none;
-}
-
-.lightbox__modal--open {
-  display: block;
+.lightbox__modal:not([hidden]) {
   position: absolute;
   top: 0;
   left: 0;

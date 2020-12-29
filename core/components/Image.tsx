@@ -19,7 +19,9 @@ type ImageResult = {
   height: number | undefined;
 };
 
-const process = cacheAssetTransform<ImageResult>((content, inputSrc) => {
+const avifEnabled = false;
+
+const transform = cacheAssetTransform<ImageResult>((content, inputSrc) => {
   const buffer = content.assetBuffer(inputSrc);
   const extension = path.extname(inputSrc);
 
@@ -33,15 +35,14 @@ const process = cacheAssetTransform<ImageResult>((content, inputSrc) => {
     { width, height },
     baseBuffer,
     webpBuffer,
-    /* avifBuffer */
+    avifBuffer,
   ] = syncPromiseValue(
     Promise.all([
       sharp(buffer).metadata(),
       sharp(buffer).png({ force: false }).jpeg({ force: false }).toBuffer(),
       sharp(buffer).webp().toBuffer(),
-      // This is too slow and doesn't produce better results
-      // Disable until support is better
-      // sharp(buffer).avif({ lossless: true, speed: 3 }).toBuffer(),
+      // @ts-ignore
+      (avifEnabled ? sharp(buffer).avif().toBuffer() : null) as Buffer | null,
     ])
   );
 
@@ -52,11 +53,11 @@ const process = cacheAssetTransform<ImageResult>((content, inputSrc) => {
   const additionalSources: AdditionalSource[] = [];
   let smallestLength = srcBuffer.length;
   const addAdditionalSourceIfNeeded = (
-    buffer: Buffer,
+    buffer: Buffer | null,
     extension: string,
     type: string
   ) => {
-    if (buffer.length < smallestLength) {
+    if (buffer != null && buffer.length < smallestLength) {
       const src = content.write(buffer, { extension });
       additionalSources.unshift({ src, type });
       smallestLength = buffer.length;
@@ -64,7 +65,7 @@ const process = cacheAssetTransform<ImageResult>((content, inputSrc) => {
   };
 
   addAdditionalSourceIfNeeded(webpBuffer, ".webp", "image/webp");
-  // addAdditionalSourceIfNeeded(avifBuffer, ".avif", "image/avif");
+  addAdditionalSourceIfNeeded(avifBuffer, ".avif", "image/avif");
 
   return { src, additionalSources, width, height };
 });
@@ -78,7 +79,10 @@ type Props = Omit<ImgHTMLAttributes<any>, "className" | "width" | "height"> & {
 
 export default ({ src: inputSrc, children: _, ...props }: Props) => {
   const content = useContent();
-  const { src, additionalSources, width, height } = process(content, inputSrc);
+  const { src, additionalSources, width, height } = transform(
+    content,
+    inputSrc
+  );
 
   const imgBase = (
     <img

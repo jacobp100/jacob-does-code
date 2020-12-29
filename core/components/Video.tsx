@@ -4,7 +4,7 @@ import useContent from "../useContent";
 import cacheAssetTransform from "../cacheAssetTransform";
 import { classNames, ClassNames } from "../css";
 
-const process = cacheAssetTransform((content, src) => {
+const transform = cacheAssetTransform((content, src) => {
   const buffer = content.assetBuffer(src);
   return content.write(buffer, { extension: path.extname(src) });
 });
@@ -20,7 +20,7 @@ export default ({ className, src, type, ...props }: Props) => {
 
   return (
     <video {...props} className={classNames(className)}>
-      <source src={process(content, src)} type={type} />
+      <source src={transform(content, src)} type={type} />
     </video>
   );
 };

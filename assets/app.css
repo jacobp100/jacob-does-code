@@ -158,7 +158,7 @@ hr {
   }
 }
 
-@media (min-width: 1366px) {
+@media (min-width: 1024px) {
   .promo {
     margin: 36px auto 128px;
   }

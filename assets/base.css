@@ -63,7 +63,7 @@ body {
 }
 
 a {
-  color: var(--primary, currentColor);
+  color: var(--primary);
   text-decoration: none;
 }
 
@@ -97,7 +97,7 @@ a:focus {
   line-height: 18px;
   letter-spacing: -1px;
   text-transform: lowercase;
-  border-top: 4px solid currentColor;
+  border-top: 4px solid;
   padding: 6px 4px 0 0;
 }
 

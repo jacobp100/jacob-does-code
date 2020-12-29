@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "yarn run build --dev",
+    "start": "yarn build --dev",
     "build": "babel-node core/cli.ts --extensions '.ts,.tsx'"
   },
   "dependencies": {

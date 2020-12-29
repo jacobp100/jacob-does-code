@@ -1,11 +1,11 @@
 // @ts-ignore
 import deasync from "deasync";
 
-type Result<Value, Error> =
+export type Result<Value, Error> =
   | { type: "ok"; value: Value }
   | { type: "error"; error: Error };
 
-export default <T>(promise: Promise<T>) => {
+export const syncPromiseResult = <T>(promise: Promise<T>) => {
   let result: Result<T, any> | undefined;
 
   promise
@@ -19,4 +19,14 @@ export default <T>(promise: Promise<T>) => {
   deasync.loopWhile(() => result == null);
 
   return result!;
+};
+
+export const syncPromiseValue = <T>(promise: Promise<T>): T => {
+  const result = syncPromiseResult(promise);
+
+  if (result.type === "ok") {
+    return result.value;
+  } else {
+    throw result.error ?? new Error("Unknown error");
+  }
 };

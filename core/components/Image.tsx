@@ -3,7 +3,7 @@ import path from "path";
 import sharp from "sharp";
 import useContent from "../useContent";
 import cacheAssetTransform from "../cacheAssetTransform";
-import syncPromise from "../syncPromise";
+import { syncPromiseValue } from "../syncPromise";
 import { ClassNames, classNames } from "../css";
 import dev from "../dev";
 
@@ -24,33 +24,28 @@ const process = cacheAssetTransform<ImageResult>((content, inputSrc) => {
   const extension = path.extname(inputSrc);
 
   if (dev) {
-    const result = syncPromise(sharp(buffer).metadata());
-    const metadata = result.type === "ok" ? result.value : undefined;
-    const width = metadata?.width;
-    const height = metadata?.height;
+    const { width, height } = syncPromiseValue(sharp(buffer).metadata());
     const src = content.write(buffer, { extension });
     return { src, additionalSources: [], width, height };
   }
 
-  const result = syncPromise(
+  const [
+    { width, height },
+    baseBuffer,
+    webpBuffer /*, avifBuffer */,
+  ] = syncPromiseValue(
     Promise.all([
       sharp(buffer).metadata(),
       sharp(buffer).png({ force: false }).jpeg({ force: false }).toBuffer(),
       sharp(buffer).webp({ lossless: true }).toBuffer(),
+      // This is too slow and doesn't produce better results
+      // Disable until support is better
       // sharp(buffer).avif({ lossless: true, speed: 3 }).toBuffer(),
     ])
   );
 
-  if (result.type !== "ok") {
-    throw result.error ?? new Error("Unknown error");
-  }
-
-  let [metadata, srcBuffer, webpBuffer /*, avifBuffer */] = result.value;
-
-  const { width, height } = metadata;
-
   // Check we actually making savings
-  srcBuffer = srcBuffer.length < buffer.length ? srcBuffer : buffer;
+  const srcBuffer = baseBuffer.length < buffer.length ? baseBuffer : buffer;
   const src = content.write(srcBuffer, { extension });
 
   const additionalSources: AdditionalSource[] = [];

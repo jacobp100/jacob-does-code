@@ -7,7 +7,7 @@ import * as t from "@babel/types";
 import { minify } from "terser";
 import useTransformAsset from "./useTransformAsset";
 import { variable, className } from "./css";
-import syncPromise from "./syncPromise";
+import { syncPromiseValue } from "./syncPromise";
 import dev from "./dev";
 
 export default (input: string) => {
@@ -62,13 +62,7 @@ export default (input: string) => {
     return js;
   }
 
-  const result = syncPromise(minify(js));
-
-  if (result.type !== "ok") {
-    throw result.error ?? new Error("Unknown error");
-  }
-
-  const code = result.value.code;
+  const { code } = syncPromiseValue(minify(js));
 
   if (code == null) {
     throw new Error("Unknown error");

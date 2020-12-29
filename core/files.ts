@@ -21,7 +21,7 @@ export type File = {
   date: number | undefined;
 };
 
-export const pages: File[] = (glob.sync(
+const pages: File[] = (glob.sync(
   path.join(__dirname, "../pages/*.md")
 ) as string[]).map(
   (filename): File => ({
@@ -32,7 +32,7 @@ export const pages: File[] = (glob.sync(
   })
 );
 
-export const posts: File[] = (glob.sync(
+const posts: File[] = (glob.sync(
   path.join(__dirname, "../posts/*.md")
 ) as string[])
   .map(
@@ -47,3 +47,6 @@ export const posts: File[] = (glob.sync(
     })
   )
   .sort((a, b) => (b.date ?? 0) - (a.date ?? 0));
+
+export const getPages = () => pages;
+export const getPosts = () => posts;

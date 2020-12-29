@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn run build --dev",
-    "build": "babel-node index.tsx --extensions '.ts,.tsx'"
+    "build": "babel-node core/cli.ts --extensions '.ts,.tsx'"
   },
   "dependencies": {
     "@babel/core": "^7.12.10",

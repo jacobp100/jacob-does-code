@@ -2,11 +2,13 @@ import fs from "fs";
 import path from "path";
 import chokidar from "chokidar";
 import chalk from "chalk";
-import renderPage from "./core/renderPage";
-import { File, pages, posts } from "./core/files";
-import dev from "./core/dev";
+import renderPage from "./renderPage";
+import { File, pages, posts } from "./files";
+import dev from "./dev";
 
-const sitePath = path.join(__dirname, "site");
+const projectDir = path.join(__dirname, "..");
+
+const sitePath = path.join(projectDir, "site");
 fs.rmdirSync(sitePath, { recursive: true });
 fs.mkdirSync(sitePath);
 
@@ -33,7 +35,7 @@ const run = (files: Set<File>, message: string) => {
 };
 
 if (dev) {
-  const core = path.resolve("core", __dirname);
+  const core = path.resolve(projectDir, "core");
 
   let timeout: ReturnType<typeof setTimeout> | null = null;
   const pendingFiles = new Set<string>();
@@ -65,7 +67,7 @@ if (dev) {
     }
   };
 
-  chokidar.watch(__dirname).on("change", (path) => {
+  chokidar.watch(projectDir).on("change", (path) => {
     pendingFiles.add(path);
 
     if (timeout != null) {

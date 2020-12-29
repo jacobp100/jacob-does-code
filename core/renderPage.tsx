@@ -2,20 +2,28 @@ import { renderToStaticMarkup } from "react-dom/server";
 // @ts-ignore
 import frontmatter from "frontmatter";
 import type { File } from "./files";
-import {
-  ContentContext,
-  createContentContext,
-  writeSiteAsset,
-} from "./useContent";
+import { ContentContext, createContentContext } from "./useContent";
 import { Markdown } from "./components";
+
+const DefaultLayout = (props: any) => (
+  <html>
+    <head>
+      <title>{props.title ?? "No title"}</title>
+      <meta charSet="utf-8" />
+    </head>
+    <body>{props.children}</body>
+  </html>
+);
 
 export default (file: File) => {
   const content = createContentContext();
 
   const page = frontmatter(content.page(file.filename));
-  const Layout = content.layout(page.data.layout);
 
-  let html = renderToStaticMarkup(
+  const { layout } = page.data;
+  const Layout = layout != null ? content.layout(layout) : DefaultLayout;
+
+  let htmlFragment = renderToStaticMarkup(
     <ContentContext.Provider value={content}>
       <Layout {...page.data} file={file}>
         <Markdown content={page.content} />
@@ -23,12 +31,10 @@ export default (file: File) => {
     </ContentContext.Provider>
   );
 
-  html = html.replace(/<\/?ignored-tag>/g, "");
+  htmlFragment = htmlFragment.replace(/<\/?ignored-tag>/g, "");
+  const html = "<!DOCTYPE HTML>" + htmlFragment;
 
-  writeSiteAsset("<!DOCTYPE HTML>" + html, {
-    filename: file.url,
-    extension: ".html",
-  });
+  content.write(html, { filename: file.url, extension: ".html" });
 
   return {
     dependencies: content.dependencies,

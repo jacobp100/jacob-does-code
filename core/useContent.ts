@@ -5,21 +5,7 @@ import { createContext, useContext } from "react";
 import stringHash from "string-hash";
 import cache from "./cache";
 
-type Global = {
-  assetCached: (filename: string) => string;
-  assetBufferCached: (filename: string) => Buffer;
-};
-
-export const createGlobalContext = (): Global => ({
-  assetCached: cache<string, string>((filename) => {
-    return fs.readFileSync(filename, "utf8");
-  }),
-  assetBufferCached: cache<string, Buffer>((filename) => {
-    return fs.readFileSync(filename);
-  }),
-});
-
-export const defaultGlobalContext = createGlobalContext();
+type ReactComponent = (props: any) => JSX.Element;
 
 export type Content = {
   dependencies: Set<string>;
@@ -28,6 +14,10 @@ export type Content = {
   page: (filename: string) => string;
   asset: (filename: string) => string;
   assetBuffer: (filename: string) => Buffer;
+  write: (
+    content: Buffer | string,
+    options: { filename?: string; extension: string }
+  ) => string;
 };
 
 const modulePath = (directory: string, filename: string) => {
@@ -59,38 +49,10 @@ const assetPath = (filename: string) => {
   return path.join(__dirname, `..${filename}`);
 };
 
-export const createContentContext = (
-  globalContext = defaultGlobalContext
-): Content => {
-  const { assetCached, assetBufferCached } = globalContext;
-  const dependencies = new Set<string>();
-
-  const addFilenameDependency = (filename: string) => {
-    dependencies.add(filename);
-    return filename;
-  };
-
-  return {
-    dependencies,
-    component: (filename) => require(componentPath(filename)).default,
-    layout: (filename) => require(layoutPath(filename)).default,
-    page: (filename) => assetCached(addFilenameDependency(filename)),
-    asset: (filename) =>
-      assetCached(addFilenameDependency(assetPath(filename))),
-    assetBuffer: (filename) =>
-      assetBufferCached(addFilenameDependency(assetPath(filename))),
-  };
-};
-
-export const ContentContext = createContext<Content>(null!);
-
-type ReactComponent = (props: any) => JSX.Element;
-
-export default () => useContext(ContentContext);
-
 const sitePath = (filename: string) =>
   path.join(__dirname, "../site", filename);
-export const writeSiteAsset = (
+
+const write = (
   content: Buffer | string,
   { filename = "", extension }: { filename?: string; extension: string }
 ) => {
@@ -114,3 +76,29 @@ export const writeSiteAsset = (
 
   return outputHref;
 };
+
+export const createContentContext = (): Content => {
+  const dependencies = new Set<string>();
+
+  const addFilenameDependency = (filename: string) => {
+    dependencies.add(filename);
+    return filename;
+  };
+
+  return {
+    dependencies,
+    component: (filename) => require(componentPath(filename)).default,
+    layout: (filename) => require(layoutPath(filename)).default,
+    page: (filename) =>
+      fs.readFileSync(addFilenameDependency(filename), "utf8"),
+    asset: (filename) =>
+      fs.readFileSync(addFilenameDependency(assetPath(filename)), "utf8"),
+    assetBuffer: (filename) =>
+      fs.readFileSync(addFilenameDependency(assetPath(filename))),
+    write: (content, options) => write(content, options),
+  };
+};
+
+export const ContentContext = createContext<Content>(null!);
+
+export default () => useContext(ContentContext);

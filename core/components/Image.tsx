@@ -9,7 +9,7 @@ import imageminPngquant from "imagemin-pngquant";
 // @ts-ignore
 import imageminWebp from "imagemin-webp";
 import imageSize from "image-size";
-import useContent, { writeSiteAsset } from "../useContent";
+import useContent, { Content } from "../useContent";
 import { cache2 } from "../cache";
 import syncPromise from "../syncPromise";
 import { ClassNames, classNames } from "../css";
@@ -22,13 +22,13 @@ type ImageResult = {
   height: number | undefined;
 };
 
-const process = cache2<Buffer, string, ImageResult>((buffer, src) => {
+const process = cache2<Content, string, ImageResult>((content, src) => {
+  const buffer = content.assetBuffer(src);
+  const extension = path.extname(src);
   const { width, height } = imageSize(buffer);
 
   if (dev) {
-    const source = writeSiteAsset(buffer, {
-      extension: path.extname(src),
-    });
+    const source = content.write(buffer, { extension });
     return { source, webp: null, width, height };
   }
 
@@ -58,12 +58,10 @@ const process = cache2<Buffer, string, ImageResult>((buffer, src) => {
   sourceBuffer = sourceBuffer.length < buffer.length ? sourceBuffer : buffer;
   webpBuffer = webpBuffer.length < sourceBuffer.length ? webpBuffer : null;
 
-  const source = writeSiteAsset(sourceBuffer, {
-    extension: path.extname(src),
-  });
+  const source = content.write(sourceBuffer, { extension });
   const webp =
     webpBuffer != null
-      ? writeSiteAsset(webpBuffer, { extension: ".webp" })
+      ? content.write(webpBuffer, { extension: ".webp" })
       : null;
 
   return { source, webp, width, height };
@@ -78,8 +76,7 @@ type Props = Omit<ImgHTMLAttributes<any>, "className" | "width" | "height"> & {
 
 export default ({ src, children: _, ...props }: Props) => {
   const content = useContent();
-  const buffer = content.assetBuffer(src);
-  const { source, webp, width, height } = process(buffer, src);
+  const { source, webp, width, height } = process(content, src);
 
   const imgBase = (
     <img

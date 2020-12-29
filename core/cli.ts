@@ -63,7 +63,7 @@ if (dev) {
     if (coreChanged) {
       run(files, "Full rebuild");
     } else if (changed.size !== 0) {
-      run(changed, "partial rebuild");
+      run(changed, "Partial rebuild");
     }
   };
 

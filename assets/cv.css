@@ -10,19 +10,6 @@
   font-style: italic;
 }
 
-:root {
-  --inset: 180px;
-  -webkit-text-size-adjust: 100%;
-}
-
-@supports (hyphens: auto) or (-webkit-hyphens: auto) {
-  p {
-    text-align: justify;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-  }
-}
-
 .header__section {
   /* So we don't load Inter UI */
   font-family: sans-serif;
@@ -31,6 +18,11 @@
 .header__link {
   --font-weight: 300;
   font-size: 18px;
+}
+
+:root {
+  --inset: 180px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -86,6 +78,14 @@ h4 {
 
 p {
   margin: 3pt 0;
+}
+
+@supports (hyphens: auto) or (-webkit-hyphens: auto) {
+  p {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
 }
 
 ul {

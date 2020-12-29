@@ -16,6 +16,7 @@ const files = new Set([...getPages(), ...getPosts()]);
 const fileDependencies = new Map<string, File>();
 
 const run = (files: Set<File>, message: string) => {
+  const start = Date.now();
   console.log(chalk.dim(`[${message}...]`));
 
   files.forEach((file) => {
@@ -27,7 +28,9 @@ const run = (files: Set<File>, message: string) => {
     });
   });
 
-  console.log(chalk.green("[Build complete]"));
+  const end = Date.now();
+  const duration = ((end - start) / 1000).toFixed(2);
+  console.log(chalk.green(`[Build completed in ${duration}s]`));
 
   if (dev) {
     console.log(chalk.cyan("[Watching for changes...]"));

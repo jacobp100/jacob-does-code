@@ -72,8 +72,6 @@ _Percussion tracks_ play along side the active track, or can be swapped out for 
 
 </AppLinks>
 
-<LegalLinks />
-
 ---
 
 <BetterTogether />

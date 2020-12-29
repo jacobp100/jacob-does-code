@@ -70,8 +70,6 @@ Use them to jump to the section in playback, or to set up loops between sections
 
 </AppLinks>
 
-<LegalLinks />
-
 ---
 
 <BetterTogether />

@@ -14,7 +14,7 @@ banner: "TechnicalcComputation"
 
 <Lead>A smart calculator for a smart phone</Lead>
 
-<VideoLightBox src="/assets/technicalc/trailer.mp4" type="video/mp4" />
+<LightBox src="/assets/technicalc/trailer.mp4" type="video/mp4" />
 
 <Image src="/assets/technicalc/promo.png" className="promo" alt="App Screenshots" width="compute" height="compute" />
 

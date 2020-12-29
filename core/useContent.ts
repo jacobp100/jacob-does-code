@@ -34,15 +34,15 @@ const modulePath = (directory: string, filename: string) => {
   return output;
 };
 
-const componentPath = cache<string, string>((filename) => {
+export const componentPath = cache<string, string>((filename) => {
   return modulePath("components", filename);
 });
 
-const layoutPath = cache<string, string>((filename) => {
+export const layoutPath = cache<string, string>((filename) => {
   return modulePath("layouts", filename);
 });
 
-const assetPath = (filename: string) => {
+export const assetPath = (filename: string) => {
   if (!filename.startsWith("/assets/")) {
     throw new Error(`Expected ${filename} to start with /asset`);
   }

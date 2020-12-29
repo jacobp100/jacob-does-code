@@ -1,9 +1,8 @@
 import useContent from "../useContent";
-import cache from "../cache";
+import cacheAssetTransform from "../cacheAssetTransform";
 import transformCss from "../useTransformCss";
 
-const process = cache((src: string) => {
-  const content = useContent();
+const process = cacheAssetTransform((content, src) => {
   const input = src.split(",").map(content.asset).join("\n");
   const output = transformCss(input);
   const href = content.write(output, { extension: ".css" });
@@ -14,6 +13,7 @@ type Props = {
   src: string;
 };
 
-export default ({ src }: Props) => (
-  <link href={process(src)} rel="stylesheet" />
-);
+export default ({ src }: Props) => {
+  const content = useContent();
+  return <link href={process(content, src)} rel="stylesheet" />;
+};

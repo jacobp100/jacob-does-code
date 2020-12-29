@@ -1,10 +1,10 @@
 import path from "path";
 import type { VideoHTMLAttributes } from "react";
-import useContent, { Content } from "../useContent";
-import { cache2 } from "../cache";
+import useContent from "../useContent";
+import cacheAssetTransform from "../cacheAssetTransform";
 import { classNames, ClassNames } from "../css";
 
-const process = cache2<Content, string, string>((content, src) => {
+const process = cacheAssetTransform((content, src) => {
   const buffer = content.assetBuffer(src);
   return content.write(buffer, { extension: path.extname(src) });
 });

@@ -4,6 +4,7 @@ import chokidar from "chokidar";
 import chalk from "chalk";
 import renderPage from "./renderPage";
 import { File, getPages, getPosts } from "./files";
+import { clearFileAssetCache } from "./cacheAssetTransform";
 import dev from "./dev";
 
 const projectDir = path.join(__dirname, "..");
@@ -13,7 +14,7 @@ fs.rmdirSync(sitePath, { recursive: true });
 fs.mkdirSync(sitePath);
 
 const files = new Set([...getPages(), ...getPosts()]);
-const fileDependencies = new Map<string, File>();
+const fileDependencies = new Map<File, Set<string>>();
 
 const run = (files: Set<File>, message: string) => {
   const start = Date.now();
@@ -23,9 +24,7 @@ const run = (files: Set<File>, message: string) => {
     console.log(`- Building ${file.title ?? file.url}`);
     const { dependencies } = renderPage(file);
 
-    dependencies.forEach((dependency) => {
-      fileDependencies.set(dependency, file);
-    });
+    fileDependencies.set(file, dependencies);
   });
 
   const end = Date.now();
@@ -47,15 +46,27 @@ if (dev) {
     let coreChanged = false;
     const changed = new Set<File>();
 
+    const invertedFileDependencies = new Map<string, Set<File>>();
+    fileDependencies.forEach((dependencies, file) => {
+      dependencies.forEach((dependency) => {
+        let files = invertedFileDependencies.get(dependency);
+        if (files == null) {
+          files = new Set<File>();
+          invertedFileDependencies.set(dependency, files);
+        }
+        files.add(file);
+      });
+    });
+
     pendingFiles.forEach((filename) => {
+      clearFileAssetCache(filename);
+
       const isInCore = /^[^./]/.test(path.relative(core, filename));
       coreChanged = coreChanged || isInCore;
 
-      const file = fileDependencies.get(filename);
-
-      if (file != null) {
+      invertedFileDependencies.get(filename)?.forEach((file) => {
         changed.add(file);
-      }
+      });
     });
 
     pendingFiles.clear();

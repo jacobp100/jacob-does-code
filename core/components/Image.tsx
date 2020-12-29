@@ -9,8 +9,8 @@ import imageminPngquant from "imagemin-pngquant";
 // @ts-ignore
 import imageminWebp from "imagemin-webp";
 import imageSize from "image-size";
-import useContent, { Content } from "../useContent";
-import { cache2 } from "../cache";
+import useContent from "../useContent";
+import cacheAssetTransform from "../cacheAssetTransform";
 import syncPromise from "../syncPromise";
 import { ClassNames, classNames } from "../css";
 import dev from "../dev";
@@ -22,7 +22,7 @@ type ImageResult = {
   height: number | undefined;
 };
 
-const process = cache2<Content, string, ImageResult>((content, src) => {
+const process = cacheAssetTransform((content, src) => {
   const buffer = content.assetBuffer(src);
   const extension = path.extname(src);
   const { width, height } = imageSize(buffer);

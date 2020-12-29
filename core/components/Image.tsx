@@ -32,12 +32,13 @@ const process = cacheAssetTransform<ImageResult>((content, inputSrc) => {
   const [
     { width, height },
     baseBuffer,
-    webpBuffer /*, avifBuffer */,
+    webpBuffer,
+    /* avifBuffer */
   ] = syncPromiseValue(
     Promise.all([
       sharp(buffer).metadata(),
       sharp(buffer).png({ force: false }).jpeg({ force: false }).toBuffer(),
-      sharp(buffer).webp({ lossless: true }).toBuffer(),
+      sharp(buffer).webp().toBuffer(),
       // This is too slow and doesn't produce better results
       // Disable until support is better
       // sharp(buffer).avif({ lossless: true, speed: 3 }).toBuffer(),

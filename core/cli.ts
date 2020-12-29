@@ -37,6 +37,10 @@ const run = (files: Set<File>, message: string) => {
 };
 
 if (dev) {
+  if (dev) {
+    console.log(chalk.yellow("[Dev mode]"));
+  }
+
   const core = path.resolve(projectDir, "core");
 
   let timeout: ReturnType<typeof setTimeout> | null = null;

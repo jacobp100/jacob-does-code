@@ -7,7 +7,7 @@ type Fn<T> = (content: Content, src: string) => T;
 export default function cacheAssetTransform<T>(fn: Fn<T>) {
   const symbol = Symbol("cache");
 
-  return (content: Content, src: string) => {
+  return (content: Content, src: string): T => {
     const assetFilename = assetPath(src);
 
     content.dependencies.add(assetFilename);

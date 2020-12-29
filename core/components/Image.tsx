@@ -1,50 +1,43 @@
 import type { ImgHTMLAttributes } from "react";
 import path from "path";
-// @ts-ignore
-import imagemin from "imagemin";
-// @ts-ignore
-import imageminJpegtran from "imagemin-jpegtran";
-// @ts-ignore
-import imageminPngquant from "imagemin-pngquant";
-// @ts-ignore
-import imageminWebp from "imagemin-webp";
-import imageSize from "image-size";
+import sharp from "sharp";
 import useContent from "../useContent";
 import cacheAssetTransform from "../cacheAssetTransform";
 import syncPromise from "../syncPromise";
 import { ClassNames, classNames } from "../css";
 import dev from "../dev";
 
+type AdditionalSource = {
+  src: string;
+  type: string;
+};
+
 type ImageResult = {
-  source: string;
-  webp: string | null;
+  src: string;
+  additionalSources: AdditionalSource[];
   width: number | undefined;
   height: number | undefined;
 };
 
-const process = cacheAssetTransform((content, src) => {
-  const buffer = content.assetBuffer(src);
-  const extension = path.extname(src);
-  const { width, height } = imageSize(buffer);
+const process = cacheAssetTransform<ImageResult>((content, inputSrc) => {
+  const buffer = content.assetBuffer(inputSrc);
+  const extension = path.extname(inputSrc);
 
   if (dev) {
-    const source = content.write(buffer, { extension });
-    return { source, webp: null, width, height };
+    const result = syncPromise(sharp(buffer).metadata());
+    const metadata = result.type === "ok" ? result.value : undefined;
+    const width = metadata?.width;
+    const height = metadata?.height;
+    const src = content.write(buffer, { extension });
+    return { src, additionalSources: [], width, height };
   }
 
   const result = syncPromise(
     Promise.all([
-      imagemin.buffer(buffer, {
-        plugins: [
-          imageminJpegtran(),
-          imageminPngquant({
-            quality: [0.6, 0.8],
-          }),
-        ],
-      }),
-      imagemin.buffer(buffer, {
-        plugins: [imageminWebp({ quality: 50 })],
-      }),
+      sharp(buffer).metadata(),
+      sharp(buffer).png({ force: false }).jpeg({ force: false }).toBuffer(),
+      sharp(buffer).webp({ lossless: true }).toBuffer(),
+      // sharp(buffer).avif({ lossless: true, speed: 3 }).toBuffer(),
     ])
   );
 
@@ -52,19 +45,32 @@ const process = cacheAssetTransform((content, src) => {
     throw result.error ?? new Error("Unknown error");
   }
 
-  let [sourceBuffer, webpBuffer] = result.value;
+  let [metadata, srcBuffer, webpBuffer /*, avifBuffer */] = result.value;
+
+  const { width, height } = metadata;
 
   // Check we actually making savings
-  sourceBuffer = sourceBuffer.length < buffer.length ? sourceBuffer : buffer;
-  webpBuffer = webpBuffer.length < sourceBuffer.length ? webpBuffer : null;
+  srcBuffer = srcBuffer.length < buffer.length ? srcBuffer : buffer;
+  const src = content.write(srcBuffer, { extension });
 
-  const source = content.write(sourceBuffer, { extension });
-  const webp =
-    webpBuffer != null
-      ? content.write(webpBuffer, { extension: ".webp" })
-      : null;
+  const additionalSources: AdditionalSource[] = [];
+  let smallestLength = srcBuffer.length;
+  const addAdditionalSourceIfNeeded = (
+    buffer: Buffer,
+    extension: string,
+    type: string
+  ) => {
+    if (buffer.length < smallestLength) {
+      const src = content.write(buffer, { extension });
+      additionalSources.unshift({ src, type });
+      smallestLength = buffer.length;
+    }
+  };
 
-  return { source, webp, width, height };
+  addAdditionalSourceIfNeeded(webpBuffer, ".webp", "image/webp");
+  // addAdditionalSourceIfNeeded(avifBuffer, ".avif", "image/avif");
+
+  return { src, additionalSources, width, height };
 });
 
 type Props = Omit<ImgHTMLAttributes<any>, "className" | "width" | "height"> & {
@@ -74,13 +80,13 @@ type Props = Omit<ImgHTMLAttributes<any>, "className" | "width" | "height"> & {
   height: number | "compute";
 };
 
-export default ({ src, children: _, ...props }: Props) => {
+export default ({ src: inputSrc, children: _, ...props }: Props) => {
   const content = useContent();
-  const { source, webp, width, height } = process(content, src);
+  const { src, additionalSources, width, height } = process(content, inputSrc);
 
   const imgBase = (
     <img
-      src={source}
+      src={src}
       {...props}
       className={classNames(props.className)}
       width={props.width === "compute" ? width : props.width}
@@ -88,9 +94,11 @@ export default ({ src, children: _, ...props }: Props) => {
     />
   );
 
-  return webp != null ? (
+  return additionalSources.length > 0 ? (
     <picture>
-      <source srcSet={webp} type="image/webp" />
+      {additionalSources.map(({ src, type }) => (
+        <source key={type} srcSet={src} type={type} />
+      ))}
       {imgBase}
     </picture>
   ) : (

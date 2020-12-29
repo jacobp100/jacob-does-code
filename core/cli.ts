@@ -37,9 +37,7 @@ const run = (files: Set<File>, message: string) => {
 };
 
 if (dev) {
-  if (dev) {
-    console.log(chalk.yellow("[Dev mode]"));
-  }
+  console.log(chalk.yellow("[Dev mode]"));
 
   const core = path.resolve(projectDir, "core");
 

@@ -44,7 +44,7 @@ Bookmarks let you mark out sections within a piece. You can add as many as you n
 
 Use your finger or Apple Pencil to _freehand draw anywhere_ in the piece to annotate.\*
 
-\* iPad only
+<p class="footnote">* iPad only</p>
 
 </AppBlock>
 

@@ -7,19 +7,19 @@ hr {
 
 h1 {
   margin: 12px auto;
-  font-size: 32px;
-  line-height: 36px;
-  letter-spacing: -1.1px;
+  font-size: 36px;
+  line-height: 40px;
+  letter-spacing: -1.3px;
   --font-weight: 700;
   text-align: center;
 }
 
 h2 {
   margin: 24px auto;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 28px;
+  line-height: 32px;
   --font-weight: 600;
-  letter-spacing: -0.2px;
+  letter-spacing: -0.6px;
 }
 
 p {
@@ -92,6 +92,10 @@ hr {
   object-position: center;
 }
 
+.footnote {
+  opacity: 0.25;
+}
+
 .store-links {
   text-align: center;
 }
@@ -108,20 +112,20 @@ hr {
     line-height: 32px;
   }
 
-  p {
-    margin: 24px auto;
-  }
-
   h1 {
     font-size: 48px;
     line-height: 52px;
-    letter-spacing: -1.6px;
+    letter-spacing: -2.2px;
   }
 
   h2 {
     font-size: 32px;
     line-height: 36px;
     letter-spacing: -0.8px;
+  }
+
+  p {
+    margin: 24px auto;
   }
 
   .lead {

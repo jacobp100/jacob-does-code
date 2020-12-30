@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "yarn build --dev",
-    "build": "babel-node core/cli.ts --extensions '.ts,.tsx'"
+    "start": "node core/cli --dev",
+    "build": "node core/cli"
   },
   "dependencies": {
     "@babel/core": "^7.12.10",
@@ -15,6 +15,7 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
+    "@babel/register": "^7.12.10",
     "@babel/traverse": "^7.12.12",
     "@babel/types": "^7.12.12",
     "@silvenon/remark-smartypants": "^1.0.0",
@@ -33,6 +34,7 @@
     "express": "^4.17.1",
     "frontmatter": "^0.0.3",
     "glob": "^7.1.6",
+    "http-server": "^0.12.3",
     "postcss": "^8.2.1",
     "postcss-transform-classes": "^1.0.0",
     "posthtml": "^0.15.1",

@@ -28,7 +28,13 @@ export default ({ src, type }: Props) => (
           />
         </svg>
       </button>
-      <Video className="lightbox__video" src={src} type={type} controls />
+      <Video
+        className="lightbox__video"
+        src={src}
+        type={type}
+        controls
+        // preload="none"
+      />
     </div>
   </>
 );

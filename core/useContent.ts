@@ -87,8 +87,10 @@ export const createContentContext = (): Content => {
 
   return {
     dependencies,
-    component: (filename) => require(componentPath(filename)).default,
-    layout: (filename) => require(layoutPath(filename)).default,
+    component: (filename) =>
+      require(addFilenameDependency(componentPath(filename))).default,
+    layout: (filename) =>
+      require(addFilenameDependency(layoutPath(filename))).default,
     page: (filename) =>
       fs.readFileSync(addFilenameDependency(filename), "utf8"),
     asset: (filename) =>

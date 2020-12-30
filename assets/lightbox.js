@@ -3,6 +3,7 @@ const video = document.querySelector("." + CSS_CLASSES["lightbox__video"]);
 
 const toggleModal = (open) => {
   if (open) {
+    video.setAttribute("preload", "auto");
     modal.removeAttribute("hidden");
   } else {
     modal.setAttribute("hidden", "");

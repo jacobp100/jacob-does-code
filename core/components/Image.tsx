@@ -21,76 +21,76 @@ type ImageResult = {
 
 const avifEnabled = false;
 
-const transform = cacheAssetTransform<ImageResult>(
-  (content, inputSrc, size) => {
-    const buffer = content.assetBuffer(inputSrc);
-    const extension = path.extname(inputSrc);
+const transform = cacheAssetTransform<ImageResult>((content, input, size) => {
+  const buffer = content.assetBuffer(input);
+  const extension = path.extname(input);
 
-    let pipeline = sharp(buffer);
+  let pipeline = sharp(buffer);
 
-    if (size != null) {
-      pipeline = pipeline.resize({ ...size, withoutEnlargement: true });
-    }
-
-    const basePipeline = !dev
-      ? pipeline.png({ force: false }).jpeg({ force: false })
-      : pipeline;
-    const {
-      info: { width, height },
-      data: baseBuffer,
-    } = syncPromiseValue(basePipeline.toBuffer({ resolveWithObject: true }));
-
-    // Check we actually making savings
-    const srcBuffer = baseBuffer.length < buffer.length ? baseBuffer : buffer;
-    const src = content.write(srcBuffer, { extension });
-
-    const [webpBuffer, avifBuffer] = syncPromiseValue(
-      Promise.all([
-        !dev ? pipeline.webp().toBuffer() : null,
-        (!dev && avifEnabled
-          ? // @ts-ignore
-            pipeline.avif().toBuffer()
-          : null) as Buffer | null,
-      ])
-    );
-
-    const additionalSources: AdditionalSource[] = [];
-    let smallestLength = srcBuffer.length;
-    const addAdditionalSourceIfNeeded = (
-      buffer: Buffer | null,
-      extension: string,
-      type: string
-    ) => {
-      if (buffer != null && buffer.length < smallestLength) {
-        const src = content.write(buffer, { extension });
-        additionalSources.unshift({ src, type });
-        smallestLength = buffer.length;
-      }
-    };
-
-    addAdditionalSourceIfNeeded(webpBuffer, ".webp", "image/webp");
-    addAdditionalSourceIfNeeded(avifBuffer, ".avif", "image/avif");
-
-    return { src, additionalSources, width, height };
+  if (size != null) {
+    pipeline = pipeline.resize({ ...size, withoutEnlargement: true });
   }
-);
+
+  const basePipeline = !dev
+    ? pipeline.png({ force: false }).jpeg({ force: false })
+    : pipeline;
+  const {
+    info: { width, height },
+    data: baseBuffer,
+  } = syncPromiseValue(basePipeline.toBuffer({ resolveWithObject: true }));
+
+  // Check we actually making savings
+  const srcBuffer = baseBuffer.length < buffer.length ? baseBuffer : buffer;
+  const src = content.write(srcBuffer, { extension });
+
+  const [webpBuffer, avifBuffer] = syncPromiseValue(
+    Promise.all([
+      !dev ? pipeline.webp().toBuffer() : null,
+      (!dev && avifEnabled
+        ? // @ts-ignore
+          pipeline.avif().toBuffer()
+        : null) as Buffer | null,
+    ])
+  );
+
+  const additionalSources: AdditionalSource[] = [];
+  let smallestLength = srcBuffer.length;
+  const addAdditionalSourceIfNeeded = (
+    buffer: Buffer | null,
+    extension: string,
+    type: string
+  ) => {
+    if (buffer != null && buffer.length < smallestLength) {
+      const src = content.write(buffer, { extension });
+      additionalSources.unshift({ src, type });
+      smallestLength = buffer.length;
+    }
+  };
+
+  addAdditionalSourceIfNeeded(webpBuffer, ".webp", "image/webp");
+  addAdditionalSourceIfNeeded(avifBuffer, ".avif", "image/avif");
+
+  return { src, additionalSources, width, height };
+});
+
+type Size = { width?: number; height?: number };
 
 type Props = Omit<ImgHTMLAttributes<any>, "className" | "width" | "height"> & {
   src: string;
   className: ClassNames;
   width?: number | "compute";
   height?: number | "compute";
-  size?: string | { width?: number; height?: number };
+  size?: Size | string;
 };
 
-const parseSize = (size: string) => {
+const parseSize = (size: string): Size | undefined => {
   if (size.includes("x")) {
     const [w, h] = size.split("x");
     return { width: parseInt(w, 10), height: parseInt(h, 10) };
   } else if (size.endsWith("w")) {
-    return { width: parseInt(size, 10), height: undefined };
+    return { width: parseInt(size, 10) };
   } else if (size.endsWith("h")) {
-    return { width: undefined, height: parseInt(size, 10) };
+    return { height: parseInt(size, 10) };
   }
 };
 

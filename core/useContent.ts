@@ -52,20 +52,19 @@ export const assetPath = (filename: string) => {
 const sitePath = (filename: string) =>
   path.join(__dirname, "../site", filename);
 
+const contentHash = (content: Buffer | string) =>
+  typeof content === "string"
+    ? stringHash(content).toString(16)
+    : stringHash(content.toString("hex")).toString(16);
+
 const write = (
   content: Buffer | string,
-  { filename = "", extension }: { filename?: string; extension: string }
+  { filename, extension }: { filename?: string; extension: string }
 ) => {
-  const outputFilename = [
-    filename.length > 0
-      ? filename
-      : typeof content === "string"
-      ? stringHash(content).toString(16)
-      : stringHash(content.toString("hex")).toString(16),
-    extension,
-  ].join("");
+  const basename = filename != null ? filename : `res/${contentHash(content)}`;
+  const outputFilename = basename + extension;
 
-  if (filename.includes("/")) {
+  if (outputFilename.includes("/")) {
     const dir = sitePath(path.join(outputFilename, ".."));
     fs.mkdirSync(dir, { recursive: true });
   }

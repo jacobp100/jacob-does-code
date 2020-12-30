@@ -33,7 +33,7 @@ export default ({ src, type }: Props) => (
         src={src}
         type={type}
         controls
-        // preload="none"
+        preload="none"
       />
     </div>
   </>

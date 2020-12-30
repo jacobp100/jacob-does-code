@@ -1,1 +1,0 @@
-importScripts("/dfdd9e94.js"),Worker.make(self);

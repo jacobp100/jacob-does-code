@@ -1,8 +1,7 @@
 ---
 title: React Native on macOS
 layout: page
-inline-css: blog
-external-css: blog-highlight
+css: blog,blog-highlight
 ---
 
 # React Native on macOS

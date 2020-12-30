@@ -1,8 +1,7 @@
 ---
 title: Polymorphic Variants in ReasonML
 layout: page
-inline-css: blog
-external-css: blog-highlight
+css: blog,blog-highlight
 ---
 
 # Polymorphic Variants in ReasonML

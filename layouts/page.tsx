@@ -47,9 +47,8 @@ type Props = {
   file: File;
   title: string;
   description?: string;
-  "inline-css"?: string;
-  "external-css"?: string;
-  "external-js-defer"?: string;
+  css?: string;
+  js?: string;
   banner?: string;
   primary?: string;
   children: JSX.Element;
@@ -59,9 +58,8 @@ export default ({
   file,
   title,
   description,
-  "inline-css": inlineCss = "",
-  "external-css": externalCss,
-  "external-js-defer": externalJsDefer,
+  css = "",
+  js,
   banner,
   primary,
   children,
@@ -81,14 +79,11 @@ export default ({
         {description && <meta name="description" content={description} />}
         <InlineJs src="/assets/set-hairline-width.js" />
         <InlineCss
-          src={["base", ...inlineCss.split(",")]
+          src={["base", ...css.split(",")]
             .filter((file) => file.length > 0)
             .map((file) => `/assets/${file}.css`)}
         />
-        {externalCss && <ExternalCss src={`/assets/${externalCss}.css`} />}
-        {externalJsDefer && (
-          <ExternalJs src={`/assets/${externalJsDefer}.js`} defer />
-        )}
+        {js && <ExternalJs src={`/assets/${js}.js`} defer />}
       </head>
       <body>
         {banner === "TechnicalcComputation" && <TechnicalcComputation />}

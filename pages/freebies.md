@@ -1,7 +1,7 @@
 ---
 title: Freebies
 layout: page
-inline-css: freebies
+css: freebies
 primary: "var(--freebies)"
 ---
 

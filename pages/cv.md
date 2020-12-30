@@ -1,7 +1,7 @@
 ---
 title: CV
 layout: page
-inline-css: cv
+css: cv
 ---
 
 # Jacob Parker

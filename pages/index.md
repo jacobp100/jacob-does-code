@@ -1,7 +1,7 @@
 ---
 title: Jacob Does Code
 layout: page
-inline-css: index
+css: index
 ---
 
 <div class="links">

@@ -1,8 +1,7 @@
 ---
 title: A Primer in ReasonML
 layout: page
-inline-css: blog
-external-css: blog-highlight
+css: blog,blog-highlight
 ---
 
 # A Primer in ReasonML

@@ -1,7 +1,7 @@
 ---
 title: Jacob Does Code Blog
 layout: page
-inline-css: blog
+css: blog
 ---
 
 # Blog

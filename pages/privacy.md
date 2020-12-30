@@ -1,7 +1,7 @@
 ---
 title: Privacy Policy
 layout: page
-inline-css: privacy
+css: privacy
 ---
 
 # Privacy Policy

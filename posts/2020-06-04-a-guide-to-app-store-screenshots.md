@@ -1,7 +1,7 @@
 ---
 title: A Guide to App Store Screenshots
 layout: page
-inline-css: blog
+css: blog
 ---
 
 <style>

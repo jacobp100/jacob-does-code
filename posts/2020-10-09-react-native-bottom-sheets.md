@@ -1,8 +1,7 @@
 ---
 title: React Native Bottom Sheets
 layout: page
-inline-css: blog
-external-css: blog-highlight
+css: blog,blog-highlight
 ---
 
 <style>

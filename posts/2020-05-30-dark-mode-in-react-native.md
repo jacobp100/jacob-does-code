@@ -1,8 +1,7 @@
 ---
 title: Dark Mode in React Native
 layout: page
-inline-css: blog
-external-css: blog-highlight
+css: blog,blog-highlight
 ---
 
 # Dark Mode in React Native

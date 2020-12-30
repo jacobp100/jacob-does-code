@@ -2,8 +2,8 @@
 title: TechniCalc
 description: A smart calculator for a smart phone
 layout: page
-inline-css: app,lightbox,technicalc/computation-critical
-external-js-defer: lightbox
+css: app,lightbox,technicalc/computation-critical
+js: lightbox
 primary: "var(--technicalc)"
 banner: "TechnicalcComputation"
 ---

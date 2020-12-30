@@ -157,11 +157,6 @@
   opacity: 0;
 }
 
-.computation__form-input-inline {
-  display: flex;
-  justify-content: space-between;
-}
-
 .computation__radio-options {
   display: flex;
   margin: var(--spacing) -6px;

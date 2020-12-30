@@ -11,7 +11,7 @@ All the apps below are free. Some are even open source.
 
 <div class="grid">
 
-<div class="grid__tile">
+<div>
 
 <Icon name="rail-app" />
 
@@ -23,7 +23,7 @@ View live and offline UK rail timetables.
 
 </div>
 
-<div class="grid__tile">
+<div>
 
 <Icon name="za" />
 
@@ -35,7 +35,7 @@ Scrabble dictionary.
 
 </div>
 
-<div class="grid__tile">
+<div>
 
 <Icon name="reason-ml" />
 

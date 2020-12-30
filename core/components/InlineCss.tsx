@@ -1,5 +1,11 @@
 import useContent from "../useContent";
-import useTransformCss from "../useTransformCss";
+import cacheAssetTransform from "../cacheAssetTransform";
+import transformCss from "../transformCss";
+
+const transform = cacheAssetTransform((content, src) => {
+  const input = src.split(",").map(content.asset).join("\n");
+  return transformCss(content, input);
+});
 
 type Props = {
   src: string;
@@ -7,7 +13,6 @@ type Props = {
 
 export default ({ src }: Props) => {
   const content = useContent();
-  const input = src.split(",").map(content.asset).join("\n");
-  const output = useTransformCss(input);
+  const output = transform(content, src);
   return <style dangerouslySetInnerHTML={{ __html: output }} />;
 };

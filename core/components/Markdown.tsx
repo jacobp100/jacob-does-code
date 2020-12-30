@@ -10,20 +10,23 @@ import squeezeParagraphs from "remark-squeeze-paragraphs";
 import smartypants from "@silvenon/remark-smartypants";
 // @ts-ignore
 import html from "remark-html";
-import useTransformHtml from "../useTransformHtml";
+import useTransformHtml from "../transformHtml";
+import useContent from "../useContent";
 
 type Props = {
-  content: string;
+  markdown: string;
 };
 
-export default ({ content }: Props) => {
+export default ({ markdown }: Props) => {
+  const content = useContent();
+
   let __html = unified()
     .use(parse)
     .use(highlight)
     .use(squeezeParagraphs)
     .use(smartypants)
     .use(html)
-    .processSync(content)
+    .processSync(markdown)
     .toString();
 
   __html = __html
@@ -34,7 +37,7 @@ export default ({ content }: Props) => {
     // Fix empty paragraphs
     .replace(/<p><\/p>/g, "");
 
-  __html = useTransformHtml(__html);
+  __html = useTransformHtml(content, __html);
 
   const ElementName = "ignored-tag";
   // @ts-ignore

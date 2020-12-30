@@ -5,14 +5,13 @@ import traverse from "@babel/traverse";
 import generate from "@babel/generator";
 import * as t from "@babel/types";
 import { minify } from "terser";
-import useTransformAsset from "./useTransformAsset";
+import { Content } from "./useContent";
 import { variable, className } from "./css";
+import transformAsset from "./transformAsset";
 import { syncPromiseValue } from "./syncPromise";
 import dev from "./dev";
 
-export default (input: string) => {
-  const transformAsset = useTransformAsset();
-
+export default (content: Content, input: string) => {
   const ast = parse(input, {
     sourceType: "module",
   });
@@ -43,15 +42,17 @@ export default (input: string) => {
         callee.get("property").isIdentifier({ name: "resolve" }) &&
         argument.isStringLiteral()
       ) {
-        path.replaceWith(t.stringLiteral(transformAsset(argument.node.value)));
+        path.replaceWith(
+          t.stringLiteral(transformAsset(content, argument.node.value))
+        );
       } else if (callee.isImport()) {
-        argument.node.value = transformAsset(argument.node.value);
+        argument.node.value = transformAsset(content, argument.node.value);
       }
     },
     ImportDeclaration(path: any) {
       const asset = path.node.source.value;
       if (asset.startsWith("/assets")) {
-        path.node.source.value = transformAsset(asset);
+        path.node.source.value = transformAsset(content, asset);
       }
     },
   });

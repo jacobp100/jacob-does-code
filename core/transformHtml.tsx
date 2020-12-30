@@ -1,11 +1,10 @@
-import { useContext } from "react";
 // @ts-ignore
 import posthtml from "posthtml";
 // @ts-ignore
 import minifier from "posthtml-minifier";
 // @ts-ignore
 import renderStaticReact from "./posthtml-static-react";
-import useContent, { ContentContext } from "./useContent";
+import { Content, ContentContext } from "./useContent";
 import * as components from "./components";
 import { classNames } from "./css";
 import { isReactComponent } from "./htmlUtil";
@@ -19,10 +18,7 @@ const transformClassNames = () => (tree: any) =>
     return node;
   });
 
-export default (input: string) => {
-  const contentContext = useContext(ContentContext);
-  const content = useContent();
-
+export default (content: Content, input: string) => {
   const includes = new Proxy(
     {},
     {
@@ -33,7 +29,7 @@ export default (input: string) => {
   );
 
   const Wrapper = ({ children }: any) => (
-    <ContentContext.Provider value={contentContext}>
+    <ContentContext.Provider value={content}>
       {children}
     </ContentContext.Provider>
   );

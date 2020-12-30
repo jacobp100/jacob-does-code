@@ -3,18 +3,17 @@ import postcss, { AtRule, Declaration, Root, Rule } from "postcss";
 import transformClasses from "postcss-transform-classes";
 // @ts-ignore
 import csso from "csso";
-import useTransformAsset from "./useTransformAsset";
-import { variable, className } from "./css";
+import transformAsset from "./transformAsset";
+import { Content } from "./useContent";
+import { classNameForOrigin, variable, Origin } from "./css";
 import dev from "./dev";
 
-const transformUrls = () => {
-  const transformAsset = useTransformAsset();
-
+const transformUrls = (content: Content) => {
   return (root: Root) => {
     root.walkDecls((decl) => {
       decl.value = decl.value.replace(
         /url\(['"]?(\/assets\/[^'")]+)['"]?\)/g,
-        (_, url) => `url(${transformAsset(url)})`
+        (_, url) => `url(${transformAsset(content, url)})`
       );
     });
   };
@@ -145,9 +144,11 @@ const optimizeVariableDeclarations = () => (root: Root) => {
   });
 };
 
-export default (input: string) => {
+const className = (input: string) => classNameForOrigin(input, Origin.CSS);
+
+export default (content: Content, input: string) => {
   let css = postcss([
-    transformUrls(),
+    transformUrls(content),
     transformClasses({ transform: className }),
     transformVariables({ transform: variable }),
     // optimizeVariableDeclarations(),

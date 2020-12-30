@@ -32,8 +32,25 @@ export const variable = (input: string) => {
   return output;
 };
 
-export const className = (input: string) =>
-  getGeneratedName(classNamesStore, input);
+export enum Origin {
+  CSS,
+  Asset,
+}
+
+const classNamesInAssets = new Set<string>();
+const classNamesInCss = new Set<string>();
+
+export const classNameForOrigin = (input: string, origin = Origin.Asset) => {
+  if (origin === Origin.CSS) {
+    classNamesInCss.add(input);
+  } else {
+    classNamesInAssets.add(input);
+  }
+
+  return getGeneratedName(classNamesStore, input);
+};
+
+export const className = (input: string) => classNameForOrigin(input);
 
 export type ClassNames = string | boolean | null | undefined | ClassNames[];
 
@@ -50,4 +67,26 @@ const flatten = (input: ClassNames): string[] => {
 export const classNames = (...input: ClassNames[]) => {
   const out = input.flatMap(flatten).map(className).join(" ");
   return out.length > 0 ? out : undefined;
+};
+
+const subtract = (a: Set<string>, b: Set<String>) => {
+  const out: string[] = [];
+  a.forEach((className) => {
+    if (!b.has(className)) {
+      out.push(className);
+    }
+  });
+  return out;
+};
+
+export const resetCssStats = () => {
+  classNamesInCss.clear();
+  classNamesInAssets.clear();
+};
+
+export const validateCss = () => {
+  const unusedClassNames = subtract(classNamesInCss, classNamesInAssets);
+  const undeclaredClassNames = subtract(classNamesInAssets, classNamesInCss);
+
+  return { unusedClassNames, undeclaredClassNames };
 };

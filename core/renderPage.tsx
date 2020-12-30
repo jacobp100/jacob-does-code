@@ -26,7 +26,7 @@ export default (file: File) => {
   let htmlFragment = renderToStaticMarkup(
     <ContentContext.Provider value={content}>
       <Layout {...page.data} file={file}>
-        <Markdown content={page.content} />
+        <Markdown markdown={page.content} />
       </Layout>
     </ContentContext.Provider>
   );

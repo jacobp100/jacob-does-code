@@ -1,12 +1,12 @@
 import type { ScriptHTMLAttributes } from "react";
 import useContent from "../useContent";
 import cacheAssetTransform from "../cacheAssetTransform";
-import useTransformJs from "../useTransformJs";
+import transformJs from "../transformJs";
 
 const transform = cacheAssetTransform((content, src) => {
-  const js = content.asset(src);
-  const code = useTransformJs(js);
-  return content.write(code, { extension: ".js" });
+  const input = content.asset(src);
+  const output = transformJs(content, input);
+  return content.write(output, { extension: ".js" });
 });
 
 type Props = Omit<ScriptHTMLAttributes<any>, "src"> & {

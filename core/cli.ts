@@ -5,6 +5,7 @@ import chalk from "chalk";
 import renderPage from "./renderPage";
 import { File, getPages, getPosts } from "./files";
 import { clearFileAssetCache } from "./cacheAssetTransform";
+import { resetCssStats, validateCss } from "./css";
 import dev from "./dev";
 
 const projectDir = path.join(__dirname, "..");
@@ -34,6 +35,30 @@ const run = (files: Set<File>, message: string) => {
   if (dev) {
     console.log(chalk.cyan("[Watching for changes...]"));
   }
+};
+
+const fullBuild = (message: string) => {
+  resetCssStats();
+
+  run(files, message);
+
+  const cssStats = validateCss();
+
+  const logIfNotEmpty = (array: string[], message: string) => {
+    if (array.length > 0) {
+      console.warn(chalk.yellow(message));
+      console.warn(array.join(", "));
+    }
+  };
+
+  logIfNotEmpty(
+    cssStats.unusedClassNames,
+    "The following classes were defined in css, but never used"
+  );
+  logIfNotEmpty(
+    cssStats.undeclaredClassNames,
+    "The following classes used, but never defined in css"
+  );
 };
 
 if (dev) {
@@ -74,7 +99,7 @@ if (dev) {
     pendingFiles.clear();
 
     if (coreChanged) {
-      run(files, "Full rebuild");
+      fullBuild("Full rebuild");
     } else if (changed.size !== 0) {
       run(changed, "Partial rebuild");
     }
@@ -90,4 +115,4 @@ if (dev) {
   });
 }
 
-run(files, "Building site");
+fullBuild("Building site");

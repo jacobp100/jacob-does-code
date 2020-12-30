@@ -19,7 +19,7 @@ export default ({ src, alt, layout, imagePosition, children }: any) => (
       alt={alt}
       width="compute"
       height="compute"
-      size={{ width: 1000 }}
+      resize={{ width: 1000 }}
     />
     <div className={classNames("block__content")}>{children}</div>
   </div>

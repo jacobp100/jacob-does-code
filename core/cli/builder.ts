@@ -39,11 +39,11 @@ const fullBuild = (message: string) => {
 
   logIfNotEmpty(
     cssStats.unusedClassNames,
-    "The following classes were defined in css, but never used"
+    "The following classes were defined in CSS, but never used in any non-CSS files:"
   );
   logIfNotEmpty(
     cssStats.undeclaredClassNames,
-    "The following classes used, but never defined in css"
+    "The following classes used one more non-CSS files, but never defined in CSS:"
   );
 };
 

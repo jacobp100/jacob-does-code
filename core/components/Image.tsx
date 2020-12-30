@@ -80,29 +80,29 @@ type Props = Omit<ImgHTMLAttributes<any>, "className" | "width" | "height"> & {
   className: ClassNames;
   width?: number | "compute";
   height?: number | "compute";
-  size?: Size | string;
+  resize?: Size | string;
 };
 
-const parseSize = (size: string): Size | undefined => {
-  if (size.includes("x")) {
-    const [w, h] = size.split("x");
+const parseResize = (resize: string): Size | undefined => {
+  if (resize.includes("x")) {
+    const [w, h] = resize.split("x");
     return { width: parseInt(w, 10), height: parseInt(h, 10) };
-  } else if (size.endsWith("w")) {
-    return { width: parseInt(size, 10) };
-  } else if (size.endsWith("h")) {
-    return { height: parseInt(size, 10) };
+  } else if (resize.endsWith("w")) {
+    return { width: parseInt(resize, 10) };
+  } else if (resize.endsWith("h")) {
+    return { height: parseInt(resize, 10) };
   }
 };
 
-export default ({ src: inputSrc, size, children: _, ...props }: Props) => {
+export default ({ src: inputSrc, resize, children: _, ...props }: Props) => {
   const content = useContent();
 
-  const sizeObj = typeof size === "string" ? parseSize(size) : size;
+  const resizeObj = typeof resize === "string" ? parseResize(resize) : resize;
 
   const { src, additionalSources, width, height } = transform(
     content,
     inputSrc,
-    sizeObj
+    resizeObj
   );
 
   const imgBase = (

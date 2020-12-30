@@ -4,6 +4,6 @@ type Props = {
   children: any;
 };
 
-export default ({ children }: Props) => {
-  return <p className={className("store-links")}>{children}</p>;
-};
+export default ({ children }: Props) => (
+  <p className={className("store-links")}>{children}</p>
+);

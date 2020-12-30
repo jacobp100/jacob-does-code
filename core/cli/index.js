@@ -39,7 +39,11 @@ if (process.argv.includes("--dev")) {
     .listen("8080", "0.0.0.0");
 
   /* Watch for changes */
-  const rebuildDirectories = [path.resolve(projectDir, "assets")];
+  const rebuildDirectories = [
+    path.resolve(projectDir, "assets"),
+    path.resolve(projectDir, "pages"),
+    path.resolve(projectDir, "posts"),
+  ];
   const restartDirectories = [
     path.resolve(projectDir, "core"),
     path.resolve(projectDir, "components"),
@@ -79,7 +83,7 @@ if (process.argv.includes("--dev")) {
       childProcess?.kill();
       process.exit();
     } else if (key == "r") {
-      restartProcess();
+      restartBuilder();
     }
   });
 } else {

@@ -7,6 +7,12 @@ const classNamesStore = new Map<string, string>();
 
 const getGeneratedName = (store: Map<string, string>, input: string) => {
   if (dev) {
+    /* Make sure stuff breaks if you don't follow proper protocols when using
+     * CSS class names
+     *
+     * But also make sure the user can actually read the class names in
+     * development
+     */
     return input + "_";
   }
 

@@ -83,8 +83,7 @@ export default ({
         <InlineCss
           src={["base", ...inlineCss.split(",")]
             .filter((file) => file.length > 0)
-            .map((file) => `/assets/${file}.css`)
-            .join(",")}
+            .map((file) => `/assets/${file}.css`)}
         />
         {externalCss && <ExternalCss src={`/assets/${externalCss}.css`} />}
         {externalJsDefer && (

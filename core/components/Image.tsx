@@ -21,67 +21,88 @@ type ImageResult = {
 
 const avifEnabled = false;
 
-const transform = cacheAssetTransform<ImageResult>((content, inputSrc) => {
-  const buffer = content.assetBuffer(inputSrc);
-  const extension = path.extname(inputSrc);
+const transform = cacheAssetTransform<ImageResult>(
+  (content, inputSrc, size) => {
+    const buffer = content.assetBuffer(inputSrc);
+    const extension = path.extname(inputSrc);
 
-  if (dev) {
-    const { width, height } = syncPromiseValue(sharp(buffer).metadata());
-    const src = content.write(buffer, { extension });
-    return { src, additionalSources: [], width, height };
-  }
+    let pipeline = sharp(buffer);
 
-  const [
-    { width, height },
-    baseBuffer,
-    webpBuffer,
-    avifBuffer,
-  ] = syncPromiseValue(
-    Promise.all([
-      sharp(buffer).metadata(),
-      sharp(buffer).png({ force: false }).jpeg({ force: false }).toBuffer(),
-      sharp(buffer).webp().toBuffer(),
-      // @ts-ignore
-      (avifEnabled ? sharp(buffer).avif().toBuffer() : null) as Buffer | null,
-    ])
-  );
-
-  // Check we actually making savings
-  const srcBuffer = baseBuffer.length < buffer.length ? baseBuffer : buffer;
-  const src = content.write(srcBuffer, { extension });
-
-  const additionalSources: AdditionalSource[] = [];
-  let smallestLength = srcBuffer.length;
-  const addAdditionalSourceIfNeeded = (
-    buffer: Buffer | null,
-    extension: string,
-    type: string
-  ) => {
-    if (buffer != null && buffer.length < smallestLength) {
-      const src = content.write(buffer, { extension });
-      additionalSources.unshift({ src, type });
-      smallestLength = buffer.length;
+    if (size != null) {
+      pipeline = pipeline.resize({ ...size, withoutEnlargement: true });
     }
-  };
 
-  addAdditionalSourceIfNeeded(webpBuffer, ".webp", "image/webp");
-  addAdditionalSourceIfNeeded(avifBuffer, ".avif", "image/avif");
+    const basePipeline = !dev
+      ? pipeline.png({ force: false }).jpeg({ force: false })
+      : pipeline;
+    const {
+      info: { width, height },
+      data: baseBuffer,
+    } = syncPromiseValue(basePipeline.toBuffer({ resolveWithObject: true }));
 
-  return { src, additionalSources, width, height };
-});
+    // Check we actually making savings
+    const srcBuffer = baseBuffer.length < buffer.length ? baseBuffer : buffer;
+    const src = content.write(srcBuffer, { extension });
+
+    const [webpBuffer, avifBuffer] = syncPromiseValue(
+      Promise.all([
+        !dev ? pipeline.webp().toBuffer() : null,
+        (!dev && avifEnabled
+          ? // @ts-ignore
+            pipeline.avif().toBuffer()
+          : null) as Buffer | null,
+      ])
+    );
+
+    const additionalSources: AdditionalSource[] = [];
+    let smallestLength = srcBuffer.length;
+    const addAdditionalSourceIfNeeded = (
+      buffer: Buffer | null,
+      extension: string,
+      type: string
+    ) => {
+      if (buffer != null && buffer.length < smallestLength) {
+        const src = content.write(buffer, { extension });
+        additionalSources.unshift({ src, type });
+        smallestLength = buffer.length;
+      }
+    };
+
+    addAdditionalSourceIfNeeded(webpBuffer, ".webp", "image/webp");
+    addAdditionalSourceIfNeeded(avifBuffer, ".avif", "image/avif");
+
+    return { src, additionalSources, width, height };
+  }
+);
 
 type Props = Omit<ImgHTMLAttributes<any>, "className" | "width" | "height"> & {
   src: string;
   className: ClassNames;
-  width: number | "compute";
-  height: number | "compute";
+  width?: number | "compute";
+  height?: number | "compute";
+  size?: string | { width?: number; height?: number };
 };
 
-export default ({ src: inputSrc, children: _, ...props }: Props) => {
+const parseSize = (size: string) => {
+  if (size.includes("x")) {
+    const [w, h] = size.split("x");
+    return { width: parseInt(w, 10), height: parseInt(h, 10) };
+  } else if (size.endsWith("w")) {
+    return { width: parseInt(size, 10), height: undefined };
+  } else if (size.endsWith("h")) {
+    return { width: undefined, height: parseInt(size, 10) };
+  }
+};
+
+export default ({ src: inputSrc, size, children: _, ...props }: Props) => {
   const content = useContent();
+
+  const sizeObj = typeof size === "string" ? parseSize(size) : size;
+
   const { src, additionalSources, width, height } = transform(
     content,
-    inputSrc
+    inputSrc,
+    sizeObj
   );
 
   const imgBase = (

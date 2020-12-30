@@ -2,12 +2,12 @@ import { Content, assetPath } from "./useContent";
 
 const fileAssetCache = new Map<string, Map<symbol, any>>();
 
-type Fn<T> = (content: Content, src: string) => T;
+type Fn<T> = (content: Content, src: string, ...unsafeRest: any[]) => T;
 
 export default function cacheAssetTransform<T>(fn: Fn<T>) {
   const symbol = Symbol("cache");
 
-  return (content: Content, src: string): T => {
+  return (content: Content, src: string, ...unsafeRest: any[]): T => {
     const assetFilename = assetPath(src);
 
     content.dependencies.add(assetFilename);
@@ -22,7 +22,7 @@ export default function cacheAssetTransform<T>(fn: Fn<T>) {
       fileAssetCache.set(src, assetCache);
     }
 
-    const value = fn(content, src);
+    const value = fn(content, src, ...unsafeRest);
     assetCache.set(symbol, value);
 
     return value;

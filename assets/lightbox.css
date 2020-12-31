@@ -22,7 +22,7 @@ html.lightbox-modal-open body {
   height: 100%;
   width: 100%;
   padding: 48px 12px;
-  background: white;
+  background: var(--background);
 }
 
 .lightbox__close {
@@ -34,7 +34,7 @@ html.lightbox-modal-open body {
   border: 0;
   margin: 0;
   background: none;
-  color: currentColor;
+  color: var(--color);
   z-index: 1;
 }
 

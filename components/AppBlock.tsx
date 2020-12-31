@@ -1,26 +1,27 @@
-import { Image } from "../core/components";
+import { ImageResize, Image, ImageSource } from "../core/components";
 import { classNames } from "../core/css";
 
-const imagePositions: Record<string, string | undefined> = {
-  bottom: "preview--bottom",
-  "center-contain": "preview--center-contain",
+const imagePositions: Record<string, ImageResize> = {
+  bottom: { fit: "cover", position: "bottom" },
+  "center-contain": { fit: "contain", background: "transparent" },
+  DEFAULT: { fit: "cover", position: "top" },
 };
 
 export default ({ src, alt, layout, imagePosition, children }: any) => (
   <div
     className={classNames("block", layout === "reverse" && "block--reverse")}
   >
-    <Image
-      src={src}
-      className={[
-        "preview",
-        imagePosition != null ? imagePositions[imagePosition] : undefined,
-      ]}
-      alt={alt}
-      width="compute"
-      height="compute"
-      resize={{ width: 1000 }}
-    />
+    <Image src={src} className="preview" alt={alt} resize={{ width: 1000 }}>
+      <ImageSource
+        src={src}
+        resize={{
+          width: 800,
+          height: 600,
+          ...(imagePositions[imagePosition] ?? imagePositions.DEFAULT),
+        }}
+        media="(max-width: 767px)"
+      />
+    </Image>
     <div className={classNames("block__content")}>{children}</div>
   </div>
 );

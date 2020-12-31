@@ -1,6 +1,6 @@
 import type { ImgHTMLAttributes } from "react";
 import path from "path";
-import sharp from "sharp";
+import sharp, { ResizeOptions } from "sharp";
 import useContent from "../useContent";
 import cacheAssetTransform from "../cacheAssetTransform";
 import { syncPromiseValue } from "../syncPromise";
@@ -73,17 +73,9 @@ const transform = cacheAssetTransform<ImageResult>((content, input, size) => {
   return { src, additionalSources, width, height };
 });
 
-type Size = { width?: number; height?: number };
+export type Resize = ResizeOptions;
 
-type Props = Omit<ImgHTMLAttributes<any>, "className" | "width" | "height"> & {
-  src: string;
-  className: ClassNames;
-  width?: number | "compute";
-  height?: number | "compute";
-  resize?: Size | string;
-};
-
-const parseResize = (resize: string): Size | undefined => {
+const parseResize = (resize: string): Resize | undefined => {
   if (resize.includes("x")) {
     const [w, h] = resize.split("x");
     return { width: parseInt(w, 10), height: parseInt(h, 10) };
@@ -94,11 +86,17 @@ const parseResize = (resize: string): Size | undefined => {
   }
 };
 
-export default ({ src: inputSrc, resize, children: _, ...props }: Props) => {
+type Props = Omit<ImgHTMLAttributes<any>, "className" | "width" | "height"> & {
+  src: string;
+  className: ClassNames;
+  width?: number | "compute";
+  height?: number | "compute";
+  resize?: Resize | string;
+};
+
+export default ({ src: inputSrc, resize, children, ...props }: Props) => {
   const content = useContent();
-
   const resizeObj = typeof resize === "string" ? parseResize(resize) : resize;
-
   const { src, additionalSources, width, height } = transform(
     content,
     inputSrc,
@@ -115,8 +113,9 @@ export default ({ src: inputSrc, resize, children: _, ...props }: Props) => {
     />
   );
 
-  return additionalSources.length > 0 ? (
+  return additionalSources.length > 0 || children != null ? (
     <picture>
+      {children}
       {additionalSources.map(({ src, type }) => (
         <source key={type} srcSet={src} type={type} />
       ))}
@@ -124,5 +123,26 @@ export default ({ src: inputSrc, resize, children: _, ...props }: Props) => {
     </picture>
   ) : (
     imgBase
+  );
+};
+
+type ImageSourceProps = {
+  src: string;
+  resize: Resize | string;
+  media: string;
+};
+
+export const Source = ({ src: inputSrc, resize, media }: ImageSourceProps) => {
+  const content = useContent();
+  const resizeObj = typeof resize === "string" ? parseResize(resize) : resize;
+  const { src, additionalSources } = transform(content, inputSrc, resizeObj);
+
+  return (
+    <>
+      {additionalSources.map(({ src, type }) => (
+        <source key={type} srcSet={src} type={type} media={media} />
+      ))}
+      <source srcSet={src} media={media} />
+    </>
   );
 };

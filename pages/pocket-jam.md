@@ -12,7 +12,7 @@ primary: "var(--pocket-jam)"
 
 <Lead>Jam sessions you can carry in your pocket</Lead>
 
-<Image src="/assets/pocket-jam/promo.png" className="promo" alt="App Screenshots" width="compute" height="compute" />
+<AppPromoImage src="/assets/pocket-jam/promo.png" />
 
 ## Practise any song.
 

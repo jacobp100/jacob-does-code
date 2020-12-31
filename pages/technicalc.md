@@ -16,7 +16,7 @@ banner: "TechnicalcComputation"
 
 <LightBox src="/assets/technicalc/trailer.mp4" type="video/mp4" />
 
-<Image src="/assets/technicalc/promo.png" className="promo" alt="App Screenshots" width="compute" height="compute" />
+<AppPromoImage src="/assets/technicalc/promo.png" />
 
 ## TechniCalc is every bit functional as it is beautiful.
 

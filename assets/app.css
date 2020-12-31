@@ -76,20 +76,8 @@ hr {
 .preview {
   display: block;
   margin: 0 auto 48px;
-  object-fit: cover;
-  object-position: center top;
-  max-width: 400px;
-  max-height: 300px;
   width: 100%;
-}
-
-.preview--bottom {
-  object-position: center bottom;
-}
-
-.preview--center-contain {
-  object-fit: contain;
-  object-position: center;
+  max-width: 400px;
 }
 
 .footnote {
@@ -149,9 +137,7 @@ hr {
 
   .preview {
     margin: 0;
-    object-fit: initial;
     width: auto;
-    height: auto;
     max-width: var(--max-size);
     max-height: var(--max-size);
     --max-size: 300px;

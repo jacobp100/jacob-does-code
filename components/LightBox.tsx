@@ -6,15 +6,9 @@ type Props = {
   type: string;
 };
 
-const techniCalcVideoIsReleased = false;
-
 export default ({ src, type }: Props) => (
   <>
-    <button
-      type="button"
-      className={className("lightbox__button")}
-      style={techniCalcVideoIsReleased ? undefined : { display: "none" }}
-    >
+    <button type="button" className={className("lightbox__button")}>
       {"\u{25B6}"}&ensp;Play Video
     </button>
     <div className={className("lightbox__modal")} hidden>

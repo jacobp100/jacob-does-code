@@ -22,7 +22,7 @@ banner: "TechnicalcComputation"
 
 The modern interface that makes a clean break from traditional pocket calculators. Equations are entered in a natural way, adhering to every detail of hand-written maths.
 
-The _advanced maths engine_ also makes this the only calculator you'll ever need.
+The **advanced maths engine** also makes this the only calculator you'll ever need.
 
 You'll find your garden variety logs, sins, and cosines &mdash; but for when you need it, the engine has full support for imaginary numbers, vectors, matrices, sums and products, and differentiation and integration.
 
@@ -34,9 +34,9 @@ You'll find your garden variety logs, sins, and cosines &mdash; but for when you
 
 All the units you would expect are supported, and you can combine them infinitely.
 
-_Meters_ to _yards_? check.
+**Meters** to **yards**? check.
 
-_Kilogram-meters-per-second-squared_ to something else? Also check.
+**Kilogram-meters-per-second-squared** to something else? Also check.
 
 </AppBlock>
 
@@ -62,7 +62,7 @@ Even find a root for any given equation.
 
 With over 100 constants built in, no matter whether you're doing engineering, physics, or chemistry, you'll find every constant you need.
 
-If you don't find one? You can _add your own_ &mdash; and even give it your own symbol.
+If you don't find one? You can **add your own** &mdash; and even give it your own symbol.
 
 </AppBlock>
 
@@ -75,6 +75,18 @@ If you don't find one? You can _add your own_ &mdash; and even give it your own 
 Whether you struggle to remember your equations &mdash; or just struggle to type it in &mdash; you can add them all to memory.
 
 You can even add symbols to remind you what &mdash; and where &mdash; to fill in when you insert them.
+
+</AppBlock>
+
+---
+
+<AppBlock src="/assets/technicalc/preview-5.png" alt="iPad" imagePosition="center-contain">
+
+## All the power. From your wrist to the big screen.
+
+From showing you the most recent result on Apple Watch face &mdash; to **external keyboard support** &mdash; to making **full use of largers screen** on iPads and MacBooks, TechniCalc gets the best out of your hardware.
+
+With full support for **split screen** on iPad and **global shortcut** keys on macOS, TechniCalc gets the best out of your hardware's software too.
 
 </AppBlock>
 

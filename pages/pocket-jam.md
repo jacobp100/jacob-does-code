@@ -30,7 +30,7 @@ You no longer have to retune your instrument if a song is in a different tuning 
 
 When a song is too fast or slow, you can control that too. Change the tempo anywhere between half and double the original.
 
-All in _real time_.
+All in **real time**.
 
 </AppBlock>
 
@@ -42,7 +42,7 @@ All in _real time_.
 
 Looping lets you pick specific parts of the song you want to practise. Just drag the left and right handles on the play bar to set the start and end of the loop.
 
-With a loop set up up, you can use the _speed trainer_ to have it start each loop playing slowly, and gradually speed up after each loop. Tweak how slow it starts, and how many loops it takes to reach the full tempo.
+With a loop set up up, you can use the **speed trainer** to have it start each loop playing slowly, and gradually speed up after each loop. Tweak how slow it starts, and how many loops it takes to reach the full tempo.
 
 </AppBlock>
 
@@ -52,7 +52,7 @@ With a loop set up up, you can use the _speed trainer_ to have it start each loo
 
 ## Skip to the good bit.
 
-Set up _section markers_ in your song for the bits that are important to you.
+Set up **section markers** in your song for the bits that are important to you.
 
 Use them to jump to the section in playback, or to set up loops between sections faster.
 

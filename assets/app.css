@@ -27,8 +27,7 @@ p {
   color: #636366;
 }
 
-em {
-  font: inherit;
+strong {
   --font-weight: 500;
   color: var(--primary);
 }

@@ -16,11 +16,11 @@ primary: "var(--piano-tabs)"
 
 ## Open any song.
 
-Piano Tabs works with any MIDI file. They're the industry standard, and _super-easy_ to get hold of.
+Piano Tabs works with any MIDI file. They're the industry standard, and **super-easy** to get hold of.
 
-Pieces are displayed as you would play them on a keyboard, so there is _no learning curve_ to get started.
+Pieces are displayed as you would play them on a keyboard, so there is **no learning curve** to get started.
 
-Scroll through a piece for _interactive playback_ to help you either find or study a section.
+Scroll through a piece for **interactive playback** to help you either find or study a section.
 
 ---
 
@@ -30,7 +30,7 @@ Scroll through a piece for _interactive playback_ to help you either find or stu
 
 Looping lets you pick specific parts of the piece you want to practise. Just drag the top and bottom handles set the start and end of the loop.
 
-With a loop set up up, you can use the _speed trainer_ to have it start each loop playing slowly, and gradually speed up after each loop. Tweak how slow it starts, and how many loops it takes to reach the full tempo.
+With a loop set up up, you can use the **speed trainer** to have it start each loop playing slowly, and gradually speed up after each loop. Tweak how slow it starts, and how many loops it takes to reach the full tempo.
 
 </AppBlock>
 
@@ -42,7 +42,7 @@ With a loop set up up, you can use the _speed trainer_ to have it start each loo
 
 Bookmarks let you mark out sections within a piece. You can add as many as you need.
 
-Use your finger or Apple Pencil to _freehand draw anywhere_ in the piece to annotate.\*
+Use your finger or Apple Pencil to **freehand draw anywhere** in the piece to annotate.\*
 
 <p class="footnote">* iPad only</p>
 
@@ -54,9 +54,9 @@ Use your finger or Apple Pencil to _freehand draw anywhere_ in the piece to anno
 
 ## Customise every aspect of playback.
 
-View every track within a MIDI file, and _change the key and tempo_ to your liking.
+View every track within a MIDI file, and **change the key and tempo** to your liking.
 
-_Percussion tracks_ play along side the active track, or can be swapped out for a standard click _metronome_, or silenced entirely.
+**Percussion tracks** play along side the active track, or can be swapped out for a standard click **metronome**, or silenced entirely.
 
 </AppBlock>
 

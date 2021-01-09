@@ -30,7 +30,7 @@ export default function cacheAssetTransform<T>(fn: Fn<T>) {
       return cached;
     } else if (assetCache == null) {
       assetCache = new Map<string, any>();
-      fileAssetCache.set(src, assetCache);
+      fileAssetCache.set(assetFilename, assetCache);
     }
 
     const value = fn(content, src, ...unsafeRest);

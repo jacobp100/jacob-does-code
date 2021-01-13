@@ -146,7 +146,9 @@ h1 + p {
   --font-weight: 350;
 }
 
+strong,
 .smcp {
+  font-style: normal;
   text-transform: uppercase;
   letter-spacing: 0.4pt;
   font-size: 0.85em;

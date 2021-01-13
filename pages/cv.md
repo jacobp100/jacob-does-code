@@ -20,7 +20,7 @@ Favourite libraries and tools include **React** and **React Native**, **Redux**,
 
 #### CSS
 
-Skilled in vanilla **CSS**, **SASS**, and **postCSS** setup. Also experienced with JavaScript solutions, including **CSS Modules**, and am a collaborator on **Styled Components**. Experience in responsive design, bootstrap, foundation, **BEM**, and progressive enhancement.
+Skilled in vanilla **CSS**, **SASS**, and **postCSS**, as well as JavaScript solutions, including **CSS Modules**, and I am a collaborator on **Styled Components**. Experience in responsive design, bootstrap, foundation, **BEM**, and progressive enhancement.
 
 ## Experience
 
@@ -38,7 +38,7 @@ Worked as part of a team to build a data vis application with React, Redux, and 
 
 ### Zoopla, Tower Bridge<time>Sep &rsquo;18&ndash;Jun &rsquo;19</time>
 
-Senior developer doing full stack development on various consumer-facing projects. Used many technologies, including Node, Express, Handlebars, **SCSS**, vanilla JavaScript, React (Preact), and VueJS with Nuxt for a universal (isomorphic) web app.
+Senior developer doing full stack development on various consumer-facing projects. Used many technologies, including Node, Express, Handlebars, **SCSS**, vanilla JavaScript, React (Preact), ane a web app in VueJS and Nuxt.
 
 ### Other Places
 
@@ -50,7 +50,7 @@ Senior developer doing full stack development on various consumer-facing project
 
 - Concentra <time>2017&ndash;2018</time>
 
-  Developed a **React** & **D3**-based data vis app capable of visualising organisation hierarchies of over 100k employees at 60fps in browser, with PowerPoint export.
+  Developed a **React** & **D3**-based data vis app capable of rendering organisation hierarchy charts of over 100k employees at 60fps in browser, with PowerPoint export.
 
 - Autotrip <time>2016&ndash;2017</time>
 
@@ -66,7 +66,19 @@ Senior developer doing full stack development on various consumer-facing project
 
 ## Apps & Projects
 
-Github at [https://github.com/jacobp100](https://github.com/jacobp100). Website at [https://jacobdoescode.com](https://jacobdoescode.com).
+<!-- Fix bug in Firefox PDF export -->
+
+<div style="position:relative;">
+
+#### GitHub
+
+[https://github.com/jacobp100](https://github.com/jacobp100)
+
+#### Apps
+
+[https://jacobdoescode.com](https://jacobdoescode.com)
+
+</div>
 
 - [Pocket Jam](https://jacobdoescode.com/pocket-jam)
 

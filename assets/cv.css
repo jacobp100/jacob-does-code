@@ -273,7 +273,8 @@ strong,
   h1 + p {
     /* Parameters set to get good text wrapping */
     margin-bottom: 36pt;
-    font-size: 16.5pt;
+    font-size: 17pt;
+    line-height: 20pt;
     letter-spacing: 0.5pt;
     --font-weight: 300;
   }

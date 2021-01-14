@@ -28,7 +28,7 @@ Skilled in vanilla **CSS**, **SASS**, and **postCSS**, as well as JavaScript sol
 
 Worked on an internal communications and rota management app for Nando's 40,000 employees in **React Native**. In charge of resuming the codebase, which had been untouched for over 2 years, to ensure Nando's could again build and publish releases. Guided the team through app submitions. Migrated authentication code to new provider to avoid Nando's having to pay additional fees.
 
-### WonderBill, Covent Carden<time>Nov &rsquo;19&ndash;Jun &rsquo;19</time>
+### WonderBill, Covent Carden<time>Nov &rsquo;19&ndash;Jun &rsquo;20</time>
 
 Worked on a team building a household bill aggregation app in **React Native**. Worked with designers and other members of the tech team to build new screens and a new component library to achieve better visual consistency, improve user experience, and address tech debt at the same time.
 

@@ -43,7 +43,7 @@
     "posthtml-match-helper": "^1.0.1",
     "posthtml-minifier": "^0.1.0",
     "prettier": "^2.2.1",
-    "react": "0.0.0-experimental-3310209d0",
+    "react": "0.14.0",
     "react-dom": "0.0.0-experimental-3310209d0",
     "rehype-stringify": "^8.0.0",
     "remark": "^13.0.0",

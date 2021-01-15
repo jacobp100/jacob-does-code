@@ -1,18 +1,20 @@
 import useContent from "../useContent";
+import { cacheTransform } from "../cacheTransform";
 import transformCss from "../transformCss";
+
+const transform = cacheTransform((content, src) => {
+  const input = Array.isArray(src)
+    ? src.map(content.asset).join("\n")
+    : content.asset(src);
+  return transformCss(content, input);
+});
 
 type Props = {
   src: string | string[];
 };
 
 export default ({ src }: Props) => {
-  // Can't cache because this could be multiple sources
-  // We only allow multiple sources in inline css to get better minification
-  // and to avoid multiple <style> tags
   const content = useContent();
-  const input = Array.isArray(src)
-    ? src.map(content.asset).join("\n")
-    : content.asset(src);
-  const output = transformCss(content, input);
-  return <style dangerouslySetInnerHTML={{ __html: output }} />;
+  const __html = transform(content, src);
+  return <style dangerouslySetInnerHTML={{ __html }} />;
 };

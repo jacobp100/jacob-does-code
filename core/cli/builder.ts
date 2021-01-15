@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import renderPage from "../renderPage";
 import { File, getPages, getPosts } from "../files";
-import { clearFileAssetCache } from "../cacheAssetTransform";
+import { clearFileCache } from "../cacheTransform";
 import { resetCssStats, validateCss } from "../css";
 
 const files = new Set([...getPages(), ...getPosts()]);
@@ -66,7 +66,7 @@ const rebuildPendingFiles = () => {
   });
 
   pendingFiles.forEach((filename) => {
-    clearFileAssetCache(filename);
+    clearFileCache(filename);
 
     invertedFileDependencies.get(filename)?.forEach((file) => {
       changed.add(file);

@@ -22,7 +22,7 @@ export type File = {
 };
 
 const pages: File[] = (glob.sync(
-  path.join(__dirname, "../pages/*.md")
+  path.join(__dirname, "../pages/*.mdx")
 ) as string[]).map(
   (filename): File => ({
     url: name(filename),
@@ -33,7 +33,7 @@ const pages: File[] = (glob.sync(
 );
 
 const posts: File[] = (glob.sync(
-  path.join(__dirname, "../posts/*.md")
+  path.join(__dirname, "../posts/*.mdx")
 ) as string[])
   .map(
     (filename): File => ({

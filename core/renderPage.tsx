@@ -23,7 +23,7 @@ export default (file: File) => {
   const { layout } = page.data;
   const Layout = layout != null ? content.layout(layout) : DefaultLayout;
 
-  let htmlFragment = renderToStaticMarkup(
+  const htmlFragment = renderToStaticMarkup(
     <ContentContext.Provider value={content}>
       <Layout {...page.data} file={file}>
         <Markdown markdown={page.content} />
@@ -31,7 +31,6 @@ export default (file: File) => {
     </ContentContext.Provider>
   );
 
-  htmlFragment = htmlFragment.replace(/<\/?ignored-tag>/g, "");
   const html = "<!DOCTYPE HTML>" + htmlFragment;
 
   content.write(html, { filename: file.url, extension: ".html" });

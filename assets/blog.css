@@ -113,6 +113,20 @@ pre code {
   overflow-x: scroll;
 }
 
+video {
+  display: block;
+  max-width: 100%;
+  margin: 32px auto;
+}
+
+/* Figma embeds */
+iframe {
+  width: calc(var(--inner-width) * 1);
+  height: calc(var(--inner-width) * 0.66);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  --inner-width: calc(100vw - 2 * var(--gutters));
+}
+
 .published-on {
   color: #9e9e9e;
 }

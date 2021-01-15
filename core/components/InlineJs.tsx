@@ -1,9 +1,9 @@
 import type { ScriptHTMLAttributes } from "react";
 import useContent from "../useContent";
-import cacheAssetTransform from "../cacheAssetTransform";
+import { cacheTransform } from "../cacheTransform";
 import transformJs from "../transformJs";
 
-const transform = cacheAssetTransform((content, src) => {
+const transform = cacheTransform((content, src) => {
   const input = content.asset(src);
   return transformJs(content, input);
 });

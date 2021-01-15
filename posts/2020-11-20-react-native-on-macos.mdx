@@ -70,7 +70,7 @@ But it won't pass an app review. The menu bar added by default has items added t
 
 It's easiest to just remove the items that you don't need. You can do this in `AppDelegate.m` by adding this method.
 
-```objc
+```objectivec
 - (void)buildMenuWithBuilder:(id<UIMenuBuilder>)builder
 {
   [builder removeMenuForIdentifier:UIMenuEdit];
@@ -163,7 +163,7 @@ Now you have your bundle running, you should be able to access all the low-level
 
 There will be a lot of small things you have to do to get it working like a Mac app. Take this tweet for example (no disrespect intended to this developer).
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Got <a href="https://twitter.com/devhub_app?ref_src=twsrc%5Etfw">@devhub_app</a> running on macOS via Apple&#39;s Project Catalyst. Not Electron. Not WebView. Native! 🤯<br><br>Even swipe gestures (react-native-gesture-handler) work as expected, without conflicting with the scrolling. Amazing. <a href="https://t.co/vnVcFBes0x">pic.twitter.com/vnVcFBes0x</a></p>&mdash; Bruno Lemos (@brunolemos) <a href="https://twitter.com/brunolemos/status/1185636022346043392?ref_src=twsrc%5Etfw">October 19, 2019</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+<Tweet />
 
 You'll see most things work as expected. But at the 0:26 mark, they drag a list item with their pointer to reveal a menu action. On Mac, this should be a two-finger scroll.
 

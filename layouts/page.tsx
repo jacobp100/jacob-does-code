@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import {
   ExternalCss,
   ExternalJs,
+  Image,
   InlineCss,
   InlineJs,
 } from "../core/components";

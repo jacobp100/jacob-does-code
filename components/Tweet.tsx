@@ -1,0 +1,3 @@
+/* <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Got <a href="https://twitter.com/devhub_app?ref_src=twsrc%5Etfw">@devhub_app</a> running on macOS via Apple&#39;s Project Catalyst. Not Electron. Not WebView. Native! 🤯<br><br>Even swipe gestures (react-native-gesture-handler) work as expected, without conflicting with the scrolling. Amazing. <a href="https://t.co/vnVcFBes0x">pic.twitter.com/vnVcFBes0x</a></p>&mdash; Bruno Lemos (@brunolemos) <a href="https://twitter.com/brunolemos/status/1185636022346043392?ref_src=twsrc%5Etfw">October 19, 2019</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script> */
+
+export default () => null;

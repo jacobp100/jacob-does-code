@@ -2,7 +2,7 @@ import type { ImgHTMLAttributes } from "react";
 import path from "path";
 import sharp, { ResizeOptions } from "sharp";
 import useContent from "../useContent";
-import cacheAssetTransform from "../cacheAssetTransform";
+import { cacheTransform } from "../cacheTransform";
 import { syncPromiseValue } from "../syncPromise";
 import { ClassNames, classNames } from "../css";
 import dev from "../dev";
@@ -21,7 +21,7 @@ type ImageResult = {
 
 const avifEnabled = false;
 
-const transform = cacheAssetTransform<ImageResult>((content, input, size) => {
+const transform = cacheTransform<ImageResult>((content, input, size) => {
   const buffer = content.assetBuffer(input);
   const extension = path.extname(input);
 

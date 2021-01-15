@@ -1,9 +1,17 @@
 import { renderToStaticMarkup } from "react-dom/server";
 // @ts-ignore
+import MDX from "@mdx-js/runtime";
+// @ts-ignore
 import frontmatter from "frontmatter";
 import type { File } from "./files";
-import { ContentContext, createContentContext } from "./useContent";
-import { Markdown } from "./components";
+import {
+  ContentContext,
+  createContentContext,
+  getComponentNames,
+} from "./useContent";
+import { cacheTransform } from "./cacheTransform";
+import * as builtInComponents from "./components";
+import htmlComponents from "./htmlComponents";
 
 const DefaultLayout = (props: any) => (
   <html>
@@ -15,18 +23,60 @@ const DefaultLayout = (props: any) => (
   </html>
 );
 
+type Transform = {
+  data: Record<string, any>;
+  children: JSX.Element;
+};
+
+const transform = cacheTransform<Transform>((content, file: File) => {
+  const page = frontmatter(content.page(file.filename));
+
+  const userComponents = getComponentNames().reduce((accum, TagName) => {
+    accum[TagName] = (props: any) => {
+      const Component = content.component(TagName);
+      return <Component {...props} />;
+    };
+
+    return accum;
+  }, {} as Record<string, any>);
+
+  // The MDX is transformed at component execution time
+  // If we call this directly, it'll run immediately,
+  // so the heavy part is cached
+  // This is somewhat less than idiomatic React
+  const markdown = MDX({
+    components: {
+      ...htmlComponents,
+      ...builtInComponents,
+      ...userComponents,
+    },
+    scope: {},
+    children: page.content,
+  });
+
+  return {
+    data: page.data,
+    children: markdown,
+  };
+});
+
 export default (file: File) => {
   const content = createContentContext();
 
-  const page = frontmatter(content.page(file.filename));
+  // You can cache converting mdx into React elements
+  // But you still need to re-run everything through React so every component
+  // re-evaluated, and any with their cache invalidated  rerun their
+  // transformation steps
 
-  const { layout } = page.data;
+  const { data, children } = transform(content, file);
+
+  const { layout } = data;
   const Layout = layout != null ? content.layout(layout) : DefaultLayout;
 
   const htmlFragment = renderToStaticMarkup(
     <ContentContext.Provider value={content}>
-      <Layout {...page.data} file={file}>
-        <Markdown markdown={page.content} />
+      <Layout {...data} file={file}>
+        {children}
       </Layout>
     </ContentContext.Provider>
   );

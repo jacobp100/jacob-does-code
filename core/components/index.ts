@@ -7,5 +7,4 @@ export {
 } from "./Image";
 export { default as InlineCss } from "./InlineCss";
 export { default as InlineJs } from "./InlineJs";
-export { default as Markdown } from "./Markdown";
 export { default as Video } from "./Video";

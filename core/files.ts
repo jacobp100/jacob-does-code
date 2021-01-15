@@ -8,17 +8,17 @@ import frontmatter from "frontmatter";
 const name = (filename: string) =>
   path.basename(filename, path.extname(filename));
 
-const title = (filename: string): string | undefined => {
+const title = (filename: string): string | null => {
   const content = fs.readFileSync(filename, "utf8");
   const { data } = frontmatter(content);
-  return data.title;
+  return data.title ?? null;
 };
 
 export type File = {
   url: string;
-  title: string | undefined;
+  title: string | null;
   filename: string;
-  date: number | undefined;
+  date: number | null;
 };
 
 const pages: File[] = (glob.sync(
@@ -28,7 +28,7 @@ const pages: File[] = (glob.sync(
     url: name(filename),
     title: title(filename),
     filename,
-    date: undefined,
+    date: null,
   })
 );
 

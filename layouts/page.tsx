@@ -100,7 +100,7 @@ export default ({
           <HeaderLink href="https://github.com/jacobp100">Github</HeaderLink>
         </Header>
         {children}
-        {file?.date != null && (
+        {file.date != null && (
           <span className={className("published-on")}>
             Published on{" "}
             <time dateTime={new Date(file.date).toISOString()}>

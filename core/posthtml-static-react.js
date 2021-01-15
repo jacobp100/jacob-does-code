@@ -49,7 +49,11 @@ module.exports = function (matcher, components, { Wrapper } = {}) {
           jsx = React.createElement(Wrapper, {}, jsx);
         }
 
-        return server.renderToStaticMarkup(jsx);
+        try {
+          return server.renderToStaticMarkup(jsx);
+        } catch {
+          return "";
+        }
       } else {
         return node;
       }

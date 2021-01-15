@@ -2,8 +2,7 @@ import type { ImgHTMLAttributes } from "react";
 import path from "path";
 import sharp, { ResizeOptions } from "sharp";
 import useContent from "../useContent";
-import cacheAssetTransform from "../cacheAssetTransform";
-import { syncPromiseValue } from "../syncPromise";
+import { assetTransform } from "../cacheAssetTransform";
 import { ClassNames, classNames } from "../css";
 import dev from "../dev";
 
@@ -21,7 +20,7 @@ type ImageResult = {
 
 const avifEnabled = false;
 
-const transform = cacheAssetTransform<ImageResult>((content, input, size) => {
+const transform = assetTransform<ImageResult>(async (content, input, size) => {
   const buffer = content.assetBuffer(input);
   const extension = path.extname(input);
 
@@ -37,21 +36,19 @@ const transform = cacheAssetTransform<ImageResult>((content, input, size) => {
   const {
     info: { width, height },
     data: baseBuffer,
-  } = syncPromiseValue(basePipeline.toBuffer({ resolveWithObject: true }));
+  } = await basePipeline.toBuffer({ resolveWithObject: true });
 
   // Check we actually making savings
   const srcBuffer = baseBuffer.length < buffer.length ? baseBuffer : buffer;
   const src = content.write(srcBuffer, { extension });
 
-  const [webpBuffer, avifBuffer] = syncPromiseValue(
-    Promise.all([
-      !dev ? pipeline.webp().toBuffer() : null,
-      (!dev && avifEnabled
-        ? // @ts-ignore
-          pipeline.avif().toBuffer()
-        : null) as Buffer | null,
-    ])
-  );
+  const [webpBuffer, avifBuffer] = await Promise.all([
+    !dev ? pipeline.webp().toBuffer() : null,
+    (!dev && avifEnabled
+      ? // @ts-ignore
+        pipeline.avif().toBuffer()
+      : null) as Buffer | null,
+  ]);
 
   const additionalSources: AdditionalSource[] = [];
   let smallestLength = srcBuffer.length;
@@ -88,7 +85,7 @@ const parseResize = (resize: string): Resize | undefined => {
 
 type Props = Omit<ImgHTMLAttributes<any>, "className" | "width" | "height"> & {
   src: string;
-  className: ClassNames;
+  className?: ClassNames;
   width?: number | "compute";
   height?: number | "compute";
   resize?: Resize | string;

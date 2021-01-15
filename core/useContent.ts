@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 import { createContext, useContext } from "react";
 // @ts-ignore
+import glob from "glob";
+// @ts-ignore
 import stringHash from "string-hash";
 import cache from "./cache";
 
@@ -37,6 +39,11 @@ const modulePath = (directory: string, filename: string) => {
 export const componentPath = cache<string, string>((filename) => {
   return modulePath("components", filename);
 });
+
+const componentNames: string[] = glob
+  .sync(path.join(__dirname, "../components/*.{js,jsx,ts,tsx}"))
+  .map((filename: string) => path.basename(filename, path.extname(filename)));
+export const getComponentNames = () => componentNames;
 
 export const layoutPath = cache<string, string>((filename) => {
   return modulePath("layouts", filename);

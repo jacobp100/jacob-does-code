@@ -1,17 +1,40 @@
 // @ts-ignore
-import unified from "unified";
-// @ts-ignore
-import parse from "remark-parse";
-// @ts-ignore
-import highlight from "remark-highlight.js";
-// @ts-ignore
-import squeezeParagraphs from "remark-squeeze-paragraphs";
-// @ts-ignore
-import smartypants from "@silvenon/remark-smartypants";
-// @ts-ignore
-import html from "remark-html";
-import useTransformHtml from "../transformHtml";
-import useContent from "../useContent";
+import MDX from "@mdx-js/runtime";
+import useContent, { getComponentNames } from "../useContent";
+import { classNames } from "../css";
+import htmlTags from "./_htmlTags";
+import * as builtInComponents from ".";
+
+const styleStringToReact = (style: string) =>
+  style
+    .split(";")
+    .map((declaration) => declaration.split(":"))
+    .filter((pair) => pair.length === 2)
+    .map(([key, value]) => [key.trim(), value.trim()])
+    .reduce((accum, [key, value]) => {
+      accum[key] = value;
+      return accum;
+    }, {} as Record<string, string>);
+
+const htmlComponents = htmlTags.reduce((accum, TagName) => {
+  accum[TagName] = ({ class: className, ...props }: any) => {
+    return (
+      <TagName
+        {...props}
+        className={classNames(className ?? props.className)}
+        style={
+          typeof props.style === "string"
+            ? styleStringToReact(props.style)
+            : props.style
+        }
+      />
+    );
+  };
+
+  return accum;
+}, {} as Record<string, any>);
+
+const emptyScope = {};
 
 type Props = {
   markdown: string;
@@ -20,26 +43,25 @@ type Props = {
 export default ({ markdown }: Props) => {
   const content = useContent();
 
-  let __html = unified()
-    .use(parse)
-    .use(highlight)
-    .use(squeezeParagraphs)
-    .use(smartypants)
-    .use(html)
-    .processSync(markdown)
-    .toString();
+  const userComponents = getComponentNames().reduce((accum, TagName) => {
+    accum[TagName] = (props: any) => {
+      const Component = content.component(TagName);
+      return <Component {...props} />;
+    };
 
-  __html = __html
-    // Fix self-closing tags (cause bugs in posthtml)
-    .replace(/<([A-Z[A-Za-z]+)([^>]+)\/>/g, "<$1$2></$1>")
-    // Fix paragraphs embedding React components
-    .replace(/<p>(<[A-Z][\S\s]*?)<\/p>/gm, "$1")
-    // Fix empty paragraphs
-    .replace(/<p><\/p>/g, "");
+    return accum;
+  }, {} as Record<string, any>);
 
-  __html = useTransformHtml(content, __html);
+  const components = {
+    ...htmlComponents,
+    ...builtInComponents,
+    ...userComponents,
+  };
 
-  const ElementName = "ignored-tag";
   // @ts-ignore
-  return <ElementName dangerouslySetInnerHTML={{ __html }} />;
+  return (
+    <MDX components={components} scope={emptyScope}>
+      {markdown}
+    </MDX>
+  );
 };

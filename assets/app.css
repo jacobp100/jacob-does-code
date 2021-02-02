@@ -40,6 +40,16 @@ hr {
   opacity: 0.05;
 }
 
+.app-logo {
+  display: block;
+  margin: 0 auto 48px;
+  width: 120px;
+  height: 120px;
+  background: var(--primary, currentColor);
+  border-radius: 30%;
+  fill: white;
+}
+
 .lead {
   margin: 12px auto 64px;
   font-size: 16px;
@@ -48,16 +58,6 @@ hr {
   --font-weight: 500;
   color: var(--primary);
   text-align: center;
-}
-
-.app__logo {
-  display: block;
-  margin: 0 auto 48px;
-  width: 120px;
-  height: 120px;
-  background: var(--primary, currentColor);
-  border-radius: 30%;
-  fill: white;
 }
 
 .block {
@@ -77,10 +77,6 @@ hr {
   margin: 0 auto 48px;
   width: 100%;
   max-width: 400px;
-}
-
-.footnote {
-  opacity: 0.25;
 }
 
 .center-icons {

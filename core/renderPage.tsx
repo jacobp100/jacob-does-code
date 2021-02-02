@@ -9,6 +9,7 @@ import {
   createContentContext,
   getComponentNames,
 } from "./useContent";
+import { className, variable } from "./css";
 import { cacheTransform } from "./cacheTransform";
 import * as builtInComponents from "./components";
 import htmlComponents from "./htmlComponents";
@@ -50,7 +51,10 @@ const transform = cacheTransform<Transform>((content, file: File) => {
       ...builtInComponents,
       ...userComponents,
     },
-    scope: {},
+    scope: {
+      cssVariable: variable,
+      cssClassName: className,
+    },
     children: page.content,
   });
 

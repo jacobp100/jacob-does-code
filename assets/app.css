@@ -83,11 +83,13 @@ hr {
   opacity: 0.25;
 }
 
-.store-links {
+.center-icons {
+  margin: 24px auto;
   text-align: center;
 }
 
 .legal-links {
+  margin: 72px auto 12px;
   text-align: center;
   font-size: 12px;
   line-height: 18px;
@@ -150,6 +152,23 @@ hr {
 
   .preview {
     --max-size: 400px;
+  }
+
+  .side-by-side {
+    display: flex;
+    align-items: center;
+    margin: 120px 0;
+  }
+
+  .side-by-side__item {
+    flex: 1 1 auto;
+  }
+
+  .side-by-side hr {
+    align-self: stretch;
+    height: auto;
+    width: var(--hairline-width);
+    margin: 0 24px;
   }
 }
 

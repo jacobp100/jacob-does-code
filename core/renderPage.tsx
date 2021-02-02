@@ -55,6 +55,7 @@ const transform = cacheTransform<Transform>((content, file: File) => {
       cssVariable: variable,
       cssClassName: className,
     },
+    remarkPlugins: [require("@silvenon/remark-smartypants")],
     children: page.content,
   });
 

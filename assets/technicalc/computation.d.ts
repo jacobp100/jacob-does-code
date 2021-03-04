@@ -13,6 +13,7 @@ declare namespace Client {
   type Element = "ClientElement";
   type ValueUnresolved = "ClientValueUnresolved";
   type ValueResolved = "ClientValueResolved";
+  type WorkType = "ClientWorkType";
   type Work = "ClientWork";
 
   const Elements: {
@@ -25,7 +26,12 @@ declare namespace Client {
     decode: (encoded: any) => ValueResolved | undefined;
   };
   const Work: {
-    calculate: (value: ValueUnresolved) => Work;
+    calculate: (input: ValueUnresolved) => WorkType;
+    make: (
+      config: { angleMode: "radian" },
+      context: undefined,
+      work: WorkType
+    ) => Work;
   };
 }
 

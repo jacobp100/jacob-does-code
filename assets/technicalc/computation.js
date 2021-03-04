@@ -77,7 +77,11 @@ export default ({ container, worker }) => {
   const [parsingError, parsedValue] =
     input.type === "ok" ? Elements.parse(input.value) : [null, null];
   if (parsingError == null && parsedValue != null) {
-    const work = Work.calculate(parsedValue);
+    const work = Work.make(
+      { angleMode: "radian" },
+      undefined,
+      Work.calculate(parsedValue)
+    );
     worker.postMessage(work);
   } else {
     result = resultOfOption(undefined);

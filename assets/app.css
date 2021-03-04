@@ -40,6 +40,16 @@ hr {
   opacity: 0.05;
 }
 
+.app-logo {
+  display: block;
+  margin: 0 auto 48px;
+  width: 120px;
+  height: 120px;
+  background: var(--primary, currentColor);
+  border-radius: 30%;
+  fill: white;
+}
+
 .lead {
   margin: 12px auto 64px;
   font-size: 16px;
@@ -48,16 +58,6 @@ hr {
   --font-weight: 500;
   color: var(--primary);
   text-align: center;
-}
-
-.app__logo {
-  display: block;
-  margin: 0 auto 48px;
-  width: 120px;
-  height: 120px;
-  background: var(--primary, currentColor);
-  border-radius: 30%;
-  fill: white;
 }
 
 .block {
@@ -79,15 +79,13 @@ hr {
   max-width: 400px;
 }
 
-.footnote {
-  opacity: 0.25;
-}
-
-.store-links {
+.center-icons {
+  margin: 24px auto;
   text-align: center;
 }
 
 .legal-links {
+  margin: 72px auto 12px;
   text-align: center;
   font-size: 12px;
   line-height: 18px;
@@ -150,6 +148,23 @@ hr {
 
   .preview {
     --max-size: 400px;
+  }
+
+  .side-by-side {
+    display: flex;
+    align-items: center;
+    margin: 120px 0;
+  }
+
+  .side-by-side__item {
+    flex: 1 1 auto;
+  }
+
+  .side-by-side hr {
+    align-self: stretch;
+    height: auto;
+    width: var(--hairline-width);
+    margin: 0 24px;
   }
 }
 

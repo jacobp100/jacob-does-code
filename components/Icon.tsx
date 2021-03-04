@@ -6,7 +6,7 @@ type Props = SVGProps<any> & {
   name: string;
 };
 
-export default ({ name, className = "app__logo" }: Props) => {
+export default ({ name, className = "app-logo" }: Props) => {
   const svg = useContent().asset(`/assets/icons/${name}.svg`);
 
   return (

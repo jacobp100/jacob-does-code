@@ -1,6 +1,5 @@
-import { className, variable } from "../core/css";
-import AppLinks from "./AppLinks";
-import AppStoreLink from "./AppStoreLink";
+import { className, classNames, variable } from "../core/css";
+import { Svg } from "../core/components";
 
 export default () => (
   <>
@@ -31,11 +30,13 @@ export default () => (
     </p>
 
     {/* Requires StoreLinks to already be present in page */}
-    <AppLinks>
-      <AppStoreLink
+    <div className={classNames("center-icons")}>
+      <a
+        title="App Store"
         href="https://apps.apple.com/us/app-bundle/id1542101429?mt=8"
-        reuseSvg
-      />
-    </AppLinks>
+      >
+        <Svg src="/assets/vendor/app-store-reused.svg" />
+      </a>
+    </div>
   </>
 );

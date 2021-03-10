@@ -1,4 +1,3 @@
-/* Colour scheme from https://material.io/design/color/the-color-system.html#tools-for-picking-colors */
 :root {
   --gutters: max(12px, (100vw - var(--max-width)) / 2);
   --max-width: 800px;

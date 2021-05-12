@@ -37,7 +37,7 @@
     "glob": "^7.1.6",
     "highlight.js": "^10.5.0",
     "http-server": "^0.12.3",
-    "postcss": "^8.2.1",
+    "postcss": "^8.2.10",
     "postcss-transform-classes": "^1.0.0",
     "posthtml": "^0.15.1",
     "posthtml-match-helper": "^1.0.1",

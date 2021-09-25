@@ -1,0 +1,172 @@
+---
+title: React Native on macOS
+layout: page
+css: blog,blog-highlight
+---
+
+# React Native on macOS
+
+One of my apps, [TechniCalc](/technicalc), is made with React Native. Recently, I got it running on macOS. Here's what I learned.
+
+First, some details on macOS. Up until a few years ago, Mac apps had to be written in AppKit, and iOS apps had to be written in UIKit. The latter is still true, but with the advent of Catalyst from Apple, it is possible to run UIKit on macOS.
+
+This wasn't just just an effort of getting UIKit to physically run, but also an effort of getting UIKit to handle macOS nuances. For example, some gestures &mdash; like scrolling and swiping &mdash; happen by the trackpad, but some &mdash; like tapping and dragging &mdash; work by the pointer. UIKit has been extended to allow customising these kind of things.
+
+But aside from the efforts of getting UIKit to run well on macOS, there has been zero work from Apple to get AppKit and UIKit to work together. You cannot have a project using both.
+
+Then this point might seem irrelevant now, but I promise it is important later. UIKit apps run through Catalyst are scaled to about 77% of the size they'd be on an iPad. This is because interface elements are smaller on Mac, and this compensates for that fact. Big Sur lets you turn this scaling off, but you should only do so if your elements will be correctly sized on Mac.
+
+Now some details on React Native. The standard React Native library targets the UIKit framework. Somewhat recently, Microsoft released [`react-native-desktop`](https://microsoft.github.io/react-native-windows/), which has the ability to run on Mac. It does this by targeting AppKit instead of UIKit.
+
+So now, you have two options. Which one should you pick?
+
+Firstly, if you use any native packages for React Native &mdash; like react-native-svg &mdash; they target UIKit. This means they will not work with React Native Desktop.
+
+Secondly, if you use React Native Desktop, you'll have to make sure your UI scales correctly on macOS so it doesn't look out of place.
+
+For these reasons, I went with Catalyst. It's really easy to get started &mdash; just open Xcode, and in your project settings, you'll see the section Deployment Settings with options _iPhone_, _iPad_, and _Mac_. You just need to check that last checkbox.
+
+## That Easy, Huh?
+
+No.
+
+Firstly, it now won't build on iOS or Mac. You'll need to edit your `Podfile` and remove Flipper.
+
+```diff
+- use_flipper!
+- post_install do |installer|
+-   flipper_post_install(installer)
+- end
+```
+
+Now it'll run on iOS, but not Mac. Still in your `Podfile`, add these lines to the bottom. You'll need to get your App Store Connect ID &mdash; just log in, click your name, _Edit Profile_, and you'll see it listed under _Team ID_. Finally, run `pod install`.
+
+```diff
++ # https://github.com/CocoaPods/CocoaPods/issues/8891#issuecomment-546636698
++ def fix_config(config)
++   if config.build_settings['DEVELOPMENT_TEAM'].nil?
++     config.build_settings['DEVELOPMENT_TEAM'] = '<YOUR APP STORE CONNECT TEAM ID>'
++   end
++ end
++ post_install do |installer|
++   installer.generated_projects.each do |project|
++     project.build_configurations.each do |config|
++         fix_config(config)
++     end
++     project.targets.each do |target|
++       target.build_configurations.each do |config|
++         fix_config(config)
++       end
++     end
++   end
++ end
+```
+
+This is a hack (I've attached a link to the issue comment detailing this) &mdash; but this is a workaround you'll have to use for now.
+
+After all this, your app should build.
+
+But it won't pass an app review. The menu bar added by default has items added that lead to nowvere. I tell you this from experience.
+
+It's easiest to just remove the items that you don't need. You can do this in `AppDelegate.m` by adding this method.
+
+```objectivec
+- (void)buildMenuWithBuilder:(id<UIMenuBuilder>)builder
+{
+  [builder removeMenuForIdentifier:UIMenuEdit];
+  [builder removeMenuForIdentifier:UIMenuFormat];
+  [builder removeMenuForIdentifier:UIMenuHelp];
+}
+```
+
+## The Mac Window
+
+Now your app is running on Mac, try resizing the window. Chances are, it didn't work so well and the content lagged while resizing. Catalyst can already be a bit sluggish sluggish, and the async layout in React Native only makes matters worse.
+
+You can disable the resizing if you wish. In your `AppDelegate.m`, you can add the following lines.
+
+```objectivec
+- (BOOL)application:(UIApplication *)application
+  didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  // ...
+
+  CGSize size = CGSizeMake(width, height);
+  [self.window.windowScene.sizeRestrictions setMinimumSize:size];
+  [self.window.windowScene.sizeRestrictions setMaximumSize:size];
+
+  return YES;
+}
+```
+
+If you disable sizing, double check it fits on a regular MacBook Pro 13&Prime; screen!
+
+### Advanced Window Configuration
+
+For TechniCalc, I wanted to copy the behaviour of the system calculator: it has a compressed size and expanded size &mdash; and you click the green button in the title bar to switch between the two. Only having two sizes means we won't get a load of resize events, so the performance should be fine.
+
+I also wanted to add the translucent background most Mac apps have.
+
+The window configuration from UIKit is very limited &mdash; you can set minimum and maximum sizes, change the title bar, but not much else.
+
+However, remember when I told you you couldn't mix AppKit and UIKit? I lied. But it's not pretty. You can follow [this guide](https://crunchybagel.com/disabling-the-mac-zoom-maximise-button-in-catalyst/) to do so.
+
+Once you've set up the bundle, you can get it running in your React Native application by making the following changes to `AppDelegate.m`.
+
+```objectivec
+#if TARGET_OS_MACCATALYST
+#import <React/RCTConstants.h>
+
+@interface InteropViewController : UIViewController
+@end
+
+@implementation InteropViewController
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+
+  NSURL *bundleUrl = [NSBundle.mainBundle.builtInPlugInsURL URLByAppendingPathComponent:@"MacInterop.bundle"];
+  NSBundle *bundle = [NSBundle bundleWithURL:bundleUrl];
+  [bundle load];
+  Class macInterop = NSClassFromString(@"MacApp");
+  SEL selector = NSSelectorFromString(@"configureApp");
+  [macInterop performSelector:selector];
+
+  // Force update react-native Dimensions
+  [NSNotificationCenter.defaultCenter postNotificationName:RCTUserInterfaceStyleDidChangeNotification object:nil];
+}
+
+@end
+#else
+#define InteropViewController UIViewController
+#endif
+
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  // ...
+
+  UIViewController *rootViewController = [InteropViewController new];
+  rootViewController.view = rootView;
+  self.window.rootViewController = rootViewController;
+  [self.window makeKeyAndVisible];
+
+  return YES;
+}
+```
+
+Now you have your bundle running, you should be able to access all the low-level functions you need to customise the window. If you want to see what happens in TechniCalc, check out [this gist](https://gist.github.com/jacobp100/e7ee89f3324b36cb8a4f7547b0fbcd90).
+
+## The Little Things
+
+There will be a lot of small things you have to do to get it working like a Mac app. Take this tweet for example (no disrespect intended to this developer).
+
+<Tweet />
+
+You'll see most things work as expected. But at the 0:26 mark, they drag a list item with their pointer to reveal a menu action. On Mac, this should be a two-finger scroll.
+
+I have a similar list in my app, but I use `react-native-action-view` instead. I ended up having to [fork the library](https://github.com/jacobp100/react-native-action-view) to get the correct behaviour. You may find you need to fork libraries too.
+
+At the moment, running React Native through Catalyst is not a very common path for developers. However, if more people do this and more people contribute to libraries and React Native itself when things fall short, we can make this experience better for everyone.

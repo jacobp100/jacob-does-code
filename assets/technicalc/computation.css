@@ -1,0 +1,369 @@
+/* .computation defined inline in technicalc-banner.html */
+
+:root {
+  --form-background: #f4f4f4;
+}
+
+.computation__close {
+  float: right;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  background: none;
+  /* font-size: 14px;
+  line-height: 16px; */
+  --font-weight: 400;
+  /* letter-spacing: 1px;
+  text-transform: uppercase; */
+  opacity: 0.5;
+}
+
+.computation__header {
+  margin: 0 0 16px;
+  /* font-size: 14px;
+  line-height: 16px; */
+  --font-weight: 800;
+  /* letter-spacing: 1px;
+  text-transform: uppercase; */
+}
+
+/* https://github.com/css/csso/issues/429 */
+.computation__close,
+.computation__header {
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/*******************
+ * Maths container *
+ *******************/
+.computation__maths-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 180px;
+}
+
+.computation__input,
+.computation__result {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100px;
+}
+
+.computation__input {
+  width: 100%;
+  order: 1;
+}
+
+.computation__result {
+  flex: 1;
+  justify-content: flex-end;
+  order: 3;
+}
+
+.computation__input > *,
+.computation__result > * {
+  margin: 0 !important;
+}
+
+.computation__input svg,
+.computation__result svg {
+  display: block;
+  margin: 0 !important;
+}
+
+.computation__open-in-app,
+.computation__toggle-display-mode {
+  display: block;
+  padding: 6px 32px;
+  border: 0;
+  font: inherit;
+  text-decoration: none;
+  text-align: center;
+  background: var(--primary);
+  color: white;
+  border-radius: 99px;
+}
+
+.computation__toggle-display-mode {
+  align-self: center;
+  padding: 6px 18px;
+  font-size: 0;
+  order: 2;
+}
+
+.computation--form-hidden .computation__toggle-display-mode {
+  background: #eee;
+  color: #ccc;
+}
+
+.computation__toggle-display-mode-icon svg {
+  vertical-align: middle;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+  fill: currentColor;
+}
+
+.computation__spinner {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--color);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.computation--loading ~ .computation__spinner {
+  display: flex;
+}
+
+/********
+ * Form *
+ ********/
+.computation__form-container {
+  position: relative;
+}
+
+.computation__form {
+  padding: 12px 0;
+  border: 0 solid #eee;
+  border-width: var(--hairline-width) 0;
+  transform-origin: 50% 25%;
+  visibility: visible;
+  transform: none;
+  opacity: 1;
+  transition-duration: 200ms;
+  transition-property: visibility, transform, opacity;
+  --spacing: 24px;
+  /* For --form-hidden */
+  width: 100%;
+  background: var(--background);
+}
+
+.computation--form-hidden .computation__form {
+  position: absolute;
+  visibility: collapse;
+  transform: scale(0.8);
+  opacity: 0;
+}
+
+.computation__radio-options {
+  display: flex;
+  margin: var(--spacing) -6px;
+}
+
+.computation__radio-option-title {
+  align-self: center;
+  flex: 9999 0 auto;
+  margin: 0 6px;
+  --font-weight: 350;
+}
+
+.computation__radio-option {
+  margin: 0 6px;
+  flex: 1 0 auto;
+}
+
+.computation__radio-option label {
+  display: block;
+}
+
+.computation__radio-option input {
+  display: none;
+}
+
+.computation__radio-option span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5em;
+  border-radius: 12px;
+  transition-duration: 200ms;
+  transition-property: background-color, color, box-shadow;
+}
+
+.computation__radio-option-label-hidden {
+  font-size: 0;
+  line-height: 0;
+}
+
+.computation__radio-option svg {
+  display: block;
+  margin: 6px;
+  height: 32px;
+  width: auto;
+  fill: currentColor;
+}
+
+.computation__radio-option input:active + span {
+  color: var(--primary);
+}
+
+.computation__radio-option input:checked + span {
+  background: var(--primary);
+  color: var(--background);
+}
+
+.computation__radio-options--check-ring input:checked + span {
+  background: var(--background);
+  color: var(--primary);
+  box-shadow: inset 0 0 0 2px var(--primary), 0 3px 12px rgba(0, 0, 0, 0.03);
+}
+
+.computation__checkbox {
+  display: flex; /* Remove spaces inserted by html */
+  margin: var(--spacing) 0;
+  --font-weight: 350;
+}
+
+.computation__checkbox input {
+  -webkit-appearance: none;
+  font-size: inherit;
+  border: 0;
+  margin-right: 0.5em;
+  width: 1em;
+  height: 1em;
+  border-radius: 3px;
+  background: #ccc;
+  vertical-align: text-bottom;
+  transition: background-color 200ms;
+}
+
+.computation__checkbox input:checked {
+  content: "hello";
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path stroke="white" stroke-linecap="round" stroke-width="2" fill="none" d="M1 7L4 10L11 2"/></svg>')
+    center / 0.666em 0.666em no-repeat var(--primary);
+}
+
+.computation__slider {
+  display: block;
+  margin: var(--spacing) 0;
+  --font-weight: 350;
+}
+
+.computation__slider input {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  margin: 8px 0 24px;
+  width: 100%;
+  height: 24px;
+  background: transparent;
+}
+
+.computation__slider input:focus {
+  outline: none;
+}
+
+.computation__slider input::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 99px;
+  background: var(--primary);
+  margin-top: -9px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Copied above - iOS 13 Safari won't parse the rule if there are -moz selectors */
+.computation__slider input::-moz-range-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 99px;
+  background: var(--primary);
+  margin-top: -9px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.computation__slider input::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 99px;
+  background: var(--form-background);
+}
+
+/* Copied above - iOS 13 Safari won't parse the rule if there are -moz selectors */
+.computation__slider input::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 99px;
+  background: var(--form-background);
+}
+
+/**********
+ * Footer *
+ **********/
+.computation__footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.computation__open-in-app:hover {
+  /* Additional styles set with computation__toggle-display-mode */
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .computation__form {
+    --spacing: 32px;
+  }
+
+  .computation__radio-option svg {
+    height: 48px;
+  }
+
+  .computation__slider {
+    display: flex;
+  }
+
+  .computation__slider input {
+    width: 400px;
+    margin: 0 0 0 auto;
+  }
+
+  .computation__footer {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .computation__footer-copy {
+    flex: 1;
+    margin-right: 12px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --form-background: #080808;
+  }
+
+  .computation__spinner {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .computation__form {
+    border-color: #111;
+  }
+
+  .computation--form-hidden .computation__toggle-display-mode {
+    background: #111;
+    color: #333;
+  }
+}

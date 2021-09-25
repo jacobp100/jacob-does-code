@@ -1,0 +1,162 @@
+@font-face {
+  font-family: Inter;
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: "Regular";
+  src: url(/assets/fonts/Inter-roman.latin.var.woff2);
+  font-display: fallback;
+  /* unicode-range: U+0000-007F, U+00A0-0100, U+0131, U+0152-0154, U+02BB-02BD,
+    U+02C6, U+02DA, U+02DC, U+2000-200C, U+2010-2028, U+202F-2060, U+2074,
+    U+20AC, U+2122, U+2191, U+2193, U+2212, U+FEFF; */
+}
+
+@font-face {
+  font-family: Inter;
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+  font-named-instance: "Regular";
+  src: url(/assets/fonts/Inter-italic.latin.var.woff2);
+  font-display: fallback;
+  /* unicode-range: U+0000-007F, U+00A0-0100, U+0131, U+0152-0154, U+02BB-02BD,
+    U+02C6, U+02DA, U+02DC, U+2000-200C, U+2010-2028, U+202F-2060, U+2074,
+    U+20AC, U+2122, U+2191, U+2193, U+2212, U+FEFF; */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  font-weight: var(--font-weight);
+}
+
+@supports (font-variation-settings: "wght" 400) {
+  * {
+    font-weight: inherit;
+    font-variation-settings: "wght" var(--font-weight);
+  }
+}
+
+:root {
+  --pocket-jam: #f97f51;
+  --piano-tabs: #fc427b;
+  --technicalc-light: #0652dd;
+  --technicalc-dark: #2771f9; /* 12% lighter */
+  --technicalc: var(--technicalc-light);
+  --freebies: #a3cb38;
+  --blog: #ed4c67;
+  --primary: var(--color);
+  --color: black;
+  --background: white;
+  --gutter-top: 12px;
+  --gutters: 12px;
+}
+
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+body {
+  margin: var(--gutter-top) var(--gutters) 64px;
+  font: 18px/26px Inter, system-ui, -apple-system, sans-serif;
+  color: var(--color);
+  background: var(--background);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+  text-decoration: underline;
+}
+
+.header {
+  display: flex;
+  padding-top: 12px;
+  margin: -12px calc(-1 * var(--gutters)) 48px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.header::before,
+.header::after {
+  display: block;
+  content: "";
+  padding-right: var(--gutters);
+}
+
+.header__logo {
+  display: block;
+  flex: none;
+  --font-weight: 700;
+  font-size: 24px;
+  line-height: 18px;
+  letter-spacing: -1px;
+  text-transform: lowercase;
+  border-top: 4px solid;
+  padding: 6px 4px 0 0;
+}
+
+/* Override a:pseudo specificity */
+a.header__logo {
+  color: currentColor;
+  text-decoration: none;
+}
+
+.header__section {
+  flex: none;
+  margin: 0 0 0 24px;
+  --font-weight: 700;
+  font-size: 6px;
+  line-height: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: 0;
+}
+
+.header__section--last {
+  margin-left: auto;
+}
+
+.header__link {
+  flex: none;
+  display: block;
+  margin: 10px 24px 0 0;
+  font-size: 14px;
+  --font-weight: 400;
+  line-height: 18px;
+}
+
+.header__link:last-child {
+  margin-right: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --technicalc: var(--technicalc-dark);
+    --color: white;
+    --background: black;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutters: 64px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutters: 128px;
+  }
+}

@@ -1,0 +1,16 @@
+/* From blog.css */
+h1 {
+  margin: 48px 0 32px;
+  font-size: 36px;
+  line-height: 52px;
+  letter-spacing: -0.8px;
+  font-weight: 700;
+}
+
+p {
+  margin: 18px 0;
+}
+
+strong {
+  font-weight: 600;
+}

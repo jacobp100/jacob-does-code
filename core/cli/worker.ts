@@ -1,0 +1,50 @@
+import renderPage from "../builder/renderPage";
+import { generateCssStats, resetCssStats } from "../api/css";
+import {
+  clearAssetTransformCache,
+  encodeAssetTransformCache,
+  restoreAssetTransformCache,
+} from "../api/assetTransformer";
+import { Messages, IpcMessage } from "./types";
+
+const handlers: Messages = {
+  async RenderPage(file) {
+    const data = await renderPage(file);
+    const dependencies = Array.from(data.dependencies);
+    return { dependencies };
+  },
+  async EncodeAssetTransformCache() {
+    const assetTransformCache = encodeAssetTransformCache();
+    return assetTransformCache;
+  },
+  async RestoreAssetTransformCache(assetTransformCache) {
+    restoreAssetTransformCache(assetTransformCache);
+  },
+  async ClearAssetTransformCache(filename) {
+    clearAssetTransformCache(filename);
+  },
+  async GenerateCssStats() {
+    const stats = generateCssStats();
+    const unusedClassNames = Array.from(stats.unusedClassNames);
+    const undeclaredClassNames = Array.from(stats.undeclaredClassNames);
+    return { unusedClassNames, undeclaredClassNames };
+  },
+  async ResetCssStats() {
+    resetCssStats();
+  },
+};
+
+let queue = Promise.resolve();
+
+process.on("message", (message: IpcMessage) => {
+  queue = queue.then(async () => {
+    try {
+      const { type } = message;
+      const payload: any = (await handlers[type](message.payload)) ?? null;
+      process.send!({ type, payload });
+    } catch (e) {
+      console.error(e);
+      process.exit(1);
+    }
+  });
+});

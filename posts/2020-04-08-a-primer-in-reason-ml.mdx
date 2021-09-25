@@ -1,0 +1,85 @@
+---
+title: A Primer in ReasonML
+layout: page
+css: blog,blog-highlight
+---
+
+# A Primer in ReasonML
+
+If you've used Reason a little bit, you might have seen `string_of_int`, `string_of_float`, or if you're using Belt, `Float.toString`.
+
+So the question is &mdash; why is this necessary? A lot of languages let you do `toString` without saying the type you're converting from.
+
+A lot of languages support something called function overloading. Take C# for example,
+
+```c#
+string ToString(int x) { /*...*/ }
+string ToString(float x) { /*...*/ }
+```
+
+In JavaScript, you can get something to the same effect by using `typeof` checks.
+
+Most languages, too, support essentially the same thing through object inheritance too. You can have a class `Pet` with a `toString` method on it, then make subclasses `Dog` and `Cat` which each have their own `toString` methods.
+
+Reason doesn't support the first kind of overloading. Functions can only be defined once, and you can't do `typeof` checks on what is passed in.
+
+Reason does technically have some concept of classes, but they are rarely used. It's best to just not use them.
+It's because of these reasons there are multiple kinds of `+` operator &mdash; including `+.` for floats, `++` for strings.
+
+This might initially seem like a significant limitation, but the omission of these features is intentional: these features always have edge cases in any language that includes them.
+
+## Modules
+
+The most unique part of Reason is its module system. They are much more powerful than classes &mdash; both for the user, the type checker and the compiler.
+
+Usually, you will make your modules as isolated as possible, and group all the functionality in the module &mdash; not far off what your average class looks like.
+
+The convention is to have a type `t` that encompasses all the data a class would have. You also normally have a `make` function to act as a constructor and/or an `empty` variable if that makes sense for your module. For example,
+
+```reasonml
+module Person = {
+  type t = {name: string};
+
+  let make = name => {name: name};
+
+  let toString = person => "Person :" ++ person.name;
+};
+
+let person = Person.make("Bob");
+let personString = Person.toString(person);
+Js.log(personString);
+
+/* Or */
+let personString = Person.(make("Bob")->toString);
+```
+
+I said before this isn't too far from what an average class looks like. But there is one crucial difference.
+
+In OOP, your data and your functions are forcibly coupled together. Here, however, the grouping is just for the programmer &mdash; there is nothing actually forcing the type and the two functions together.
+
+OOP tends to suffer from data not being strictly hierarchical. By not coupling the data and functions means that when your data isn't hierarchical, you have much better tools to organise your code &mdash; although that's another blog post.
+
+## Bonus Time
+
+As a last bonus, something you'll see in Belt is defining operators in a module &mdash; and this is something you can do too!
+
+```reasonml
+module Fraction = {
+  type t = {
+    num: int,
+    den: int,
+  };
+
+  let make = (num, den) => {num, den};
+
+  let (+) = (a, b) => {
+    num: a.num * b.den + a.den * b.num,
+    den: a.den * b.den,
+  };
+};
+
+let fractionSum = Fraction.(make(1, 2) + make(1, 3));
+Js.log(fractionSum);
+```
+
+This is a bit like marmite &mdash; some people love it, some hate it. It really depends on your project how much you'll make use of it &mdash; if at all.

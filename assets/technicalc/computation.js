@@ -71,19 +71,18 @@ export default ({ container, worker }) => {
 
   setInput(input);
 
-  /** @type {Result<Client.ValueResolved, null> | null} */
+  /** @type {Result<Client.Value.T, null> | null} */
   let result = null;
 
-  /** @type {Result<Client.ValueUnresolved, number>} */
-  const parsingResult = input.ok
+  /** @type {Result<Client.Work.EquationArg, any>} */
+  const parseResult = input.ok
     ? Elements.parse(input.value)
-    : { ok: false, error: 0 };
-
-  if (parsingResult.ok) {
+    : { ok: false, error: -1 };
+  if (parseResult.ok) {
     const work = Work.make(
       { angleMode: "radian" },
       undefined,
-      Work.calculate(parsingResult.value)
+      Work.calculate(parseResult.value)
     );
     worker.postMessage(work);
   } else {
@@ -92,11 +91,13 @@ export default ({ container, worker }) => {
 
   /** @param {MessageEvent<any>} e */
   worker.onmessage = (e) => {
-    const data = e.data;
-    result = resultOfOption(
-      data.didError !== true ? Value.decode(data.results[0]) : undefined
-    );
+    const results = e.data;
+    result = resultOfOption(Value.decode(results[0]));
     setResult(result);
+  };
+
+  worker.onerror = () => {
+    setResult(resultOfOption(undefined));
   };
 
   form.addEventListener("change", () => {

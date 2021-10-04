@@ -10,29 +10,29 @@ declare namespace MathJax {
 }
 
 declare namespace Client {
-  type Element = "ClientElement";
-  type ValueUnresolved = "ClientValueUnresolved";
-  type ValueResolved = "ClientValueResolved";
-  type WorkType = "ClientWorkType";
-  type Work = "ClientWork";
+  module Elements {
+    type T = { _: "Elements.T" };
+    const decode: (encoded: string) => T[] | undefined;
+    const toMml: (elements: T[]) => string;
+    const parse: (elements: T[]) => Result<Work.EquationArg, number>;
+  }
+  module Value {
+    type T = { _: "Value.T" };
+    const toMml: (value: T) => string;
+    const decode: (encoded: any) => T | undefined;
+  }
+  module Work {
+    type T = { _: "Work.T" };
+    type EquationArg = { _: "Work.EquationArg" };
+    type Equation = { _: "Work.Equation" };
 
-  const Elements: {
-    decode: (encoded: string) => Element[] | undefined;
-    toMml: (elements: Element[]) => string;
-    parse: (elements: Element[]) => Result<ValueUnresolved, number>;
-  };
-  const Value: {
-    toMml: (value: ValueResolved) => string;
-    decode: (encoded: any) => ValueResolved | undefined;
-  };
-  const Work: {
-    calculate: (input: ValueUnresolved) => WorkType;
-    make: (
+    const calculate: (input: EquationArg) => Equation;
+    const make: (
       config: { angleMode: "radian" },
       context: undefined,
-      work: WorkType
-    ) => Work;
-  };
+      work: Equation
+    ) => T;
+  }
 }
 
 declare const TechnicalcWorker: Worker;

@@ -1,1 +1,0 @@
-importScripts("/res/2a07b0a2.js"),Worker.make(self);

@@ -3,10 +3,10 @@ import useContent from "../useContent";
 import { assetTransform } from "../assetTransformer";
 import { transformJs } from "../assetTransforms";
 
-const transform = assetTransform(
-  (content, src) => {
+const transform = assetTransform<string, [string, { module: boolean }]>(
+  (content, src, options) => {
     const input = content.asset(src);
-    return transformJs(content, input);
+    return transformJs(content, input, options);
   },
   {
     cacheKey: "core/InlineJs",
@@ -20,6 +20,7 @@ type Props = Omit<ScriptHTMLAttributes<any>, "src"> & {
 
 export default ({ src, ...props }: Props) => {
   const content = useContent();
-  const output = transform(content, src);
+  const module = props.type === "module";
+  const output = transform(content, src, { module });
   return <script {...props} dangerouslySetInnerHTML={{ __html: output }} />;
 };

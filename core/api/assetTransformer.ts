@@ -14,8 +14,6 @@ type PromiseResolution<T> =
 
 const cache = new Map<FileCacheKey, PromiseResolution<CacheResult>>();
 
-type Fn<T> = (content: Content, ...args: any[]) => T;
-
 let keyId = 0;
 let generateKey = () => {
   let output = keyId.toString(16).padStart(4, "0");
@@ -27,15 +25,15 @@ type Options =
   | { encodable: true; cacheKey: string }
   | { encodable?: false; cacheKey?: string };
 
-export const assetTransform = <T>(
-  fn: Fn<T | Promise<T>>,
+export const assetTransform = <T, Args extends any[] = any[]>(
+  fn: (content: Content, ...args: Args) => T | Promise<T>,
   options: Options = {}
 ) => {
   const baseKey = options.cacheKey ?? generateKey();
 
   const encodable = options.encodable ?? false;
 
-  return (content: Content, ...args: any[]): T => {
+  return (content: Content, ...args: Args): T => {
     const key = `${baseKey}/${args.map((x) => JSON.stringify(x)).join(":")}`;
 
     const cached = cache.get(key);

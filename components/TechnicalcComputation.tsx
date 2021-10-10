@@ -7,6 +7,6 @@ export default () => (
       className={classNames("computation", "computation--form-hidden")}
       hidden
     />
-    <InlineJs src="/assets/technicalc/computation-critical.js" />
+    <InlineJs src="/assets/technicalc/computation-critical.js" type="module" />
   </>
 );

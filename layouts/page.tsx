@@ -84,7 +84,7 @@ export default ({
             .filter((file) => file.length > 0)
             .map((file) => `/assets/${file}.css`)}
         />
-        {js && <ExternalJs src={`/assets/${js}.js`} defer />}
+        {js && <ExternalJs src={`/assets/${js}.js`} type="module" defer />}
       </head>
       <body>
         {banner === "TechnicalcComputation" && <TechnicalcComputation />}

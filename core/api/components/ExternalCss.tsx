@@ -2,7 +2,7 @@ import useContent from "../useContent";
 import { assetTransform } from "../assetTransformer";
 import { transformCss } from "../assetTransforms";
 
-const transform = assetTransform(
+const transform = assetTransform<string, [string]>(
   async (content, src) => {
     const input = content.asset(src);
     const output = await transformCss(content, input);

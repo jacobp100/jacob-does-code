@@ -4,7 +4,7 @@ import useContent from "../useContent";
 import { assetTransform } from "../assetTransformer";
 import { classNames, ClassNames } from "../css";
 
-const transform = assetTransform(
+const transform = assetTransform<string, string[]>(
   (content, src) => {
     const buffer = content.assetBuffer(src);
     return content.write(buffer, { extension: path.extname(src) });

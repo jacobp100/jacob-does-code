@@ -9,7 +9,9 @@ export default async (content: Content, asset: string) => {
 
   switch (extension) {
     case ".js": {
-      const js = await transformJs(content, content.asset(asset));
+      const js = await transformJs(content, content.asset(asset), {
+        module: true,
+      });
       return content.write(js, { extension: ".js" });
     }
     case ".min.js": {

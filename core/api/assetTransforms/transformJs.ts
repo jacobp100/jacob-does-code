@@ -11,7 +11,7 @@ import { cssVariable, className } from "../css";
 import dev from "../../util/dev";
 import transformAsset from "./transformAsset";
 
-export default async (content: Content, input: string) => {
+export default async (content: Content, input: string, { module = false }) => {
   const ast = parse(input, {
     sourceType: "module",
   });
@@ -76,7 +76,9 @@ export default async (content: Content, input: string) => {
     return js;
   }
 
-  const { code } = await minify(js);
+  const { code } = await minify(js, {
+    module,
+  });
 
   if (code == null) {
     throw new Error("Unknown error");

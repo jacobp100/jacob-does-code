@@ -3316,10 +3316,10 @@ react-dom@^18.0.0-alpha-1314299c7-20210901:
     object-assign "^4.1.1"
     scheduler "0.21.0-alpha-1314299c7-20210901"
 
-react@^18.0.0-alpha-1314299c7-20210901:
-  version "18.0.0-alpha-1314299c7-20210901"
-  resolved "https://registry.yarnpkg.com/react/-/react-18.0.0-alpha-1314299c7-20210901.tgz#3d9e66eb8523711c32560efcaacddb38369db8f4"
-  integrity sha512-5a0UD/5rIQ7MfDWXL4oPOv+/kh0iBGdFl8gBlCa9oO9lLk0fpET3YUWhYFPHlnotPVPVDajY4UjvnbFQh2bbnQ==
+react@^18.0.0-beta-fdc1d617a-20211118:
+  version "18.0.0-beta-fdc1d617a-20211118"
+  resolved "https://registry.yarnpkg.com/react/-/react-18.0.0-beta-fdc1d617a-20211118.tgz#ed8dd1674ddcab02bfff88ba368ad4d44db79fa7"
+  integrity sha512-+02tXs7Wc5az4Aw+dWp7Vwmd68POpiJF0pD20dVCwS+W8xxQ9GFEJrd5VE4Nal+HWDkGzSb6dApxoahULK/8ZA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"

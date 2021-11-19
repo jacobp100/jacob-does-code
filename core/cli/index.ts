@@ -13,7 +13,10 @@ import {
 
 const sitePath = path.join(projectPath, "site");
 const clearSiteFolder = () => {
-  fs.rmdirSync(sitePath, { recursive: true });
+  try {
+    fs.rmdirSync(sitePath, { recursive: true });
+  } catch {}
+
   fs.mkdirSync(sitePath);
 };
 

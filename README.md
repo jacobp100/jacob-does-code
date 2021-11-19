@@ -12,11 +12,7 @@ Custom static site builder. Laid out very similar to Jekyll, but uses React heav
 - No more \_includes hacks
 - Granular control of how assets get used - including inlining critical CSS/JS if required
 
-It's not perfect, but it's good enough for this site. Mostly, this is the issues that just need time investment to fix.
-
-Rendering React components can be a bit flaky. This is because I can't find a markdown parser that works properly with these, so there's regexp applied on top to fix some quirks (and make more quicks in the process).
-
-Each page is rendered synchronously, and asset optimisation does the same. It's not yet possible to optimise multiple assets at the same time because react-dom/server doesn't support suspense yet. When it does, I'd expect a decent build perf win if this gets fixed. Also because of this, I've tended to prefer build tools that are synchronous to the best tools available.
+It's not perfect, but it's good enough for this site. Mostly, these are the issues that just need time investment to fix.
 
 JS and CSS assets don't have "proper" bundlers - there's only ways to transform urls to point to the correct assets - not embed assets within them. CSS uses the url syntax. JS works out-of-the-box for import declarations and expressions, and needs you to use `require.resolve` for urls not part of import statements or expressions. Given enough time, `@import` in CSS and `import` declarations in JS would bundle the resources, and `url` functions and `import` expressions (or `require.resolve` calls) would map to asset references.
 

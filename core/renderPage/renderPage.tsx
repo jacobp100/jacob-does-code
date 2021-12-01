@@ -1,11 +1,13 @@
+import * as React from "react";
+import * as path from "path";
 import { Suspense } from "react";
 // @ts-ignore
-import { pipeToNodeWritable } from "react-dom/server";
+import { renderToPipeableStream } from "react-dom/server.js";
 // @ts-ignore
 import frontmatter from "frontmatter";
-import type { File } from "../api";
-import { Markdown, ContentContext, createContentContext } from "../api";
-import AsyncWritable from "./AsyncWritable";
+import type { File } from "../api/api.js";
+import { Markdown, ContentContext, createContentContext } from "../api/api.js";
+import AsyncWritable from "./AsyncWritable.js";
 
 const DefaultLayout = (props: any) => (
   <html>
@@ -31,16 +33,18 @@ export default async (file: File) => {
 
   const stream = new AsyncWritable();
 
-  const { startWriting } = pipeToNodeWritable(
-    <Suspense fallback="">
+  const { pipe } = renderToPipeableStream(
+    <Suspense fallback="Loading">
       <ContentContext.Provider value={content}>
         <Layout {...data} file={file}>
-          <Markdown mdx={mdx} />
+          <Markdown
+            mdx={mdx}
+            baseUrl={new URL(`file://${path.dirname(file.filename)}/`)}
+          />
         </Layout>
       </ContentContext.Provider>
     </Suspense>,
-    stream,
-    { onCompleteAll: () => startWriting() }
+    { onCompleteAll: () => pipe(stream) }
   );
 
   let html = await stream.awaited;

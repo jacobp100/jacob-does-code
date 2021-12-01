@@ -1,13 +1,15 @@
 import postcss, { AtRule, Declaration, Root, Rule } from "postcss";
 // @ts-ignore
-import transformClasses from "postcss-transform-classes";
+import transformClassesModule from "postcss-transform-classes";
 // @ts-ignore
 import csso from "csso";
-import nestedAsync from "../../util/nestedAsync";
-import type { Content } from "../useContent";
-import { classNameForOrigin, cssVariable, Origin } from "../css";
-import dev from "../../util/dev";
-import transformAsset from "./transformAsset";
+import nestedAsync from "../../util/nestedAsync.js";
+import type { Content } from "../useContent.js";
+import { classNameForOrigin, cssVariable, Origin } from "../css.js";
+import dev from "../../util/dev.js";
+import transformAsset from "./transformAsset.js";
+
+const transformClasses = transformClassesModule.default;
 
 const transformUrls = (content: Content) => {
   const urlRegExp = /url\(['"]?(\/assets\/[^'")]+)['"]?\)/g;

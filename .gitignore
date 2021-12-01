@@ -1,3 +1,8 @@
 /node_modules
 /site
 .DS_Store
+
+# Workaround loaders not being stable in Node when using ESModules
+components/**/*.js
+core/**/*.js
+layouts/**/*.js

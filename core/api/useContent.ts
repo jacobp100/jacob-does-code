@@ -1,12 +1,12 @@
-import fs from "fs";
-import path from "path";
-import { createContext, useContext } from "react";
+import * as fs from "fs";
+import * as path from "path";
+import { lazy, createContext, useContext } from "react";
 // @ts-ignore
 import glob from "glob";
 // @ts-ignore
 import stringHash from "string-hash";
-import cache from "../util/cache";
-import projectPath from "../util/projectPath";
+import cache from "../util/cache.js";
+import projectPath from "../util/projectPath.js";
 
 type ReactComponent = (props: any) => JSX.Element;
 
@@ -91,12 +91,18 @@ export const createContentContext = (): Content => {
     return filename;
   };
 
+  const importComponent = (filename: string) => {
+    dependencies.add(filename);
+    const moduleFilename =
+      filename.slice(0, -path.extname(filename).length) + ".js";
+    const Component = lazy(() => import(moduleFilename));
+    return Component as ReactComponent;
+  };
+
   return {
     dependencies,
-    component: (filename) =>
-      require(addFilenameDependency(componentPath(filename))).default,
-    layout: (filename) =>
-      require(addFilenameDependency(layoutPath(filename))).default,
+    component: (filename) => importComponent(componentPath(filename)),
+    layout: (filename) => importComponent(layoutPath(filename)),
     page: (filename) =>
       fs.readFileSync(addFilenameDependency(filename), "utf8"),
     asset: (filename) =>

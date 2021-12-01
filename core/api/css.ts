@@ -1,6 +1,6 @@
 // @ts-ignore
 import cssClassGenerator from "css-class-generator";
-import dev from "../util/dev";
+import dev from "../util/dev.js";
 
 const variablesStore = new Map<string, string>();
 const classNamesStore = new Map<string, string>();

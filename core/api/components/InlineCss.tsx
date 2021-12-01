@@ -1,6 +1,7 @@
-import useContent from "../useContent";
-import { assetTransform } from "../assetTransformer";
-import { transformCss } from "../assetTransforms";
+import * as React from "react";
+import useContent from "../useContent.js";
+import { assetTransform } from "../assetTransformer.js";
+import { transformCss } from "../assetTransforms/assetTransforms.js";
 
 const transform = assetTransform(
   (content, src) => {

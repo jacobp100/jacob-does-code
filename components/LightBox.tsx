@@ -1,4 +1,5 @@
-import { Video, className } from "../core";
+import * as React from "react";
+import { Video, className } from "../core/core.js";
 
 type Props = {
   src: string;

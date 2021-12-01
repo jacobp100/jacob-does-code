@@ -1,10 +1,10 @@
-import { File, getPages, getPosts } from "../util/projectFiles";
+import { File, getPages, getPosts } from "../util/projectFiles.js";
 import {
   renderPage,
   clearAssetTransformCache,
   generateCssStats,
   resetCssStats,
-} from "./ipc";
+} from "./ipc.js";
 
 const fileDependencies = new Map<File, string[]>();
 

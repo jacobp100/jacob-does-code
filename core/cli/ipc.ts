@@ -1,6 +1,8 @@
-import { fork, ChildProcess } from "child_process";
-import dev from "../util/dev";
-import { Messages, IpcMessage } from "./types";
+import { fork } from "child_process";
+import type { ChildProcess } from "child_process";
+import { Status } from "./types.js";
+import type { Messages, AnyMessage } from "./types.js";
+import { dev } from "../core.js";
 
 type WorkItem = {
   type: keyof Messages;
@@ -12,6 +14,7 @@ type WorkItem = {
 let inProgress: WorkItem | undefined;
 let queue: WorkItem[] = [];
 let worker: ChildProcess | undefined;
+let workerReady = false;
 
 const abortWorkItems = () => {
   inProgress?.rej(new Error("Aborted"));
@@ -24,7 +27,7 @@ const abortWorkItems = () => {
 };
 
 const runInProgressWorkIfNeeded = () => {
-  if (inProgress !== undefined) {
+  if (inProgress !== undefined && workerReady) {
     const { type, payload } = inProgress;
     worker?.send({ type, payload });
   }
@@ -39,7 +42,13 @@ const scheduleWorkItem = (work: WorkItem) => {
   }
 };
 
-const handleMessage = ({ type, payload }: IpcMessage) => {
+const handleMessage = ({ type, payload }: AnyMessage) => {
+  if (type === Status.Ready) {
+    workerReady = true;
+    runInProgressWorkIfNeeded();
+    return;
+  }
+
   if (inProgress === undefined) {
     console.warn("Unhandled message");
     return;
@@ -59,14 +68,15 @@ const handleMessage = ({ type, payload }: IpcMessage) => {
   }
 };
 
-const workerModulePath = require.resolve("./worker.js");
+const workerModuleUrl = new URL("./worker.js", import.meta.url);
 
 export const startWorker = () => {
   if (worker !== undefined) {
     throw new Error("Worker already exists");
   }
 
-  worker = fork(workerModulePath, dev ? ["--dev"] : []);
+  worker = fork(workerModuleUrl.pathname, dev ? ["--dev"] : []);
+  workerReady = false;
   worker.on("message", handleMessage);
 
   runInProgressWorkIfNeeded();
@@ -79,6 +89,7 @@ export const terminateWorker = () => {
     worker.removeAllListeners();
     worker.kill();
     worker = undefined;
+    workerReady = false;
   }
 };
 
@@ -94,8 +105,8 @@ type WorkerFunction<
   Input = Parameters<Messages[T]>[0],
   Output = ReturnType<Messages[T]>
 > = Parameters<Messages[T]>[0] extends undefined
-  ? () => Promise<Output>
-  : (payload: Input) => Promise<Output>;
+  ? () => Output
+  : (payload: Input) => Output;
 
 const createWorkerFunction = <T extends keyof Messages>(
   type: T

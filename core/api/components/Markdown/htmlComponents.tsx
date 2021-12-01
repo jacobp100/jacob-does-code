@@ -1,6 +1,7 @@
+import * as React from "react";
 import hljs from "highlight.js";
-import { classNames } from "../../css";
-import htmlTags from "./_htmlTags";
+import { classNames } from "../../css.js";
+import htmlTags from "./_htmlTags.js";
 
 const htmlComponents = htmlTags.reduce((accum, TagName) => {
   accum[TagName] = (props: any) => (

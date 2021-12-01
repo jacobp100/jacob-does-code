@@ -3,8 +3,8 @@ import posthtml from "posthtml";
 // @ts-ignore
 import minifier from "posthtml-minifier";
 // @ts-ignore
-import { Content } from "./useContent";
-import { classNames } from "../css";
+import { Content } from "./useContent.js";
+import { classNames } from "../css.js";
 
 const transformClassNames = () => (tree: any) =>
   tree.walk((node: any) => {

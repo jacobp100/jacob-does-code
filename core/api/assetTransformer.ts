@@ -1,4 +1,4 @@
-import { Content, createContentContext } from "./useContent";
+import { Content, createContentContext } from "./useContent.js";
 
 type FileCacheKey = string;
 
@@ -73,13 +73,20 @@ export const assetTransform = <T, Args extends any[] = any[]>(
       return resolveAndCacheOutput(promiseOrValue);
     }
 
-    const promise = promiseOrValue.then((output) => {
-      if (cache.get(key) === pendingPromiseResolution) {
-        resolveAndCacheOutput(output);
-      } else {
-        throw new Error("Aborted");
+    const promise = promiseOrValue.then(
+      (output) => {
+        if (cache.get(key) === pendingPromiseResolution) {
+          resolveAndCacheOutput(output);
+        } else {
+          throw new Error("Aborted");
+        }
+      },
+      (e) => {
+        console.error("Error in assetTransformer transform");
+        console.error(e);
+        throw e;
       }
-    });
+    );
 
     const pendingPromiseResolution: PromiseResolution<CacheResult> = {
       resolved: false,

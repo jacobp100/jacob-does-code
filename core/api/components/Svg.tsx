@@ -1,6 +1,7 @@
+import * as React from "react";
 import type { SVGAttributes } from "react";
-import useContent from "../useContent";
-import { ClassNames, classNames } from "../css";
+import useContent from "../useContent.js";
+import { ClassNames, classNames } from "../css.js";
 
 type Props = Omit<SVGAttributes<any>, "className"> & {
   className?: ClassNames;

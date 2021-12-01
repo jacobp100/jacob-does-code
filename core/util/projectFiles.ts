@@ -1,10 +1,10 @@
-import fs from "fs";
-import path from "path";
+import * as fs from "fs";
+import * as path from "path";
 // @ts-ignore
 import glob from "glob";
 // @ts-ignore
 import frontmatter from "frontmatter";
-import projectPath from "./projectPath";
+import projectPath from "./projectPath.js";
 
 const name = (filename: string) =>
   path.basename(filename, path.extname(filename));

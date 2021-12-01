@@ -1,7 +1,9 @@
-module.exports = {
-  presets: [
-    "@babel/preset-typescript",
-    ["@babel/preset-env", { exclude: ["@babel/plugin-transform-regenerator"] }],
-    ["@babel/preset-react", { runtime: "automatic" }],
-  ],
+export default (api) => {
+  return {
+    presets: [
+      "@babel/preset-typescript",
+      ["@babel/preset-env", { targets: { node: "16" }, modules: false }],
+      ["@babel/preset-react", { runtime: "automatic" }],
+    ],
+  };
 };

@@ -1,14 +1,15 @@
+import * as React from "react";
 import { format } from "date-fns";
 import {
-  ExternalCss,
   ExternalJs,
-  Image,
   InlineCss,
   InlineJs,
-} from "../core/api/components";
-import type { File } from "../core";
-import { className, classNames, cssVariable } from "../core";
-import TechnicalcComputation from "../components/TechnicalcComputation";
+  className,
+  classNames,
+  cssVariable,
+} from "../core/core.js";
+import type { File } from "../core/core.js";
+import TechnicalcComputation from "../components/TechnicalcComputation.js";
 
 const Header = ({ children }: { children: any }) => (
   <div className={className("header")}>{children}</div>

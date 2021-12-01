@@ -1,15 +1,18 @@
 import { parse } from "@babel/parser";
 // @ts-ignore
-import traverse from "@babel/traverse";
+import traverseModule from "@babel/traverse";
 // @ts-ignore
-import generate from "@babel/generator";
+import generateModule from "@babel/generator";
 import * as t from "@babel/types";
 import { minify } from "terser";
-import nestedAsync from "../../util//nestedAsync";
-import { Content } from "../useContent";
-import { cssVariable, className } from "../css";
-import dev from "../../util/dev";
-import transformAsset from "./transformAsset";
+import nestedAsync from "../../util//nestedAsync.js";
+import { Content } from "../useContent.js";
+import { cssVariable, className } from "../css.js";
+import dev from "../../util/dev.js";
+import transformAsset from "./transformAsset.js";
+
+const traverse = traverseModule.default;
+const generate = generateModule.default;
 
 export default async (content: Content, input: string, { module = false }) => {
   const ast = parse(input, {

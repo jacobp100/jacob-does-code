@@ -1,8 +1,8 @@
-import path from "path";
-import type { Content } from "../useContent";
-import transformCss from "./transformCss";
-import transformJs from "./transformJs";
-import transformHtml from "./transformHtml";
+import * as path from "path";
+import type { Content } from "../useContent.js";
+import transformCss from "./transformCss.js";
+import transformJs from "./transformJs.js";
+import transformHtml from "./transformHtml.js";
 
 export default async (content: Content, asset: string) => {
   const extension = path.extname(asset);

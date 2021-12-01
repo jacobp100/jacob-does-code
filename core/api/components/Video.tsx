@@ -1,8 +1,9 @@
-import path from "path";
+import * as React from "react";
+import * as path from "path";
 import type { VideoHTMLAttributes } from "react";
-import useContent from "../useContent";
-import { assetTransform } from "../assetTransformer";
-import { classNames, ClassNames } from "../css";
+import useContent from "../useContent.js";
+import { assetTransform } from "../assetTransformer.js";
+import { classNames, ClassNames } from "../css.js";
 
 const transform = assetTransform<string, string[]>(
   (content, src) => {

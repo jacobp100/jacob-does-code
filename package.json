@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "scripts": {
-    "start": "node core/cli --dev",
-    "build": "node core/cli"
+    "start": "yarn compile; node core/cli --dev",
+    "build": "yarn compile; node core/cli",
+    "compile": "esbuild $(find components layouts core -name '*.ts' -o -name '*.tsx') --outdir=. --log-level=warning"
   },
   "dependencies": {
+    "@babel/cli": "^7.16.0",
     "@babel/core": "^7.15.4",
     "@babel/generator": "^7.15.4",
     "@babel/node": "^7.15.4",
@@ -18,10 +21,13 @@
     "@babel/register": "^7.15.3",
     "@babel/traverse": "^7.15.4",
     "@babel/types": "^7.15.4",
+    "@mdx-js/mdx": "^2.0.0-rc.2",
+    "@mdx-js/react": "^1.6.22",
     "@mdx-js/runtime": "^1.6.22",
     "@silvenon/remark-smartypants": "^1.0.0",
     "@types/chalk": "^2.2.0",
     "@types/chokidar": "^2.1.3",
+    "@types/mdx": "^2.0.1",
     "@types/node": "^14.14.14",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
@@ -31,6 +37,7 @@
     "css-class-generator": "^2.0.0",
     "csso": "^4.2.0",
     "date-fns": "^2.23.0",
+    "esbuild": "^0.14.1",
     "express": "^4.17.1",
     "frontmatter": "^0.0.3",
     "glob": "^7.1.7",
@@ -42,11 +49,11 @@
     "posthtml-match-helper": "^1.0.1",
     "posthtml-minifier": "^0.1.0",
     "prettier": "^2.3.2",
-    "react": "^18.0.0-beta-fdc1d617a-20211118",
-    "react-dom": "^18.0.0-alpha-1314299c7-20210901",
+    "react": "^18.0.0-beta-a65ceef37-20211130",
+    "react-dom": "^18.0.0-beta-a65ceef37-20211130",
     "sharp": "^0.29.0",
     "string-hash": "^1.1.3",
     "terser": "^5.7.2",
-    "typescript": "^4.4.2"
+    "typescript": "^4.5.2"
   }
 }

@@ -1,4 +1,5 @@
-import hljs from "highlight";
+import * as React from "react";
+import hljs from "highlight.js";
 import { classNames } from "../../css";
 import htmlTags from "./_htmlTags";
 

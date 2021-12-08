@@ -1,4 +1,5 @@
-import { Svg, className, classNames, cssVariable } from "../core";
+import * as React from "react";
+import { Svg, className, classNames, cssVariable } from "../core/core";
 
 export default () => (
   <>

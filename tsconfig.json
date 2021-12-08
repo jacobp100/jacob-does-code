@@ -2,8 +2,8 @@
   "compilerOptions": {
     "noEmit": true,
     "lib": ["ES2020", "DOM"],
-    "types": ["node",],
-    "jsx": "react-jsx",
+    "types": ["node"],
+    "jsx": "react",
     "strict": true,
     "esModuleInterop": true
   }

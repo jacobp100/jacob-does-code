@@ -1,10 +1,11 @@
-import renderPage from "../builder/renderPage";
+import renderPage from "../renderPage/renderPage";
 import { generateCssStats, resetCssStats } from "../api/css";
 import {
   clearAssetTransformCache,
   encodeAssetTransformCache,
   restoreAssetTransformCache,
 } from "../api/assetTransformer";
+import { Status } from "./types";
 import { Messages, IpcMessage } from "./types";
 
 const handlers: Messages = {
@@ -35,6 +36,8 @@ const handlers: Messages = {
 };
 
 let queue = Promise.resolve();
+
+process.send!({ type: Status.Ready, payload: null });
 
 process.on("message", (message: IpcMessage) => {
   queue = queue.then(async () => {

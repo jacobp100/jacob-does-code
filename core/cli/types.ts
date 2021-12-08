@@ -1,6 +1,10 @@
 import type { File } from "../util/projectFiles";
 import type { AssetTransformCache } from "../api/assetTransformer";
 
+export enum Status {
+  Ready = "Readt",
+}
+
 export type Messages = {
   RenderPage: (file: File) => Promise<{
     dependencies: string[];
@@ -17,4 +21,6 @@ export type Messages = {
   ResetCssStats: () => Promise<void>;
 };
 
+export type StatusMessage = { type: Status; payload: null };
 export type IpcMessage = { type: keyof Messages; payload: any };
+export type AnyMessage = StatusMessage | IpcMessage;

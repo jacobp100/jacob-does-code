@@ -1,6 +1,9 @@
-import path from "path";
-import fs from "fs";
+import * as path from "path";
+import * as fs from "fs";
+import { execSync } from "child_process";
+// @ts-ignore
 import chalk from "chalk";
+// @ts-ignore
 import chokidar from "chokidar";
 import projectPath from "../util/projectPath";
 import { buildAllFiles, buildFiles, clearCacheForTransforms } from "./builder";
@@ -72,10 +75,8 @@ if (process.argv.includes("--dev")) {
   console.log(
     chalk.whiteBright.bgYellow(`[Dev mode - listening on port ${port}]`)
   );
-
-  require("http-server")
-    .createServer({ root: sitePath })
-    .listen(port, "0.0.0.0");
+  const httpServer = require("http-server");
+  httpServer.createServer({ root: sitePath }).listen(port, "0.0.0.0");
 
   /* Watch for file changes */
   let needsRestart = false;
@@ -118,35 +119,37 @@ if (process.argv.includes("--dev")) {
     queueRebuildTimeout = setTimeout(runRebuild, 50);
   };
 
-  const watchDirectories: Array<{ directory: string; needsRestart: boolean }> =
-    [
-      {
-        directory: path.resolve(projectPath, "core"),
-        needsRestart: true,
-      },
-      {
-        directory: path.resolve(projectPath, "components"),
-        needsRestart: true,
-      },
-      {
-        directory: path.resolve(projectPath, "layouts"),
-        needsRestart: true,
-      },
-      {
-        directory: path.resolve(projectPath, "assets"),
-        needsRestart: false,
-      },
-      {
-        directory: path.resolve(projectPath, "pages"),
-        needsRestart: false,
-      },
-      {
-        directory: path.resolve(projectPath, "posts"),
-        needsRestart: false,
-      },
-    ];
+  const watchDirectories: Array<{
+    directory: string;
+    needsRestart: boolean;
+  }> = [
+    {
+      directory: path.resolve(projectPath, "core"),
+      needsRestart: true,
+    },
+    {
+      directory: path.resolve(projectPath, "components"),
+      needsRestart: true,
+    },
+    {
+      directory: path.resolve(projectPath, "layouts"),
+      needsRestart: true,
+    },
+    {
+      directory: path.resolve(projectPath, "assets"),
+      needsRestart: false,
+    },
+    {
+      directory: path.resolve(projectPath, "pages"),
+      needsRestart: false,
+    },
+    {
+      directory: path.resolve(projectPath, "posts"),
+      needsRestart: false,
+    },
+  ];
 
-  chokidar.watch(projectPath).on("change", (filename) => {
+  chokidar.watch(projectPath).on("change", (filename: string) => {
     const changedDirectory = watchDirectories.find(({ directory }) => {
       const directoryContainsFilename = /^[^./]/.test(
         path.relative(directory, filename)
@@ -155,7 +158,18 @@ if (process.argv.includes("--dev")) {
       return directoryContainsFilename;
     });
 
+    if (/\.tsx?/.test(filename)) {
+      // Workaround loaders not being stable in Node when using ESModules
+      console.log(chalk.dim(`[Compiling ${filename}]`));
+      execSync(
+        `yarn esbuild "${filename}" --outdir="${path.dirname(filename)}"`,
+        { stdio: "ignore" }
+      );
+      return;
+    }
+
     if (changedDirectory != null) {
+      console.log(filename);
       queueRebuild(filename, changedDirectory.needsRestart);
     }
   });
@@ -177,7 +191,5 @@ if (process.argv.includes("--dev")) {
     }
   });
 } else {
-  queueAsync(() => {
-    terminateWorker();
-  });
+  queueAsync(terminateWorker);
 }

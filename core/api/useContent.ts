@@ -1,6 +1,6 @@
-import fs from "fs";
-import path from "path";
-import { createContext, useContext } from "react";
+import * as fs from "fs";
+import * as path from "path";
+import { lazy, createContext, useContext } from "react";
 // @ts-ignore
 import glob from "glob";
 // @ts-ignore
@@ -91,12 +91,18 @@ export const createContentContext = (): Content => {
     return filename;
   };
 
+  const importComponent = (filename: string) => {
+    dependencies.add(filename);
+    // Does not need to be async
+    // But make it easier to upgrade ti `import` in the future
+    const Component = lazy(async () => require(filename));
+    return Component as ReactComponent;
+  };
+
   return {
     dependencies,
-    component: (filename) =>
-      require(addFilenameDependency(componentPath(filename))).default,
-    layout: (filename) =>
-      require(addFilenameDependency(layoutPath(filename))).default,
+    component: (filename) => importComponent(componentPath(filename)),
+    layout: (filename) => importComponent(layoutPath(filename)),
     page: (filename) =>
       fs.readFileSync(addFilenameDependency(filename), "utf8"),
     asset: (filename) =>

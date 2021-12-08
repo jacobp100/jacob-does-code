@@ -1,4 +1,5 @@
-import { InlineJs, classNames } from "../core";
+import * as React from "react";
+import { InlineJs, classNames } from "../core/core";
 
 export default () => (
   <>

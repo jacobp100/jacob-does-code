@@ -42,11 +42,11 @@
     "posthtml-match-helper": "^1.0.1",
     "posthtml-minifier": "^0.1.0",
     "prettier": "^2.3.2",
-    "react": "^18.0.0-beta-fdc1d617a-20211118",
-    "react-dom": "^18.0.0-alpha-1314299c7-20210901",
+    "react": "^18.0.0-rc.0-next-f2a59df48-20211208",
+    "react-dom": "^18.0.0-rc.0-next-f2a59df48-20211208",
     "sharp": "^0.29.0",
     "string-hash": "^1.1.3",
     "terser": "^5.7.2",
-    "typescript": "^4.4.2"
+    "typescript": "^4.5.2"
   }
 }

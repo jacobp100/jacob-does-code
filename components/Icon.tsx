@@ -1,5 +1,6 @@
+import * as React from "react";
 import type { SVGProps } from "react";
-import { useContent, classNames } from "../core";
+import { useContent, classNames } from "../core/core";
 
 type Props = SVGProps<any> & {
   name: string;

@@ -1,3 +1,4 @@
+import * as React from "react";
 import type { SVGAttributes } from "react";
 import useContent from "../useContent";
 import { ClassNames, classNames } from "../css";

@@ -1,4 +1,6 @@
-import { ImageResize, Image, ImageSource, classNames } from "../core";
+import * as React from "react";
+import { Image, ImageSource, classNames } from "../core/core";
+import type { ImageResize } from "../core/core";
 
 const imagePositions: Record<string, ImageResize> = {
   bottom: { fit: "cover", position: "bottom" },

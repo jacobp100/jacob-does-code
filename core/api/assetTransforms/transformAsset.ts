@@ -1,4 +1,4 @@
-import path from "path";
+import * as path from "path";
 import type { Content } from "../useContent";
 import transformCss from "./transformCss";
 import transformJs from "./transformJs";

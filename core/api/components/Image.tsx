@@ -1,5 +1,7 @@
+import * as React from "react";
 import type { ImgHTMLAttributes } from "react";
-import path from "path";
+import * as path from "path";
+// @ts-ignore
 import sharp, { ResizeOptions } from "sharp";
 import useContent from "../useContent";
 import { assetTransform } from "../assetTransformer";

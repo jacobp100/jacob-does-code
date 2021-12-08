@@ -1,4 +1,5 @@
-import { className } from "../core";
+import * as React from "react";
+import { className } from "../core/core";
 
 export default () => (
   <p className={className("legal-links")}>

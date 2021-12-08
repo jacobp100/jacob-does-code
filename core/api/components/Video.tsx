@@ -1,4 +1,5 @@
-import path from "path";
+import * as React from "react";
+import * as path from "path";
 import type { VideoHTMLAttributes } from "react";
 import useContent from "../useContent";
 import { assetTransform } from "../assetTransformer";

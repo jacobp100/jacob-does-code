@@ -1,4 +1,5 @@
-import { getPosts } from "../core";
+import * as React from "react";
+import { getPosts } from "../core/core";
 
 export default () => (
   <ul>

@@ -1,4 +1,5 @@
-import { Image, ImageSource } from "../core";
+import * as React from "react";
+import { Image, ImageSource } from "../core/core";
 
 export default ({ src, alt = "App Screenshots" }: any) => (
   <Image

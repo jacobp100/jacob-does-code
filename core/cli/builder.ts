@@ -10,9 +10,8 @@ const fileDependencies = new Map<File, string[]>();
 
 const files = new Set([...getPages(), ...getPosts()]);
 
-// Currently broken
-// useContent Context gets cleared when rendering multiple pages concurrently
-const enableConcurrentPageBuilding = false;
+// Disable if debugging
+const enableConcurrentPageBuilding = true;
 
 export const buildFiles = async (files: Set<File>) => {
   const start = Date.now();

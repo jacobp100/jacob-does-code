@@ -5,6 +5,10 @@ export enum Status {
   Ready = "Readt",
 }
 
+export enum Status {
+  Ready = "Readt",
+}
+
 export type Messages = {
   RenderPage: (file: File) => Promise<{
     dependencies: string[];

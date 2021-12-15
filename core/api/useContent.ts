@@ -1,60 +1,28 @@
 import * as fs from "fs";
 import * as path from "path";
-import { lazy, createContext, useContext } from "react";
-// @ts-ignore
-import glob from "glob";
+import type Module from "module";
+import { createContext, useContext } from "react";
 // @ts-ignore
 import stringHash from "string-hash";
-import cache from "../util/cache";
+import corePath from "../util/corePath";
 import projectPath from "../util/projectPath";
-
-type ReactComponent = (props: any) => JSX.Element;
 
 export type Content = {
   dependencies: Set<string>;
-  component: (filename: string) => ReactComponent;
-  layout: (filename: string) => ReactComponent;
-  page: (filename: string) => string;
-  asset: (filename: string) => string;
-  assetBuffer: (filename: string) => Buffer;
+  require: (module: string) => any;
+  read: (filename: string) => string;
+  readBuffer: (filename: string) => Buffer;
   write: (
     content: Buffer | string,
     options: { filename?: string; extension: string }
   ) => string;
 };
 
-const modulePath = (directory: string, filename: string) => {
-  const output = [".js", ".jsx", ".ts", ".tsx"]
-    .map((extension) =>
-      path.join(projectPath, directory, `${filename}${extension}`)
-    )
-    .find((candidate) => fs.existsSync(candidate));
-
-  if (output == null) {
-    throw new Error(`Failed to find file ${filename} in ${directory}`);
+const relativePath = (filename: string) => {
+  if (!filename.startsWith("/")) {
+    throw new Error(`Content filename "${filename}" should start with "/"`);
   }
-
-  return output;
-};
-
-export const componentPath = cache<string, string>((filename) => {
-  return modulePath("components", filename);
-});
-
-const componentNames: string[] = glob
-  .sync(path.join(projectPath, "components/*.{js,jsx,ts,tsx}"))
-  .map((filename: string) => path.basename(filename, path.extname(filename)));
-export const getComponentNames = () => componentNames;
-
-export const layoutPath = cache<string, string>((filename) => {
-  return modulePath("layouts", filename);
-});
-
-export const assetPath = (filename: string) => {
-  if (!filename.startsWith("/assets/")) {
-    throw new Error(`Expected ${filename} to start with /asset`);
-  }
-  return path.join(projectPath, filename);
+  return path.resolve(projectPath, filename.slice(1));
 };
 
 const sitePath = (filename: string) => path.join(projectPath, "site", filename);
@@ -91,24 +59,31 @@ export const createContentContext = (): Content => {
     return filename;
   };
 
-  const importComponent = (filename: string) => {
-    dependencies.add(filename);
-    // Does not need to be async
-    // But make it easier to upgrade ti `import` in the future
-    const Component = lazy(async () => require(filename));
-    return Component as ReactComponent;
+  const requrieImpl = (filename: string) => {
+    const modulePathAbsolute = require.resolve(filename);
+    const module = require(modulePathAbsolute);
+
+    const addModuleDependencies = ({ filename, children }: Module) => {
+      if (
+        !filename.includes("node_modules") &&
+        !filename.startsWith(corePath)
+      ) {
+        dependencies.add(filename);
+        children.forEach(addModuleDependencies);
+      }
+    };
+    addModuleDependencies(require.cache[modulePathAbsolute]!);
+
+    return module;
   };
 
   return {
     dependencies,
-    component: (filename) => importComponent(componentPath(filename)),
-    layout: (filename) => importComponent(layoutPath(filename)),
-    page: (filename) =>
-      fs.readFileSync(addFilenameDependency(filename), "utf8"),
-    asset: (filename) =>
-      fs.readFileSync(addFilenameDependency(assetPath(filename)), "utf8"),
-    assetBuffer: (filename) =>
-      fs.readFileSync(addFilenameDependency(assetPath(filename))),
+    require: requrieImpl,
+    read: (filename) =>
+      fs.readFileSync(addFilenameDependency(relativePath(filename)), "utf8"),
+    readBuffer: (filename) =>
+      fs.readFileSync(addFilenameDependency(relativePath(filename))),
     write: (content, options) => write(content, options),
   };
 };

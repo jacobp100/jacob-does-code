@@ -1,15 +1,17 @@
----
-title: Freebies
-layout: page
-css: freebies
-primary: "var(--freebies)"
----
+import { Svg, classNames, cssVariable } from "../core/core";
+import Icon from "../components/Icon";
+import LegalLinks from "../components/LegalLinks";
+
+export { default as Layout } from "../components/Layout";
+export const title = "Freebies";
+export const css = "/assets/freebies.css";
+export const primary = `var(${cssVariable("--freebies")})`;
 
 # Freebies
 
 All the apps below are free. Some are even open source.
 
-<div className="grid">
+<div className={classNames("grid")}>
 
 <div>
 

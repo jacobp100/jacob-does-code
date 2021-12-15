@@ -9,24 +9,24 @@ export default async (content: Content, asset: string) => {
 
   switch (extension) {
     case ".js": {
-      const js = await transformJs(content, content.asset(asset), {
+      const js = await transformJs(content, content.read(asset), {
         module: true,
       });
       return content.write(js, { extension: ".js" });
     }
     case ".min.js": {
-      const js = content.asset(asset);
+      const js = content.read(asset);
       return content.write(js, { extension: ".js" });
     }
     case ".css": {
-      const css = await transformCss(content, content.asset(asset));
+      const css = await transformCss(content, content.read(asset));
       return content.write(css, { extension: ".css" });
     }
     case ".html": {
-      const html = await transformHtml(content, content.asset(asset));
+      const html = await transformHtml(content, content.read(asset));
       return content.write(html, { extension: ".html" });
     }
     default:
-      return content.write(content.assetBuffer(asset), { extension });
+      return content.write(content.readBuffer(asset), { extension });
   }
 };

@@ -1,4 +1,5 @@
-import { File, getPages, getPosts } from "../util/projectFiles";
+import dev from "../util/dev";
+import { File, getFiles } from "../util/projectFiles";
 import {
   renderPage,
   clearAssetTransformCache,
@@ -8,28 +9,30 @@ import {
 
 const fileDependencies = new Map<File, string[]>();
 
-const files = new Set([...getPages(), ...getPosts()]);
+const files = new Set(getFiles());
 
-// Disable if debugging
-const enableConcurrentPageBuilding = true;
+// Number here is kind of random
+// The expensive asset transforms happen in native code on another thread
+// so the larger this number is, the more these transforms happen concurrently
+// But there's also overhead from the extra bookkeeping React has to do
+const concurrentLimit = dev ? 1 : 6;
 
-export const buildFiles = async (files: Set<File>) => {
+export const buildFiles = async (
+  files: Set<File>,
+  logger: (file: File) => void
+) => {
   const start = Date.now();
 
-  const buildPage = async (file: File) => {
-    console.log(`- Building ${file.title ?? file.url}`);
-    const { dependencies } = await renderPage(file);
+  const { default: pAll } = await eval(`import("p-all")`);
+  await pAll(
+    Array.from(files, (file) => async () => {
+      logger(file);
+      const { dependencies } = await renderPage(file);
 
-    fileDependencies.set(file, dependencies);
-  };
-
-  if (enableConcurrentPageBuilding) {
-    await Promise.all(Array.from(files, buildPage));
-  } else {
-    for (const file of Array.from(files)) {
-      await buildPage(file);
-    }
-  }
+      fileDependencies.set(file, dependencies);
+    }),
+    { concurrency: concurrentLimit }
+  );
 
   const end = Date.now();
   const duration = end - start;
@@ -37,10 +40,10 @@ export const buildFiles = async (files: Set<File>) => {
   return { duration };
 };
 
-export const buildAllFiles = async () => {
+export const buildAllFiles = async (logger: (file: File) => void) => {
   resetCssStats();
 
-  const { duration } = await buildFiles(files);
+  const { duration } = await buildFiles(files, logger);
 
   const cssStats = await generateCssStats();
 

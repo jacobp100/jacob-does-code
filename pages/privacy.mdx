@@ -1,9 +1,9 @@
----
-title: Privacy Policy
-layout: page
-css: privacy
-primary: var(--blog)
----
+import { cssVariable } from "../core/core";
+
+export { default as Layout } from "../components/Layout";
+export const title = "Privacy Policy";
+export const css = "/assets/privacy.css";
+export const primary = `var(${cssVariable("--blog")})`;
 
 # Privacy Policy
 

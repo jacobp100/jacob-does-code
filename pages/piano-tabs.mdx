@@ -1,10 +1,16 @@
----
-title: Piano Tabs
-description: Sheet music and piano practise reimagined
-layout: page
-css: app
-primary: "var(--piano-tabs)"
----
+import { Svg, classNames, cssVariable } from "../core/core";
+import Icon from "../components/Icon";
+import Lead from "../components/Lead";
+import AppPromoImage from "../components/AppPromoImage";
+import AppBlock from "../components/AppBlock";
+import BetterTogether from "../components/BetterTogether";
+import LegalLinks from "../components/LegalLinks";
+
+export { default as Layout } from "../components/Layout";
+export const title = "Piano Tabs";
+export const description = "Sheet music and piano practise reimagined";
+export const css = "/assets/app.css";
+export const primary = `var(${cssVariable("--piano-tabs")})`;
 
 <Icon name="piano-tabs" />
 
@@ -62,15 +68,15 @@ View every track within a MIDI file, and **change the key and tempo** to your li
 
 ---
 
-<div className="side-by-side">
+<div className={classNames("side-by-side")}>
 
-<div className="side-by-side__item">
+<div className={classNames("side-by-side__item")}>
 
 # Get it on its own
 
 <Lead>Available for iOS and macOS</Lead>
 
-<div className="center-icons">
+<div className={classNames("center-icons")}>
 
 <a
   title="App Store"
@@ -85,7 +91,7 @@ View every track within a MIDI file, and **change the key and tempo** to your li
 
 ---
 
-<div className="side-by-side__item">
+<div className={classNames("side-by-side__item")}>
 
 <BetterTogether />
 

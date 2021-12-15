@@ -91,6 +91,13 @@ thead th {
   text-align: left;
 }
 
+hr {
+  margin: 32px calc(-1 * var(--gutters));
+  height: var(--hairline-width);
+  border: none;
+  background-color: #f4f4f4;
+}
+
 code {
   font-size: 0.9em;
   font-family: monospace;
@@ -138,6 +145,10 @@ iframe {
 }
 
 @media (prefers-color-scheme: dark) {
+  hr {
+    background-color: #080808;
+  }
+
   code {
     background-color: #111;
     border-color: #222;

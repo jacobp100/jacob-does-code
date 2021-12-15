@@ -1,8 +1,8 @@
----
-title: React Native Bottom Sheets
-layout: page
-css: blog,blog-highlight
----
+import { Video } from "../core/core";
+
+export { default as Layout } from "../components/Layout";
+export const title = "React Native Bottom Sheets";
+export const css = ["/assets/blog.css", "/assets/blog-highlight.css"];
 
 # React Native Bottom Sheets
 
@@ -12,7 +12,12 @@ The app has always had a bottom sheet menu navigation system, which lets you alw
 
 Now in the latest update, you'll be able to dismiss them by swiping down &mdash; much like the bottom sheet in Apple Maps.
 
-<Video controls="controls" width="300" src="/assets/posts/technicalc-bottom-sheet.mp4" type="video/mp4"></Video>
+<Video
+  controls="controls"
+  width="300"
+  src="/assets/posts/technicalc-bottom-sheet.mp4"
+  type="video/mp4"
+></Video>
 
 There are libraries that do this to some extent already. For example, [react-native-modalize](https://github.com/jeremybarbet/react-native-modalize). However, as my menus behave like a card stack, and you can see the previous menus behind the current menu, I need something custom.
 
@@ -246,10 +251,8 @@ Next up, we need to stop scrolling when the dismiss gesture is the 'current' ges
 ```jsx
 const BottomSheetDismissScrollView = (scrollViewProps) => {
   // ...
-  const [
-    dismissGestureIsInProgress,
-    setDismissGestureIsInProgress,
-  ] = React.useState(false);
+  const [dismissGestureIsInProgress, setDismissGestureIsInProgress] =
+    React.useState(false);
 
   const onGestureEvent = Animated.event(
     [{ nativeEvent: { translationY: interactiveGesture } }],

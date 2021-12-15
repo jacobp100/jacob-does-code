@@ -6,8 +6,8 @@ import { transformCss } from "../assetTransforms/assetTransforms";
 const transform = assetTransform(
   (content, src) => {
     const input = Array.isArray(src)
-      ? src.map(content.asset).join("\n")
-      : content.asset(src);
+      ? src.map(content.read).join("\n")
+      : content.read(src);
     return transformCss(content, input);
   },
   {

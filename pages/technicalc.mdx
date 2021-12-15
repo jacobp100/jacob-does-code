@@ -1,12 +1,23 @@
----
-title: TechniCalc
-description: A smart calculator for a smart phone
-layout: page
-css: app,lightbox,technicalc/computation-critical
-js: lightbox
-primary: "var(--technicalc)"
-banner: "TechnicalcComputation"
----
+import { Svg, Video, classNames, cssVariable } from "../core/core";
+import LightBox from "../components/LightBox";
+import Icon from "../components/Icon";
+import Lead from "../components/Lead";
+import AppPromoImage from "../components/AppPromoImage";
+import AppBlock from "../components/AppBlock";
+import LegalLinks from "../components/LegalLinks";
+import TechnicalcComputation from "../components/TechnicalcComputation";
+
+export { default as Layout } from "../components/Layout";
+export const title = "TechniCalc";
+export const description = "A smart calculator for a smart phone";
+export const css = [
+  "/assets/app.css",
+  "/assets/lightbox.css",
+  "/assets/technicalc/computation-critical.css",
+];
+export const js = "/assets/lightbox.js";
+export const primary = `var(${cssVariable("--technicalc")})`;
+export const banner = <TechnicalcComputation />;
 
 <Icon name="technicalc" />
 
@@ -92,15 +103,15 @@ With full support for **split screen** on iPad and **global shortcut** keys on m
 
 ---
 
-<div className="side-by-side">
+<div className={classNames("side-by-side")}>
 
-<div className="side-by-side__item">
+<div className={classNames("side-by-side__item")}>
 
 # Get it now
 
 <Lead>Available on iOS, macOS, and Android</Lead>
 
-<div className="center-icons">
+<div className={classNames("center-icons")}>
 
 <a
   title="App Store"
@@ -122,13 +133,13 @@ With full support for **split screen** on iPad and **global shortcut** keys on m
 
 ---
 
-<div className="side-by-side__item">
+<div className={classNames("side-by-side__item")}>
 
 # Stay in the loop
 
 <Lead>Follow development updates on Twitter</Lead>
 
-<div className="center-icons">
+<div className={classNames("center-icons")}>
 
 <a title="Twitter" href="https://twitter.com/technicalcapp">
   <Svg

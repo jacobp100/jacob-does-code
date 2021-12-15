@@ -1,16 +1,14 @@
----
-title: CV
-layout: page
-css: cv
----
+import { classNames } from "../core/core";
+
+export { default as Layout } from "../components/Layout";
+export const title = "CV";
+export const css = "/assets/cv.css";
 
 # Jacob Parker
 
-{
-// .lead
-}
-
-Senior frontend and mobile with over **6 years React** and **5 years React Native** experience. Skilled in all things JavaScript and CSS, with experience in iOS development, including SwiftUI & Swift, and Objective-C.
+Senior frontend and mobile with over **6 years React** and **5 years React
+Native** experience. Skilled in all things JavaScript and CSS, with experience
+in iOS development, including SwiftUI & Swift, and Objective-C.
 
 ## Skills
 
@@ -44,35 +42,51 @@ Senior developer doing full stack development on various consumer-facing project
 
 ### Other Places
 
-{
-// .timelist
-}
+<ul className={classNames("timelist")}>
 
-- Our Star Club <time>Jun &rsquo;18&ndash;Sep &rsquo;18</time>
+<li>
 
-  Architected both **React** web and **React Native** applications for a social media app. Set up infrastructure, guided the team through native development, and added native code where existing React Native bindings were not available.
+Our Star Club <time>Jun &rsquo;18&ndash;Sep &rsquo;18</time>
 
-- Concentra <time>2017&ndash;2018</time>
+Architected both **React** web and **React Native** applications for a social media app. Set up infrastructure, guided the team through native development, and added native code where existing React Native bindings were not available.
 
-  Developed a **React** & **D3**-based data vis app capable of rendering organisation hierarchy charts of over 100k employees at 60fps in browser, with PowerPoint export.
+</li>
 
-- Autotrip <time>2016&ndash;2017</time>
+<li>
 
-  Developed both a web and native using **React** and **React Native**.
+Concentra <time>2017&ndash;2018</time>
 
-- Tido Music <time>2015&ndash;2016</time>
+Developed a **React** &amp; **D3**-based data vis app capable of rendering organisation hierarchy charts of over 100k employees at 60fps in browser, with PowerPoint export.
 
-  Worked on a music notation engine, and apps using both **React** and **React Native**.
+</li>
 
-- Geneity <time>2014&ndash;2015</time>
+<li>
 
-  Fullstack development on betting websites using Python and JavaScript.
+Autotrip <time>2016&ndash;2017</time>
+
+Developed both a web and native using **React** and **React Native**.
+
+</li>
+
+<li>
+
+Tido Music <time>2015&ndash;2016</time>
+
+Worked on a music notation engine, and apps using both **React** and **React Native**.
+
+</li>
+
+<li>
+
+Geneity <time>2014&ndash;2015</time>
+
+Fullstack development on betting websites using Python and JavaScript.
+
+</li>
+
+</ul>
 
 ## Apps & Projects
-
-{
-// Fix bug in Firefox PDF export
-}
 
 <div style={{ position: "relative" }}>
 

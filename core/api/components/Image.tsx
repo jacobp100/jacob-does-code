@@ -24,7 +24,7 @@ const avifEnabled = false;
 
 const transform = assetTransform<ImageResult>(
   async (content, input, size) => {
-    const buffer = content.assetBuffer(input);
+    const buffer = content.readBuffer(input);
     const extension = path.extname(input);
 
     let pipeline = sharp(buffer);

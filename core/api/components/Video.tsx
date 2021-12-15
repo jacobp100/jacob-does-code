@@ -7,7 +7,7 @@ import { classNames, ClassNames } from "../css";
 
 const transform = assetTransform<string, string[]>(
   (content, src) => {
-    const buffer = content.assetBuffer(src);
+    const buffer = content.readBuffer(src);
     return content.write(buffer, { extension: path.extname(src) });
   },
   {

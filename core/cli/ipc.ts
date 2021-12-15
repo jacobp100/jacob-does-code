@@ -78,6 +78,10 @@ export const startWorker = () => {
   worker = fork(workerModulePath, dev ? ["--dev"] : []);
   workerReady = false;
   worker.on("message", handleMessage);
+  worker.on("close", () => {
+    worker = undefined;
+    workerReady = false;
+  });
 
   runInProgressWorkIfNeeded();
 };

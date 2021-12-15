@@ -1,10 +1,16 @@
----
-title: Pocket Jam
-description: Jam sessions you can carry in your pocket
-layout: page
-css: app
-primary: "var(--pocket-jam)"
----
+import { Svg, classNames, cssVariable } from "../core/core";
+import Icon from "../components/Icon";
+import Lead from "../components/Lead";
+import AppPromoImage from "../components/AppPromoImage";
+import AppBlock from "../components/AppBlock";
+import BetterTogether from "../components/BetterTogether";
+import LegalLinks from "../components/LegalLinks";
+
+export { default as Layout } from "../components/Layout";
+export const title = "Pocket Jam";
+export const description = "Jam sessions you can carry in your pocket";
+export const css = "/assets/app.css";
+export const primary = `var(${cssVariable("--pocket-jam")})`;
 
 <Icon name="pocket-jam" />
 
@@ -60,15 +66,15 @@ Use them to jump to the section in playback, or to set up loops between sections
 
 ---
 
-<div className="side-by-side">
+<div className={classNames("side-by-side")}>
 
-<div className="side-by-side__item">
+<div className={classNames("side-by-side__item")}>
 
 # Get it on its own
 
 <Lead>Available for iOS and macOS</Lead>
 
-<div className="center-icons">
+<div className={classNames("center-icons")}>
 
 <a
   title="App Store"
@@ -83,7 +89,7 @@ Use them to jump to the section in playback, or to set up loops between sections
 
 ---
 
-<div className="side-by-side__item">
+<div className={classNames("side-by-side__item")}>
 
 <BetterTogether />
 

@@ -2,26 +2,29 @@
 
 > [http://jacobdoescode.com](http://jacobdoescode.com)
 
-Custom static site builder. Laid out very similar to Jekyll, but uses React heavily under the hood. It has the following advantages:
+Custom static site builder. Like Jekyll, but uses React heavily under the hood. It has the following advantages:
 
 - Assets get tree shaken (for better or worse)
-- Optimises assets
+- Optimises assets, including automatic conversion of images to WebP
 - Assets get renamed to their hashes for long-term caching
-- Can use React components in Markdown
+- MDX-based - sp you can use React components in Markdown
 - Generally more React-based - no `{% if blocks %}`
-- No more \_includes hacks
+- No more `_includes` hacks
 - Granular control of how assets get used - including inlining critical CSS/JS if required
 
-It's not perfect, but it's good enough for this site. Mostly, these are the issues that just need time investment to fix.
+Using and referencing assets requires React components to do the lifting. The elements `<script>`, `<style>`, `<link>`, `<img>`, and `<video>` equivalent React components in `/core` that do asset optimisation. And finally, `<a href>` works as-is for pages, because page names don't get mangled - but won't work for asset links.
 
-JS and CSS assets don't have "proper" bundlers - there's only ways to transform urls to point to the correct assets - not embed assets within them. CSS uses the url syntax. JS works out-of-the-box for import declarations and expressions, and needs you to use `require.resolve` for urls not part of import statements or expressions. Given enough time, `@import` in CSS and `import` declarations in JS would bundle the resources, and `url` functions and `import` expressions (or `require.resolve` calls) would map to asset references.
+The main outstanding issue is JS and CSS assets don't have "proper" bundlers - there's only ways to transform urls to point to the correct assets. It works, but it's less efficient than what things like Webpack will achieve. CSS uses the url syntax to do this. JS works out-of-the-box for `import` declarations and expressions, and needs you to use `require.resolve` for urls not part of import statements or expressions. Given enough time, `@import` in CSS and `import` declarations in JS could/would bundle the resources, and `url()` functions in CSS and `import()` expressions in JS (or `require.resolve` calls) would map to asset references.
 
-Referencing assets requires React components to do the lifting. The elements `<script>`, `<style>`, `<link>`, `<img>`, and `<video>` equivalent React components that do optimisation. And finally, `<a href>` works as-is for pages, because page names don't get mangled - but won't work for asset links.
+### Optimisations
 
-This last point less a time investment, and more a conceptual question. CSS works without any special extensions. JS relies a few special extensions. Markdown is half-and-half extensions via React components and some HTML elements working out the box. Where should these asset references be handled?
+- Images get compressed in their current format, and a WebP image is generated
+  - Avif takes too long to generate (for now), so that is skipped
+  - Use the `<Image>` component from `/core`
+- CSS class names and variables are minified to 1 or 2 letters in prod
+  - You need to use helper functions when referencing classes from JS/MDX
+  - JS assets get a set of global variables (`CSS_CLASSES` and `CSS_VARS`) that you'll need to use to reference classes
+- Assets are renamed to a hash of their content - you'll need to use the `useContent` hook to be able to read and write assets
+  - This is also important because it's how the watcher works
 
-And just to note,
-
-If you wanted to re-use this work, there's zero config for all the optimisations. Every optimisation I wanted to include is always on. Just fork and remove as necessary.
-
-CSS class and variable names are minified via utility functions in `/core/css`. You need to call these functions in your custom React components. JS assets get a set of global variables (`CSS_CLASSES` and `CSS_VARS`) that you'll need to use.
+If you wanted to re-use this work, there's zero options for all the optimisations: every optimisation I wanted to include is always on. Just fork and remove as necessary.

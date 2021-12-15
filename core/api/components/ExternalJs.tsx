@@ -6,7 +6,7 @@ import { transformJs } from "../assetTransforms/assetTransforms";
 
 const transform = assetTransform<string, [string, { module: boolean }]>(
   async (content, src, options) => {
-    const input = content.asset(src);
+    const input = content.read(src);
     const output = await transformJs(content, input, options);
     return content.write(output, { extension: ".js" });
   },

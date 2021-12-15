@@ -1,0 +1,175 @@
+export { default as Layout } from "../components/Layout";
+export const title = "CSS Cascade Layers";
+export const css = ["/assets/blog.css", "/assets/blog-highlight.css"];
+
+# CSS Cascade Layers
+
+CSS just got a new feature: _cascade layers_. Things are a bit weird now: typically features are implemented (at least in part) by browsers before it makes its way to being fully finalised in the CSS specification as a candidate recommendation. However, at the time of writing, CSS Cascade layers _are_ finalised, but every browser has put them behind feature flags &mdash; so you can't actually use them right now.
+
+So what are cascade layers?
+
+If you've written enough CSS, you'll know rules can conflict, and can lead to unexpected bugs. This is beacause every rule has a specificity attached to it, and the ones with larger specificities will win out.
+
+If you're unfamiliar with how specificity works, take any CSS selector, split it into the parts, then add up all the points using the following chart.
+
+| Type                                    | Points                        |
+| --------------------------------------- | ----------------------------- |
+| `#id`                                   | 100                           |
+| `.class`                                | 10                            |
+| `[attribute]`, `[attribute=value]` etc. | 10                            |
+| `:first-child`, `:last-child` etc.      | 10                            |
+| `tagname` (e.g. `p`, `div` etc.)        | 1                             |
+| `*`                                     | 0                             |
+| `:not(selector)`, `:matches(selector)`  | Specificity of inner selector |
+
+So the selector `button.primary` has a specificity of `011`, `button:hover` also has `011`, and `button.primary.small` has `021` &mdash; so will win over the previous two.
+
+---
+
+Something not a lot of people know is the styles applied by the browser are done via CSS &mdash; but they will **never** win over your styles. They could use all the `#id` selectors they want, and your `*` selector will still win.
+
+Cascade layers are an extension of this concept. You'll be able to define your own layers and their order. Later layers will always override styles of previous layers, regardless of specificities.
+
+Imagine you have a CSS reset, and you want to put your styles over the top. This is what it will look like using cascade layers:
+
+```css
+@layer reset {
+  button:not([disabled]) {
+    color: black;
+  }
+}
+
+@layer styles {
+  button {
+    color: red;
+  }
+}
+```
+
+The selector in the reset had a specificity of `021`, and the one in styles had `001`. Using cascade layers, we can guarantee that the button text will be `red`.
+
+Layers apply in the order they first occur. Redefining a layer doesn't change the order, and styles will be merged into it. Styles outside a layer will beat all styles inside layers.
+
+Interestingly, for styles containing `!important`, the exact opposite is true. The first layer with style containing `!imporant` will always win over later layers that have matching styles with `!important`. Styles outside a layer containing `!important` will always be overridden by the first layer with a matching styles with `!important`.
+
+You can define a layer with no styles to predefine the ordering, then add the styles to the layers late:
+
+```css
+@layer reset, styles;
+
+@layer styles {
+  /* Styles */
+}
+
+@layer reset {
+  /* Styles */
+}
+```
+
+Layers can be nested:
+
+```css
+@layer framework {
+  @layer layout {
+    /* Styles */
+  }
+}
+
+/* Or */
+
+@layer framework.layout {
+  /* Styles */
+}
+```
+
+Media queries work within layers, and layers work media queries &mdash; you can do it both ways, it really doesn't matter.
+
+```css
+@media screen {
+  @layer styles {
+    /* Styles */
+  }
+}
+
+/* Or */
+
+@layer styles {
+  @media screen {
+    /* Styles */
+  }
+}
+```
+
+And lastly, there's a new `revert-layer` value for any property, which will revert any styles you've defined in the current layer to the styles defined in the previous layers.
+
+```css
+@layer styles {
+  button {
+    color: red;
+  }
+
+  button[disabled] {
+    /* Whatever was previously defined outside of the styles layer */
+    color: revert-layer;
+  }
+}
+```
+
+## Use in Practise
+
+It's hard to comment on how to use this in practise: it's so new it's not possible to use for a production website. It will take some time for people to figure out what works well and what doesn't.
+
+However, it is pretty likely you'll have a split of CSS resets or normalization, some framework CSS, then your overrides.
+
+And for this case, cascade layers definitely aren't a silver bullet. You will still have to consider the selectors applied on other layers. Take a button in a framework we want to modify:
+
+```css
+@layer framework {
+  button {
+    background: var(--blue);
+  }
+
+  button:hover {
+    background: var(--light-blue);
+  }
+
+  button:focus,
+  button:active {
+    background: var(--dark-blue);
+  }
+}
+
+@layer overrides {
+  button {
+    background: var(--red);
+  }
+}
+```
+
+With or without cascade layers, we have a bug. Without cascade layers, the `hover`, `focus`, and `active` states are the wrong colour. With cascade layers, we don't have those states.
+
+The former &mdash; while incorrect &mdash; was more accessible than what we have now.
+
+You could have other selectors that are less obvious they may need be applied: things like `:first-child` or other conditions that are only relevant to your framework. These could be more subtle bugs &mdash; and they would probably be easier to find if you're not using cascade layers.
+
+## Styled Components
+
+Styled Components used to advertise it fixes specificity issues. That looks to have been taken out of their elevator pitch, and that's probably because in the docs, it recommends using a good measure of `&` selectors when things don't work, and keep adding them until things do work. This works because the `&` selector ends up having the same specificity as a class &mdash; and if it feels like a hack... It's because it is.
+
+Cascade layers would be a great way to fix this issue. You'd dynamically generate a new layer for each component, then generate additional cascade layers when extending component styles, so your extended styles will always win.
+
+This isn't perfect &mdash; you still have the exact same issue from the previous section. Since specificity issues show up a lot, it would probably make sense for Styled Components to use cascade layers as described here.
+
+## Closing Thoughts
+
+This is quite a nice and well thought-out addition. It doesn't radically change CSS, but it provides some new ways to organise things. I imagine it will remove some unexpected bugs when working with CSS &mdash; especially with frameworks, but will, of course, introduce new surprises &mdash; (although hopefully fewer).
+
+It'll be some time until you're able to use it in production natively, but it is probably possible today to make a postCSS plugin to automatically add specificity hacks to make layers work without actually using layers for backwards compatibility.
+
+The ordering of layers being when `!important` is involved is surprising to say the least &mdash; and I don't think I'm the only one who will think this. In practical terms, it means you can't use it anything but overrides (for better or worse), because you'll never be able to redefine it with overrides.
+
+This decision was probably taken to be consistent with other parts of CSS: it copies the behaviour how the browser's internal CSS styles handle `!important`. The specification wanted to ensure that a website would never be able to override any browser styles marked a `!imporant`. However, no browser has done this in decades &mdash; if ever.
+
+This odd behaviour actually dates back to when CSS was created, and the expectation was users, browsers, and publishers would all be writing their own styles for one website, and the end result would be a mix of all these styles.
+
+As it turns out, users of a website did not end up writing CSS for that website (shocking, I know), and browsers only provide a very minimal set of defaults that are always overridable. My take is it would have probably been better to draw a line under idea of multiple parties deciding the styling of a website, accept it will make the CSS specification margnially less consistent for the few who read it, but have cascade layers behave more predictably. Time will tell on this one.

@@ -6,7 +6,7 @@ import { transformJs } from "../assetTransforms/assetTransforms";
 
 const transform = assetTransform<string, [string, { module: boolean }]>(
   (content, src, options) => {
-    const input = content.asset(src);
+    const input = content.read(src);
     return transformJs(content, input, options);
   },
   {

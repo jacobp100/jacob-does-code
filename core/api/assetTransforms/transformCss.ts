@@ -10,7 +10,7 @@ import dev from "../../util/dev";
 import transformAsset from "./transformAsset";
 
 const transformUrls = (content: Content) => {
-  const urlRegExp = /url\(['"]?(\/assets\/[^'")]+)['"]?\)/g;
+  const urlRegExp = /url\(['"]?(\/[^'")]+)['"]?\)/g;
 
   return (root: Root) =>
     nestedAsync((asyncTransform) => {

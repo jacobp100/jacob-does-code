@@ -1,8 +1,6 @@
----
-title: Super Optimised Static Sites
-layout: page
-css: blog,blog-highlight
----
+export { default as Layout } from "../components/Layout";
+export const title = "Super Optimised Static Sites";
+export const css = ["/assets/blog.css", "/assets/blog-highlight.css"];
 
 # Super Optimised Static Sites
 
@@ -165,7 +163,7 @@ export default ({ src, inverted }) => (
 If you reference class names or custom properties from your JS files, you'll need to use the global-like constants, `CSS_CLASSES` and `CSS_VARS`:
 
 ```js
-// /assets/example.js
+// assets/example.js
 
 const heroSection = document.querySelector("." + CSS_CLASSES["hero-section"]);
 const heroSection.style.setProperty(

@@ -1,12 +1,12 @@
 @font-face {
   src: url(/assets/fonts/CrimsonPro-Roman-VF.woff2);
-  font-family: Crimson Pro;
+  font-family: "Crimson Pro";
   font-style: normal;
 }
 
 @font-face {
   src: url(/assets/fonts/CrimsonPro-Italic-VF.woff2);
-  font-family: Crimson Pro;
+  font-family: "Crimson Pro";
   font-style: italic;
 }
 
@@ -116,38 +116,31 @@ li p:not(:first-child) {
   letter-spacing: 0.2pt;
 }
 
-/* {:.class} support is broken - hardcode selectors for now
-
-/* .timelist */
-h3 + ul {
+.timelist {
   padding: 0;
 }
 
-/* .timelist */
-h3 + ul li::before {
+.timelist li::before {
   display: none;
 }
 
-/* .timelist */
-h3 + ul time::before {
+.timelist time::before {
   content: "(";
 }
 
-/* .timelist */
-h3 + ul time::after {
+.timelist time::after {
   content: ")";
 }
 
 /* .lead */
-h1 + p {
+p:first-of-type {
   font-size: 16pt;
   line-height: 20pt;
   font-style: italic;
   --font-weight: 350;
 }
 
-strong,
-.smcp {
+strong {
   font-style: normal;
   text-transform: uppercase;
   letter-spacing: 0.4pt;
@@ -176,7 +169,7 @@ strong,
   }
 
   /* .lead */
-  h1 + p {
+  p:first-of-type {
     margin-top: 12pt;
     margin-bottom: 12pt;
     font-size: 22pt;

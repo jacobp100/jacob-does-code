@@ -1,10 +1,10 @@
 import * as path from "path";
 import * as fs from "fs";
-import { execSync } from "child_process";
 // @ts-ignore
 import chalk from "chalk";
 // @ts-ignore
 import chokidar from "chokidar";
+import type { File } from "../util/projectFiles";
 import projectPath from "../util/projectPath";
 import { buildAllFiles, buildFiles, clearCacheForTransforms } from "./builder";
 import {
@@ -25,6 +25,10 @@ const clearSiteFolder = () => {
 
 clearSiteFolder();
 
+const logBuildFile = (file: File) => {
+  console.log(`- Building ${file.filename}`);
+};
+
 const logDuration = (duration: number) => {
   const durationSeconds = (duration / 1000).toFixed(2);
   console.log(chalk.green(`[Build completed in ${durationSeconds}s]`));
@@ -33,7 +37,7 @@ const logDuration = (duration: number) => {
 const runFullBuild = async () => {
   console.log(chalk.dim("[Building site...]"));
 
-  const { duration, cssStats } = await buildAllFiles();
+  const { duration, cssStats } = await buildAllFiles(logBuildFile);
 
   logDuration(duration);
 
@@ -90,7 +94,7 @@ if (process.argv.includes("--dev")) {
 
       if (invalidatedFiles.size > 0) {
         console.log(chalk.dim(`[Partial rebuild...]`));
-        const { duration } = await buildFiles(invalidatedFiles);
+        const { duration } = await buildFiles(invalidatedFiles, logBuildFile);
         logDuration(duration);
       }
     };
@@ -119,58 +123,12 @@ if (process.argv.includes("--dev")) {
     queueRebuildTimeout = setTimeout(runRebuild, 50);
   };
 
-  const watchDirectories: Array<{
-    directory: string;
-    needsRestart: boolean;
-  }> = [
-    {
-      directory: path.resolve(projectPath, "core"),
-      needsRestart: true,
-    },
-    {
-      directory: path.resolve(projectPath, "components"),
-      needsRestart: true,
-    },
-    {
-      directory: path.resolve(projectPath, "layouts"),
-      needsRestart: true,
-    },
-    {
-      directory: path.resolve(projectPath, "assets"),
-      needsRestart: false,
-    },
-    {
-      directory: path.resolve(projectPath, "pages"),
-      needsRestart: false,
-    },
-    {
-      directory: path.resolve(projectPath, "posts"),
-      needsRestart: false,
-    },
-  ];
-
   chokidar.watch(projectPath).on("change", (filename: string) => {
-    const changedDirectory = watchDirectories.find(({ directory }) => {
-      const directoryContainsFilename = /^[^./]/.test(
-        path.relative(directory, filename)
-      );
-
-      return directoryContainsFilename;
-    });
-
-    if (/\.tsx?/.test(filename)) {
-      // Workaround loaders not being stable in Node when using ESModules
-      console.log(chalk.dim(`[Compiling ${filename}]`));
-      execSync(
-        `yarn esbuild "${filename}" --outdir="${path.dirname(filename)}"`,
-        { stdio: "ignore" }
-      );
-      return;
-    }
-
-    if (changedDirectory != null) {
-      console.log(filename);
-      queueRebuild(filename, changedDirectory.needsRestart);
+    if (!filename.startsWith(sitePath)) {
+      // FIXME: Some assets will be JS
+      // But changing these doesn't need a restart
+      const needsRestart = /\.[tj]sx?$/.test(filename);
+      queueRebuild(filename, needsRestart);
     }
   });
 

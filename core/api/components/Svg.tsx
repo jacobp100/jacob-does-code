@@ -11,7 +11,7 @@ type Props = Omit<SVGAttributes<any>, "className"> & {
 export default ({ src, className, ...props }: Props) => {
   const content = useContent();
 
-  const xml = content.asset(src);
+  const xml = content.read(src);
   const { 1: attributesString, 2: __html } = xml.match(
     /<svg([^>]*)>(.*)<\/svg>/
   )!;

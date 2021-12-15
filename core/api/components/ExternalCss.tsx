@@ -5,7 +5,7 @@ import { transformCss } from "../assetTransforms/assetTransforms";
 
 const transform = assetTransform<string, [string]>(
   async (content, src) => {
-    const input = content.asset(src);
+    const input = content.read(src);
     const output = await transformCss(content, input);
     return content.write(output, { extension: ".css" });
   },

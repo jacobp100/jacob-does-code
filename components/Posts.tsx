@@ -1,12 +1,18 @@
 import * as React from "react";
-import { getPosts } from "../core/core";
+import { usePages, usePagesData } from "../core/core";
 
-export default () => (
-  <ul>
-    {getPosts().map(({ url, title, filename }) => (
-      <li key={filename}>
-        <a href={url}>{title ?? url}</a>
-      </li>
-    ))}
-  </ul>
-);
+export default () => {
+  const allPages = usePages();
+  const posts = allPages.filter((page) => page.filename.startsWith("/posts"));
+  const postsData = usePagesData(posts);
+
+  return (
+    <ul>
+      {postsData.map(({ url, title }) => (
+        <li key={url}>
+          <a href={url}>{title}</a>
+        </li>
+      ))}
+    </ul>
+  );
+};

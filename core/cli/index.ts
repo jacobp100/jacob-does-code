@@ -4,29 +4,26 @@ import * as fs from "fs";
 import chalk from "chalk";
 // @ts-ignore
 import chokidar from "chokidar";
-import type { File } from "../util/projectFiles";
+import type { Page } from "../util/projectPages";
 import projectPath from "../util/projectPath";
-import { buildAllFiles, buildFiles, clearCacheForTransforms } from "./builder";
 import {
+  buildAllPages,
+  buildPages,
+  clearCachesForFiles,
   restartWorker,
   terminateWorker,
-  encodeAssetTransformCache,
-  restoreAssetTransformCache,
-} from "./ipc";
+} from "./builder";
 
 const sitePath = path.join(projectPath, "site");
 const clearSiteFolder = () => {
-  try {
-    fs.rmdirSync(sitePath, { recursive: true });
-  } catch {}
-
+  fs.rmSync(sitePath, { recursive: true, force: true });
   fs.mkdirSync(sitePath);
 };
 
 clearSiteFolder();
 
-const logBuildFile = (file: File) => {
-  console.log(`- Building ${file.filename}`);
+const logBuildPage = (page: Page) => {
+  console.log(`- Building ${page.filename}`);
 };
 
 const logDuration = (duration: number) => {
@@ -37,7 +34,7 @@ const logDuration = (duration: number) => {
 const runFullBuild = async () => {
   console.log(chalk.dim("[Building site...]"));
 
-  const { duration, cssStats } = await buildAllFiles(logBuildFile);
+  const { duration, cssStats } = await buildAllPages(logBuildPage);
 
   logDuration(duration);
 
@@ -83,54 +80,33 @@ if (process.argv.includes("--dev")) {
   httpServer.createServer({ root: sitePath }).listen(port, "0.0.0.0");
 
   /* Watch for file changes */
-  let needsRestart = false;
-  let invalidatedFiles: string[] = [];
-  const runRebuild = async () => {
-    const filesToRebuild = invalidatedFiles;
-    invalidatedFiles = [];
+  const runRebuild = async (filesToRebuild: string[]) => {
+    const { invalidatedPages } = await clearCachesForFiles(filesToRebuild);
 
-    const buildInvalidatedPages = async () => {
-      const { invalidatedFiles } = clearCacheForTransforms(filesToRebuild);
-
-      if (invalidatedFiles.size > 0) {
-        console.log(chalk.dim(`[Partial rebuild...]`));
-        const { duration } = await buildFiles(invalidatedFiles, logBuildFile);
-        logDuration(duration);
-      }
-    };
-
-    if (needsRestart) {
-      queueAsync(async () => {
-        const assetTransformCache = await encodeAssetTransformCache();
-        restartWorker();
-        await restoreAssetTransformCache(assetTransformCache);
-
-        await buildInvalidatedPages();
-      });
-    } else {
-      queueAsync(buildInvalidatedPages);
+    if (invalidatedPages.size > 0) {
+      console.log(chalk.dim(`[Partial rebuild...]`));
+      const { duration } = await buildPages(invalidatedPages, logBuildPage);
+      logDuration(duration);
     }
-
-    needsRestart = false;
   };
 
+  let changedFiles: string[] = [];
   let queueRebuildTimeout: NodeJS.Timeout | undefined;
-  const queueRebuild = (filename: string, rebuildNeedsRestart: boolean) => {
-    needsRestart = needsRestart || rebuildNeedsRestart;
-    invalidatedFiles.push(filename);
+  chokidar
+    .watch(projectPath, {
+      ignored: [path.join(projectPath, "node_modules"), sitePath],
+    })
+    .on("change", (filename: string) => {
+      changedFiles.push(filename);
 
-    clearTimeout(queueRebuildTimeout!);
-    queueRebuildTimeout = setTimeout(runRebuild, 50);
-  };
+      clearTimeout(queueRebuildTimeout!);
+      queueRebuildTimeout = setTimeout(() => {
+        const filesToRebuild = changedFiles;
+        changedFiles = [];
 
-  chokidar.watch(projectPath).on("change", (filename: string) => {
-    if (!filename.startsWith(sitePath)) {
-      // FIXME: Some assets will be JS
-      // But changing these doesn't need a restart
-      const needsRestart = /\.[tj]sx?$/.test(filename);
-      queueRebuild(filename, needsRestart);
-    }
-  });
+        queueAsync(() => runRebuild(filesToRebuild));
+      }, 50);
+    });
 
   /* Watch for `r` input to trigger rebuild */
   const stdin = process.stdin;

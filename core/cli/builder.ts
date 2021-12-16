@@ -1,15 +1,21 @@
 import dev from "../util/dev";
-import { File, getFiles } from "../util/projectFiles";
+import { Page, getPages } from "../util/projectPages";
 import {
   renderPage,
-  clearAssetTransformCache,
   generateCssStats,
   resetCssStats,
+  restartWorker,
+  terminateWorker,
+  clearAssetTransformCacheForFiles,
+  encodeAssetTransformCache,
+  restoreAssetTransformCache,
 } from "./ipc";
 
-const fileDependencies = new Map<File, string[]>();
+export { restartWorker, terminateWorker };
 
-const files = new Set(getFiles());
+const pageDependencies = new Map<Page, string[]>();
+
+const pages = new Set(getPages());
 
 // Number here is kind of random
 // The expensive asset transforms happen in native code on another thread
@@ -17,19 +23,19 @@ const files = new Set(getFiles());
 // But there's also overhead from the extra bookkeeping React has to do
 const concurrentLimit = dev ? 1 : 6;
 
-export const buildFiles = async (
-  files: Set<File>,
-  logger: (file: File) => void
+export const buildPages = async (
+  pages: Set<Page>,
+  logger: (page: Page) => void
 ) => {
   const start = Date.now();
 
   const { default: pAll } = await eval(`import("p-all")`);
   await pAll(
-    Array.from(files, (file) => async () => {
-      logger(file);
-      const { dependencies } = await renderPage(file);
+    Array.from(pages, (page) => async () => {
+      logger(page);
+      const { dependencies } = await renderPage(page);
 
-      fileDependencies.set(file, dependencies);
+      pageDependencies.set(page, dependencies);
     }),
     { concurrency: concurrentLimit }
   );
@@ -40,40 +46,47 @@ export const buildFiles = async (
   return { duration };
 };
 
-export const buildAllFiles = async (logger: (file: File) => void) => {
+export const buildAllPages = async (logger: (page: Page) => void) => {
   resetCssStats();
 
-  const { duration } = await buildFiles(files, logger);
+  const { duration } = await buildPages(pages, logger);
 
   const cssStats = await generateCssStats();
 
   return { duration, cssStats };
 };
 
-export const clearCacheForTransforms = (
+export const clearCachesForFiles = async (
   filenames: string[]
-): { invalidatedFiles: Set<File> } => {
-  const invalidatedFiles = new Set<File>();
-
-  const invertedFileDependencies = new Map<string, Set<File>>();
-  fileDependencies.forEach((dependencies, file) => {
+): Promise<{ invalidatedPages: Set<Page> }> => {
+  const invertedPageDependencies = new Map<string, Set<Page>>();
+  pageDependencies.forEach((dependencies, page) => {
     dependencies.forEach((dependency) => {
-      let files = invertedFileDependencies.get(dependency);
-      if (files == null) {
-        files = new Set<File>();
-        invertedFileDependencies.set(dependency, files);
+      let pages = invertedPageDependencies.get(dependency);
+      if (pages == null) {
+        pages = new Set<Page>();
+        invertedPageDependencies.set(dependency, pages);
       }
-      files.add(file);
+      pages.add(page);
     });
   });
 
+  const invalidatedPages = new Set<Page>();
   filenames.forEach((filename) => {
-    clearAssetTransformCache(filename);
-
-    invertedFileDependencies.get(filename)?.forEach((file) => {
-      invalidatedFiles.add(file);
+    invertedPageDependencies.get(filename)?.forEach((page) => {
+      invalidatedPages.add(page);
     });
   });
 
-  return { invalidatedFiles };
+  const { jsModulesInvalidated } = await clearAssetTransformCacheForFiles(
+    filenames
+  );
+
+  if (jsModulesInvalidated) {
+    const assetTransformCache = await encodeAssetTransformCache();
+    restartWorker();
+    await restoreAssetTransformCache(assetTransformCache);
+  }
+
+  return { invalidatedPages };
 };

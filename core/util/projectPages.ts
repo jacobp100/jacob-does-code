@@ -1,19 +1,19 @@
 import * as path from "path";
-// @ts-ignore
 import glob from "glob";
-// @ts-ignore
 import projectPath from "./projectPath";
 
-export type File = {
+export type Page = {
   url: string;
   filename: string;
   date: number | undefined;
 };
 
-const files: File[] = (
-  glob.sync(path.join(projectPath, "**/*.mdx")) as string[]
-)
-  .map((filename): File => {
+const pages: Page[] = glob
+  .sync("**/*.mdx", {
+    cwd: projectPath,
+    ignore: ["node_modules"],
+  })
+  .map((filename): Page => {
     const dateMatch = filename.match(/(\d{4})-(\d{2})-(\d{2})-/);
 
     let url = path.basename(filename, ".mdx");
@@ -38,4 +38,4 @@ const files: File[] = (
     }
   });
 
-export const getFiles = () => files;
+export const getPages = () => pages;

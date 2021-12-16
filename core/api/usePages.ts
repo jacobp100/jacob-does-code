@@ -1,4 +1,4 @@
-import { File, getFiles } from "../util/projectFiles";
+import { Page, getPages } from "../util/projectPages";
 import evalPage from "./util/evalPage";
 import useContent, { Content } from "./useContent";
 
@@ -7,10 +7,10 @@ type PageData = {
   title: string;
 };
 
-const evalPages = (content: Content, files: File[]): PageData[] => {
+const evalPages = (content: Content, pages: Page[]): PageData[] => {
   let promises: Promise<any>[] = [];
 
-  const out = files.map(({ filename, url }) => {
+  const out = pages.map(({ filename, url }) => {
     try {
       const { title } = evalPage(content, filename);
       return { url, title };
@@ -31,5 +31,5 @@ const evalPages = (content: Content, files: File[]): PageData[] => {
   }
 };
 
-export const usePages = () => getFiles(); // TODO: Handle page creation/removal
-export const usePagesData = (pages: File[]) => evalPages(useContent(), pages);
+export const usePages = () => getPages(); // TODO: Handle page creation/removal
+export const usePagesData = (pages: Page[]) => evalPages(useContent(), pages);

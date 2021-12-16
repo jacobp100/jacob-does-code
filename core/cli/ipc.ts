@@ -131,8 +131,8 @@ export const encodeAssetTransformCache = createWorkerFunction(
 export const restoreAssetTransformCache = createWorkerFunction(
   "RestoreAssetTransformCache"
 );
-export const clearAssetTransformCache = createWorkerFunction(
-  "ClearAssetTransformCache"
+export const clearAssetTransformCacheForFiles = createWorkerFunction(
+  "ClearAssetTransformCacheForFiles"
 );
 export const generateCssStats = createWorkerFunction("GenerateCssStats");
 export const resetCssStats = createWorkerFunction("ResetCssStats");

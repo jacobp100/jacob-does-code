@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Code, useContent } from "../api/api";
 import evalPage from "../api/util/evalPage";
-import type { File } from "../util/projectFiles";
+import type { Page } from "../util/projectPages";
 
-export default ({ filename, date }: File): JSX.Element => {
+export default ({ filename, date }: Page): JSX.Element => {
   const content = useContent();
   const { title, Content, Layout, layoutProps } = evalPage(content, filename);
 

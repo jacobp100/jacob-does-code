@@ -1,12 +1,21 @@
 import renderPage from "../renderPage/renderPage";
 import { generateCssStats, resetCssStats } from "../api/css";
 import {
-  clearAssetTransformCache,
+  clearAssetTransformCacheForFile,
   encodeAssetTransformCache,
   restoreAssetTransformCache,
 } from "../api/assetTransformer";
 import { Status } from "./types";
 import { Messages, IpcMessage } from "./types";
+
+const isUsingJsModule = (filename: string) => {
+  try {
+    const moduleId = require.resolve(filename);
+    return require.cache[moduleId] != null;
+  } catch {
+    return false;
+  }
+};
 
 const handlers: Messages = {
   async RenderPage(file) {
@@ -21,8 +30,10 @@ const handlers: Messages = {
   async RestoreAssetTransformCache(assetTransformCache) {
     restoreAssetTransformCache(assetTransformCache);
   },
-  async ClearAssetTransformCache(filename) {
-    clearAssetTransformCache(filename);
+  async ClearAssetTransformCacheForFiles(filenames) {
+    filenames.forEach(clearAssetTransformCacheForFile);
+    const jsModulesInvalidated = filenames.some(isUsingJsModule);
+    return { jsModulesInvalidated };
   },
   async GenerateCssStats() {
     const stats = generateCssStats();

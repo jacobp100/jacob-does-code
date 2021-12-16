@@ -99,12 +99,12 @@ export const assetTransform = <T, Args extends any[] = any[]>(
   };
 };
 
-export const clearAssetTransformCache = (src: string) => {
+export const clearAssetTransformCacheForFile = (filename: string) => {
   const cacheKeys = new Set<string>();
 
   cache.forEach((promiseResult, cacheKey) => {
     const value = promiseResult.resolved ? promiseResult.value : undefined;
-    if (value?.dependencies.has(src) === true) {
+    if (value?.dependencies.has(filename) === true) {
       cacheKeys.add(cacheKey);
     }
   });

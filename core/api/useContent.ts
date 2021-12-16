@@ -25,7 +25,7 @@ const relativePath = (filename: string) => {
   return path.resolve(projectPath, filename.slice(1));
 };
 
-const sitePath = (filename: string) => path.join(projectPath, "site", filename);
+const sitePath = path.join(projectPath, "site");
 
 const contentHash = (content: Buffer | string) =>
   typeof content === "string"
@@ -39,12 +39,12 @@ const write = (
   const basename = filename != null ? filename : `res/${contentHash(content)}`;
   const outputFilename = basename + extension;
 
-  if (outputFilename.includes("/")) {
-    const dir = sitePath(path.join(outputFilename, ".."));
-    fs.mkdirSync(dir, { recursive: true });
+  const dir = path.dirname(outputFilename);
+  if (dir !== ".") {
+    fs.mkdirSync(path.join(sitePath, dir), { recursive: true });
   }
 
-  fs.writeFileSync(sitePath(outputFilename), content);
+  fs.writeFileSync(path.join(sitePath, outputFilename), content);
 
   const outputHref = `/${outputFilename}`;
 

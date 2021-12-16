@@ -1,4 +1,4 @@
-import type { File } from "../util/projectFiles";
+import type { Page } from "../util/projectPages";
 import type { AssetTransformCache } from "../api/assetTransformer";
 
 export enum Status {
@@ -6,14 +6,16 @@ export enum Status {
 }
 
 export type Messages = {
-  RenderPage: (file: File) => Promise<{
+  RenderPage: (page: Page) => Promise<{
     dependencies: string[];
   }>;
   EncodeAssetTransformCache: () => Promise<AssetTransformCache>;
   RestoreAssetTransformCache: (
     assetTransformCache: AssetTransformCache
   ) => Promise<void>;
-  ClearAssetTransformCache: (filename: string) => Promise<void>;
+  ClearAssetTransformCacheForFiles: (
+    filenames: string[]
+  ) => Promise<{ jsModulesInvalidated: boolean }>;
   GenerateCssStats: () => Promise<{
     unusedClassNames: string[];
     undeclaredClassNames: string[];

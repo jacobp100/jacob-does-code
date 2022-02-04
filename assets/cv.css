@@ -81,7 +81,8 @@ p {
 }
 
 @supports (hyphens: auto) or (-webkit-hyphens: auto) {
-  p {
+  p,
+  li {
     text-align: justify;
     -webkit-hyphens: auto;
     hyphens: auto;
@@ -95,8 +96,9 @@ ul {
 ul {
   position: relative;
   list-style-type: none;
-  --padding: 18pt;
-  padding-left: var(--padding);
+  margin: 8pt 0;
+  --bullet-padding: 18pt;
+  padding-left: var(--bullet-padding);
 }
 
 li::before {
@@ -106,34 +108,41 @@ li::before {
   content: "\27b5";
 }
 
-li p {
-  margin: 0;
+li {
+  margin: 4pt 0;
 }
 
-li p:not(:first-child) {
+ul h4 {
+  margin: 8pt 0 2pt;
+  --font-weight: 480;
+  letter-spacing: 0.15pt;
+}
+
+li p {
   font-style: italic;
   --font-weight: 350;
   letter-spacing: 0.2pt;
 }
 
 .timelist {
-  padding: 0;
+  margin-top: 16pt;
+  --bullet-padding: 0px;
+}
+
+.timelist li {
+  margin: 8pt 0;
 }
 
 .timelist li::before {
   display: none;
 }
 
-.timelist time::before {
-  content: "(";
+.timelist time {
+  float: right;
+  letter-spacing: 0.2pt;
 }
 
-.timelist time::after {
-  content: ")";
-}
-
-/* .lead */
-p:first-of-type {
+.lead {
   font-size: 16pt;
   line-height: 20pt;
   font-style: italic;
@@ -168,8 +177,7 @@ strong {
     letter-spacing: 4pt;
   }
 
-  /* .lead */
-  p:first-of-type {
+  .lead {
     margin-top: 12pt;
     margin-bottom: 12pt;
     font-size: 22pt;
@@ -195,44 +203,54 @@ strong {
   }
 
   ul {
-    margin-left: calc(var(--inset) - var(--padding));
-    --padding: 28pt;
+    margin-left: calc(var(--inset) - var(--bullet-padding));
+    --bullet-padding: 28pt;
   }
 
-  /* .timelist */
-  h3 + ul {
-    margin-left: var(--inset);
+  li h4 {
+    position: static;
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    text-align: inherit;
   }
 
-  /* .timelist */
-  h3 + ul li {
-    position: relative;
+  li p {
+    display: inline;
+    margin-left: 0;
   }
 
-  /* .timelist */
-  h3 + ul time {
+  li h4::after {
+    /* &middot; */
+    content: "\00B7";
+    display: inline-block;
+    margin: 0 8pt;
+  }
+
+  .timelist h4 span {
+    font-size: 0;
+    line-height: 0;
+  }
+
+  .timelist time {
+    float: none;
     position: absolute;
-    top: 1pt;
-    --padding: 9pt;
-    width: calc(var(--inset) - var(--padding));
-    right: calc(100% + var(--padding));
+    --time-padding: 9pt;
+    width: calc(var(--inset) - var(--time-padding));
+    right: calc(100% + var(--time-padding));
+    margin: 1pt 0;
     --font-weight: 480;
     text-align: right;
     font-size: 11pt;
-  }
-
-  /* .timelist */
-  h3 + ul time::before,
-  /* .timelist */
-  h3 + ul time::after {
-    content: none;
+    line-height: inherit;
   }
 }
 
 @page {
-  margin: 60pt 72pt;
+  margin: 72pt 72pt;
 }
 
+/* Export in Firefox */
 @media print {
   :root {
     --inset: 80pt;
@@ -262,8 +280,7 @@ strong {
     break-after: avoid !important;
   }
 
-  /* .lead */
-  h1 + p {
+  .lead {
     /* Parameters set to get good text wrapping */
     margin-bottom: 36pt;
     font-size: 17pt;
@@ -272,12 +289,20 @@ strong {
     --font-weight: 300;
   }
 
-  /* .lead */
-  h1 + p strong {
+  .lead strong {
     --font-weight: 600;
   }
 
   .header {
     display: none;
+  }
+
+  li h4::after {
+    margin: 0 4pt;
+  }
+
+  .timelist time {
+    margin: 0.25pt 0;
+    font-size: 10pt;
   }
 }

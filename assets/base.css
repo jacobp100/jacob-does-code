@@ -36,8 +36,8 @@
   letter-spacing: calc(var(--letter-spacing) * var(--font-scaling-factor));
   font-weight: var(--font-weight);
   --font-scaling-factor: calc(
-    ((var(--allow-font-scaling) * 1rem) + (1 - var(--allow-font-scaling)) * 16px) /
-    16
+    (var(--allow-font-scaling) * 1rem / 16) +
+    ((1 - var(--allow-font-scaling)) * 1px)
   );
 }
 

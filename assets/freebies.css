@@ -1,17 +1,17 @@
 h1 {
   margin: 32px 0 18px;
-  font-size: 36px;
-  line-height: 52px;
-  letter-spacing: -0.8px;
+  --font-size: 36;
+  --line-height: 52;
+  --letter-spacing: -0.8;
   font-weight: 700;
   color: var(--primary);
 }
 
 h2 {
   margin: 18px 0 12px;
-  font-size: 26px;
-  line-height: 34px;
-  letter-spacing: -0.3px;
+  --font-size: 26;
+  --line-height: 34;
+  --letter-spacing: -0.3;
   font-weight: 700;
   color: var(--primary);
 }
@@ -21,8 +21,8 @@ p {
 }
 
 .legal-links {
-  font-size: 12px;
-  line-height: 18px;
+  --font-size: 12;
+  --line-height: 18;
 }
 
 .app-logo {

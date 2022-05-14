@@ -31,7 +31,14 @@
 }
 
 * {
+  font-size: calc(var(--font-size) * var(--font-scaling-factor));
+  line-height: calc(var(--line-height) * var(--font-scaling-factor));
+  letter-spacing: calc(var(--letter-spacing) * var(--font-scaling-factor));
   font-weight: var(--font-weight);
+  --font-scaling-factor: calc(
+    ((var(--allow-font-scaling) * 1rem) + (1 - var(--allow-font-scaling)) * 16px) /
+    16
+  );
 }
 
 @supports (font-variation-settings: "wght" 400) {
@@ -54,6 +61,7 @@
   --background: white;
   --gutter-top: 12px;
   --gutters: 12px;
+  --allow-font-scaling: 1;
 }
 
 ::selection {
@@ -63,7 +71,9 @@
 
 body {
   margin: var(--gutter-top) var(--gutters) 64px;
-  font: 18px/26px Inter, system-ui, -apple-system, sans-serif;
+  --font-size: 18;
+  --line-height: 26;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
   color: var(--color);
   background: var(--background);
 }
@@ -98,10 +108,10 @@ a:focus {
 .header__logo {
   display: block;
   flex: none;
+  --font-size: 24;
+  --line-height: 18;
+  --letter-spacing: -1;
   --font-weight: 700;
-  font-size: 24px;
-  line-height: 18px;
-  letter-spacing: -1px;
   text-transform: lowercase;
   border-top: 4px solid;
   padding: 6px 4px 0 0;
@@ -116,10 +126,11 @@ a.header__logo {
 .header__section {
   flex: none;
   margin: 0 0 0 24px;
+  --font-size: 6;
+  --line-height: 10;
+  --letter-spacing: 1;
   --font-weight: 700;
-  font-size: 6px;
-  line-height: 10px;
-  letter-spacing: 1px;
+  --allow-font-scaling: 0;
   text-transform: uppercase;
   width: 0;
 }
@@ -132,9 +143,9 @@ a.header__logo {
   flex: none;
   display: block;
   margin: 10px 24px 0 0;
-  font-size: 14px;
+  --font-size: 14;
+  --line-height: 18;
   --font-weight: 400;
-  line-height: 18px;
 }
 
 .header__link:last-child {

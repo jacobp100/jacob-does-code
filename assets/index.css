@@ -7,6 +7,7 @@
   position: relative;
   background-color: currentColor;
   overflow: hidden;
+  --allow-font-scaling: 0;
 }
 
 .link--pocket-jam {

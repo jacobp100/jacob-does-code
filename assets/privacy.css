@@ -1,9 +1,9 @@
 /* From blog.css */
 h1 {
   margin: 48px 0 32px;
-  font-size: 36px;
-  line-height: 52px;
-  letter-spacing: -0.8px;
+  --font-size: 36;
+  --line-height: 52;
+  --letter-spacing: -0.8;
   font-weight: 700;
 }
 

@@ -16,8 +16,8 @@
 }
 
 .header__link {
+  --font-size: 18;
   --font-weight: 300;
-  font-size: 18px;
 }
 
 :root {

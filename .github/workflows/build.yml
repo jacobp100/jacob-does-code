@@ -30,4 +30,3 @@ jobs:
         with:
           BRANCH: gh-pages
           FOLDER: site
-          CLEAN: true

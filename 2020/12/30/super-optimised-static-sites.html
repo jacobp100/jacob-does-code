@@ -38,7 +38,7 @@ Some more <span class="-K">_regular_</span> markdown inside a React component
 </code></pre>
 <p>You’ll notice the returned <code>src</code>s are hashes. Everything in the <code>/res</code> folder can be safely set with an indefinite cache policy, because if the file changes, its filename will too.</p>
 <p>This also has a few more tricks up its sleeve. You may want to set the <code>width</code> and <code>height</code> attributes on the image to avoid layout shifts (<a href="https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/">article</a>). This is as easy as,</p>
-<pre><code><span class="-M"><span class="-N">&lt;<span class="-p">Image</span> <span class="-z">src</span>=<span class="-t">&quot;/assets/some-image.png&quot;</span> <span class="-z">width</span>=<span class="-t">&quot;compute&quot;</span> <span class="-z">height</span>=<span class="-t">&quot;compute&quot;</span> /&gt;</span></span>
+<pre><code><span class="-M"><span class="-N">&lt;<span class="-p">Image</span> <span class="-z">src</span>=<span class="-t">&quot;/assets/some-image.png&quot;</span> <span class="-z">width</span>=<span class="-t">&quot;auto&quot;</span> <span class="-z">height</span>=<span class="-t">&quot;auto&quot;</span> /&gt;</span></span>
 </code></pre>
 <p>(We try to maintain as much compatibility as possible with the original HTML elements here)</p>
 <p>And if you know your image is probably too big, and you want to resize it to at most 1000px wide?</p>

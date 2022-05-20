@@ -1,5 +1,5 @@
 import * as React from "react";
-import type { ImgHTMLAttributes } from "react";
+import type { ImgHTMLAttributes, SourceHTMLAttributes } from "react";
 import * as path from "path";
 // @ts-ignore
 import sharp, { ResizeOptions } from "sharp";
@@ -16,8 +16,7 @@ type AdditionalSource = {
 type ImageResult = {
   src: string;
   additionalSources: AdditionalSource[];
-  width: number | undefined;
-  height: number | undefined;
+  size: { width: number; height: number };
 };
 
 const avifEnabled = false;
@@ -71,7 +70,11 @@ const transform = assetTransform<ImageResult>(
     addAdditionalSourceIfNeeded(webpBuffer, ".webp", "image/webp");
     addAdditionalSourceIfNeeded(avifBuffer, ".avif", "image/avif");
 
-    return { src, additionalSources, width, height };
+    return {
+      src,
+      additionalSources,
+      size: { width, height },
+    };
   },
   {
     cacheKey: "core/Image",
@@ -92,30 +95,43 @@ const parseResize = (resize: string): Resize | undefined => {
   }
 };
 
-type Props = Omit<ImgHTMLAttributes<any>, "className" | "width" | "height"> & {
-  src: string;
-  className: ClassNames;
-  width?: number | "compute";
-  height?: number | "compute";
-  resize?: Resize | string;
+type AutoSizeProps = {
+  width?: number | "auto";
+  height?: number | "auto";
 };
+
+const populateAutoSize = <T extends AutoSizeProps>(
+  props: T,
+  size: { width: number; height: number }
+) => ({
+  width: props.width === "auto" ? size.width : props.width,
+  height: props.height === "auto" ? size.height : props.height,
+});
+
+type Props = Omit<ImgHTMLAttributes<any>, "className" | "width" | "height"> &
+  AutoSizeProps & {
+    src: string;
+    className: ClassNames;
+    resize?: Resize | string;
+  };
 
 export default ({ src: inputSrc, resize, children, ...props }: Props) => {
   const content = useContent();
   const resizeObj = typeof resize === "string" ? parseResize(resize) : resize;
-  const { src, additionalSources, width, height } = transform(
+  const { src, additionalSources, size } = transform(
     content,
     inputSrc,
     resizeObj
   );
+  const { width, height } = populateAutoSize(props, size);
 
   const imgBase = (
     <img
-      src={src}
       {...props}
+      src={src}
       className={classNames(props.className)}
-      width={props.width === "compute" ? width : props.width}
-      height={props.height === "compute" ? height : props.height}
+      width={width}
+      height={height}
     />
   );
 
@@ -123,7 +139,13 @@ export default ({ src: inputSrc, resize, children, ...props }: Props) => {
     <picture>
       {children}
       {additionalSources.map(({ src, type }) => (
-        <source key={type} srcSet={src} type={type} />
+        <source
+          key={type}
+          srcSet={src}
+          type={type}
+          width={width}
+          height={height}
+        />
       ))}
       {imgBase}
     </picture>
@@ -132,23 +154,48 @@ export default ({ src: inputSrc, resize, children, ...props }: Props) => {
   );
 };
 
-type ImageSourceProps = {
-  src: string;
-  resize: Resize | string;
-  media: string;
-};
+type ImageSourceProps = Omit<SourceHTMLAttributes<any>, "width" | "height"> &
+  AutoSizeProps & {
+    // srcSet: string;
+    media: string;
+    resize: Resize | string;
+  };
 
-export const Source = ({ src: inputSrc, resize, media }: ImageSourceProps) => {
+export const Source = ({
+  srcSet: inputSrcSet,
+  resize,
+  media,
+  ...props
+}: ImageSourceProps) => {
   const content = useContent();
   const resizeObj = typeof resize === "string" ? parseResize(resize) : resize;
-  const { src, additionalSources } = transform(content, inputSrc, resizeObj);
+  const {
+    src: srcSet,
+    additionalSources,
+    size,
+  } = transform(content, inputSrcSet, resizeObj);
+  const { width, height } = populateAutoSize(props, size);
 
   return (
     <>
-      {additionalSources.map(({ src, type }) => (
-        <source key={type} srcSet={src} type={type} media={media} />
+      {additionalSources.map(({ src: srcSet, type }) => (
+        <source
+          key={type}
+          {...props}
+          srcSet={srcSet}
+          type={type}
+          media={media}
+          width={width}
+          height={height}
+        />
       ))}
-      <source srcSet={src} media={media} />
+      <source
+        {...props}
+        srcSet={srcSet}
+        media={media}
+        width={width}
+        height={height}
+      />
     </>
   );
 };

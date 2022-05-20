@@ -2,7 +2,7 @@ import type { Page } from "../util/projectPages";
 import type { AssetTransformCache } from "../api/assetTransformer";
 
 export enum Status {
-  Ready = "Readt",
+  Ready = "Ready",
 }
 
 export type Messages = {

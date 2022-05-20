@@ -6,10 +6,16 @@ export default ({ src, alt = "App Screenshots" }: any) => (
     src={src}
     className="promo"
     alt={alt}
-    width="compute"
-    height="compute"
+    width="auto"
+    height="auto"
     resize="2048w"
   >
-    <ImageSource src={src} media="(max-width: 767px)" resize="1024w" />
+    <ImageSource
+      srcSet={src}
+      media="(max-width: 767px)"
+      width="auto"
+      height="auto"
+      resize="1024w"
+    />
   </Image>
 );

@@ -8,19 +8,28 @@ const imagePositions: Record<string, ImageResize> = {
   DEFAULT: { fit: "cover", position: "top" },
 };
 
-export default ({ src, alt, layout, imagePosition, children }: any) => (
+export default ({ src, alt, layout, imagePositionMobile, children }: any) => (
   <div
     className={classNames("block", layout === "reverse" && "block--reverse")}
   >
-    <Image src={src} className="preview" alt={alt} resize={{ width: 1000 }}>
+    <Image
+      src={src}
+      className="preview"
+      alt={alt}
+      resize={{ width: 1000 }}
+      width="auto"
+      height="auto"
+    >
       <ImageSource
-        src={src}
+        srcSet={src}
         resize={{
           width: 800,
           height: 600,
-          ...(imagePositions[imagePosition] ?? imagePositions.DEFAULT),
+          ...(imagePositions[imagePositionMobile] ?? imagePositions.DEFAULT),
         }}
         media="(max-width: 767px)"
+        width="auto"
+        height="auto"
       />
     </Image>
     <div className={classNames("block__content")}>{children}</div>

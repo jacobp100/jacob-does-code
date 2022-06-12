@@ -25,13 +25,8 @@ jobs:
       - name: Build
         run: yarn run build
 
-      - name: Copy CNAME
-        run: cp CNAME site
-
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           FOLDER: site
-          CLEAN: true

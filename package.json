@@ -49,7 +49,7 @@
     "react-dom": "^18.0.0-rc.0-next-f2a59df48-20211208",
     "sharp": "^0.30.0",
     "string-hash": "^1.1.3",
-    "terser": "^5.10.0",
+    "terser": "^5.14.2",
     "typescript": "^4.5.5"
   }
 }

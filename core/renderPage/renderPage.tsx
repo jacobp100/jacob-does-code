@@ -29,7 +29,7 @@ export default async ({ page, pages }: Props) => {
         </ContentContext.Provider>
       </PageContext.Provider>
     </Suspense>,
-    { onCompleteAll: () => pipe(stream) }
+    { onAllReady: () => pipe(stream) }
   );
 
   let html = await stream.awaited;

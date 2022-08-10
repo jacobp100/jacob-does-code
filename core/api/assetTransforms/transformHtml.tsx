@@ -1,8 +1,7 @@
-// @ts-ignore
 import posthtml from "posthtml";
-// @ts-ignore
+// @ts-expect-error
 import minifier from "posthtml-minifier";
-// @ts-ignore
+// @ts-expect-error
 import { Content } from "./useContent";
 import { classNames } from "../css";
 
@@ -21,6 +20,6 @@ export default async (_content: Content, input: string) => {
     .use(minifier({ collapseWhitespace: true, removeComments: true }))
     .process(input, { sync: true });
 
-  // @ts-ignore
+  // @ts-expect-error
   return postHtmlResult.html as string;
 };

@@ -1,7 +1,7 @@
 import postcss, { AtRule, Declaration, Root, Rule } from "postcss";
-// @ts-ignore
+// @ts-expect-error
 import transformClasses from "postcss-transform-classes";
-// @ts-ignore
+// @ts-expect-error
 import csso from "csso";
 import nestedAsync from "../../util/nestedAsync";
 import type { Content } from "../useContent";
@@ -76,7 +76,7 @@ const optimizeVariableDeclarations = () => (root: Root) => {
     :root { --something: something; }
   }
   :root { --something: something-else; }
-  
+
   To,
 
   :root { --something: something-else; }

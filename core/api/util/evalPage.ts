@@ -1,16 +1,16 @@
 import * as path from "path";
-// @ts-ignore
+// @ts-expect-error
 import * as babel from "@babel/core";
-// // @ts-ignore
+// // @ts-expect-error
 // import * as provider from "@mdx-js/react";
 // import { compile } from "@mdx-js/mdx";
-// @ts-ignore
+// @ts-expect-error
 import smartypants from "@silvenon/remark-smartypants";
 import type { Content } from "../useContent";
 import { assetTransform } from "../assetTransformer";
 import projectPath from "../../util/projectPath";
 
-// @ts-ignore
+// @ts-expect-error
 import babelOptions from "../../../.babelrc";
 
 type Page = {

@@ -1,7 +1,7 @@
 import { parse } from "@babel/parser";
-// @ts-ignore
+// @ts-expect-error
 import traverse from "@babel/traverse";
-// @ts-ignore
+// @ts-expect-error
 import generate from "@babel/generator";
 import * as t from "@babel/types";
 import { minify } from "terser";

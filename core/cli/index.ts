@@ -1,8 +1,6 @@
 import * as path from "path";
 import * as fs from "fs";
-// @ts-ignore
 import chalk from "chalk";
-// @ts-ignore
 import chokidar from "chokidar";
 import type { Page } from "../api/usePages";
 import projectPath from "../util/projectPath";

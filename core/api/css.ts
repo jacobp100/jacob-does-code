@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-expect-error
 import cssClassGenerator from "css-class-generator";
 import dev from "../util/dev";
 

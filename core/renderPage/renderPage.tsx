@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Suspense } from "react";
-// @ts-ignore
 import { renderToPipeableStream } from "react-dom/server";
 import {
   Page,

@@ -48,7 +48,7 @@
     "prettier": "^2.5.1",
     "react": "^18.0.0-rc.0-next-f2a59df48-20211208",
     "react-dom": "^18.0.0-rc.0-next-f2a59df48-20211208",
-    "sharp": "^0.30.0",
+    "sharp": "^0.30.5",
     "string-hash": "^1.1.3",
     "terser": "^5.10.0",
     "typescript": "^4.5.5"

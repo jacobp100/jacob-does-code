@@ -1,4 +1,4 @@
-import type { Page } from "../util/projectPages";
+import type { Page } from "../api/usePages";
 import type { AssetTransformCache } from "../api/assetTransformer";
 
 export enum Status {
@@ -6,7 +6,7 @@ export enum Status {
 }
 
 export type Messages = {
-  RenderPage: (page: Page) => Promise<{
+  RenderPage: (opts: { page: Page; pages: Page[] }) => Promise<{
     dependencies: string[];
   }>;
   EncodeAssetTransformCache: () => Promise<AssetTransformCache>;

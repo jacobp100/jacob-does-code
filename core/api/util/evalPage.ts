@@ -58,6 +58,5 @@ export default assetTransform(
     } = exports;
 
     return { title, Content, Layout, layoutProps };
-  },
-  { encodable: false }
+  }
 );

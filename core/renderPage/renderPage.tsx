@@ -2,22 +2,32 @@ import * as React from "react";
 import { Suspense } from "react";
 // @ts-ignore
 import { renderToPipeableStream } from "react-dom/server";
-// @ts-ignore
-import type { File } from "../api/api";
-import { ContentContext, createContentContext } from "../api/api";
-import Page from "./Page";
+import {
+  Page,
+  ContentContext,
+  createContentContext,
+  PageContext,
+} from "../api/api";
 import AsyncWritable from "./AsyncWritable";
+import PageComponent from "./PageComponent";
 
-export default async (file: File) => {
+type Props = {
+  page: Page;
+  pages: Page[];
+};
+
+export default async ({ page, pages }: Props) => {
   const content = createContentContext();
 
   const stream = new AsyncWritable();
 
   const { pipe } = renderToPipeableStream(
     <Suspense fallback="Loading">
-      <ContentContext.Provider value={content}>
-        <Page {...file} />
-      </ContentContext.Provider>
+      <PageContext.Provider value={pages}>
+        <ContentContext.Provider value={content}>
+          <PageComponent {...page} />
+        </ContentContext.Provider>
+      </PageContext.Provider>
     </Suspense>,
     { onCompleteAll: () => pipe(stream) }
   );
@@ -25,7 +35,7 @@ export default async (file: File) => {
   let html = await stream.awaited;
   html = html.replace(/<!--(?:\s|\/\$|\$)-->/g, "");
 
-  content.write(html, { filename: file.url, extension: ".html" });
+  content.write(html, { filename: page.url, extension: ".html" });
 
   return {
     dependencies: content.dependencies,

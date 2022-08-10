@@ -9,10 +9,7 @@ const transform = assetTransform<string, [string, { module: boolean }]>(
     const input = content.read(src);
     return transformJs(content, input, options);
   },
-  {
-    cacheKey: "core/InlineJs",
-    encodable: true,
-  }
+  { cacheKey: "core/InlineJs" }
 );
 
 type Props = Omit<ScriptHTMLAttributes<any>, "src"> & {

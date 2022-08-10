@@ -1,21 +1,54 @@
+import glob from "glob";
+import path from "path";
+import { Page } from "../api/usePages";
+import { Config } from "../core";
 import dev from "../util/dev";
-import { Page, getPages } from "../util/projectPages";
+import projectPath from "../util/projectPath";
 import {
-  renderPage,
-  generateCssStats,
-  resetCssStats,
-  restartWorker,
-  terminateWorker,
   clearAssetTransformCacheForFiles,
   encodeAssetTransformCache,
+  generateCssStats,
+  renderPage,
+  resetCssStats,
+  restartWorker,
   restoreAssetTransformCache,
+  terminateWorker,
 } from "./ipc";
 
 export { restartWorker, terminateWorker };
 
-const pageDependencies = new Map<Page, string[]>();
+const castArray = (x: string[] | string | undefined): string[] => {
+  if (Array.isArray(x)) {
+    return x;
+  } else if (x != null) {
+    return [x];
+  } else {
+    return [];
+  }
+};
 
-const pages = new Set(getPages());
+let config: Config;
+try {
+  config = require(path.join(projectPath, "site.config.ts")).default;
+} catch {
+  config = {};
+}
+
+const pageFilenames = new Set(
+  castArray(config.pages ?? "**/*.mdx").flatMap((fileGlob) => {
+    return glob.sync(fileGlob, { cwd: projectPath });
+  })
+);
+const pages = new Set(
+  Array.from(pageFilenames, (absolutePath): Page => {
+    const filename = "/" + path.relative(projectPath, absolutePath);
+    const url =
+      config.urlForPage?.(filename) ?? path.basename(filename, ".mdx");
+    return { filename, url };
+  })
+);
+
+const pageDependencies = new Map<Page, string[]>();
 
 // Number here is kind of random
 // The expensive asset transforms happen in native code on another thread
@@ -29,11 +62,15 @@ export const buildPages = async (
 ) => {
   const start = Date.now();
 
+  // Preserve imports to work with node imports
   const { default: pAll } = await eval(`import("p-all")`);
+  const pagesArray = Array.from(pages);
+
   await pAll(
     Array.from(pages, (page) => async () => {
       logger(page);
-      const { dependencies } = await renderPage(page);
+
+      const { dependencies } = await renderPage({ page, pages: pagesArray });
 
       pageDependencies.set(page, dependencies);
     }),

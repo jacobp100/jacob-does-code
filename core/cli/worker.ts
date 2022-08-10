@@ -18,8 +18,8 @@ const isUsingJsModule = (filename: string) => {
 };
 
 const handlers: Messages = {
-  async RenderPage(file) {
-    const data = await renderPage(file);
+  async RenderPage({ page, pages }) {
+    const data = await renderPage({ page, pages });
     const dependencies = Array.from(data.dependencies);
     return { dependencies };
   },

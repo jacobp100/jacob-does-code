@@ -10,10 +10,7 @@ const transform = assetTransform(
       : content.read(src);
     return transformCss(content, input);
   },
-  {
-    cacheKey: "core/InlineCss",
-    encodable: true,
-  }
+  { cacheKey: "core/InlineCss" }
 );
 
 type Props = {

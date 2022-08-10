@@ -21,17 +21,14 @@ let generateKey = () => {
   return output;
 };
 
-type Options =
-  | { encodable: true; cacheKey: string }
-  | { encodable?: false; cacheKey?: string };
+type Options = { cacheKey?: string };
 
 export const assetTransform = <T, Args extends any[] = any[]>(
   fn: (content: Content, ...args: Args) => T | Promise<T>,
   options: Options = {}
 ) => {
   const baseKey = options.cacheKey ?? generateKey();
-
-  const encodable = options.encodable ?? false;
+  const encodable = options.cacheKey != null;
 
   return (content: Content, ...args: Args): T => {
     const key = `${baseKey}/${args.map((x) => JSON.stringify(x)).join(":")}`;

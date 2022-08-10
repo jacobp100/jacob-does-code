@@ -1,12 +1,13 @@
 export { default as dev } from "../util/dev";
-
-export * from "./components/components";
 export { assetTransform } from "./assetTransformer";
-export { cssVariable, classNameForOrigin, className, classNames } from "./css";
-export type { Content } from "./useContent";
+export * from "./components/components";
+export type { Config } from "./config";
+export { className, classNameForOrigin, classNames, cssVariable } from "./css";
 export {
-  default as useContent,
-  createContentContext,
   ContentContext,
+  createContentContext,
+  default as useContent,
 } from "./useContent";
-export { usePages, usePagesData } from "./usePages";
+export type { Content } from "./useContent";
+export type { Page } from "./usePages";
+export { PageContext, usePages, usePagesData } from "./usePages";

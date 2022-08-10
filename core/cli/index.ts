@@ -4,7 +4,7 @@ import * as fs from "fs";
 import chalk from "chalk";
 // @ts-ignore
 import chokidar from "chokidar";
-import type { Page } from "../util/projectPages";
+import type { Page } from "../api/usePages";
 import projectPath from "../util/projectPath";
 import {
   buildAllPages,

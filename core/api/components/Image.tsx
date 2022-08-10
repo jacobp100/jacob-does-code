@@ -76,10 +76,7 @@ const transform = assetTransform<ImageResult>(
       size: { width, height },
     };
   },
-  {
-    cacheKey: "core/Image",
-    encodable: true,
-  }
+  { cacheKey: "core/Image" }
 );
 
 export type Resize = ResizeOptions;

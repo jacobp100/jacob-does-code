@@ -43,6 +43,18 @@ const HeaderLink = ({ href, children }: { href: string; children: string }) => (
   </a>
 );
 
+const PublishedOn = ({ filename }: { filename: string }) => {
+  const dateMatch = filename.match(/\d{4}-\d{2}-\d{2}/);
+  const date = dateMatch != null ? new Date(dateMatch[0]) : undefined;
+
+  return date != null ? (
+    <span className={className("published-on")}>
+      Published on{" "}
+      <time dateTime={date.toISOString()}>{format(date, "do MMMM yyyy")}</time>
+    </span>
+  ) : null;
+};
+
 const castArray = (x: string[] | string | undefined): string[] => {
   if (Array.isArray(x)) {
     return x;
@@ -54,7 +66,7 @@ const castArray = (x: string[] | string | undefined): string[] => {
 };
 
 type Props = {
-  date: number | null;
+  filename: string;
   title: string;
   description?: string;
   css?: string[] | string | undefined;
@@ -65,7 +77,7 @@ type Props = {
 };
 
 export default ({
-  date,
+  filename,
   title,
   description,
   css,
@@ -100,14 +112,7 @@ export default ({
         <HeaderLink href="https://github.com/jacobp100">Github</HeaderLink>
       </Header>
       {children}
-      {date != null && (
-        <span className={className("published-on")}>
-          Published on{" "}
-          <time dateTime={new Date(date).toISOString()}>
-            {format(new Date(date), "do MMMM yyyy")}
-          </time>
-        </span>
-      )}
+      <PublishedOn filename={filename} />
     </body>
   </html>
 );

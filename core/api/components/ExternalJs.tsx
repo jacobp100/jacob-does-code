@@ -10,10 +10,7 @@ const transform = assetTransform<string, [string, { module: boolean }]>(
     const output = await transformJs(content, input, options);
     return content.write(output, { extension: ".js" });
   },
-  {
-    cacheKey: "core/ExternalJs",
-    encodable: true,
-  }
+  { cacheKey: "core/ExternalJs" }
 );
 
 type Props = Omit<ScriptHTMLAttributes<any>, "src"> & {

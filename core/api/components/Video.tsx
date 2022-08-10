@@ -10,10 +10,7 @@ const transform = assetTransform<string, string[]>(
     const buffer = content.readBuffer(src);
     return content.write(buffer, { extension: path.extname(src) });
   },
-  {
-    cacheKey: "core/Video",
-    encodable: true,
-  }
+  { cacheKey: "core/Video" }
 );
 
 type Props = Omit<VideoHTMLAttributes<any>, "className"> & {

@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="en"><head><title>Polymorphic Variants in ReasonML</title><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><script>document.documentElement.style.setProperty("--e",1/(window.devicePixelRatio||1)+"px");</script><style>@font-face{font-family:Inter;font-weight:100 900;font-display:swap;font-style:normal;font-named-instance:"Regular";src:url(/res/541fae2e.woff2);font-display:fallback}@font-face{font-family:Inter;font-weight:100 900;font-display:swap;font-style:italic;font-named-instance:"Regular";src:url(/res/1517082.woff2);font-display:fallback}*,::after,::before{box-sizing:border-box}*{font-size:calc(var(--f)*var(--g));line-height:calc(var(--h)*var(--g));letter-spacing:calc(var(--i)*var(--g));font-weight:var(--j);--g:calc(
+    (var(--k) * 1rem / 16) +
+    ((1 - var(--k)) * 1px)
+  )}@supports (font-variation-settings:"wght"400){*{font-weight:inherit;font-variation-settings:"wght"var(--j)}}:root{--c:#f97f51;--b:#fc427b;--l:#0652dd;--m:#2771f9;--n:var(--l);--a:#a3cb38;--o:#ed4c67;--d:var(--p);--p:black;--q:white;--r:12px;--s:12px;--k:1}::selection{background:var(--d);color:#fff}body{margin:var(--r) var(--s) 64px;--f:18;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--p);background:var(--q);--h:26}a{color:var(--d);text-decoration:none}a:active,a:focus,a:hover{text-decoration:underline}.a{display:flex;padding-top:12px;margin:-12px calc(-1*var(--s)) 48px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}.a::after,.a::before{display:block;content:"";padding-right:var(--s)}.b,.c{flex:none;--j:700}.b{display:block;--f:24;--h:18;--i:-1;text-transform:lowercase;border-top:4px solid;padding:6px 4px 0 0}a.b{color:currentColor;text-decoration:none}.c{margin:0 0 0 24px;--f:6;--h:10;--i:1;--k:0;text-transform:uppercase;width:0}.e{margin-left:auto}.d{flex:none;display:block;margin:10px 24px 0 0;--f:14;--h:18;--j:400}.d:last-child{margin-right:0}@media (prefers-color-scheme:dark){:root{--n:var(--m);--p:white;--q:black}}@media (min-width:768px){:root{--s:64px}}@media (min-width:1024px){:root{--s:128px}}:root{--s:max(12px, (100vw - var(--t)) / 2);--t:800px;--d:var(--o)}h1{margin:48px 0 32px;--f:36;--h:48;--i:-0.8}h2,h3{margin:42px 0 18px}h1,h2{font-weight:700}h2{--f:26;--h:34;--i:-0.3}h3{--f:22;--h:30;--i:-0.18}p{margin:18px 0}a,p>code{word-break:break-all}h3,strong{font-weight:600}ol,ul{margin:24px 0;padding-left:32px;margin-left:calc(-32*min(max(var(--s) - 32px,0px),1px))}li{position:relative;margin:2px 0;list-style:none}li::before{position:absolute;content:var(--u, "👉");right:calc(100% + 12px)}li[data-bullet]{--u:attr(data-bullet)}blockquote{margin:32px 24px 32px 48px;--f:22;--h:32;font-weight:300;font-style:italic}table{margin:24px;border-collapse:separate;border-spacing:12px 0}thead th{border-bottom:var(--e) solid;--j:600;text-align:left}code,hr{background-color:#f4f4f4}hr{margin:32px calc(-1*var(--s));height:var(--e);border:0}code{font-size:.9em;font-family:monospace;padding:0 3px;border:1px solid #eee;border-radius:6px}pre code{display:block;width:100vw;margin:48px calc(-1*var(--s));padding:18px var(--s);background-color:#fafafa;border:1px solid #f4f4f4;border-width:1px 0;border-radius:0;overflow-x:scroll}video{display:block;max-width:100%;margin:32px auto}iframe{width:calc(var(--v)*1);height:calc(var(--v)*.66);border:1px solid rgba(0,0,0,.1);--v:calc(100vw - 2 * var(--s))}.f,blockquote{color:#9e9e9e}@media (min-width:768px){a,p>code{word-break:initial}}@media (prefers-color-scheme:dark){hr,pre code{background-color:#080808}code{background-color:#111;border-color:#222}pre code{border-color:#111}}.M,.O{color:#a0a1a7;font-style:italic}.D,.P,.Q{color:#a626a4}.R,.S,.T,.U,.V{color:#e45649}.K{color:#0184bb}.W,.X,.Y,.Z,._{color:#50a14f}.-a .-b,.N{color:#c18401}.-c,.-d,.-e,.-f,.-g,.-h,.-i,.J{color:#986801}.-b,.-j,.-k,.-l,.-m,.-n{color:#4078f2}.-o{font-style:italic}.-p{font-weight:700}.-l{text-decoration:underline}@media (prefers-color-scheme:dark){.M,.O{color:#5c6370;font-style:italic}.D,.P,.Q{color:#c678dd}.R,.S,.T,.U,.V{color:#e06c75}.K{color:#56b6c2}.W,.X,.Y,.Z,._{color:#98c379}.-a .-b,.N{color:#e6c07b}.-c,.-d,.-e,.-f,.-g,.-h,.-i,.J{color:#d19a66}.-b,.-j,.-k,.-l,.-m,.-n{color:#61aeee}.-o{font-style:italic}.-p{font-weight:700}.-l{text-decoration:underline}}</style></head><body><div class="a"><a href="/" class="b">Jacob<br/>does<br/>code</a><div class="c">Apps</div><a href="/pocket-jam" class="d">Pocket Jam</a><a href="/piano-tabs" class="d">Piano Tabs</a><a href="/technicalc" class="d">TechniCalc</a><a href="/freebies" class="d">Freebies</a><div class="c e">Developement</div><a href="/blog" class="d">Blog</a><a href="https://github.com/jacobp100" class="d">Github</a></div><h1>Polymorphic Variants in ReasonML</h1>
+<p>Polymorphic variants are one of the more unique features of OCaml (or ReasonML if you prefer). These are actually one of the things that aren’t documented ReasonML site, but they can be really useful nonetheless.</p>
+<p>At their simplest, they work exactly the same as regular variants. The first difference is that these variants begin with a <code>`</code> character. They can also be used without a type definition. Let’s find the index of a pair of brackets in a list of characters.</p>
+<pre><code><span class="D">let</span> firstBracketPair =<span class="E"> <span class="F">inputChars</span> =&gt;</span> {
+  <span class="D">let</span> <span class="D">rec</span> iter =<span class="E"> (<span class="F">currentState</span>, <span class="F">chars</span>, <span class="F">currentIndex</span>) =&gt;</span>
+    switch (currentState, chars) {
+    <span class="G">| (<span class="H">`FoundBracket(<span class="F">startIndex</span>)</span>, [&#x27;)&#x27;, <span class="I">...</span><span class="H">_</span>]) =&gt;</span>
+      <span class="H">Some((<span class="F">startIndex</span>, <span class="F">currentIndex</span>)</span>)
+    <span class="G">| (<span class="H">_</span>, [&#x27;(&#x27;, <span class="I">...</span>tail]) =&gt;</span>
+      iter(<span class="H">`FoundBracket(<span class="F">currentIndex</span>)</span>, tail, currentIndex + <span class="J">1</span>)
+    <span class="G">| (<span class="H">_</span>, [<span class="H">_</span>, <span class="I">...</span>tail]) =&gt;</span>
+      iter(currentState, tail, currentIndex + <span class="J">1</span>)
+    <span class="G">| (<span class="H">_</span>, []) =&gt;</span>
+      None
+    };
+  iter(`NoBrackets, inputChars, <span class="J">0</span>);
+};
+</code></pre>
+<p>In the above example, we could have defined a type just for the iteration state, but with polymorphic variants, we don’t have to.</p>
+<h2>Diving Deeper</h2>
+<p>Unlike when defining the types for regular variants, you can build polymorphic variants using other variants. Other than the backtick for each name, the types for polymorphic variants also need square brackets around them.</p>
+<pre><code><span class="D">type</span> primary = <span class="K">[ | `R<span class="L">ed</span> | `G<span class="L">reen</span> | `B<span class="L">lue</span>]</span>;
+<span class="D">type</span> colorFunctions = <span class="K">[ | `R<span class="L">gb</span>(<span class="L">int</span>, <span class="L">int</span>, <span class="L">int</span>) | `H<span class="L">sl</span>(<span class="L">int</span>, <span class="L">int</span>, <span class="L">int</span>)]</span>;
+<span class="M">/* Combiles both the variants primary and colorFunctions */</span>
+<span class="D">type</span> colors = <span class="K">[ <span class="L">primary</span> | <span class="L">colorFunctions</span>]</span>;
+</code></pre>
+<p>Now that our types are a bit more complicated, you’ll want to actually write the type definitions. You’ll be able to compile without them, but when you do get errors — especially with large types — the error messages will be multiple pages on your terminal and won’t help you at all.</p>
+<p>The above example is a common way for articles to demonstrate polymorphic variants. But it’s not a great example — this could be a regular variant type, and it might be better that way. So I’m going to give two examples of cases where polymorphic variants actually helped.</p>
+<h2>Units of Measure</h2>
+<p>When converting between units — like meters to inches — it’s normally just multiplying by something. However, Celsius and Fahrenheit do their own thing, and need to be handled differently.</p>
+<p>For this example, we want to take a unit and a value, and convert it into standard units (<em>si</em> units). I represent this with polymorphic variants, and have one function that handles all the ‘nice’ values, and another function that handles the edge cases.</p>
+<pre><code><span class="D">type</span> length = <span class="K">[ | `M<span class="L">eter</span> | `I<span class="L">nch</span>]</span>;
+<span class="D">type</span> time = <span class="K">[ | `S<span class="L">econd</span> | `M<span class="L">inute</span> | `H<span class="L">our</span>]</span>;
+<span class="D">type</span> temperatureLinear = <span class="K">[ | `K<span class="L">elvin</span>]</span>;
+<span class="D">type</span> temperatureNonLinear = <span class="K">[ | `C<span class="L">elsius</span>]</span>;
+
+<span class="D">type</span> unitLinear = <span class="K">[ <span class="L">length</span> | <span class="L">time</span> | <span class="L">temperatureLinear</span>]</span>;
+<span class="D">type</span> anyUnit = <span class="K">[ <span class="L">unitLinear</span> | <span class="L">temperatureNonLinear</span>]</span>;
+
+<span class="D">let</span> siScale =<span class="E"> (<span class="F">unit</span>: <span class="F">unitLinear</span>) =&gt;</span>
+  switch (<span class="N">unit</span>) {
+  <span class="G">| <span class="H">`Meter</span> =&gt;</span> <span class="J">1.</span>
+  <span class="G">| <span class="H">`Inch</span> =&gt;</span> <span class="J">0.0254</span>
+  <span class="G">| <span class="H">`Second</span> =&gt;</span> <span class="J">1.</span>
+  <span class="G">| <span class="H">`Minute</span> =&gt;</span> <span class="J">60.</span>
+  <span class="G">| <span class="H">`Hour</span> =&gt;</span> <span class="J">3600.</span>
+  <span class="G">| <span class="H">`Kelvin</span> =&gt;</span> <span class="J">1.</span>
+  };
+
+<span class="D">let</span> toSi =<span class="E"> (<span class="F">value</span>, <span class="F">unit</span>: <span class="F">anyUnit</span>) =&gt;</span>
+  switch (<span class="N">unit</span>) {
+  <span class="G">| #<span class="N">unit</span><span class="H">Linear</span> <span class="D">as</span> linear<span class="H">Unit</span> =&gt;</span> value<span class="I"> *. </span>si<span class="H">Scale(<span class="F">linearUnit</span>)</span>
+  <span class="G">| <span class="H">`Celsius</span> =&gt;</span> value<span class="I"> +. </span><span class="J">273.15</span>
+  };
+</code></pre>
+<blockquote>
+<p>Note: <code>#unitLinear</code> in the means match against all cases in the unitLinear type</p>
+</blockquote>
+<p>With this setup, we can be much more granular about how we handle edge cases.</p>
+<p>If we added another linear unit — like feet — to this, our compiler would enforce that it’s in the <code>siScale</code> function. If we added Fahrenheit, it would make sure it was handled in the <code>toSi</code> function.</p>
+<p>If we used regular variants, we could put all the units in one variant, but then we’d lose the ability to abstract things out like we did, and the type-checker would not be as helpful. Or we’d be able to keep the abstraction, but introducing more variants: we’d need one variant for all the linear units, one variant for temperature units, and one more to wrap it, like <code>LinearUnit(linearUnit) | TemperatureUnit(temperatureUnit)</code>. The user would then have to give units in this format. 🤮</p>
+<h2>Mixing Scalars and Vectors</h2>
+<p>Say we have a numeric type that’s more complicated than a float. Maybe it’s an exact fraction, or a decimal. We can also have vectors built up of that type, and nan types. We want to build a maths library where you can add and subtract anything of these types. Polymorphic variants are also a good fit here!</p>
+<pre><code><span class="D">type</span> scalar = <span class="K">[ | `F<span class="L">raction</span>(<span class="L">int</span>, <span class="L">int</span>) | `D<span class="L">ecimal</span>(<span class="L">float</span>)]</span>;
+<span class="D">type</span> value = <span class="K">[ <span class="L">scalar</span> | `V<span class="L">ector</span>(<span class="L">list</span>(<span class="L">scalar</span>)) | `N<span class="L">aN</span>]</span>;
+
+<span class="D">let</span> addScalar =<span class="E"> (<span class="F">a</span>, <span class="F">b</span>) =&gt;</span>
+  switch (a, b) {
+  <span class="G">| (<span class="H">`Fraction(<span class="F">n1</span>, <span class="F">d1</span>)</span>, <span class="H">`Fraction(<span class="F">n2</span>, <span class="F">d2</span>)</span>) =&gt;</span>
+    <span class="H">`Fraction((<span class="F">n1</span> <span class="I">*</span> <span class="F">d2</span> + <span class="F">n2</span> <span class="I">*</span> <span class="F">d1</span>, <span class="F">d1</span> <span class="I">*</span> <span class="F">d2</span>)</span>)
+  <span class="G">| (<span class="H">`Fraction(<span class="F">n</span>, <span class="F">d</span>)</span>, <span class="H">`Decimal(<span class="F">f</span>)</span>)
+  | (<span class="H">`Decimal(<span class="F">f</span>)</span>, <span class="H">`Fraction(<span class="F">n</span>, <span class="F">d</span>)</span>) =&gt;</span>
+    <span class="H">`Decimal(<span class="F">f</span> <span class="I">*</span>. <span class="F">float_of_int</span>(<span class="F">n</span>)</span><span class="I"> /. </span><span class="N">float</span><span class="H">_of_int(<span class="F">d</span>)</span>)
+  <span class="G">| (<span class="H">`Decimal(<span class="F">f1</span>)</span>, <span class="H">`Decimal(<span class="F">f2</span>)</span>) =&gt;</span>
+    <span class="H">`Decimal(<span class="F">f1</span> <span class="I">*</span>. <span class="F">f2</span>)</span>
+  };
+
+<span class="D">let</span> add =<span class="E"> (<span class="F">a</span>, <span class="F">b</span>) =&gt;</span>
+  switch (a, b) {
+  <span class="G">| (#scalar <span class="D">as</span> a, #scalar <span class="D">as</span> b) =&gt;</span> add<span class="H">Scalar(<span class="F">a</span>, <span class="F">b</span>)</span>
+  <span class="G">| (<span class="H">`Vector(<span class="F">a</span>)</span>, <span class="H">`Vector(<span class="F">b</span>)</span>) =&gt;</span> <span class="H">`Vector(List.<span class="F">map2</span>(<span class="F">addScalar</span>)</span>)
+  <span class="G">| <span class="H">_</span> =&gt;</span> `NaN
+  };
+</code></pre>
+<p>In the same manner as the previous examples, we <em>could</em> use regular variants here, but it would be less nice for the same reasons.</p>
+<h2>Performance</h2>
+<p>This power can come at a cost. Normally when you see performance warnings about polymorphic variants, it talks about the performance of switch statements and memory usage. Realistically, these aren’t going to affect you.</p>
+<p>However, there is something to be aware of if you’re compiling to JavaScript <strong>and you have a lot of polymorphic variants in one type</strong>: when running <code>switch</code> over a polymorphic type, the code size is a lot larger than you’d expect.</p>
+<p>If we take the units example, and add over a hundred units, every switch statement over the units was 2kb of JS minified — this adds up quickly! I changed this to a regular variant, and each switch statement went down to just over 100–200 bytes.</p>
+<p>Again, this will only affect you if your types are huge, and will not affect you at all if your types aren’t huge. If in doubt, read what BuckleScript outputs!</p>
+<h2>Conclusion</h2>
+<p>Polymorphic variants are really cool and you should use them more!</p><span class="f">Published on <time dateTime="2019-11-01T00:00:00.000Z">1st November 2019</time></span></body></html>

@@ -1,12 +1,11 @@
-import renderPage from "../renderPage/renderPage";
-import { generateCssStats, resetCssStats } from "../api/css";
 import {
   clearAssetTransformCacheForFile,
   encodeAssetTransformCache,
   restoreAssetTransformCache,
-} from "../api/assetTransformer";
-import { Status } from "./types";
-import { Messages, IpcMessage } from "./types";
+} from "../assetTransformer";
+import { generateCssStats, resetCssStats } from "../css";
+import renderPage from "../renderPage";
+import { IpcMessage, Messages, Status } from "./types";
 
 const isUsingJsModule = (filename: string) => {
   try {

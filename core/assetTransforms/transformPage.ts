@@ -6,18 +6,24 @@ import * as babel from "@babel/core";
 // import { compile } from "@mdx-js/mdx";
 // @ts-expect-error
 import smartypants from "@silvenon/remark-smartypants";
-import type { Content } from "../useContent";
+import { cwd } from "process";
 import { assetTransform } from "../assetTransformer";
-import projectPath from "../../util/projectPath";
+import type { Content } from "../useContent";
 
-// @ts-expect-error
-import babelOptions from "../../../.babelrc";
+const projectPath = cwd();
+
+let babelOptions: any;
+try {
+  babelOptions = require(path.join(projectPath, ".babelrc"));
+} catch {
+  babelOptions = {};
+}
 
 type Page = {
   title: string;
   Content: (props: any) => JSX.Element;
   Layout: (props: any) => JSX.Element;
-  layoutProps: any;
+  props: any;
 };
 
 export default assetTransform(
@@ -54,9 +60,9 @@ export default assetTransform(
       title = path.basename(filename, ".mdx"),
       default: Content,
       Layout,
-      ...layoutProps
+      ...props
     } = exports;
 
-    return { title, Content, Layout, layoutProps };
+    return { title, Content, Layout, props };
   }
 );

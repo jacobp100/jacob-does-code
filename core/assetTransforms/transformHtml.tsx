@@ -1,9 +1,8 @@
 import posthtml from "posthtml";
 // @ts-expect-error
 import minifier from "posthtml-minifier";
-// @ts-expect-error
-import { Content } from "./useContent";
 import { classNames } from "../css";
+import type { Content } from "../useContent";
 
 const transformClassNames = () => (tree: any) =>
   tree.walk((node: any) => {

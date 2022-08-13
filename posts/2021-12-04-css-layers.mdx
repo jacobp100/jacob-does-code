@@ -12,15 +12,54 @@ If you've written enough CSS, you'll know rules can conflict, and can lead to un
 
 If you're unfamiliar with how specificity works, take any CSS selector, split it into the parts, then add up all the points using the following chart.
 
-| Type                                    | Points                        |
-| --------------------------------------- | ----------------------------- |
-| `#id`                                   | 100                           |
-| `.class`                                | 10                            |
-| `[attribute]`, `[attribute=value]` etc. | 10                            |
-| `:first-child`, `:last-child` etc.      | 10                            |
-| `tagname` (e.g. `p`, `div` etc.)        | 1                             |
-| `*`                                     | 0                             |
-| `:not(selector)`, `:matches(selector)`  | Specificity of inner selector |
+<table>
+  <thead>
+    <td>Type</td>
+    <td>Points</td>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`#id`</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>`.class`</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>`[attribute]`, `[attribute=value]` etc.</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>`:first-child`, `:last-child` etc.</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>`tagname` (e.g. `p`, `div` etc.)</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>`*`</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>`:not(selector)`, `:matches(selector)`</td>
+      <td>Specificity of inner selector</td>
+    </tr>
+  </tbody>
+</table>
+
+{
+// MDX2 doesn't support tables yet
+// | Type | Points |
+// | --------------------------------------- | ----------------------------- |
+// | `#id` | 100 |
+// | `.class` | 10 |
+// | `[attribute]`, `[attribute=value]` etc. | 10 |
+// | `:first-child`, `:last-child` etc. | 10 |
+// | `tagname` (e.g. `p`, `div` etc.) | 1 |
+// | `_` | 0 | |`:not(selector)`, `:matches(selector)` | Specificity of inner selector |
+}
 
 So the selector `button.primary` has a specificity of `011`, `button:hover` also has `011`, and `button.primary.small` has `021` &mdash; so will win over the previous two.
 

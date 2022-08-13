@@ -1,14 +1,11 @@
 import * as React from "react";
 import { Suspense } from "react";
 import { renderToPipeableStream } from "react-dom/server";
-import {
-  Page,
-  ContentContext,
-  createContentContext,
-  PageContext,
-} from "../api/api";
 import AsyncWritable from "./AsyncWritable";
 import PageComponent from "./PageComponent";
+import { ContentContext, createContentContext } from "./useContent";
+import type { Page } from "./usePages";
+import { PageContext } from "./usePages";
 
 type Props = {
   page: Page;

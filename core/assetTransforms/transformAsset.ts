@@ -1,9 +1,10 @@
 import * as path from "path";
 import type { Content } from "../useContent";
 import transformCss from "./transformCss";
-import transformJs from "./transformJs";
 import transformHtml from "./transformHtml";
+import transformJs from "./transformJs";
 
+// NB - doesn't run `transformPage`
 export default async (content: Content, asset: string) => {
   const extension = path.extname(asset);
 

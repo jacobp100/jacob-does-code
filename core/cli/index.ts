@@ -1,9 +1,9 @@
-import * as path from "path";
-import * as fs from "fs";
 import chalk from "chalk";
 import chokidar from "chokidar";
-import type { Page } from "../api/usePages";
-import projectPath from "../util/projectPath";
+import * as fs from "fs";
+import * as path from "path";
+import { cwd } from "process";
+import type { Page } from "../usePages";
 import {
   buildAllPages,
   buildPages,
@@ -11,6 +11,8 @@ import {
   restartWorker,
   terminateWorker,
 } from "./builder";
+
+const projectPath = cwd();
 
 const sitePath = path.join(projectPath, "site");
 const clearSiteFolder = () => {

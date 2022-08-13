@@ -1,11 +1,12 @@
 import * as React from "react";
-import { Code, useContent } from "../api/api";
-import evalPage from "../api/util/evalPage";
-import type { Page } from "../api/usePages";
+import { transformPage } from "./assetTransforms";
+import { Code } from "./components/components";
+import useContent from "./useContent";
+import type { Page } from "./usePages";
 
 export default (page: Page): JSX.Element => {
   const content = useContent();
-  const { title, Content, Layout, layoutProps } = evalPage(
+  const { title, Content, Layout, props } = transformPage(
     content,
     page.filename
   );
@@ -13,7 +14,7 @@ export default (page: Page): JSX.Element => {
   const children = <Content components={{ code: Code }} />;
 
   return Layout != null ? (
-    <Layout {...page} title={title} {...layoutProps}>
+    <Layout {...page} title={title} {...props}>
       {children}
     </Layout>
   ) : (

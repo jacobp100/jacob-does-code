@@ -1,9 +1,9 @@
 import glob from "glob";
 import path from "path";
-import { Page } from "../api/usePages";
-import { Config } from "../core";
-import dev from "../util/dev";
-import projectPath from "../util/projectPath";
+import { cwd } from "process";
+import type { Config } from "../config";
+import dev from "../dev";
+import type { Page } from "../usePages";
 import {
   clearAssetTransformCacheForFiles,
   encodeAssetTransformCache,
@@ -16,6 +16,8 @@ import {
 } from "./ipc";
 
 export { restartWorker, terminateWorker };
+
+const projectPath = cwd();
 
 const castArray = (x: string[] | string | undefined): string[] => {
   if (Array.isArray(x)) {
@@ -39,7 +41,7 @@ const pageFilenames = new Set(
     return glob.sync(fileGlob, { cwd: projectPath });
   })
 );
-const pages = new Set(
+const allPages = new Set(
   Array.from(pageFilenames, (absolutePath): Page => {
     const filename = "/" + path.relative(projectPath, absolutePath);
     const url =
@@ -64,7 +66,7 @@ export const buildPages = async (
 
   // Preserve imports to work with node imports
   const { default: pAll } = await eval(`import("p-all")`);
-  const pagesArray = Array.from(pages);
+  const pagesArray = Array.from(allPages);
 
   await pAll(
     Array.from(pages, (page) => async () => {
@@ -86,7 +88,7 @@ export const buildPages = async (
 export const buildAllPages = async (logger: (page: Page) => void) => {
   resetCssStats();
 
-  const { duration } = await buildPages(pages, logger);
+  const { duration } = await buildPages(allPages, logger);
 
   const cssStats = await generateCssStats();
 

@@ -39,6 +39,7 @@
     "glob": "^8.0.3",
     "highlight.js": "^11.6.0",
     "http-server": "^14.1.1",
+    "minimatch": "^5.1.0",
     "p-all": "^4.0.0",
     "postcss": "^8.4.16",
     "postcss-transform-classes": "^1.0.0",

@@ -1,8 +1,8 @@
-import * as React from "react";
 import type { ScriptHTMLAttributes } from "react";
-import useContent from "../useContent";
+import * as React from "react";
 import { assetTransform } from "../assetTransformer";
 import { transformJs } from "../assetTransforms/assetTransforms";
+import useContent from "../useContent";
 
 const transform = assetTransform<string, [string, { module: boolean }]>(
   async (content, src, options) => {

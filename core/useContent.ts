@@ -1,11 +1,14 @@
 import * as fs from "fs";
-import * as path from "path";
 import type Module from "module";
+import * as path from "path";
+import { cwd } from "process";
 import { createContext, useContext } from "react";
 // @ts-ignore
 import stringHash from "string-hash";
-import corePath from "../util/corePath";
-import projectPath from "../util/projectPath";
+
+const libraryPath = path.join(__dirname);
+
+const projectPath = cwd();
 
 export type Content = {
   dependencies: Set<string>;
@@ -66,7 +69,7 @@ export const createContentContext = (): Content => {
     const addModuleDependencies = ({ filename, children }: Module) => {
       if (
         !filename.includes("node_modules") &&
-        !filename.startsWith(corePath)
+        !filename.startsWith(libraryPath)
       ) {
         dependencies.add(filename);
         children.forEach(addModuleDependencies);

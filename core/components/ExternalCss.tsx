@@ -1,7 +1,7 @@
 import * as React from "react";
-import useContent from "../useContent";
 import { assetTransform } from "../assetTransformer";
 import { transformCss } from "../assetTransforms/assetTransforms";
+import useContent from "../useContent";
 
 const transform = assetTransform<string, [string]>(
   async (content, src) => {

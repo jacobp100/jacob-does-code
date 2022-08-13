@@ -1,14 +1,14 @@
 import * as React from "react";
-import { usePages, usePagesData } from "../core/core";
+import { useTableOfContents } from "../core/core";
 
 export default () => {
-  const allPages = usePages();
-  const posts = allPages.filter((page) => page.filename.startsWith("/posts"));
-  const postsData = usePagesData(posts);
+  const posts = useTableOfContents({ pages: "/posts/**" }).sort(
+    (a, b) => -a.url.localeCompare(b.url)
+  );
 
   return (
     <ul>
-      {postsData.map(({ url, title }) => (
+      {posts.map(({ url, title }) => (
         <li key={url}>
           <a href={url}>{title}</a>
         </li>

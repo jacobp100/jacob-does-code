@@ -1,11 +1,11 @@
-import * as React from "react";
-import type { ImgHTMLAttributes, SourceHTMLAttributes } from "react";
 import * as path from "path";
+import type { ImgHTMLAttributes, SourceHTMLAttributes } from "react";
+import * as React from "react";
 import sharp, { ResizeOptions } from "sharp";
-import useContent from "../useContent";
 import { assetTransform } from "../assetTransformer";
 import { ClassNames, classNames } from "../css";
-import dev from "../../util/dev";
+import dev from "../dev";
+import useContent from "../useContent";
 
 type AdditionalSource = {
   src: string;

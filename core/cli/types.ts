@@ -1,5 +1,5 @@
-import type { Page } from "../api/usePages";
-import type { AssetTransformCache } from "../api/assetTransformer";
+import type { AssetTransformCache } from "../assetTransformer";
+import type { Page } from "../usePages";
 
 export enum Status {
   Ready = "Ready",

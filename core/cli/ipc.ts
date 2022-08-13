@@ -1,8 +1,8 @@
-import { fork } from "child_process";
 import type { ChildProcess } from "child_process";
+import { fork } from "child_process";
+import dev from "../dev";
+import type { AnyMessage, Messages } from "./types";
 import { Status } from "./types";
-import type { Messages, AnyMessage } from "./types";
-import { dev } from "../core";
 
 type WorkItem = {
   type: keyof Messages;

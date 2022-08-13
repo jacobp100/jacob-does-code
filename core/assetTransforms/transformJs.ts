@@ -5,10 +5,10 @@ import traverse from "@babel/traverse";
 import generate from "@babel/generator";
 import * as t from "@babel/types";
 import { minify } from "terser";
-import nestedAsync from "../../util//nestedAsync";
+import { className, cssVariable } from "../css";
+import dev from "../dev";
 import { Content } from "../useContent";
-import { cssVariable, className } from "../css";
-import dev from "../../util/dev";
+import nestedAsync from "../util/nestedAsync";
 import transformAsset from "./transformAsset";
 
 export default async (content: Content, input: string, { module = false }) => {

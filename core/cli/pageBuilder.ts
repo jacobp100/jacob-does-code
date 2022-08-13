@@ -4,15 +4,10 @@ import type { API } from "./api-direct";
 
 const pageDependencies = new Map<Page, string[]>();
 
-// Number here is kind of random
-// The expensive asset transforms happen in native code on another thread
-// so the larger this number is, the more these transforms happen concurrently
-// But there's also overhead from the extra bookkeeping React has to do
-const concurrentLimit = process.env.NODE_ENV === "development" ? 1 : 6;
-
 export const buildPages = async (
   api: API,
   pages: Set<Page>,
+  concurrentLimit: number,
   logger: (page: Page) => void
 ) => {
   const start = Date.now();
@@ -41,10 +36,14 @@ export const buildPages = async (
   return { duration };
 };
 
-export const buildAllPages = async (api: API, logger: (page: Page) => void) => {
+export const buildAllPages = async (
+  api: API,
+  concurrentLimit: number,
+  logger: (page: Page) => void
+) => {
   api.resetCssStats();
 
-  const { duration } = await buildPages(api, allPages, logger);
+  const { duration } = await buildPages(api, allPages, concurrentLimit, logger);
 
   const cssStats = await api.generateCssStats();
 
@@ -52,9 +51,9 @@ export const buildAllPages = async (api: API, logger: (page: Page) => void) => {
 };
 
 export const clearCachesForFiles = async (
-  _api: API,
+  api: API,
   filenames: string[]
-): Promise<{ invalidatedPages: Set<Page> }> => {
+): Promise<{ invalidatedPages: Set<Page>; jsModulesInvalidated: boolean }> => {
   const invertedPageDependencies = new Map<string, Set<Page>>();
   pageDependencies.forEach((dependencies, page) => {
     dependencies.forEach((dependency) => {
@@ -74,5 +73,9 @@ export const clearCachesForFiles = async (
     });
   });
 
-  return { invalidatedPages };
+  const { jsModulesInvalidated } = await api.clearAssetTransformCacheForFiles(
+    filenames
+  );
+
+  return { invalidatedPages, jsModulesInvalidated };
 };

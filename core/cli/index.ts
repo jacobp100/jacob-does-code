@@ -26,9 +26,15 @@ const mode = process.argv[2] === "watch" ? "watch" : "build";
  * NODE_ENV=development
  */
 const api: API =
-  mode === "watch"
-    ? require("./api-bridge").default
-    : require("./api-direct").default;
+  mode === "build"
+    ? require("./api-direct").default
+    : require("./api-bridge").default;
+
+// Number here is kind of random
+// The expensive asset transforms happen in native code on another thread
+// so the larger this number is, the more these transforms happen concurrently
+// But there's also overhead from the extra bookkeeping React has to do
+const concurrentLimit = mode === "build" ? 6 : 1;
 
 const projectPath = cwd();
 
@@ -52,7 +58,11 @@ const logDuration = (duration: number) => {
 const runFullBuild = async () => {
   console.log(chalk.dim("[Building site...]"));
 
-  const { duration, cssStats } = await buildAllPages(api, logBuildPage);
+  const { duration, cssStats } = await buildAllPages(
+    api,
+    concurrentLimit,
+    logBuildPage
+  );
 
   logDuration(duration);
 
@@ -81,7 +91,7 @@ const queueAsync = (fn: () => Promise<void> | void) => {
 
 queueAsync(runFullBuild);
 
-if (mode === "watch") {
+if (mode !== "build") {
   const { restartWorker, terminateWorker } = require("./api-bridge");
 
   queueAsync(() => {
@@ -101,11 +111,8 @@ if (mode === "watch") {
 
   /* Watch for file changes */
   const runRebuild = async (filesToRebuild: string[]) => {
-    const { invalidatedPages } = await clearCachesForFiles(api, filesToRebuild);
-
-    const { jsModulesInvalidated } = await api.clearAssetTransformCacheForFiles(
-      filesToRebuild
-    );
+    const { invalidatedPages, jsModulesInvalidated } =
+      await clearCachesForFiles(api, filesToRebuild);
 
     if (jsModulesInvalidated) {
       const assetTransformCache = await api.encodeAssetTransformCache();
@@ -118,6 +125,7 @@ if (mode === "watch") {
       const { duration } = await buildPages(
         api,
         invalidatedPages,
+        concurrentLimit,
         logBuildPage
       );
       logDuration(duration);

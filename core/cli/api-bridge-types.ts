@@ -1,4 +1,4 @@
-import type { API } from "./api";
+import type { API } from "./api-direct";
 
 export enum Status {
   Ready = "Ready",

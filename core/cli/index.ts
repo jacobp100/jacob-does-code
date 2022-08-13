@@ -4,13 +4,13 @@ import * as fs from "fs";
 import * as path from "path";
 import { cwd } from "process";
 import type { Page } from "../usePages";
-import { API } from "./api";
+import { API } from "./api-direct";
 import { buildAllPages, buildPages, clearCachesForFiles } from "./pageBuilder";
 
 const mode = process.argv[2] === "watch" ? "watch" : "build";
 
 /**
- * API.ts just calls into the API, then transforms the return value into
+ * API-Direct.ts just calls into the API, then transforms the return value into
  * something JSON serializable
  *
  * API-Bridge runs a worker thread (API-Worker), which does the actual work
@@ -26,7 +26,9 @@ const mode = process.argv[2] === "watch" ? "watch" : "build";
  * NODE_ENV=development
  */
 const api: API =
-  mode === "watch" ? require("./api-bridge").default : require("./api").default;
+  mode === "watch"
+    ? require("./api-bridge").default
+    : require("./api-direct").default;
 
 const projectPath = cwd();
 

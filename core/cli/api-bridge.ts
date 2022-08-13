@@ -1,6 +1,6 @@
 import type { ChildProcess } from "child_process";
 import { fork } from "child_process";
-import type { API } from "./api";
+import type { API } from "./api-direct";
 import type { AnyMessage } from "./api-bridge-types";
 import { Status } from "./api-bridge-types";
 

@@ -1,4 +1,4 @@
-import api from "./api";
+import api from "./api-direct";
 import type { IpcMessage } from "./api-bridge-types";
 import { Status } from "./api-bridge-types";
 

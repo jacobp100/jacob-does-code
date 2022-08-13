@@ -1,6 +1,6 @@
 import type { Page } from "../usePages";
 import allPages from "./allPages";
-import type { API } from "./api";
+import type { API } from "./api-direct";
 
 const pageDependencies = new Map<Page, string[]>();
 

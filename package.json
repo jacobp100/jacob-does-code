@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node core/cli --dev",
-    "build": "node core/cli"
+    "start": "./core/cli/index.js watch",
+    "build": "./core/cli/index.js build"
   },
   "dependencies": {
     "@babel/core": "^7.18.10",

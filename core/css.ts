@@ -1,12 +1,11 @@
 // @ts-expect-error
 import cssClassGenerator from "css-class-generator";
-import dev from "./dev";
 
 const variablesStore = new Map<string, string>();
 const classNamesStore = new Map<string, string>();
 
 const getGeneratedName = (store: Map<string, string>, input: string) => {
-  if (dev) {
+  if (process.env.NODE_ENV === "development") {
     /* Make sure stuff breaks if you don't follow proper protocols when using
      * CSS class names
      *

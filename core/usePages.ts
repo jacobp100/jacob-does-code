@@ -2,6 +2,7 @@ import minimatch from "minimatch";
 import { createContext, useContext } from "react";
 import { transformPage } from "./assetTransforms";
 import useContent from "./useContent";
+import castArray from "./util/castArray";
 
 export type Page = {
   filename: string;
@@ -23,11 +24,7 @@ type Options = {
 export const useTableOfContents = (options: Options): PageData[] => {
   const content = useContent();
   const allPages = useContext(PageContext);
-  const filter = Array.isArray(options.pages)
-    ? options.pages
-    : options.pages != null
-    ? [options.pages]
-    : undefined;
+  const filter = castArray(options.pages);
   const pages =
     filter != null
       ? allPages.filter((page) =>

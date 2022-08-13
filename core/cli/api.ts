@@ -1,3 +1,4 @@
+import type { AssetTransformCache } from "../assetTransformer";
 import {
   clearAssetTransformCacheForFile,
   encodeAssetTransformCache,
@@ -5,7 +6,7 @@ import {
 } from "../assetTransformer";
 import { generateCssStats, resetCssStats } from "../css";
 import renderPage from "../renderPage";
-import { IpcMessage, Messages, Status } from "./types";
+import type { Page } from "../usePages";
 
 const isUsingJsModule = (filename: string) => {
   try {
@@ -16,48 +17,51 @@ const isUsingJsModule = (filename: string) => {
   }
 };
 
-const handlers: Messages = {
-  async RenderPage({ page, pages }) {
+export type API = {
+  renderPage: (opts: { page: Page; pages: Page[] }) => Promise<{
+    dependencies: string[];
+  }>;
+  encodeAssetTransformCache: () => Promise<AssetTransformCache>;
+  restoreAssetTransformCache: (
+    assetTransformCache: AssetTransformCache
+  ) => Promise<void>;
+  clearAssetTransformCacheForFiles: (
+    filenames: string[]
+  ) => Promise<{ jsModulesInvalidated: boolean }>;
+  generateCssStats: () => Promise<{
+    unusedClassNames: string[];
+    undeclaredClassNames: string[];
+  }>;
+  resetCssStats: () => Promise<void>;
+};
+
+const api: API = {
+  async renderPage({ page, pages }) {
     const data = await renderPage({ page, pages });
     const dependencies = Array.from(data.dependencies);
     return { dependencies };
   },
-  async EncodeAssetTransformCache() {
+  async encodeAssetTransformCache() {
     const assetTransformCache = encodeAssetTransformCache();
     return assetTransformCache;
   },
-  async RestoreAssetTransformCache(assetTransformCache) {
+  async restoreAssetTransformCache(assetTransformCache) {
     restoreAssetTransformCache(assetTransformCache);
   },
-  async ClearAssetTransformCacheForFiles(filenames) {
+  async clearAssetTransformCacheForFiles(filenames) {
     filenames.forEach(clearAssetTransformCacheForFile);
     const jsModulesInvalidated = filenames.some(isUsingJsModule);
     return { jsModulesInvalidated };
   },
-  async GenerateCssStats() {
+  async generateCssStats() {
     const stats = generateCssStats();
     const unusedClassNames = Array.from(stats.unusedClassNames);
     const undeclaredClassNames = Array.from(stats.undeclaredClassNames);
     return { unusedClassNames, undeclaredClassNames };
   },
-  async ResetCssStats() {
+  async resetCssStats() {
     resetCssStats();
   },
 };
 
-let queue = Promise.resolve();
-
-process.send!({ type: Status.Ready, payload: null });
-
-process.on("message", (message: IpcMessage) => {
-  queue = queue.then(async () => {
-    try {
-      const { type } = message;
-      const payload: any = (await handlers[type](message.payload)) ?? null;
-      process.send!({ type, payload });
-    } catch (e) {
-      console.error(e);
-      process.exit(1);
-    }
-  });
-});
+export default api;

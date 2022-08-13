@@ -4,7 +4,6 @@ import * as React from "react";
 import sharp, { ResizeOptions } from "sharp";
 import { assetTransform } from "../assetTransformer";
 import { ClassNames, classNames } from "../css";
-import dev from "../dev";
 import useContent from "../useContent";
 
 type AdditionalSource = {
@@ -30,6 +29,8 @@ const transform = assetTransform<ImageResult>(
     if (size != null) {
       pipeline = pipeline.resize({ ...size, withoutEnlargement: true });
     }
+
+    const dev = process.env.NODE_ENV === "development";
 
     const defaultSrcPipeline = !dev
       ? pipeline.clone().png({ force: false }).jpeg({ force: false })

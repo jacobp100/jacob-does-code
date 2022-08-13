@@ -4,7 +4,6 @@ import transformClasses from "postcss-transform-classes";
 // @ts-expect-error
 import csso from "csso";
 import { classNameForOrigin, cssVariable, Origin } from "../css";
-import dev from "../dev";
 import type { Content } from "../useContent";
 import nestedAsync from "../util/nestedAsync";
 import transformAsset from "./transformAsset";
@@ -62,7 +61,7 @@ export default async (content: Content, input: string) => {
     from: undefined,
   });
 
-  if (dev) {
+  if (process.env.NODE_ENV === "development") {
     return css;
   }
 

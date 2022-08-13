@@ -1,11 +1,11 @@
 import type { ChildProcess } from "child_process";
 import { fork } from "child_process";
-import dev from "../dev";
-import type { AnyMessage, Messages } from "./types";
-import { Status } from "./types";
+import type { API } from "./api";
+import type { AnyMessage } from "./api-bridge-types";
+import { Status } from "./api-bridge-types";
 
 type WorkItem = {
-  type: keyof Messages;
+  type: keyof API;
   payload: any;
   res: (arg: any) => void;
   rej: (arg: Error) => void;
@@ -68,14 +68,16 @@ const handleMessage = ({ type, payload }: AnyMessage) => {
   }
 };
 
-const workerModulePath = require.resolve("./worker.js");
+const workerModulePath = require.resolve("./api-worker.js");
 
 export const startWorker = () => {
   if (worker !== undefined) {
     throw new Error("Worker already exists");
   }
 
-  worker = fork(workerModulePath, dev ? ["--dev"] : []);
+  worker = fork(workerModulePath, {
+    env: { ...process.env, NODE_ENV: "development" },
+  });
   workerReady = false;
   worker.on("message", handleMessage);
   worker.on("close", () => {
@@ -105,14 +107,14 @@ export const restartWorker = () => {
 startWorker();
 
 type WorkerFunction<
-  T extends keyof Messages,
-  Input = Parameters<Messages[T]>[0],
-  Output = ReturnType<Messages[T]>
-> = Parameters<Messages[T]>[0] extends undefined
+  T extends keyof API,
+  Input = Parameters<API[T]>[0],
+  Output = ReturnType<API[T]>
+> = Parameters<API[T]>[0] extends undefined
   ? () => Output
   : (payload: Input) => Output;
 
-const createWorkerFunction = <T extends keyof Messages>(
+const createWorkerFunction = <T extends keyof API>(
   type: T
 ): WorkerFunction<T> => {
   const fn = (payload: any = null) => {
@@ -124,15 +126,17 @@ const createWorkerFunction = <T extends keyof Messages>(
   return fn as any;
 };
 
-export const renderPage = createWorkerFunction("RenderPage");
-export const encodeAssetTransformCache = createWorkerFunction(
-  "EncodeAssetTransformCache"
-);
-export const restoreAssetTransformCache = createWorkerFunction(
-  "RestoreAssetTransformCache"
-);
-export const clearAssetTransformCacheForFiles = createWorkerFunction(
-  "ClearAssetTransformCacheForFiles"
-);
-export const generateCssStats = createWorkerFunction("GenerateCssStats");
-export const resetCssStats = createWorkerFunction("ResetCssStats");
+const api: API = {
+  renderPage: createWorkerFunction("renderPage"),
+  encodeAssetTransformCache: createWorkerFunction("encodeAssetTransformCache"),
+  restoreAssetTransformCache: createWorkerFunction(
+    "restoreAssetTransformCache"
+  ),
+  clearAssetTransformCacheForFiles: createWorkerFunction(
+    "clearAssetTransformCacheForFiles"
+  ),
+  generateCssStats: createWorkerFunction("generateCssStats"),
+  resetCssStats: createWorkerFunction("resetCssStats"),
+};
+
+export default api;

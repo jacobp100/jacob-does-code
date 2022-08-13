@@ -6,7 +6,6 @@ import generate from "@babel/generator";
 import * as t from "@babel/types";
 import { minify } from "terser";
 import { className, cssVariable } from "../css";
-import dev from "../dev";
 import { Content } from "../useContent";
 import nestedAsync from "../util/nestedAsync";
 import transformAsset from "./transformAsset";
@@ -72,7 +71,7 @@ export default async (content: Content, input: string, { module = false }) => {
 
   let js = generate(ast).code;
 
-  if (dev) {
+  if (process.env.NODE_ENV === "development") {
     return js;
   }
 

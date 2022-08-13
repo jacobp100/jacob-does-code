@@ -4,13 +4,29 @@ import * as fs from "fs";
 import * as path from "path";
 import { cwd } from "process";
 import type { Page } from "../usePages";
-import {
-  buildAllPages,
-  buildPages,
-  clearCachesForFiles,
-  restartWorker,
-  terminateWorker,
-} from "./builder";
+import { API } from "./api";
+import { buildAllPages, buildPages, clearCachesForFiles } from "./pageBuilder";
+
+const mode = process.argv[2] === "watch" ? "watch" : "build";
+
+/**
+ * API.ts just calls into the API, then transforms the return value into
+ * something JSON serializable
+ *
+ * API-Bridge runs a worker thread (API-Worker), which does the actual work
+ *
+ * These two files have a default export with the same type
+ *
+ * Running on a worker is not so much for performance - but rather to be able
+ * to restart the instance at any point should some JS change
+ *
+ * In the single build mode, we use API directly and avoid the worker thread.
+ * In watch mode, we use the worker thread. The reason we don't run the worker
+ * thread all the time is because we use the worker as an opportunity to set
+ * NODE_ENV=development
+ */
+const api: API =
+  mode === "watch" ? require("./api-bridge").default : require("./api").default;
 
 const projectPath = cwd();
 
@@ -34,7 +50,7 @@ const logDuration = (duration: number) => {
 const runFullBuild = async () => {
   console.log(chalk.dim("[Building site...]"));
 
-  const { duration, cssStats } = await buildAllPages(logBuildPage);
+  const { duration, cssStats } = await buildAllPages(api, logBuildPage);
 
   logDuration(duration);
 
@@ -63,7 +79,9 @@ const queueAsync = (fn: () => Promise<void> | void) => {
 
 queueAsync(runFullBuild);
 
-if (process.argv.includes("--dev")) {
+if (mode === "watch") {
+  const { restartWorker, terminateWorker } = require("./api-bridge");
+
   queueAsync(() => {
     console.log(chalk.dim("[Watching for changes site...]"));
   });
@@ -81,11 +99,25 @@ if (process.argv.includes("--dev")) {
 
   /* Watch for file changes */
   const runRebuild = async (filesToRebuild: string[]) => {
-    const { invalidatedPages } = await clearCachesForFiles(filesToRebuild);
+    const { invalidatedPages } = await clearCachesForFiles(api, filesToRebuild);
+
+    const { jsModulesInvalidated } = await api.clearAssetTransformCacheForFiles(
+      filesToRebuild
+    );
+
+    if (jsModulesInvalidated) {
+      const assetTransformCache = await api.encodeAssetTransformCache();
+      restartWorker();
+      await api.restoreAssetTransformCache(assetTransformCache);
+    }
 
     if (invalidatedPages.size > 0) {
       console.log(chalk.dim(`[Partial rebuild...]`));
-      const { duration } = await buildPages(invalidatedPages, logBuildPage);
+      const { duration } = await buildPages(
+        api,
+        invalidatedPages,
+        logBuildPage
+      );
       logDuration(duration);
     }
   };
@@ -124,6 +156,4 @@ if (process.argv.includes("--dev")) {
       });
     }
   });
-} else {
-  queueAsync(terminateWorker);
 }

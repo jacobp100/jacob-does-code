@@ -2,7 +2,6 @@ export { assetTransform } from "./assetTransformer";
 export * from "./components/components";
 export type { Config } from "./config";
 export { className, classNameForOrigin, classNames, cssVariable } from "./css";
-export { default as dev } from "./dev";
 export {
   ContentContext,
   createContentContext,

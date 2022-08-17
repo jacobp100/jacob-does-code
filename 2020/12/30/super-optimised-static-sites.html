@@ -47,7 +47,7 @@ Some more <span class="-o">_regular_</span> markdown inside a React component
 <p>As the components are standard React components, you’re not limited to only using them in your markdown.You can also use them in your own React components or page layouts.</p>
 <pre><code><span class="M">// components/ExampleComponent.js</span>
 
-<span class="D">import</span> { <span class="-b -U">Image</span> } <span class="D">from</span> <span class="W">&quot;../core/components&quot;</span>;
+<span class="D">import</span> { <span class="-b -U">Image</span> } <span class="D">from</span> <span class="W">&quot;core/components&quot;</span>;
 
 <span class="D">export</span> <span class="D">default</span> ({ src, chlidren }) =&gt; (
   <span class="-W"><span class="-X">&lt;<span class="S">div</span> <span class="-c">style</span>=<span class="W">{{</span> <span class="-c">display:</span> &quot;<span class="-c">flex</span>&quot; }}&gt;</span>
@@ -63,7 +63,7 @@ Some more <span class="-o">_regular_</span> markdown inside a React component
 </ul>
 <pre><code><span class="M">// layouts/example-layout.js</span>
 
-<span class="D">import</span> { <span class="-b -U">InlineCss</span>, <span class="-b -U">ExternalJs</span> } <span class="D">from</span> <span class="W">&quot;../core/components&quot;</span>;
+<span class="D">import</span> { <span class="-b -U">InlineCss</span>, <span class="-b -U">ExternalJs</span> } <span class="D">from</span> <span class="W">&quot;core/components&quot;</span>;
 
 <span class="D">export</span> <span class="D">default</span> ({ title, children }) =&gt; (
   <span class="-W"><span class="-X">&lt;<span class="S">html</span>&gt;</span>
@@ -96,8 +96,8 @@ Some more <span class="-o">_regular_</span> markdown inside a React component
 <p>For React components, you’ll need to use the <code>classNames</code> helper. It works similar to the <a href="https://www.npmjs.com/package/classnames">classnames</a> package — but it also does the minification.</p>
 <pre><code><span class="M">// components/ExampleComponent.js</span>
 
-<span class="D">import</span> { <span class="-b -U">Image</span> } <span class="D">from</span> <span class="W">&quot;../core/components&quot;</span>;
-<span class="D">import</span> { classNames } <span class="D">from</span> <span class="W">&quot;../core/css&quot;</span>;
+<span class="D">import</span> { <span class="-b -U">Image</span> } <span class="D">from</span> <span class="W">&quot;jdc/components&quot;</span>;
+<span class="D">import</span> { classNames } <span class="D">from</span> <span class="W">&quot;jdc/css&quot;</span>;
 
 <span class="D">export</span> <span class="D">default</span> ({ src, inverted }) =&gt; (
   <span class="-W"><span class="-X">&lt;<span class="S">div</span>

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useTableOfContents } from "../core/core";
+import { useTableOfContents } from "jdc";
 
 export default () => {
   const posts = useTableOfContents({ pages: "/posts/**" }).sort(

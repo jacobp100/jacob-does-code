@@ -1,11 +1,48 @@
-import * as React from "react";
+import path from "path";
 import { Suspense } from "react";
 import { renderToPipeableStream } from "react-dom/server";
+import { transformPage } from "./assetTransforms";
 import AsyncWritable from "./AsyncWritable";
-import PageComponent from "./PageComponent";
-import { ContentContext, createContentContext } from "./useContent";
-import type { Page } from "./usePages";
-import { PageContext } from "./usePages";
+import { Code } from "./components/components";
+import {
+  ConfigContext,
+  getConfig,
+  Page,
+  ResolvedConfig,
+  useConfig,
+} from "./config";
+import useContent, { ContentContext, createContentContext } from "./useContent";
+
+const DefaultLayout = ({
+  filename,
+  title = path.basename(filename, ".mdx"),
+  children,
+}: any) => (
+  <html>
+    <head>
+      <title>{title}</title>
+      <meta charSet="utf-8" />
+    </head>
+    <body>{children}</body>
+  </html>
+);
+
+const PageComponent = (page: Page) => {
+  const content = useContent();
+  const config = useConfig();
+  const { Content, props } = transformPage(
+    content,
+    content.read(page.filename),
+    { filename: page.filename }
+  );
+  const Layout = props.Layout ?? config.Layout ?? DefaultLayout;
+
+  return (
+    <Layout {...page} {...props}>
+      <Content components={{ code: Code }} />
+    </Layout>
+  );
+};
 
 type Props = {
   page: Page;
@@ -14,18 +51,22 @@ type Props = {
 
 export default async ({ page, pages }: Props) => {
   const content = createContentContext();
+  const config: ResolvedConfig = { ...getConfig(content), pages };
 
   const stream = new AsyncWritable();
 
   const { pipe } = renderToPipeableStream(
     <Suspense fallback="Loading">
-      <PageContext.Provider value={pages}>
+      <ConfigContext.Provider value={config}>
         <ContentContext.Provider value={content}>
           <PageComponent {...page} />
         </ContentContext.Provider>
-      </PageContext.Provider>
+      </ConfigContext.Provider>
     </Suspense>,
-    { onAllReady: () => pipe(stream) }
+    {
+      onAllReady: () => pipe(stream),
+      onError: console.error,
+    }
   );
 
   let html = await stream.awaited;

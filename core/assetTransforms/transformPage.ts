@@ -20,19 +20,20 @@ try {
 }
 
 type Page = {
-  title: string;
   Content: (props: any) => JSX.Element;
-  Layout: (props: any) => JSX.Element;
   props: any;
 };
 
 export default assetTransform(
-  async (content: Content, filename: string): Promise<Page> => {
+  async (
+    content: Content,
+    mdx: string,
+    { filename }: { filename: string }
+  ): Promise<Page> => {
     // Preserve imports to work with node imports
     const provider = await eval(`import("@mdx-js/react")`);
     const mdxJs = await eval(`import("@mdx-js/mdx")`);
 
-    const mdx = content.read(filename);
     const basePath = path.dirname(
       path.resolve(projectPath, filename.slice("/".length))
     );
@@ -56,13 +57,8 @@ export default assetTransform(
     const exports: any = {};
     new Function("require", "exports", source)(requireFixingFileUrls, exports);
 
-    const {
-      title = path.basename(filename, ".mdx"),
-      default: Content,
-      Layout,
-      ...props
-    } = exports;
+    const { default: Content, ...props } = exports;
 
-    return { title, Content, Layout, props };
+    return { Content, props };
   }
 );

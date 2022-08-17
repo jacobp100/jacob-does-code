@@ -1,5 +1,5 @@
 import path from "path";
-import { Config } from "./core/core";
+import { Config } from "./core";
 
 export default {
   pages: ["pages/**/*.mdx", "posts/**/*.mdx"],

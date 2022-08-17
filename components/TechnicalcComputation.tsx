@@ -1,5 +1,5 @@
 import * as React from "react";
-import { InlineJs, classNames } from "../core/core";
+import { InlineJs, classNames } from "jdc";
 
 export default () => (
   <>

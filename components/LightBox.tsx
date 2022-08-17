@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Video, className } from "../core/core";
+import { Video, className } from "jdc";
 
 type Props = {
   src: string;

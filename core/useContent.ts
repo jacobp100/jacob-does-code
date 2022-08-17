@@ -3,7 +3,6 @@ import type Module from "module";
 import * as path from "path";
 import { cwd } from "process";
 import { createContext, useContext } from "react";
-// @ts-ignore
 import stringHash from "string-hash";
 
 const libraryPath = path.join(__dirname);

@@ -73,7 +73,7 @@ As the components are standard React components, you're not limited to only usin
 ```jsx
 // components/ExampleComponent.js
 
-import { Image } from "../core/components";
+import { Image } from "core/components";
 
 export default ({ src, chlidren }) => (
   <div style={{ display: "flex" }}>
@@ -91,7 +91,7 @@ When you are doing your own page layout, you'll also find the following componen
 ```jsx
 // layouts/example-layout.js
 
-import { InlineCss, ExternalJs } from "../core/components";
+import { InlineCss, ExternalJs } from "core/components";
 
 export default ({ title, children }) => (
   <html>
@@ -138,8 +138,8 @@ For React components, you'll need to use the `classNames` helper. It works simil
 ```js
 // components/ExampleComponent.js
 
-import { Image } from "../core/components";
-import { classNames } from "../core/css";
+import { Image } from "jdc/components";
+import { classNames } from "jdc/css";
 
 export default ({ src, inverted }) => (
   <div

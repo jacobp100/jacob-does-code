@@ -7,7 +7,7 @@ import {
   className,
   classNames,
   cssVariable,
-} from "../core/core";
+} from "jdc";
 
 const Header = ({ children }: { children: any }) => (
   <div className={className("header")}>{children}</div>

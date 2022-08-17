@@ -1,8 +1,8 @@
 {
   "name": "jdc",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "main": "core/index.ts",
   "scripts": {
     "start": "./core/cli/index.js watch",
     "build": "./core/cli/index.js build"
@@ -39,6 +39,7 @@
     "glob": "^8.0.3",
     "highlight.js": "^11.6.0",
     "http-server": "^14.1.1",
+    "jdc": "link:.",
     "minimatch": "^5.1.0",
     "p-all": "^4.0.0",
     "postcss": "^8.4.16",

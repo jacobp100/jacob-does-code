@@ -4,9 +4,9 @@ import {
   encodeAssetTransformCache,
   restoreAssetTransformCache,
 } from "../assetTransformer";
+import type { Page, ResolvedConfig } from "../config";
 import { generateCssStats, resetCssStats } from "../css";
 import renderPage from "../renderPage";
-import type { Page } from "../usePages";
 
 const isUsingJsModule = (filename: string) => {
   try {
@@ -18,9 +18,10 @@ const isUsingJsModule = (filename: string) => {
 };
 
 export type API = {
-  renderPage: (opts: { page: Page; pages: Page[] }) => Promise<{
-    dependencies: string[];
-  }>;
+  renderPage: (opts: {
+    page: Page;
+    pages: ResolvedConfig["pages"];
+  }) => Promise<{ dependencies: string[] }>;
   encodeAssetTransformCache: () => Promise<AssetTransformCache>;
   restoreAssetTransformCache: (
     assetTransformCache: AssetTransformCache

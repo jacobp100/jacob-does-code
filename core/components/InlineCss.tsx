@@ -1,9 +1,9 @@
 import * as React from "react";
 import { assetTransform } from "../assetTransformer";
-import { transformCss } from "../assetTransforms/assetTransforms";
+import { transformCss } from "../assetTransforms";
 import useContent from "../useContent";
 
-const transform = assetTransform(
+const transform = assetTransform<string, [string | string[]]>(
   (content, src) => {
     const input = Array.isArray(src)
       ? src.map(content.read).join("\n")

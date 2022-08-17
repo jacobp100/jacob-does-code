@@ -1,11 +1,13 @@
 import * as React from "react";
 import { assetTransform } from "../assetTransformer";
-import { transformCss } from "../assetTransforms/assetTransforms";
+import { transformCss } from "../assetTransforms";
 import useContent from "../useContent";
 
-const transform = assetTransform<string, [string]>(
+const transform = assetTransform<string, [string | string[]]>(
   async (content, src) => {
-    const input = content.read(src);
+    const input = Array.isArray(src)
+      ? src.map(content.read).join("\n")
+      : content.read(src);
     const output = await transformCss(content, input);
     return content.write(output, { extension: ".css" });
   },
@@ -13,7 +15,7 @@ const transform = assetTransform<string, [string]>(
 );
 
 type Props = {
-  src: string;
+  src: string | string[];
 };
 
 export default ({ src }: Props) => {

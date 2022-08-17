@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Svg, className, classNames, cssVariable } from "../core/core";
+import { Svg, className, classNames, cssVariable } from "jdc";
 
 export default () => (
   <>

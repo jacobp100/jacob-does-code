@@ -1,13 +1,12 @@
 import type { ScriptHTMLAttributes } from "react";
 import * as React from "react";
 import { assetTransform } from "../assetTransformer";
-import { transformJs } from "../assetTransforms/assetTransforms";
+import { transformJs } from "../assetTransforms";
 import useContent from "../useContent";
 
 const transform = assetTransform<string, [string, { module: boolean }]>(
   async (content, src, options) => {
-    const input = content.read(src);
-    const output = await transformJs(content, input, options);
+    const output = await transformJs(content, content.read(src), options);
     return content.write(output, { extension: ".js" });
   },
   { cacheKey: "core/ExternalJs" }

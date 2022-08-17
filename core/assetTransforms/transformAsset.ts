@@ -5,29 +5,29 @@ import transformHtml from "./transformHtml";
 import transformJs from "./transformJs";
 
 // NB - doesn't run `transformPage`
-export default async (content: Content, asset: string) => {
-  const extension = path.extname(asset);
+export default async (content: Content, src: string) => {
+  const extension = path.extname(src);
 
   switch (extension) {
     case ".js": {
-      const js = await transformJs(content, content.read(asset), {
+      const js = await transformJs(content, content.read(src), {
         module: true,
       });
       return content.write(js, { extension: ".js" });
     }
     case ".min.js": {
-      const js = content.read(asset);
+      const js = content.read(src);
       return content.write(js, { extension: ".js" });
     }
     case ".css": {
-      const css = await transformCss(content, content.read(asset));
+      const css = await transformCss(content, content.read(src));
       return content.write(css, { extension: ".css" });
     }
     case ".html": {
-      const html = await transformHtml(content, content.read(asset));
+      const html = await transformHtml(content, content.read(src));
       return content.write(html, { extension: ".html" });
     }
     default:
-      return content.write(content.readBuffer(asset), { extension });
+      return content.write(content.readBuffer(src), { extension });
   }
 };

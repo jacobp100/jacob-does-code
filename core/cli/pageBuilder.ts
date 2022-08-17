@@ -1,12 +1,16 @@
-import type { Page } from "../usePages";
-import allPages from "./allPages";
+import { getConfig, Page } from "../config";
 import type { API } from "./api-direct";
+import getConfigPages from "./getConfigPages";
 
+const config = getConfig({ require });
+const allPages = getConfigPages(config);
 const pageDependencies = new Map<Page, string[]>();
+
+const allPagesSet = new Set(allPages);
 
 export const buildPages = async (
   api: API,
-  pages: Set<Page>,
+  pagesToBuild: Set<Page>,
   concurrentLimit: number,
   logger: (page: Page) => void
 ) => {
@@ -14,15 +18,14 @@ export const buildPages = async (
 
   // Preserve imports to work with node imports
   const { default: pAll } = await eval(`import("p-all")`);
-  const pagesArray = Array.from(allPages);
 
   await pAll(
-    Array.from(pages, (page) => async () => {
+    Array.from(pagesToBuild, (page) => async () => {
       logger(page);
 
       const { dependencies } = await api.renderPage({
         page,
-        pages: pagesArray,
+        pages: allPages,
       });
 
       pageDependencies.set(page, dependencies);
@@ -43,7 +46,12 @@ export const buildAllPages = async (
 ) => {
   api.resetCssStats();
 
-  const { duration } = await buildPages(api, allPages, concurrentLimit, logger);
+  const { duration } = await buildPages(
+    api,
+    allPagesSet,
+    concurrentLimit,
+    logger
+  );
 
   const cssStats = await api.generateCssStats();
 

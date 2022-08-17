@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Image, ImageSource } from "../core/core";
+import { Image, ImageSource } from "jdc";
 
 export default ({ src, alt = "App Screenshots" }: any) => (
   <Image

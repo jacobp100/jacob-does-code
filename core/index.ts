@@ -1,4 +1,5 @@
 export { assetTransform } from "./assetTransformer";
+export { transformCss, transformHtml, transformJs } from "./assetTransforms";
 export * from "./components/components";
 export type { Config } from "./config";
 export { className, classNameForOrigin, classNames, cssVariable } from "./css";
@@ -8,5 +9,5 @@ export {
   default as useContent,
 } from "./useContent";
 export type { Content } from "./useContent";
-export { PageContext, useTableOfContents } from "./usePages";
-export type { Page } from "./usePages";
+export { useTableOfContents } from "./useTableOfContents";
+export type { PageData } from "./useTableOfContents";

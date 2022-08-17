@@ -1,3 +1,6 @@
+// @ts-ignore
+import { className } from "super-ssg";
+
 if (location.search.length > 1) {
   const container = document.getElementById("computation");
   container.removeAttribute("hidden");
@@ -23,12 +26,12 @@ if (location.search.length > 1) {
 
   document.addEventListener("click", (e) => {
     const { target } = e;
-    if (target.classList.contains(CSS_CLASSES["computation__close"])) {
+    if (target.classList.contains(className("computation__close"))) {
       container.setAttribute("hidden", "");
     } else if (
-      target.classList.contains(CSS_CLASSES["computation__toggle-display-mode"])
+      target.classList.contains(className("computation__toggle-display-mode"))
     ) {
-      container.classList.toggle(CSS_CLASSES["computation--form-hidden"]);
+      container.classList.toggle(className("computation--form-hidden"));
     }
   });
 

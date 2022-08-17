@@ -2,6 +2,8 @@
 /// <reference path="./computation.d.ts" />
 import "https://unpkg.com/mathjax@3.1.0/es5/mml-svg.js";
 import "/assets/technicalc/dist/client.min.js";
+// @ts-ignore
+import { className } from "super-ssg";
 
 /** @param {{container: HTMLElement, worker: Worker}} params */
 export default ({ container, worker }) => {
@@ -16,11 +18,11 @@ export default ({ container, worker }) => {
     value != null ? { ok: true, value } : { ok: false, error: null };
 
   /** @type {HTMLFormElement} */
-  const form = container.querySelector("." + CSS_CLASSES["computation__form"]);
+  const form = container.querySelector("." + className("computation__form"));
 
   /**
    * @template T
-   * @param {HTMLElement} element
+   * @param {HTMLElement | null} element
    * @param {(arg0: T, arg1: any) => any} formatter
    * @returns {function(Result<T, any> | null): void}
    */
@@ -29,7 +31,7 @@ export default ({ container, worker }) => {
       return;
     }
 
-    element.classList.remove(CSS_CLASSES["computation--loading"]);
+    element.classList.remove(className("computation--loading"));
 
     if (!result.ok) {
       element.innerHTML = "Error";
@@ -51,18 +53,18 @@ export default ({ container, worker }) => {
   };
 
   const setInput = setComputationRow(
-    container.querySelector("." + CSS_CLASSES["computation__input"]),
+    container.querySelector("." + className("computation__input")),
     Elements.toMml
   );
 
   const setResult = setComputationRow(
-    container.querySelector("." + CSS_CLASSES["computation__result"]),
+    container.querySelector("." + className("computation__result")),
     Value.toMml
   );
 
   const search = window.location.search.slice("?".length);
   container
-    .querySelector("." + CSS_CLASSES["computation__open-in-app"])
+    .querySelector("." + className("computation__open-in-app"))
     .setAttribute("href", `technicalc://editor?${search}`);
 
   const input = resultOfOption(

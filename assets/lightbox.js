@@ -1,5 +1,8 @@
-const modal = document.querySelector("." + CSS_CLASSES["lightbox__modal"]);
-const video = document.querySelector("." + CSS_CLASSES["lightbox__video"]);
+// @ts-ignore
+import { className } from "super-ssg";
+
+const modal = document.querySelector("." + className("lightbox__modal"));
+const video = document.querySelector("." + className("lightbox__video"));
 
 const toggleModal = (open) => {
   if (open) {
@@ -10,7 +13,7 @@ const toggleModal = (open) => {
   }
 
   document.documentElement.classList.toggle(
-    CSS_CLASSES["lightbox-modal-open"],
+    className("lightbox-modal-open"),
     open
   );
 };
@@ -19,7 +22,7 @@ let scrollX = 0;
 let scrollY = 0;
 
 document
-  .querySelector("." + CSS_CLASSES["lightbox__button"])
+  .querySelector("." + className("lightbox__button"))
   .addEventListener("click", () => {
     scrollX = window.scrollX;
     scrollY = window.scrollY;
@@ -28,7 +31,7 @@ document
   });
 
 document
-  .querySelector("." + CSS_CLASSES["lightbox__close"])
+  .querySelector("." + className("lightbox__close"))
   .addEventListener("click", () => {
     toggleModal(false);
     video.pause();

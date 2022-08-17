@@ -1,4 +1,7 @@
+// @ts-ignore
+import { cssVariable } from "super-ssg";
+
 document.documentElement.style.setProperty(
-  CSS_VARS["--hairline-width"],
+  cssVariable("--hairline-width"),
   1 / (window.devicePixelRatio || 1) + "px"
 );

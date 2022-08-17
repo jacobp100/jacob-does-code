@@ -10,35 +10,43 @@ import { Content } from "../useContent";
 import nestedAsync from "../util/nestedAsync";
 import transformAsset from "./transformAsset";
 
+const stringHandlers: Record<string, (str: string) => string> = {
+  className,
+  cssVariable,
+};
+
 export default async (content: Content, input: string, { module = false }) => {
   const ast = parse(input, {
     sourceType: "module",
   });
 
   await nestedAsync((asyncTransform) => {
+    const importsToRemove: any = [];
+
     traverse(ast, {
-      MemberExpression(path: any) {
-        if (
-          path.node.computed &&
-          path.get("object").isIdentifier({ name: "CSS_VARS" }) &&
-          path.get("property").isStringLiteral()
-        ) {
-          path.replaceWith(
-            t.stringLiteral(cssVariable(path.node.property.value))
-          );
-        } else if (
-          path.node.computed &&
-          path.get("object").isIdentifier({ name: "CSS_CLASSES" }) &&
-          path.get("property").isStringLiteral()
-        ) {
-          path.replaceWith(
-            t.stringLiteral(className(path.node.property.value))
-          );
-        }
+      Program: {
+        exit() {
+          importsToRemove.forEach((path: any) => {
+            path.remove();
+          });
+        },
       },
       CallExpression(path: any) {
         const callee = path.get("callee");
         const argument = path.get("arguments.0");
+
+        const isCoreExport = () => {
+          const importSpecifier = path.scope.getBinding(callee.node.name)?.path
+            .parentPath;
+
+          return (
+            importSpecifier != null &&
+            importSpecifier.isImportDeclaration() &&
+            importSpecifier
+              .get("source")
+              .isStringLiteral({ value: "super-ssg" })
+          );
+        };
 
         if (
           callee.isMemberExpression() &&
@@ -55,15 +63,44 @@ export default async (content: Content, input: string, { module = false }) => {
             const asset = await transformAsset(content, argument.node.value);
             argument.node.value = asset;
           });
+        } else if (callee.isIdentifier() && isCoreExport()) {
+          const { name } = callee.node;
+          const stringHandler = stringHandlers[name];
+
+          if (stringHandler == null) {
+            return;
+          } else if (!argument.isStringLiteral()) {
+            throw new Error(
+              `Only string literals are handled in calls to ${name} within JS assets`
+            );
+          } else {
+            const stringValue = argument.node.value;
+            path.replaceWith(t.stringLiteral(stringHandler(stringValue)));
+          }
         }
       },
       ImportDeclaration(path: any) {
-        const assetPath = path.node.source.value;
-        if (assetPath.startsWith("/assets")) {
+        const importPath = path.node.source.value;
+
+        if (importPath.startsWith("/")) {
           asyncTransform(async () => {
-            const asset = await transformAsset(content, assetPath);
+            content.read(importPath);
+            const asset = await transformAsset(content, importPath);
             path.node.source.value = asset;
           });
+        } else if (importPath === "super-ssg") {
+          const allHandlers = Object.keys(stringHandlers);
+
+          path.get("specifiers").forEach((specifier: any) => {
+            const imported = specifier.node.imported.name;
+            if (!allHandlers.includes(imported)) {
+              throw new Error(
+                `Export ${imported} is not available in JS assets`
+              );
+            }
+          });
+
+          importsToRemove.push(path);
         }
       },
     });

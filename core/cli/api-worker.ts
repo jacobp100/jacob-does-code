@@ -1,6 +1,7 @@
 import type { IpcMessage } from "./api-bridge-types";
 import { Status } from "./api-bridge-types";
 import api from "./api-direct";
+import "./register";
 
 let queue = Promise.resolve();
 

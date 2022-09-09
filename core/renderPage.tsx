@@ -1,9 +1,7 @@
 import path from "path";
 import { Suspense } from "react";
 import { renderToPipeableStream } from "react-dom/server";
-import { transformPage } from "./assetTransforms";
-import AsyncWritable from "./AsyncWritable";
-import { Code } from "./components/components";
+import { Code } from "./components";
 import {
   ConfigContext,
   getConfig,
@@ -11,7 +9,9 @@ import {
   ResolvedConfig,
   useConfig,
 } from "./config";
+import transformPage from "./transformPage";
 import useContent, { ContentContext, createContentContext } from "./useContent";
+import AsyncWritable from "./util/AsyncWritable";
 
 const DefaultLayout = ({
   filename,
@@ -30,12 +30,9 @@ const DefaultLayout = ({
 const PageComponent = (page: Page) => {
   const content = useContent();
   const config = useConfig();
-  const { Content, props } = transformPage(
-    content,
-    content.read(page.filename),
-    { filename: page.filename }
-  );
-  const Layout = props.Layout ?? config.Layout ?? DefaultLayout;
+
+  const { Content, props } = transformPage(content, page.filename);
+  const Layout = config.Layout ?? DefaultLayout;
 
   return (
     <Layout {...page} {...props}>

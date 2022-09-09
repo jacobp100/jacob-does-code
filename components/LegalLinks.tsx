@@ -1,8 +1,7 @@
-import * as React from "react";
-import { className } from "jdc";
+import { A, className } from "jdc";
 
 export default () => (
   <p className={className("legal-links")}>
-    <a href="/privacy">Privacy Policy</a>
+    <A href="/pages/privacy.mdx">Privacy Policy</A>
   </p>
 );

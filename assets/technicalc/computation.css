@@ -80,7 +80,9 @@
 
 .computation__open-in-app,
 .computation__toggle-display-mode {
-  display: block;
+  /* Flex to force horizontal direction, so hidden content does not expand button height */
+  display: flex;
+  align-items: center;
   padding: 6px 32px;
   border: 0;
   font: inherit;
@@ -103,8 +105,7 @@
   color: #ccc;
 }
 
-.computation__toggle-display-mode-icon svg {
-  vertical-align: middle;
+.computation__toggle-display-mode-icon {
   width: 1rem;
   height: 1rem;
   pointer-events: none;

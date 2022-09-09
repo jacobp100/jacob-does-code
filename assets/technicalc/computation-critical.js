@@ -5,9 +5,7 @@ if (location.search.length > 1) {
   const container = document.getElementById("computation");
   container.removeAttribute("hidden");
 
-  const loadHtml = fetch(
-    require.resolve("/assets/technicalc/computation.html")
-  ).then((res) => res.text());
+  const loadHtml = fetch("/computation").then((res) => res.text());
 
   const loadStyles = new Promise((res) => {
     const styles = document.createElement("link");
@@ -26,6 +24,7 @@ if (location.search.length > 1) {
 
   document.addEventListener("click", (e) => {
     const { target } = e;
+    console.log({ target });
     if (target.classList.contains(className("computation__close"))) {
       container.setAttribute("hidden", "");
     } else if (

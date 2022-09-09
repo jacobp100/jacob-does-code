@@ -1,6 +1,6 @@
-import * as React from "react";
 import { format } from "date-fns";
 import {
+  A,
   ExternalJs,
   InlineCss,
   InlineJs,
@@ -28,19 +28,19 @@ const HeaderSection = ({
 );
 
 const HeaderLogo = () => (
-  <a href="/" className={classNames("header__logo")}>
+  <A href="/pages/index.mdx" className="header__logo">
     Jacob
     <br />
     does
     <br />
     code
-  </a>
+  </A>
 );
 
 const HeaderLink = ({ href, children }: { href: string; children: string }) => (
-  <a href={href} className={classNames("header__link")}>
+  <A href={href} className="header__link">
     {children}
-  </a>
+  </A>
 );
 
 const PublishedOn = ({ filename }: { filename: string }) => {
@@ -73,6 +73,7 @@ type Props = {
   js?: string;
   banner?: JSX.Element;
   primary?: string;
+  fragment?: boolean;
   children: JSX.Element;
 };
 
@@ -84,35 +85,42 @@ export default ({
   js,
   banner,
   primary,
+  fragment,
   children,
-}: Props) => (
-  <html style={{ [cssVariable("--primary")]: primary }} lang="en">
-    <head>
-      <title>{title}</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width,initial-scale=1" />
-      {description && <meta name="description" content={description} />}
-      <InlineJs src="/assets/set-hairline-width.js" />
-      <InlineCss src={["/assets/base.css", ...castArray(css)]} />
-      {castArray(js).map((src, index) => (
-        <ExternalJs key={index} src={src} type="module" defer />
-      ))}
-    </head>
-    <body>
-      {banner}
-      <Header>
-        <HeaderLogo />
-        <HeaderSection>Apps</HeaderSection>
-        <HeaderLink href="/pocket-jam">Pocket Jam</HeaderLink>
-        <HeaderLink href="/piano-tabs">Piano Tabs</HeaderLink>
-        <HeaderLink href="/technicalc">TechniCalc</HeaderLink>
-        <HeaderLink href="/freebies">Freebies</HeaderLink>
-        <HeaderSection last>Developement</HeaderSection>
-        <HeaderLink href="/blog">Blog</HeaderLink>
-        <HeaderLink href="https://github.com/jacobp100">Github</HeaderLink>
-      </Header>
-      {children}
-      <PublishedOn filename={filename} />
-    </body>
-  </html>
-);
+}: Props) => {
+  if (fragment === true) {
+    return children;
+  }
+
+  return (
+    <html style={{ [cssVariable("--primary")]: primary }} lang="en">
+      <head>
+        <title>{title}</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        {description && <meta name="description" content={description} />}
+        <InlineJs src="/assets/set-hairline-width.js" />
+        <InlineCss src={["/assets/base.css", ...castArray(css)]} />
+        {castArray(js).map((src, index) => (
+          <ExternalJs key={index} src={src} type="module" defer />
+        ))}
+      </head>
+      <body>
+        {banner}
+        <Header>
+          <HeaderLogo />
+          <HeaderSection>Apps</HeaderSection>
+          <HeaderLink href="/pages/pocket-jam.mdx">Pocket Jam</HeaderLink>
+          <HeaderLink href="/pages/piano-tabs.mdx">Piano Tabs</HeaderLink>
+          <HeaderLink href="/pages/technicalc.mdx">TechniCalc</HeaderLink>
+          <HeaderLink href="/pages/freebies.mdx">Freebies</HeaderLink>
+          <HeaderSection last>Developement</HeaderSection>
+          <HeaderLink href="/pages/blog.mdx">Blog</HeaderLink>
+          <HeaderLink href="https://github.com/jacobp100">Github</HeaderLink>
+        </Header>
+        {children}
+        <PublishedOn filename={filename} />
+      </body>
+    </html>
+  );
+};

@@ -1,4 +1,4 @@
-import { Svg, Video, classNames, cssVariable } from "jdc";
+import { A, InlineSvg, Video, classNames, cssVariable } from "jdc";
 import LightBox from "../components/LightBox";
 import Icon from "../components/Icon";
 import Lead from "../components/Lead";
@@ -7,7 +7,6 @@ import AppBlock from "../components/AppBlock";
 import LegalLinks from "../components/LegalLinks";
 import TechnicalcComputation from "../components/TechnicalcComputation";
 
-export { default as Layout } from "../components/Layout";
 export const title = "TechniCalc";
 export const description = "A smart calculator for a smart phone";
 export const css = [
@@ -113,19 +112,19 @@ With full support for **split screen** on iPad and **global shortcut** keys on m
 
 <div className={classNames("center-icons")}>
 
-<a
+<A
   title="App Store"
   href="https://apps.apple.com/gb/app/technicalc-calculator/id1504965415"
 >
-  <Svg src="/assets/vendor/app-store.svg" />
-</a>
+  <InlineSvg src="/assets/vendor/app-store.svg" />
+</A>
 
-<a
+<A
   title="Play Store"
   href="https://play.google.com/store/apps/details?id=com.technicalc&hl=en&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
 >
-  <Svg src="/assets/vendor/google-play.svg" />
-</a>
+  <InlineSvg src="/assets/vendor/google-play.svg" />
+</A>
 
 </div>
 
@@ -141,14 +140,14 @@ With full support for **split screen** on iPad and **global shortcut** keys on m
 
 <div className={classNames("center-icons")}>
 
-<a title="Twitter" href="https://twitter.com/technicalcapp">
-  <Svg
+<A title="Twitter" href="https://twitter.com/technicalcapp">
+  <InlineSvg
     src="/assets/vendor/twitter.svg"
     fill={`var(${cssVariable("--primary")})`}
     width="54"
     height="54"
   />
-</a>
+</A>
 
 </div>
 

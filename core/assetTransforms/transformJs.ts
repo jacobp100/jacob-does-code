@@ -15,6 +15,18 @@ const stringHandlers: Record<string, (str: string) => string> = {
   cssVariable,
 };
 
+const isImportedFromCore = (path: any) => {
+  const callee = path.get("callee");
+  const importSpecifier = path.scope.getBinding(callee.node.name)?.path
+    .parentPath;
+
+  return (
+    importSpecifier != null &&
+    importSpecifier.isImportDeclaration() &&
+    importSpecifier.get("source").isStringLiteral({ value: "super-ssg" })
+  );
+};
+
 export default async (content: Content, input: string, { module = false }) => {
   const ast = parse(input, {
     sourceType: "module",
@@ -35,19 +47,6 @@ export default async (content: Content, input: string, { module = false }) => {
         const callee = path.get("callee");
         const argument = path.get("arguments.0");
 
-        const isCoreExport = () => {
-          const importSpecifier = path.scope.getBinding(callee.node.name)?.path
-            .parentPath;
-
-          return (
-            importSpecifier != null &&
-            importSpecifier.isImportDeclaration() &&
-            importSpecifier
-              .get("source")
-              .isStringLiteral({ value: "super-ssg" })
-          );
-        };
-
         if (
           callee.isMemberExpression() &&
           callee.get("object").isIdentifier({ name: "require" }) &&
@@ -63,7 +62,7 @@ export default async (content: Content, input: string, { module = false }) => {
             const asset = await transformAsset(content, argument.node.value);
             argument.node.value = asset;
           });
-        } else if (callee.isIdentifier() && isCoreExport()) {
+        } else if (callee.isIdentifier() && isImportedFromCore(path)) {
           const { name } = callee.node;
           const stringHandler = stringHandlers[name];
 

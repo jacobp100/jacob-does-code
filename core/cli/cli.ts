@@ -7,7 +7,12 @@ import * as path from "path";
 import { cwd } from "process";
 import type { Page } from "../config";
 import { API } from "./api-direct";
-import { buildAllPages, buildPages, clearCachesForFiles } from "./pageBuilder";
+import {
+  buildAllPages,
+  buildPages,
+  clearCachesForFiles,
+  refetchAndBuildPages,
+} from "./pageBuilder";
 
 const mode = process.argv[2] === "watch" ? "watch" : "build";
 
@@ -139,12 +144,22 @@ if (mode !== "build") {
     }
   };
 
+  const runRefetchAndRebuildPagesIfNeeded = (filename: string) => {
+    if (filename.endsWith(".mdx")) {
+      queueAsync(async () => {
+        await refetchAndBuildPages(api, concurrentLimit, logBuildPage);
+      });
+    }
+  };
+
   let changedFiles: string[] = [];
   let queueRebuildTimeout: NodeJS.Timeout | undefined;
   chokidar
     .watch(projectPath, {
       ignored: [path.join(projectPath, "node_modules"), sitePath],
     })
+    .on("add", runRefetchAndRebuildPagesIfNeeded)
+    .on("unlink", runRefetchAndRebuildPagesIfNeeded)
     .on("change", (filename: string) => {
       changedFiles.push(filename);
 

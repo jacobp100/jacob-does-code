@@ -1,5 +1,4 @@
-import * as React from "react";
-import { Svg, className, classNames, cssVariable } from "jdc";
+import { A, InlineSvg, className, classNames, cssVariable } from "jdc";
 
 export default () => (
   <>
@@ -15,30 +14,30 @@ export default () => (
 
     <p className={className("lead")} style={{ color: "inherit" }}>
       Get{" "}
-      <a
-        href="/pocket-jam"
+      <A
+        href="/pages/pocket-jam.mdx"
         style={{ color: `var(${cssVariable("--pocket-jam")})` }}
       >
         Pocket Jam
-      </a>{" "}
+      </A>{" "}
       and{" "}
-      <a
-        href="/piano-tabs"
+      <A
+        href="/pages/piano-tabs.mdx"
         style={{ color: `var(${cssVariable("--piano-tabs")})` }}
       >
         Piano Tabs
-      </a>{" "}
+      </A>{" "}
       together and save 30%
     </p>
 
     {/* Requires StoreLinks to already be present in page */}
     <div className={classNames("center-icons")}>
-      <a
+      <A
         title="App Store"
         href="https://apps.apple.com/us/app-bundle/id1542101429?mt=8"
       >
-        <Svg src="/assets/vendor/app-store-reused.svg" />
-      </a>
+        <InlineSvg src="/assets/vendor/app-store-reused.svg" />
+      </A>
     </div>
   </>
 );

@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useTableOfContents } from "jdc";
+import { A, useTableOfContents } from "jdc";
 
 export default () => {
   const posts = useTableOfContents({ pages: "/posts/**" }).sort(
@@ -8,9 +7,9 @@ export default () => {
 
   return (
     <ul>
-      {posts.map(({ url, title }) => (
-        <li key={url}>
-          <a href={url}>{title}</a>
+      {posts.map(({ filename, title }: any) => (
+        <li key={filename}>
+          <A href={filename}>{title}</A>
         </li>
       ))}
     </ul>

@@ -14,6 +14,7 @@ export type Config = {
   pages?: string[] | string;
   urlForPage?: (filename: string) => string;
   Layout?: (props: any) => JSX.Element;
+  cssAnalyzer?: boolean;
 };
 
 export type ResolvedConfig = {

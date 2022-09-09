@@ -1,6 +1,6 @@
 import minimatch from "minimatch";
-import { transformPage } from "./assetTransforms";
-import { useConfig } from "./config";
+import transformPage from "./transformPage";
+import { Page, useConfig } from "./config";
 import useContent from "./useContent";
 import castArray from "./util/castArray";
 
@@ -14,9 +14,7 @@ type Options = {
   pages?: string[] | string;
 };
 
-export const useTableOfContents = (options?: Options): PageData[] => {
-  const content = useContent();
-
+export const usePages = (options?: Options): Page[] => {
   let { pages } = useConfig();
   if (options?.pages != null) {
     const filter = castArray(options.pages);
@@ -25,12 +23,17 @@ export const useTableOfContents = (options?: Options): PageData[] => {
     );
   }
 
+  return pages;
+};
+
+export const useTableOfContents = (options?: Options): PageData[] => {
+  const content = useContent();
+  const pages = usePages(options);
+
   let promises: Promise<any>[] | undefined;
   const out = pages.map(({ filename, url }) => {
     try {
-      const { props } = transformPage(content, content.read(filename), {
-        filename,
-      });
+      const { props } = transformPage(content, filename);
       return { ...props, filename, url };
     } catch (e) {
       if (!(e instanceof Promise)) {

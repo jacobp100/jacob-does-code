@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Video, className } from "jdc";
 
 type Props = {

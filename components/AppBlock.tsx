@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Image, ImageSource, classNames } from "jdc";
 import type { ImageResize } from "jdc";
 

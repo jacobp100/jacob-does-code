@@ -14,11 +14,10 @@ const transformClassNames = () => (tree: any) =>
   });
 
 export default async (_content: Content, input: string) => {
-  const postHtmlResult = posthtml()
+  const postHtmlResult = await posthtml()
     .use(transformClassNames())
     .use(minifier({ collapseWhitespace: true, removeComments: true }))
-    .process(input, { sync: true });
+    .process(input);
 
-  // @ts-expect-error
-  return postHtmlResult.html as string;
+  return postHtmlResult.html;
 };

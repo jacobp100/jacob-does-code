@@ -1,4 +1,3 @@
-import * as React from "react";
 import { assetTransform } from "../assetTransformer";
 import { transformCss } from "../assetTransforms";
 import useContent from "../useContent";

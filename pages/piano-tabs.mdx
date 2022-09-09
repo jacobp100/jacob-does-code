@@ -1,4 +1,4 @@
-import { Svg, classNames, cssVariable } from "jdc";
+import { A, InlineSvg, classNames, cssVariable } from "jdc";
 import Icon from "../components/Icon";
 import Lead from "../components/Lead";
 import AppPromoImage from "../components/AppPromoImage";
@@ -6,7 +6,6 @@ import AppBlock from "../components/AppBlock";
 import BetterTogether from "../components/BetterTogether";
 import LegalLinks from "../components/LegalLinks";
 
-export { default as Layout } from "../components/Layout";
 export const title = "Piano Tabs";
 export const description = "Sheet music and piano practise reimagined";
 export const css = "/assets/app.css";
@@ -78,12 +77,12 @@ View every track within a MIDI file, and **change the key and tempo** to your li
 
 <div className={classNames("center-icons")}>
 
-<a
+<A
   title="App Store"
   href="https://apps.apple.com/us/app/piano-tabs-midi-player/id1506390976"
 >
-  <Svg src="/assets/vendor/app-store.svg" />
-</a>
+  <InlineSvg src="/assets/vendor/app-store.svg" />
+</A>
 
 </div>
 

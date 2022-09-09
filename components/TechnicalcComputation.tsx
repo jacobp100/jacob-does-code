@@ -1,4 +1,3 @@
-import * as React from "react";
 import { InlineJs, classNames } from "jdc";
 
 export default () => (

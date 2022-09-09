@@ -1,4 +1,3 @@
-import * as React from "react";
 import { className } from "jdc";
 
 export default ({ children }: any) => (

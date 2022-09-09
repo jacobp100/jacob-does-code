@@ -3,7 +3,7 @@
     "noEmit": true,
     "lib": ["ES2020", "DOM"],
     "types": ["node"],
-    "jsx": "react",
+    "jsx": "react-jsx",
     "strict": true,
     "esModuleInterop": true
   }

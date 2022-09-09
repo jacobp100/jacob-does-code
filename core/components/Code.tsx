@@ -1,5 +1,4 @@
 import hljs from "highlight.js";
-import * as React from "react";
 import { classNames } from "../css";
 
 export default (props: any) => {

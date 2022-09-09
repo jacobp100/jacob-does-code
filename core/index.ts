@@ -1,6 +1,11 @@
 export { assetTransform } from "./assetTransformer";
-export { transformCss, transformHtml, transformJs } from "./assetTransforms";
-export * from "./components/components";
+export {
+  transformCss,
+  transformHtml,
+  transformJs,
+  svgMetadata,
+} from "./assetTransforms";
+export * from "./components";
 export type { Config } from "./config";
 export { className, classNameForOrigin, classNames, cssVariable } from "./css";
 export {

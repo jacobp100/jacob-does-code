@@ -1,18 +1,46 @@
 // @ts-expect-error
 import cssClassGenerator from "css-class-generator";
+import { getConfig } from "./config";
+import { subtract } from "./util/set";
+
+/*
+ * This definitely isn't the ideal way to manage this config prop, but without
+ * significantly compromising the ergonomics of the utility functions, this is
+ * all we can do
+ */
+let cssAnalyzerEnabled: boolean | undefined;
+const getCssAnalyzerEnabled = () => {
+  if (cssAnalyzerEnabled !== undefined) {
+    return cssAnalyzerEnabled;
+  }
+
+  cssAnalyzerEnabled = getConfig({ require }).cssAnalyzer ?? false;
+  return cssAnalyzerEnabled;
+};
+
+const devPrefix = "_dev";
 
 const variablesStore = new Map<string, string>();
 const classNamesStore = new Map<string, string>();
 
-const getGeneratedName = (store: Map<string, string>, input: string) => {
-  if (process.env.NODE_ENV === "development") {
-    /* Make sure stuff breaks if you don't follow proper protocols when using
+const getGeneratedName = (input: string, store: Map<string, string>) => {
+  if (!getCssAnalyzerEnabled()) {
+    return input;
+  } else if (process.env.NODE_ENV === "development") {
+    if (input.endsWith(devPrefix)) {
+      throw new Error(
+        `Attempted to double-convert "${input.slice(0, -devPrefix.length)}"`
+      );
+    }
+
+    /*
+     * Make sure stuff breaks if you don't follow proper protocols when using
      * CSS class names
      *
      * But also make sure the user can actually read the class names in
      * development
      */
-    return input + "_";
+    return input + devPrefix;
   }
 
   if (store.has(input)) {
@@ -31,8 +59,8 @@ export const cssVariable = (input: string) => {
   }
 
   const output = `--${getGeneratedName(
-    variablesStore,
-    input.slice("--".length)
+    input.slice("--".length),
+    variablesStore
   )}`;
   return output;
 };
@@ -52,7 +80,7 @@ export const classNameForOrigin = (input: string, origin = Origin.Asset) => {
     classNamesInAssets.add(input);
   }
 
-  return getGeneratedName(classNamesStore, input);
+  return getGeneratedName(input, classNamesStore);
 };
 
 export const className = (input: string) => classNameForOrigin(input);
@@ -72,16 +100,6 @@ const flatten = (input: ClassNames): string[] => {
 export const classNames = (...input: ClassNames[]) => {
   const out = input.flatMap(flatten).map(className).join(" ");
   return out.length > 0 ? out : undefined;
-};
-
-const subtract = (a: Set<string>, b: Set<String>) => {
-  const out: string[] = [];
-  a.forEach((className) => {
-    if (!b.has(className)) {
-      out.push(className);
-    }
-  });
-  return out;
 };
 
 export const generateCssStats = () => {

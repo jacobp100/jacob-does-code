@@ -1,6 +1,5 @@
 import * as path from "path";
 import type { ImgHTMLAttributes, SourceHTMLAttributes } from "react";
-import * as React from "react";
 import sharp, { ResizeOptions } from "sharp";
 import { assetTransform } from "../assetTransformer";
 import { ClassNames, classNames } from "../css";
@@ -19,7 +18,10 @@ type ImageResult = {
 
 const avifEnabled = false;
 
-const transform = assetTransform<ImageResult>(
+const transform = assetTransform<
+  ImageResult,
+  [string, ResizeOptions | undefined]
+>(
   async (content, input, size) => {
     const buffer = content.readBuffer(input);
     const extension = path.extname(input);
@@ -170,7 +172,7 @@ export const Source = ({
     src: srcSet,
     additionalSources,
     size,
-  } = transform(content, inputSrcSet, resizeObj);
+  } = transform(content, inputSrcSet!, resizeObj);
   const { width, height } = populateAutoSize(props, size);
 
   return (

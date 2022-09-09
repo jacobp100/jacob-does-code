@@ -1,7 +1,18 @@
 import type { SVGAttributes } from "react";
-import * as React from "react";
+import { assetTransform } from "../assetTransformer";
+import { transformSvg, svgMetadata } from "../assetTransforms";
 import { ClassNames, classNames } from "../css";
 import useContent from "../useContent";
+
+const transform = assetTransform<
+  { attributes: Record<string, string>; __html: string },
+  [string]
+>(async (content, src) => {
+  const input = content.read(src);
+  const svg = await transformSvg(content, input);
+  const { attributes, __html } = svgMetadata(svg);
+  return { attributes, __html };
+});
 
 type Props = Omit<SVGAttributes<any>, "className"> & {
   className?: ClassNames;
@@ -10,16 +21,7 @@ type Props = Omit<SVGAttributes<any>, "className"> & {
 
 export default ({ src, className, ...props }: Props) => {
   const content = useContent();
-
-  const xml = content.read(src);
-  const { 1: attributesString, 2: __html } = xml.match(
-    /<svg([^>]*)>(.*)<\/svg>/
-  )!;
-  const attribteEnitries = Array.from(
-    attributesString.matchAll(/(\w+)="([^"]*)"/g),
-    (match) => [match[1], match[2]]
-  );
-  const attributes = Object.fromEntries(attribteEnitries);
+  const { attributes, __html } = transform(content, src);
 
   return (
     <svg

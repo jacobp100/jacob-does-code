@@ -1,5 +1,4 @@
 import type { ScriptHTMLAttributes } from "react";
-import * as React from "react";
 import { assetTransform } from "../assetTransformer";
 import { transformJs } from "../assetTransforms";
 import useContent from "../useContent";

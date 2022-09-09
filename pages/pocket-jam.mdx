@@ -1,4 +1,4 @@
-import { Svg, classNames, cssVariable } from "jdc";
+import { A, InlineSvg, classNames, cssVariable } from "jdc";
 import Icon from "../components/Icon";
 import Lead from "../components/Lead";
 import AppPromoImage from "../components/AppPromoImage";
@@ -6,7 +6,6 @@ import AppBlock from "../components/AppBlock";
 import BetterTogether from "../components/BetterTogether";
 import LegalLinks from "../components/LegalLinks";
 
-export { default as Layout } from "../components/Layout";
 export const title = "Pocket Jam";
 export const description = "Jam sessions you can carry in your pocket";
 export const css = "/assets/app.css";
@@ -76,12 +75,12 @@ Use them to jump to the section in playback, or to set up loops between sections
 
 <div className={classNames("center-icons")}>
 
-<a
+<A
   title="App Store"
   href="https://itunes.apple.com/us/app/pocket-jam/id1153284525"
 >
-  <Svg src="/assets/vendor/app-store.svg" />
-</a>
+  <InlineSvg src="/assets/vendor/app-store.svg" />
+</A>
 
 </div>
 

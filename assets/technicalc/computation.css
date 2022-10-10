@@ -83,11 +83,12 @@
   /* Flex to force horizontal direction, so hidden content does not expand button height */
   display: flex;
   align-items: center;
+  /* Text-align: center won't work here */
+  justify-content: center;
   padding: 6px 32px;
   border: 0;
   font: inherit;
   text-decoration: none;
-  text-align: center;
   background: var(--primary);
   color: white;
   border-radius: 99px;

@@ -69,7 +69,8 @@ export default async ({ page, pages }: Props) => {
   let html = await stream.awaited;
   html = html.replace(/<!--(?:\s|\/\$|\$)-->/g, "");
 
-  content.write(html, { filename: page.url, extension: ".html" });
+  const filename = page.url === "/" ? "/index" : page.url;
+  content.write(html, { filename, extension: ".html" });
 
   return {
     dependencies: content.dependencies,

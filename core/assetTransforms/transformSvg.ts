@@ -33,11 +33,48 @@ export default async (content: Content, input: string) => {
 
   let svg = await rewriter.transform(new Response(input)).text();
 
-  if (process.env.NODE_ENV === "development") {
-    return svg;
-  }
+  // if (process.env.NODE_ENV === "development") {
+  //   return svg;
+  // }
 
-  const output = svgo.optimize(svg);
+  const output = svgo.optimize(svg, {
+    plugins: [
+      "removeDoctype",
+      "removeXMLProcInst",
+      "removeComments",
+      "removeMetadata",
+      "removeEditorsNSData",
+      "cleanupAttrs",
+      "mergeStyles",
+      "inlineStyles",
+      "minifyStyles",
+      "cleanupIDs",
+      // "removeUselessDefs",
+      "cleanupNumericValues",
+      "convertColors",
+      "removeUnknownsAndDefaults",
+      "removeNonInheritableGroupAttrs",
+      "removeUselessStrokeAndFill",
+      // "removeViewBox",
+      "cleanupEnableBackground",
+      "removeHiddenElems",
+      "removeEmptyText",
+      "convertShapeToPath",
+      "convertEllipseToCircle",
+      "moveElemsAttrsToGroup",
+      "moveGroupAttrsToElems",
+      "collapseGroups",
+      "convertPathData",
+      "convertTransform",
+      "removeEmptyAttrs",
+      "removeEmptyContainers",
+      "mergePaths",
+      "removeUnusedNS",
+      "sortDefsChildren",
+      "removeTitle",
+      "removeDesc",
+    ],
+  });
 
   if (output.error != null) {
     throw new Error(output.error);

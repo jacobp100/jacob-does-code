@@ -1,0 +1,1 @@
+importScripts("/res/f672118b.js"),Worker.make(self);

@@ -1,0 +1,179 @@
+import { cssVariable } from "jdc";
+
+export const title = "CSS Font Scaling";
+export const css = ["/assets/blog.css", "/assets/blog-highlight.css"];
+
+# CSS Font Scaling
+
+If you're reading this article, chances are you at least somewhat care about accessibility on your website.
+
+I'd argue one of the most commonly adjusted accessibility settings is font size. I'm sure many people can relate to using someone's iPhone with the font size kicked all the way up.
+
+More recently, there's been a few posts about how we scale fonts and other things on the web.
+
+- [Josh W Comeau](https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/)
+- [Austin Gil](https://austingil.com/px-or-rem-in-css/)
+
+The main take away is that there's two ways users can adjust the size of things: the font size setting, and the browser zoom. The font size setting should _only_ adjust the font size, whereas the browser zoom scales _everything_.
+
+These aren't unique concepts to the web &mdash; even in the oldest OSes, you'd be able to adjust the font size and screen resolution independently.
+
+It's important to get this right too. As the font size increases, there's less space for other things &mdash; so we need to make sure we're only making things bigger if they will actually help the user.
+
+As important as this is, so many get it wrong. [Tailwind](https://tailwindcss.com) goes through great engineering lengths to make all values scale with the font size &mdash; and in doing so, they make the font size setting perfectly replicate the browser zoom functionality. Oops.
+
+## Ok, so what's the right approach?
+
+Simply put, only scale the font size and font-size related properties: that's `font-size`, `line-height`, and `letter-spacing`.Don't scale margins, paddings, or borders, or any other value. This behaviour matches the behaviour of Windows, macOS, and iOS.
+
+How you choose to implement this is &mdash; of course &mdash; up to you.
+
+In [React Native](https://reactnative.dev), you set all properties in their pixel values &mdash; including font-related ones. Now if the user changes their font size, the font-related properties (and _only_ the font-related properties) are scaled accordingly. We can do the same thing in the web if make use of [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*).
+
+```css
+:root {
+  --allow-font-scaling: 1;
+}
+
+* {
+  font-size: calc(var(--font-size) * var(--font-scaling-factor));
+  line-height: calc(var(--line-height) * var(--font-scaling-factor));
+  letter-spacing: calc(var(--letter-spacing) * var(--font-scaling-factor));
+
+  /*
+   * Since the default font size is 16px, `calc(1rem / 16)` gives 1px scaled by
+   * their font size setting. I.e. if their font size was unchanged, you'd get
+   * 1px. But if their font size was 32px - twice the default - you'd get 2px.
+   *
+   * Now we use the `--allow-font-scaling` property to create a scale between
+   * the scaled pixel and the unscaled pixel.
+   *
+   * When `--allow-font-scaling` is set to 1, we only include the scaled pixel.
+   * When it's set to is set to 0, we only include the unscaled pixel.
+   */
+  --font-scaling-factor: calc(
+    (var(--allow-font-scaling) * 1rem / 16) /* Font scaling enabled */ +
+      ((1 - var(--allow-font-scaling)) * 1px) /* Font scaling disabled */
+  );
+}
+```
+
+Now when you want to change the (for example) font size, set the custom property to the `px` value, and omit the `px` unit. All other properties work as normal.
+
+```css
+h1 {
+  --font-size: 24;
+  --line-height: 32;
+  --letter-spacing: 0.5;
+
+  padding: 12px;
+}
+```
+
+If you have cases where you need to disable font scaling &mdash; for example, you have a very strict design, and the scaling will break, just turn it off by setting `--allow-font-scaling-property` to `0`. Again, this works the same as in React Native.
+
+```css
+.disable-font-scaling {
+  --allow-font-scaling: 0;
+}
+```
+
+## Being Responsive
+
+The most common approach to scaling font sizes across multiple screen sizes is to make the font smaller with the screen size. This is usually not a great approach. For example, the font size on an iPhone is identical to the font size on an iPad &mdash; and the font size on a MacBook is smaller than both.
+
+A light touch might be best. If you have large headings, it makes sense to scale them down on smaller devices &mdash; if only to reduce the amount text wraps. For the body size, it might work best to remain constant over all screen sizes.
+
+There is no one-size-fits-all here: on the blog portion of this site, the font sizes do not change. On the marketing pages &mdash; with have larger font sizes throughout &mdash; all font sizes are reduced at small screen widths.
+
+## Design Considerations
+
+It's tempting for a button to set a `line-height`, and add vertical padding edges to achieve the desired height. However, you should seriously consider reducing the amount of padding you apply to the minimum, and use `min-height` to achieve the height. This way, when the font size increases a little bit, you can keep your button the same height &mdash; and will only in height when it absolutely needs to grow. This behaviour matches what iOS does in its table views.
+
+```css
+.bad {
+  --font-size: 16;
+  --line-height: 20;
+  padding: 12px 24px;
+  /* Height: 12px + 20px + 12px = 44px */
+}
+
+.good {
+  --font-size: 12;
+  --line-height: 16;
+  padding: 4px 24px;
+  min-height: 44px;
+}
+```
+
+Using `.bad` method &mdash; notice the button grows in size at every step. You can scroll the row of buttons if you're viewing this on mobile.
+
+<div
+  style={{
+    margin: `42px calc(-1 * var(${cssVariable("--gutters")}))`,
+    padding: `0 var(${cssVariable("--gutters")})`,
+    display: "flex",
+    alignItems: "baseline",
+    gap: "8px",
+    overflowX: "scroll",
+  }}
+>
+  {[1, 1.25, 1.5, 2, 3].map((scale) => (
+    <span
+      key={scale}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        background: `var(${cssVariable("--primary")})`,
+        padding: "12px 24px",
+        fontSize: `${16 * scale}px`,
+        lineHeight: `${20 * scale}px`,
+        borderRadius: "99px",
+      }}
+      dangerouslySetInnerHTML={{ __html: "Button" }}
+    />
+  ))}
+</div>
+
+Using `.good` method &mdash; notice the button only grows towards the end, and when it does, it is still smaller than before.
+
+<div
+  style={{
+    margin: `42px calc(-1 * var(${cssVariable("--gutters")}))`,
+    padding: `0 var(${cssVariable("--gutters")})`,
+    display: "flex",
+    alignItems: "baseline",
+    gap: "8px",
+    overflowX: "scroll",
+  }}
+>
+  {[1, 1.25, 1.5, 2, 3].map((scale) => (
+    <span
+      key={scale}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        background: `var(${cssVariable("--primary")})`,
+        padding: "4px 24px",
+        minHeight: "44px",
+        fontSize: `${16 * scale}px`,
+        lineHeight: `${20 * scale}px`,
+        borderRadius: "99px",
+      }}
+      dangerouslySetInnerHTML={{ __html: "Button" }}
+    />
+  ))}
+</div>
+
+## Closing
+
+There's a lot of posts on the web around font scaling &mdash; and I don't have anything more charitable to say than be sceptical of most of these posts. Be especially sceptical of someone telling you to scale all fonts according to the width of the screen using something like `vw` and some `clamp`ing magic.
+
+The only interesting take I've read is by Josh W Comeau (first link), with the argument that vertical margins might scale. This does make sense: larger headings do have larger margins, so it's reasonable to argue vertical margins are at least partly influenced by font size.
+
+In an ideal world, a designer would adapt their designs across a few font sizes &mdash; like they do for screen sizes.
+The sheer speed that adding additional combinations grow at means this just isn't practical: if they had 3 screen sizes per design already, adding say 2 more font sizes would mean 9 designs.
+
+However, if they did do this exercise, they'd probably design it so the margins did increase slightly with font size &mdash; but not linearly.
+
+For me, it's a really interesting point: I've not seen it discussed &mdash; let alone implemeted &mdash; anywhere else. Maybe things will change in the future. For now though, I'd say you can safely ignore this aspect and just focus on getting font size correct.

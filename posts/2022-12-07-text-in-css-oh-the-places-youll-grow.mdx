@@ -19,7 +19,7 @@ On iOS, it's very common for users to increase their font size &mdash; and it's 
 
 On the web, however, it's much less common. I see this as disappointing, because it really comes down to how badly it's supported on websites. The truth is many websites just don't support scaling text at all.
 
-On the flip side, some frameworks and websites try to scale correctly, but get it wrong. One of many examples is the default [Tailwind](https://tailwindcss.com) setup, wjere _everything_ uses `rem`s, so _everything_ scales with the font size setting &mdash; and in doing so, they make the font size setting perfectly replicate the browser zoom functionality. That is not what the user wanted.
+On the flip side, some frameworks and websites try to scale correctly, but get it wrong. One of many examples is the default [Tailwind](https://tailwindcss.com) setup, where _everything_ uses `rem`s, so _everything_ scales with the font size setting &mdash; and in doing so, they make the font size setting perfectly replicate the browser zoom functionality. That is not what the user wanted.
 
 ## Ok, So What's the Right Approach?
 
@@ -180,13 +180,13 @@ Now we'll switch to the `.improved` method &mdash; notice the button only grows 
   ))}
 </div>
 
-This technique works more broadly than buttons: it's great anywhere where you're applying padding around some text &mdash; like text inputs or dropdowns. It's how iOS sizes the rows in its table view component.
+This technique works more broadly than buttons: it's great anywhere where you're applying padding around some text &mdash; like text inputs or drop downs. It's how iOS sizes the rows in its table view component.
 
 ## Becoming Responsive
 
 On the web, the most common approach to scaling font sizes across multiple screen sizes is to use media queries and make the font decrease in size as the the screen width decreases.
 
-However, when looking at OSes across different form factors, font sizes don't change all that much. For example, the font size on an iPhone is identical to the font size on an iPad &mdash; and the font size on a MacBook is smaller than both.
+However, when looking at OSs across different form factors, font sizes don't change all that much. For example, the font size on an iPhone is identical to the font size on an iPad &mdash; and the font size on a MacBook is smaller than both.
 
 More recently, there's been a more extreme approach to responsive design, called _fluid typography_, where fonts are sized to some percentage of the width of the screen. This really is an engineer's solution to a design problem. It also can't really be called responsive, because it's not responding to anything: it's the same design on every screen.
 

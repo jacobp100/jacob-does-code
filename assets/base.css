@@ -133,6 +133,8 @@ a.header__logo {
   --allow-font-scaling: 0;
   text-transform: uppercase;
   width: 0;
+  /* Set in blog */
+  overflow-wrap: normal;
 }
 
 .header__section--last {

@@ -1,0 +1,19 @@
+import { cssVariable } from "jdc";
+
+export const title = "404";
+export const css = "/assets/base.css";
+
+<h1
+  style={{
+    margin: "96px 0",
+    [cssVariable("--font-size")]: 96,
+    [cssVariable("--line-height")]: 120,
+    [cssVariable("--letter-spacing")]: -2,
+    [cssVariable("--font-weight")]: 900,
+    textAlign: "center",
+  }}
+>
+  404
+</h1>
+
+<p style={{ margin: "12px 0", textAlign: "center" }}>Page not found</p>

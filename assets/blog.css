@@ -1,3 +1,7 @@
+* {
+  overflow-wrap: break-word;
+}
+
 :root {
   --gutters: max(12px, (100vw - var(--max-width)) / 2);
   --max-width: 800px;
@@ -35,12 +39,6 @@ h3 {
 
 p {
   margin: 18px 0;
-}
-
-/* On the iPhone SE, link and code elements can cause sideways scroll */
-a,
-p > code {
-  word-break: break-all;
 }
 
 strong {

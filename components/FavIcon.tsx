@@ -1,13 +1,4 @@
-import { assetTransform, useContent, imageTransform } from "jdc";
-
-type Icons = Array<{ href: string; sizes: string }>;
-
-const transform = assetTransform((content, icons: Icons): Icons => {
-  return icons.map(({ href, sizes }) => ({
-    href: content.write(content.readBuffer(href), { extension: ".png" }),
-    sizes,
-  }));
-});
+import { useContent, imageTransform } from "jdc";
 
 type Props = {
   href: string;

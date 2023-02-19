@@ -16,6 +16,7 @@ export default (props: Props) => {
       <link rel="apple-touch-icon" href={renderAtSize(undefined)} />
       {[57, 72, 76, 114, 120, 152, 180].map((size) => (
         <link
+          key={size}
           rel="apple-touch-icon"
           sizes={`${size}x${size}`}
           href={renderAtSize(size)}

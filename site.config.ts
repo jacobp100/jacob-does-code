@@ -16,7 +16,7 @@ export default {
       url = url.replace(dateMatch[0], dateMatch[0].replace(/-/g, "/"));
     }
 
-    return `/${url}`;
+    return url === "index" ? "/" : `/${url}`;
   },
   Layout,
   cssAnalyzer: true,

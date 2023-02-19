@@ -18,7 +18,7 @@ export default (props: Props) => {
       throw new Error(`Could not page with href "${filename}"`);
     }
 
-    href = page.url;
+    href = page.url !== "/index" ? page.url : "/";
   } else {
     href = props.href;
   }

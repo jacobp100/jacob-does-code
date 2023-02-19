@@ -1,13 +1,14 @@
 import { format } from "date-fns";
 import {
   A,
-  ExternalJs,
-  InlineCss,
-  InlineJs,
   className,
   classNames,
   cssVariable,
+  ExternalJs,
+  InlineCss,
+  InlineJs,
 } from "jdc";
+import FavIcon from "./FavIcon";
 
 const Header = ({ children }: { children: any }) => (
   <div className={className("header")}>{children}</div>
@@ -69,6 +70,8 @@ type Props = {
   filename: string;
   title: string;
   description?: string;
+  favicon?: string;
+  appId?: string;
   css?: string[] | string | undefined;
   js?: string;
   banner?: JSX.Element;
@@ -81,6 +84,8 @@ export default ({
   filename,
   title,
   description,
+  favicon = "/assets/technicalc/favicon.png",
+  appId,
   css,
   js,
   banner,
@@ -99,6 +104,8 @@ export default ({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         {description && <meta name="description" content={description} />}
+        {favicon && <FavIcon href={favicon} />}
+        {appId && <meta name="apple-itunes-app" content={`app-id=${appId}`} />}
         <InlineJs src="/assets/set-hairline-width.js" />
         <InlineCss src={["/assets/base.css", ...castArray(css)]} />
         {castArray(js).map((src, index) => (

@@ -1,9 +1,9 @@
 export { assetTransform } from "./assetTransformer";
 export {
+  svgMetadata,
   transformCss,
   transformHtml,
   transformJs,
-  svgMetadata,
 } from "./assetTransforms";
 export * from "./components";
 export type { Config } from "./config";

@@ -18,7 +18,7 @@ type ImageResult = {
 
 const avifEnabled = false;
 
-const transform = assetTransform<
+export const transform = assetTransform<
   ImageResult,
   [string, ResizeOptions | undefined]
 >(

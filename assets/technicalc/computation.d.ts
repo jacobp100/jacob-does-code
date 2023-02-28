@@ -32,6 +32,8 @@ declare namespace Client {
       context: undefined,
       work: Equation
     ) => T;
+    const encodeInput: (input: T) => string;
+    const decodeOutput: (work: T, encoded: string) => Value.T | undefined;
   }
 }
 

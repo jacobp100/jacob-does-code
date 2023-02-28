@@ -20,7 +20,9 @@ if (location.search.length > 1) {
 
   const loadFullJs = import("/assets/technicalc/computation.js");
 
-  const worker = new Worker(require.resolve("/assets/technicalc/worker.js"));
+  const worker = new Worker(
+    require.resolve("/assets/technicalc/dist/worker.min.js")
+  );
 
   document.addEventListener("click", (e) => {
     const { target } = e;

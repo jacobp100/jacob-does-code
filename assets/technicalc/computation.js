@@ -11,7 +11,7 @@ export default ({ container, worker }) => {
 
   /**
    * @template T
-   * @param {T} value
+   * @param {T | undefined} value
    * @returns {Result<T, null>}
    * */
   const resultOfOption = (value) =>
@@ -80,26 +80,30 @@ export default ({ container, worker }) => {
   const parseResult = input.ok
     ? Elements.parse(input.value)
     : { ok: false, error: -1 };
+  /** @type {Client.Work.T | undefined} */
+  let work;
   if (parseResult.ok) {
-    const work = Work.make(
+    work = Work.make(
       { angleMode: "radian" },
       undefined,
       Work.calculate(parseResult.value)
     );
-    worker.postMessage(work);
+    worker.postMessage(Work.encodeInput(work));
   } else {
     setResult(result);
   }
 
-  /** @param {MessageEvent<any>} e */
+  /** @param {MessageEvent<string>} e */
   worker.onmessage = (e) => {
-    const results = e.data;
-    result = resultOfOption(Value.decode(results[0]));
+    result = resultOfOption(
+      work != null ? Work.decodeOutput(work, e.data) : undefined
+    );
     setResult(result);
   };
 
   worker.onerror = () => {
-    setResult(resultOfOption(undefined));
+    result = null;
+    setResult(result);
   };
 
   form.addEventListener("change", () => {

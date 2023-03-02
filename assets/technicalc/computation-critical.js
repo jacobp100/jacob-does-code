@@ -26,7 +26,6 @@ if (location.search.length > 1) {
 
   document.addEventListener("click", (e) => {
     const { target } = e;
-    console.log({ target });
     if (target.classList.contains(className("computation__close"))) {
       container.setAttribute("hidden", "");
     } else if (

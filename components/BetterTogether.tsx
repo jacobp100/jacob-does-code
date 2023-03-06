@@ -1,4 +1,5 @@
 import { A, InlineSvg, className, classNames, cssVariable } from "jdc";
+import ReuseSvg from "./ReuseSvg";
 
 export default () => (
   <>
@@ -36,7 +37,7 @@ export default () => (
         title="App Store"
         href="https://apps.apple.com/us/app-bundle/id1542101429?mt=8"
       >
-        <InlineSvg src="/assets/vendor/app-store-reused.svg" />
+        <ReuseSvg src="/assets/vendor/app-store.svg" id="app-store" />
       </A>
     </div>
   </>

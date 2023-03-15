@@ -1,33 +1,63 @@
-import { A, classNames } from "jdc";
+import { A, classNames, cssVariable } from "jdc";
 import Icon from "../components/Icon";
 
 export const title = "Jacob Does Code";
 export const css = "/assets/index.css";
 
 <div className={classNames("links")}>
-  <A href="/pages/pocket-jam.mdx" className={["link", "link--pocket-jam"]}>
+  <A
+    href="/pages/pocket-jam.mdx"
+    className={"link"}
+    style={{ color: `var(${cssVariable("--pocket-jam")})` }}
+  >
     <Icon name="pocket-jam" className="link__app" />
     <span className={classNames("link__title", "link__title--discretionary")}>
       Pocket Jam
     </span>
   </A>
-  <A href="/pages/piano-tabs.mdx" className={["link", "link--piano-tabs"]}>
+  <A
+    href="/pages/piano-tabs.mdx"
+    className={"link"}
+    style={{ color: `var(${cssVariable("--piano-tabs")})` }}
+  >
     <Icon name="piano-tabs" className="link__app" />
     <span className={classNames("link__title", "link__title--discretionary")}>
       Piano Tabs
     </span>
   </A>
-  <A href="/pages/technicalc.mdx" className={["link", "link--technicalc"]}>
+  <A
+    href="/pages/technicalc.mdx"
+    className={"link"}
+    style={{ color: `var(${cssVariable("--technicalc")})` }}
+  >
     <Icon name="technicalc" className="link__app" />
     <span className={classNames("link__title", "link__title--discretionary")}>
       TechniCalc
     </span>
   </A>
-  <A href="/pages/freebies.mdx" className={["link", "link--freebies"]}>
+  <A
+    href="/pages/calipers.mdx"
+    className={"link"}
+    style={{ color: `var(${cssVariable("--calipers")})` }}
+  >
+    <Icon name="calipers" className="link__app" />
+    <span className={classNames("link__title", "link__title--discretionary")}>
+      Calipers
+    </span>
+  </A>
+  <A
+    href="/pages/freebies.mdx"
+    className={"link"}
+    style={{ color: `var(${cssVariable("--freebies")})` }}
+  >
     <Icon name="link" className="link__app" />
     <span className={classNames("link__title")}>Freebies</span>
   </A>
-  <A href="/pages/blog.mdx" className={["link", "link--blog"]}>
+  <A
+    href="/pages/blog.mdx"
+    className={"link"}
+    style={{ color: `var(${cssVariable("--blog")})` }}
+  >
     <Icon name="link" className="link__app" />
     <span className={classNames("link__title")}>Blog</span>
   </A>

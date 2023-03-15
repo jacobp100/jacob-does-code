@@ -1,0 +1,62 @@
+import { A, InlineSvg, classNames, cssVariable } from "jdc";
+import Icon from "../components/Icon";
+import Lead from "../components/Lead";
+import AppPromoImage from "../components/AppPromoImage";
+import AppBlock from "../components/AppBlock";
+import BetterTogether from "../components/BetterTogether";
+import LegalLinks from "../components/LegalLinks";
+
+export const title = "Calipers";
+export const description = "Measure things big and small";
+export const favicon = "/assets/calipers/favicon.png";
+export const appId = "6445826923";
+export const css = "/assets/app.css";
+export const primary = `var(${cssVariable("--calipers")})`;
+
+<Icon name="calipers" />
+
+# Calipers
+
+<Lead>Measure things big and small</Lead>
+
+<AppBlock src="/assets/calipers/preview-1.png" alt="A 5 meter tape measure">
+
+## A 5 meter tape measure.
+
+Measure **centimeters** and **inches** right on your phone screen.
+
+For larger measurements, just slide your phone across a surface. As you do, Calipers will show you a summary of the meters or feet measured.
+
+Markings along the ruler let you record lengths at multiple intervals. Once you're done, Calipers can calculate the relative distances between each interval.
+
+</AppBlock>
+
+---
+
+<AppBlock src="/assets/calipers/preview-2.png" alt="Precision Measurements" layout="reverse" imagePositionMobile="bottom">
+
+## Precision Measurements.
+
+You can measure anything that fits on your phone screen down to the **tenth of a millimeter**. Just place an object on your phone screen and adjust the two markers until they just touch the edges of the object, and Calipers will give you a precise length.
+
+</AppBlock>
+
+---
+
+# Get it now
+
+<Lead>Available for iPhone</Lead>
+
+<div className={classNames("center-icons")}>
+
+<A
+  title="App Store"
+  href="https://itunes.apple.com/us/app/calipers/id6445826923"
+  target="_blank"
+>
+  <InlineSvg src="/assets/vendor/app-store.svg" />
+</A>
+
+</div>
+
+<LegalLinks />

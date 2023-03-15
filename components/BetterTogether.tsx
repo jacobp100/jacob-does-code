@@ -36,6 +36,7 @@ export default () => (
       <A
         title="App Store"
         href="https://apps.apple.com/us/app-bundle/id1542101429?mt=8"
+        target="_blank"
       >
         <ReuseSvg src="/assets/vendor/app-store.svg" id="app-store" />
       </A>

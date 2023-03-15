@@ -37,7 +37,7 @@
   font-weight: var(--font-weight);
   --font-scaling-factor: calc(
     (var(--allow-font-scaling) * 1rem / 16) +
-    ((1 - var(--allow-font-scaling)) * 1px)
+      ((1 - var(--allow-font-scaling)) * 1px)
   );
 }
 
@@ -54,8 +54,9 @@
   --technicalc-light: #0652dd;
   --technicalc-dark: #2771f9; /* 12% lighter */
   --technicalc: var(--technicalc-light);
-  --freebies: #a3cb38;
-  --blog: #ed4c67;
+  --calipers: #ffc312;
+  --freebies: #5f27cd;
+  --blog: #341f97;
   --primary: var(--color);
   --color: black;
   --background: white;

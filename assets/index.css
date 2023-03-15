@@ -1,6 +1,7 @@
 .links {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, calc(100% / var(--columns)));
+  --columns: 2;
 }
 
 .link {
@@ -8,26 +9,6 @@
   background-color: currentColor;
   overflow: hidden;
   --allow-font-scaling: 0;
-}
-
-.link--pocket-jam {
-  color: var(--pocket-jam);
-}
-
-.link--piano-tabs {
-  color: var(--piano-tabs);
-}
-
-.link--technicalc {
-  color: var(--technicalc);
-}
-
-.link--freebies {
-  color: var(--freebies);
-}
-
-.link--blog {
-  color: var(--blog);
 }
 
 .link__app {
@@ -66,4 +47,10 @@
 .link:hover .link__title--discretionary {
   visibility: visible;
   transform: scale(1);
+}
+
+@media (min-width: 512px) {
+  .links {
+    --columns: 3;
+  }
 }

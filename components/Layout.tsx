@@ -104,6 +104,7 @@ export default ({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         {description && <meta name="description" content={description} />}
+        {/* Favicons are 60x60 frames with 18px border radius, iOS corner smoothing, rendered at 1024w */}
         {favicon && <FavIcon href={favicon} />}
         {appId && <meta name="apple-itunes-app" content={`app-id=${appId}`} />}
         <InlineJs src="/assets/set-hairline-width.js" />
@@ -120,6 +121,7 @@ export default ({
           <HeaderLink href="/pages/pocket-jam.mdx">Pocket Jam</HeaderLink>
           <HeaderLink href="/pages/piano-tabs.mdx">Piano Tabs</HeaderLink>
           <HeaderLink href="/pages/technicalc.mdx">TechniCalc</HeaderLink>
+          <HeaderLink href="/pages/calipers.mdx">Calipers</HeaderLink>
           <HeaderLink href="/pages/freebies.mdx">Freebies</HeaderLink>
           <HeaderSection last>Developement</HeaderSection>
           <HeaderLink href="/pages/blog.mdx">Blog</HeaderLink>

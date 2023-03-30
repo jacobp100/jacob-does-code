@@ -8,6 +8,7 @@ import {
   InlineCss,
   InlineJs,
 } from "jdc";
+import AppleTouchIcon from "./AppleTouchIcon";
 import FavIcon from "./FavIcon";
 
 const Header = ({ children }: { children: any }) => (
@@ -71,6 +72,7 @@ type Props = {
   title: string;
   description?: string;
   favicon?: string;
+  appleTouchIcon?: string;
   appId?: string;
   css?: string[] | string | undefined;
   js?: string;
@@ -85,6 +87,7 @@ export default ({
   title,
   description,
   favicon = "/assets/technicalc/favicon.png",
+  appleTouchIcon = "/assets/technicalc/apple-touch.png",
   appId,
   css,
   js,
@@ -106,6 +109,7 @@ export default ({
         {description && <meta name="description" content={description} />}
         {/* Favicons are 60x60 frames with 18px border radius, iOS corner smoothing, rendered at 1024w */}
         {favicon && <FavIcon href={favicon} />}
+        {appleTouchIcon && <AppleTouchIcon href={appleTouchIcon} />}
         {appId && <meta name="apple-itunes-app" content={`app-id=${appId}`} />}
         <InlineJs src="/assets/set-hairline-width.js" />
         <InlineCss src={["/assets/base.css", ...castArray(css)]} />

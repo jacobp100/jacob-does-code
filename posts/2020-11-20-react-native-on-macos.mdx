@@ -157,15 +157,3 @@ Once you've set up the bundle, you can get it running in your React Native appli
 ```
 
 Now you have your bundle running, you should be able to access all the low-level functions you need to customise the window. If you want to see what happens in TechniCalc, check out [this gist](https://gist.github.com/jacobp100/e7ee89f3324b36cb8a4f7547b0fbcd90).
-
-## The Little Things
-
-There will be a lot of small things you have to do to get it working like a Mac app. Take this tweet for example (no disrespect intended to this developer).
-
-<Tweet />
-
-You'll see most things work as expected. But at the 0:26 mark, they drag a list item with their pointer to reveal a menu action. On Mac, this should be a two-finger scroll.
-
-I have a similar list in my app, but I use `react-native-action-view` instead. I ended up having to [fork the library](https://github.com/jacobp100/react-native-action-view) to get the correct behaviour. You may find you need to fork libraries too.
-
-At the moment, running React Native through Catalyst is not a very common path for developers. However, if more people do this and more people contribute to libraries and React Native itself when things fall short, we can make this experience better for everyone.

@@ -223,8 +223,27 @@
   box-shadow: inset 0 0 0 2px var(--primary), 0 3px 12px rgba(0, 0, 0, 0.03);
 }
 
+.computation__select {
+  display: flex;
+  margin: var(--spacing) 0;
+  --font-weight: 350;
+}
+
+.computation__select select {
+  appearance: none;
+  display: block;
+  -webkit-appearance: none;
+  margin: 0 0 0 auto;
+  padding: 0 24px 0 0;
+  border: none;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10" width="16" height="10"><path d="M1 1L8 8L15 1" fill="none" stroke="black" stroke-width="1.5" /></svg>') center right / 16px 10px no-repeat;
+  color: inherit;
+  font: inherit;
+}
+
+/*
 .computation__checkbox {
-  display: flex; /* Remove spaces inserted by html */
+  display: flex; /* Remove spaces inserted by html * /
   margin: var(--spacing) 0;
   --font-weight: 350;
 }
@@ -247,6 +266,7 @@
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path stroke="white" stroke-linecap="round" stroke-width="2" fill="none" d="M1 7L4 10L11 2"/></svg>')
     center / 0.666em 0.666em no-repeat var(--primary);
 }
+*/
 
 .computation__slider {
   display: block;
@@ -353,7 +373,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --form-background: #080808;
+    --form-background: #181818;
   }
 
   .computation__spinner {
@@ -367,5 +387,17 @@
   .computation--form-hidden .computation__toggle-display-mode {
     background: #111;
     color: #333;
+  }
+
+  .computation__select select {
+    appearance: none;
+    display: block;
+    -webkit-appearance: none;
+    margin: 0 0 0 auto;
+    padding: 0 24px 0 0;
+    border: none;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10" width="16" height="10"><path d="M1 1L8 8L15 1" fill="none" stroke="white" stroke-width="1.5" /></svg>') center right / 16px 10px no-repeat;
+    color: inherit;
+    font: inherit;
   }
 }

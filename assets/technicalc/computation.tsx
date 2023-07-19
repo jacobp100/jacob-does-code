@@ -95,9 +95,42 @@ export default () => (
           </label>
         </div>
 
-        <label className={classNames("computation__checkbox")}>
-          <input type="checkbox" name="digitGrouping" checked onChange={noop} />
-          Digit Grouping
+        <label className={classNames("computation__select")}>
+          Number Format
+          <select name="numberFormat">
+            {[
+              {
+                decimalSeparator: ".",
+                groupingSeparator: ",",
+                digitGrouping: true,
+              },
+              {
+                decimalSeparator: ",",
+                groupingSeparator: ".",
+                digitGrouping: true,
+              },
+              {
+                decimalSeparator: ".",
+                groupingSeparator: " ",
+                digitGrouping: true,
+              },
+              {
+                decimalSeparator: ",",
+                groupingSeparator: " ",
+                digitGrouping: true,
+              },
+            ].map(({ decimalSeparator, groupingSeparator, digitGrouping }) => {
+              const value = decimalSeparator + groupingSeparator;
+              const title = `1${
+                digitGrouping ? groupingSeparator : ""
+              }234${decimalSeparator}56`;
+              return (
+                <option key={value} value={value}>
+                  {title}
+                </option>
+              );
+            })}
+          </select>
         </label>
 
         <label className={classNames("computation__slider")}>

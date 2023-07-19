@@ -18,11 +18,12 @@ export default ({ container, worker }) => {
     value != null ? { ok: true, value } : { ok: false, error: null };
 
   /** @type {HTMLFormElement} */
+  // @ts-expect-error
   const form = container.querySelector("." + className("computation__form"));
 
   /**
    * @template T
-   * @param {HTMLElement | null} element
+   * @param {HTMLElement} element
    * @param {(arg0: T, arg1: any) => any} formatter
    * @returns {function(Result<T, any> | null): void}
    */
@@ -39,10 +40,13 @@ export default ({ container, worker }) => {
     }
 
     const formData = new FormData(form);
+    // @ts-expect-error
+    const [decimalSeparator, groupingSeparator] = formData.get("numberFormat");
     const formattingOptions = {
       style: formData.get("style"),
       precision: Number(formData.get("precision")),
-      digitGrouping: formData.get("digitGrouping") != null,
+      decimalSeparator,
+      groupingSeparator,
       base: Number(formData.get("base")),
     };
 
@@ -53,16 +57,19 @@ export default ({ container, worker }) => {
   };
 
   const setInput = setComputationRow(
+    // @ts-expect-error
     container.querySelector("." + className("computation__input")),
     Elements.toMml
   );
 
   const setResult = setComputationRow(
+    // @ts-expect-error
     container.querySelector("." + className("computation__result")),
     Value.toMml
   );
 
   const search = window.location.search.slice("?".length);
+  // @ts-expect-error
   container
     .querySelector("." + className("computation__open-in-app"))
     .setAttribute("href", `technicalc://editor?${search}`);

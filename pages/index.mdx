@@ -11,9 +11,11 @@ export const css = "/assets/index.css";
     style={{ color: `var(${cssVariable("--pocket-jam")})` }}
   >
     <Icon name="pocket-jam" className="link__app" />
-    <span className={classNames("link__title", "link__title--discretionary")}>
-      Pocket Jam
-    </span>
+    {/* MDX makes this a paragraph element without using the string */}
+    <span
+      className={classNames("link__title", "link__title--discretionary")}
+      children="Pocket Jam"
+    />
   </A>
   <A
     href="/pages/piano-tabs.mdx"
@@ -21,9 +23,10 @@ export const css = "/assets/index.css";
     style={{ color: `var(${cssVariable("--piano-tabs")})` }}
   >
     <Icon name="piano-tabs" className="link__app" />
-    <span className={classNames("link__title", "link__title--discretionary")}>
-      Piano Tabs
-    </span>
+    <span
+      className={classNames("link__title", "link__title--discretionary")}
+      children="Piano Tabs"
+    />
   </A>
   <A
     href="/pages/technicalc.mdx"
@@ -31,9 +34,10 @@ export const css = "/assets/index.css";
     style={{ color: `var(${cssVariable("--technicalc")})` }}
   >
     <Icon name="technicalc" className="link__app" />
-    <span className={classNames("link__title", "link__title--discretionary")}>
-      TechniCalc
-    </span>
+    <span
+      className={classNames("link__title", "link__title--discretionary")}
+      children="TechniCalc"
+    />
   </A>
   <A
     href="/pages/calipers.mdx"
@@ -41,9 +45,10 @@ export const css = "/assets/index.css";
     style={{ color: `var(${cssVariable("--calipers")})` }}
   >
     <Icon name="calipers" className="link__app" />
-    <span className={classNames("link__title", "link__title--discretionary")}>
-      Calipers
-    </span>
+    <span
+      className={classNames("link__title", "link__title--discretionary")}
+      children="Calipers"
+    />
   </A>
   <A
     href="/pages/freebies.mdx"
@@ -51,7 +56,7 @@ export const css = "/assets/index.css";
     style={{ color: `var(${cssVariable("--freebies")})` }}
   >
     <Icon name="link" className="link__app" />
-    <span className={classNames("link__title")}>Freebies</span>
+    <span className={classNames("link__title")} children="Freebies" />
   </A>
   <A
     href="/pages/blog.mdx"
@@ -59,6 +64,6 @@ export const css = "/assets/index.css";
     style={{ color: `var(${cssVariable("--blog")})` }}
   >
     <Icon name="link" className="link__app" />
-    <span className={classNames("link__title")}>Blog</span>
+    <span className={classNames("link__title")} children="Blog" />
   </A>
 </div>

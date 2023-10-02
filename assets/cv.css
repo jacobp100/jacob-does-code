@@ -256,13 +256,20 @@ strong {
     --inset: 80pt;
   }
 
+  * {
+    --font-size: not set;
+    --line-height: not set;
+    --letter-spacing: not set;
+  }
+
   body {
     margin: 0;
   }
 
   h1 {
     padding-top: 24pt;
-    margin-bottom: 54pt;
+    /* margin-bottom: 54pt; */
+    margin-bottom: 42pt;
     font-size: 28pt;
     line-height: 30pt;
     letter-spacing: 9pt;

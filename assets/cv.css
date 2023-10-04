@@ -10,13 +10,20 @@
   font-style: italic;
 }
 
+/* Disable font scaling, since we use pts */
+* {
+  --font-size: not set;
+  --line-height: not set;
+  --letter-spacing: not set;
+}
+
 .header__section {
   /* So we don't load Inter UI */
   font-family: sans-serif;
 }
 
 .header__link {
-  --font-size: 18;
+  font-size: calc(18 * var(--font-scaling-factor));
   --font-weight: 300;
 }
 
@@ -101,13 +108,6 @@ ul {
   padding-left: var(--bullet-padding);
 }
 
-li::before {
-  position: absolute;
-  left: 0;
-  margin-top: 1pt;
-  content: "\27b5";
-}
-
 li {
   margin: 4pt 0;
 }
@@ -118,10 +118,19 @@ ul h4 {
   letter-spacing: 0.15pt;
 }
 
-li p {
+.lead {
+  font-size: 16pt;
+  line-height: 20pt;
   font-style: italic;
   --font-weight: 350;
-  letter-spacing: 0.2pt;
+}
+
+strong {
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.4pt;
+  font-size: 0.85em;
+  --font-weight: 480;
 }
 
 .timelist {
@@ -142,24 +151,22 @@ li p {
   letter-spacing: 0.2pt;
 }
 
-.lead {
-  font-size: 16pt;
-  line-height: 20pt;
-  font-style: italic;
-  --font-weight: 350;
+.bullets li::before {
+  position: absolute;
+  left: 0;
+  margin-top: 1pt;
+  content: "\27b5";
 }
 
-strong {
-  font-style: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.4pt;
-  font-size: 0.85em;
-  --font-weight: 480;
+.bullets p {
+  font-style: italic;
+  --font-weight: 350;
+  letter-spacing: 0.2pt;
 }
 
 @media screen and (min-width: 768px) {
   body {
-    font-size: 18pt;
+    font-size: 16pt;
     line-height: 22pt;
   }
 
@@ -256,19 +263,12 @@ strong {
     --inset: 80pt;
   }
 
-  * {
-    --font-size: not set;
-    --line-height: not set;
-    --letter-spacing: not set;
-  }
-
   body {
     margin: 0;
   }
 
   h1 {
     padding-top: 24pt;
-    /* margin-bottom: 54pt; */
     margin-bottom: 42pt;
     font-size: 28pt;
     line-height: 30pt;
@@ -289,7 +289,7 @@ strong {
 
   .lead {
     /* Parameters set to get good text wrapping */
-    margin-bottom: 36pt;
+    margin-bottom: 8pt;
     font-size: 17pt;
     line-height: 20pt;
     letter-spacing: 0.5pt;

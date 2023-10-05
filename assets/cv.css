@@ -118,6 +118,14 @@ ul h4 {
   letter-spacing: 0.15pt;
 }
 
+strong {
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.4pt;
+  font-size: 0.85em;
+  --font-weight: 480;
+}
+
 .lead {
   font-size: 16pt;
   line-height: 20pt;
@@ -125,12 +133,9 @@ ul h4 {
   --font-weight: 350;
 }
 
-strong {
-  font-style: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.4pt;
-  font-size: 0.85em;
-  --font-weight: 480;
+.keywords strong {
+  letter-spacing: 0.47pt;
+  --font-weight: 800;
 }
 
 .timelist {

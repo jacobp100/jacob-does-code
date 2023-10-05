@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><title>React Native on macOS</title><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="icon" href="/res/19f82827.png" sizes="16x16" type="image/png"/><link rel="icon" href="/res/eb210940.png" sizes="32x32" type="image/png"/><link rel="apple-touch-icon" href="/res/346f150e.png"/><link rel="apple-touch-icon" sizes="57x57" href="/res/96dcd9a9.png"/><link rel="apple-touch-icon" sizes="72x72" href="/res/cf5ba76d.png"/><link rel="apple-touch-icon" sizes="76x76" href="/res/4ba903c3.png"/><link rel="apple-touch-icon" sizes="114x114" href="/res/a58fed4c.png"/><link rel="apple-touch-icon" sizes="120x120" href="/res/a5e39fa5.png"/><link rel="apple-touch-icon" sizes="152x152" href="/res/ca89aad4.png"/><link rel="apple-touch-icon" sizes="167x167" href="/res/5d37ba5a.png"/><link rel="apple-touch-icon" sizes="180x180" href="/res/f0517911.png"/><script>document.documentElement.style.setProperty("--d",1/(window.devicePixelRatio||1)+"px");</script><style>@font-face{font-family:Inter;font-weight:100 900;font-display:swap;font-style:normal;font-named-instance:"Regular";src:url(/res/541fae2e.woff2);font-display:fallback}@font-face{font-family:Inter;font-weight:100 900;font-display:swap;font-style:italic;font-named-instance:"Regular";src:url(/res/1517082.woff2);font-display:fallback}*,::after,::before{box-sizing:border-box}*{font-size:calc(var(--e)*var(--i));line-height:calc(var(--f)*var(--i));letter-spacing:calc(var(--g)*var(--i));font-weight:var(--h);--i:calc(
     (var(--j) * 1rem / 16) +
       ((1 - var(--j)) * 1px)
-  )}@supports (font-variation-settings:"wght"400){*{font-weight:inherit;font-variation-settings:"wght"var(--h)}}:root{--k:#f97f51;--l:#fc427b;--m:#0652dd;--n:#2771f9;--o:var(--m);--a:#ffc312;--b:#5f27cd;--p:#341f97;--c:var(--q);--q:black;--r:white;--s:12px;--t:12px;--j:1}::selection{background:var(--c);color:#fff}body{margin:var(--s) var(--t) 64px;--e:18;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--q);background:var(--r);--f:26}a{color:var(--c);text-decoration:none}a:active,a:focus,a:hover{text-decoration:underline}.a{display:flex;padding-top:12px;margin:-12px calc(-1*var(--t)) 48px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}.a::after,.a::before{display:block;content:"";padding-right:var(--t)}.b,.d{flex:none;--h:700}.d{display:block;--e:24;--f:18;--g:-1;text-transform:lowercase;border-top:4px solid;padding:6px 4px 0 0}a.d{color:currentColor;text-decoration:none}.b{margin:0 0 0 24px;--e:6;--f:10;--g:1;--j:0;text-transform:uppercase;width:0;overflow-wrap:normal}.c{margin-left:auto}.e{flex:none;display:block;margin:10px 24px 0 0;--e:14;--f:18;--h:400}.e:last-child{margin-right:0}@media (prefers-color-scheme:dark){:root{--o:var(--n);--q:white;--r:black}}@media (min-width:768px){:root{--t:64px}}@media (min-width:1024px){:root{--t:128px}}*{overflow-wrap:break-word}:root{--t:max(12px, (100vw - var(--u)) / 2);--u:800px;--c:var(--p)}h1{margin:48px 0 32px;--e:36;--f:48;--g:-0.8}h2,h3{margin:42px 0 18px}h1,h2{font-weight:700}h2{--e:26;--f:34;--g:-0.3}h3{--e:22;--f:30;--g:-0.18}p{margin:18px 0}h3,strong{font-weight:600}ol,ul{margin:24px 0;padding-left:32px;margin-left:calc(-32*min(max(var(--t) - 32px,0px),1px))}li{position:relative;margin:2px 0;list-style:none}li::before{position:absolute;content:var(--v, "👉");right:calc(100% + 12px)}li[data-bullet]{--v:attr(data-bullet)}blockquote{margin:32px 24px 32px 48px;--e:22;--f:32;font-weight:300;font-style:italic}table{margin:24px;border-collapse:separate;border-spacing:12px 0}thead th{border-bottom:var(--d) solid;--h:600;text-align:left}code,hr{background-color:#f4f4f4}hr{margin:32px calc(-1*var(--t));height:var(--d);border:0}code{font-size:.9em;font-family:monospace;padding:0 3px;border:1px solid #eee;border-radius:6px}pre code{display:block;width:100vw;margin:48px calc(-1*var(--t));padding:18px var(--t);background-color:#fafafa;border:1px solid #f4f4f4;border-width:1px 0;border-radius:0;overflow-x:scroll}video{display:block;max-width:100%;margin:32px auto}iframe{width:calc(var(--w)*1);height:calc(var(--w)*.66);border:1px solid rgba(0,0,0,.1);--w:calc(100vw - 2 * var(--t))}.f,blockquote{color:#9e9e9e}@media (min-width:768px){a,p>code{word-break:initial}}@media (prefers-color-scheme:dark){hr,pre code{background-color:#080808}code{background-color:#111;border-color:#222}pre code{border-color:#111}}.-j,.-l{color:#a0a1a7;font-style:italic}.-a,.-m,.-n{color:#a626a4}.-o,.-p,.-q,.-r,.-s{color:#e45649}.-h{color:#0184bb}.-t,.-u,.-v,.-w,.-x{color:#50a14f}.-k,.-y .-z{color:#c18401}.-A,.-B,.-C,.-D,.-E,.-F,.-G,.-g{color:#986801}.-H,.-I,.-J,.-K,.-L,.-z{color:#4078f2}.-M{font-style:italic}.-N{font-weight:700}.-J{text-decoration:underline}@media (prefers-color-scheme:dark){.-j,.-l{color:#5c6370;font-style:italic}.-a,.-m,.-n{color:#c678dd}.-o,.-p,.-q,.-r,.-s{color:#e06c75}.-h{color:#56b6c2}.-t,.-u,.-v,.-w,.-x{color:#98c379}.-k,.-y .-z{color:#e6c07b}.-A,.-B,.-C,.-D,.-E,.-F,.-G,.-g{color:#d19a66}.-H,.-I,.-J,.-K,.-L,.-z{color:#61aeee}.-M{font-style:italic}.-N{font-weight:700}.-J{text-decoration:underline}}</style></head><body><div class="a"><a href="/" class="d">Jacob<br/>does<br/>code</a><div class="b">Apps</div><a href="/pocket-jam" class="e">Pocket Jam</a><a href="/piano-tabs" class="e">Piano Tabs</a><a href="/technicalc" class="e">TechniCalc</a><a href="/calipers" class="e">Calipers</a><a href="/freebies" class="e">Freebies</a><div class="b c">Developement</div><a href="/blog" class="e">Blog</a><a href="https://github.com/jacobp100" class="e">Github</a></div><h1>React Native on macOS</h1>
+  )}@supports (font-variation-settings:"wght"400){*{font-weight:inherit;font-variation-settings:"wght"var(--h)}}:root{--k:#f97f51;--l:#fc427b;--m:#0652dd;--n:#2771f9;--o:var(--m);--a:#ffc312;--b:#5f27cd;--p:#341f97;--c:var(--q);--q:black;--r:white;--s:12px;--t:12px;--j:1}::selection{background:var(--c);color:#fff}body{margin:var(--s) var(--t) 64px;--e:18;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--q);background:var(--r);--f:26}a{color:var(--c);text-decoration:none}a:active,a:focus,a:hover{text-decoration:underline}.a{display:flex;padding-top:12px;margin:-12px calc(-1*var(--t)) 48px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}.a::after,.a::before{display:block;content:"";padding-right:var(--t)}.b,.d{flex:none;--h:700}.d{display:block;--e:24;--f:18;--g:-1;text-transform:lowercase;border-top:4px solid;padding:6px 4px 0 0}a.d{color:currentColor;text-decoration:none}.b{margin:0 0 0 24px;--e:6;--f:10;--g:1;--j:0;text-transform:uppercase;width:0;overflow-wrap:normal}.c{margin-left:auto}.e{flex:none;display:block;margin:10px 24px 0 0;--e:14;--f:18;--h:400}.e:last-child{margin-right:0}@media (prefers-color-scheme:dark){:root{--o:var(--n);--q:white;--r:black}}@media (min-width:768px){:root{--t:64px}}@media (min-width:1024px){:root{--t:128px}}*{overflow-wrap:break-word}:root{--t:max(12px, (100vw - var(--u)) / 2);--u:800px;--c:var(--p)}h1{margin:48px 0 32px;--e:36;--f:48;--g:-0.8}h2,h3{margin:42px 0 18px}h1,h2{font-weight:700}h2{--e:26;--f:34;--g:-0.3}h3{--e:22;--f:30;--g:-0.18}p{margin:18px 0}h3,strong{font-weight:600}ol,ul{margin:24px 0;padding-left:32px;margin-left:calc(-32*min(max(var(--t) - 32px,0px),1px))}li{position:relative;margin:2px 0;list-style:none}li::before{position:absolute;content:var(--v, "👉");right:calc(100% + 12px)}li[data-bullet]{--v:attr(data-bullet)}blockquote{margin:32px 24px 32px 48px;--e:22;--f:32;font-weight:300;font-style:italic}table{margin:24px;border-collapse:separate;border-spacing:12px 0}thead th{border-bottom:var(--d) solid;--h:600;text-align:left}code,hr{background-color:#f4f4f4}hr{margin:32px calc(-1*var(--t));height:var(--d);border:0}code{font-size:.9em;font-family:monospace;padding:0 3px;border:1px solid #eee;border-radius:6px}pre code{display:block;width:100vw;margin:48px calc(-1*var(--t));padding:18px var(--t);background-color:#fafafa;border:1px solid #f4f4f4;border-width:1px 0;border-radius:0;overflow-x:scroll}video{display:block;max-width:100%;margin:32px auto}iframe{width:calc(var(--w)*1);height:calc(var(--w)*.66);border:1px solid rgba(0,0,0,.1);--w:calc(100vw - 2 * var(--t))}.f,blockquote{color:#9e9e9e}@media (min-width:768px){a,p>code{word-break:initial}}@media (prefers-color-scheme:dark){hr,pre code{background-color:#080808}code{background-color:#111;border-color:#222}pre code{border-color:#111}}.-k,.-m{color:#a0a1a7;font-style:italic}.-b,.-n,.-o{color:#a626a4}.-p,.-q,.-r,.-s,.-t{color:#e45649}.-i{color:#0184bb}.-u,.-v,.-w,.-x,.-y{color:#50a14f}.-l,.-z .-A{color:#c18401}.-B,.-C,.-D,.-E,.-F,.-G,.-H,.-h{color:#986801}.-A,.-I,.-J,.-K,.-L,.-M{color:#4078f2}.-N{font-style:italic}.-O{font-weight:700}.-K{text-decoration:underline}@media (prefers-color-scheme:dark){.-k,.-m{color:#5c6370;font-style:italic}.-b,.-n,.-o{color:#c678dd}.-p,.-q,.-r,.-s,.-t{color:#e06c75}.-i{color:#56b6c2}.-u,.-v,.-w,.-x,.-y{color:#98c379}.-l,.-z .-A{color:#e6c07b}.-B,.-C,.-D,.-E,.-F,.-G,.-H,.-h{color:#d19a66}.-A,.-I,.-J,.-K,.-L,.-M{color:#61aeee}.-N{font-style:italic}.-O{font-weight:700}.-K{text-decoration:underline}}</style></head><body><div class="a"><a href="/" class="d">Jacob<br/>does<br/>code</a><div class="b">Apps</div><a href="/pocket-jam" class="e">Pocket Jam</a><a href="/piano-tabs" class="e">Piano Tabs</a><a href="/technicalc" class="e">TechniCalc</a><a href="/calipers" class="e">Calipers</a><a href="/freebies" class="e">Freebies</a><div class="b c">Developement</div><a href="/blog" class="e">Blog</a><a href="https://github.com/jacobp100" class="e">Github</a></div><h1>React Native on macOS</h1>
 <p>One of my apps, <a href="/technicalc">TechniCalc</a>, is made with React Native. Recently, I got it running on macOS. Here’s what I learned.</p>
 <p>First, some details on macOS. Up until a few years ago, Mac apps had to be written in AppKit, and iOS apps had to be written in UIKit. The latter is still true, but with the advent of Catalyst from Apple, it is possible to run UIKit on macOS.</p>
 <p>This wasn’t just just an effort of getting UIKit to physically run, but also an effort of getting UIKit to handle macOS nuances. For example, some gestures — like scrolling and swiping — happen by the trackpad, but some — like tapping and dragging — work by the pointer. UIKit has been extended to allow customising these kind of things.</p>
@@ -15,55 +15,55 @@
 <h2>That Easy, Huh?</h2>
 <p>No.</p>
 <p>Firstly, it now won’t build on iOS or Mac. You’ll need to edit your <code>Podfile</code> and remove Flipper.</p>
-<pre><code><span class="-r">- use_flipper!</span>
-<span class="-r">- post_install do |installer|</span>
-<span class="-r">-   flipper_post_install(installer)</span>
-<span class="-r">- end</span>
+<pre><code><span class="-s">- use_flipper!</span>
+<span class="-s">- post_install do |installer|</span>
+<span class="-s">-   flipper_post_install(installer)</span>
+<span class="-s">- end</span>
 </code></pre>
 <p>Now it’ll run on iOS, but not Mac. Still in your <code>Podfile</code>, add these lines to the bottom. You’ll need to get your App Store Connect ID — just log in, click your name, <em>Edit Profile</em>, and you’ll see it listed under <em>Team ID</em>. Finally, run <code>pod install</code>.</p>
-<pre><code><span class="-v">+ # https://github.com/CocoaPods/CocoaPods/issues/8891#issuecomment-546636698</span>
-<span class="-v">+ def fix_config(config)</span>
-<span class="-v">+   if config.build_settings[&#x27;DEVELOPMENT_TEAM&#x27;].nil?</span>
-<span class="-v">+     config.build_settings[&#x27;DEVELOPMENT_TEAM&#x27;] = &#x27;&lt;YOUR APP STORE CONNECT TEAM ID&gt;&#x27;</span>
-<span class="-v">+   end</span>
-<span class="-v">+ end</span>
-<span class="-v">+ post_install do |installer|</span>
-<span class="-v">+   installer.generated_projects.each do |project|</span>
-<span class="-v">+     project.build_configurations.each do |config|</span>
-<span class="-v">+         fix_config(config)</span>
-<span class="-v">+     end</span>
-<span class="-v">+     project.targets.each do |target|</span>
-<span class="-v">+       target.build_configurations.each do |config|</span>
-<span class="-v">+         fix_config(config)</span>
-<span class="-v">+       end</span>
-<span class="-v">+     end</span>
-<span class="-v">+   end</span>
-<span class="-v">+ end</span>
+<pre><code><span class="-w">+ # https://github.com/CocoaPods/CocoaPods/issues/8891#issuecomment-546636698</span>
+<span class="-w">+ def fix_config(config)</span>
+<span class="-w">+   if config.build_settings[&#x27;DEVELOPMENT_TEAM&#x27;].nil?</span>
+<span class="-w">+     config.build_settings[&#x27;DEVELOPMENT_TEAM&#x27;] = &#x27;&lt;YOUR APP STORE CONNECT TEAM ID&gt;&#x27;</span>
+<span class="-w">+   end</span>
+<span class="-w">+ end</span>
+<span class="-w">+ post_install do |installer|</span>
+<span class="-w">+   installer.generated_projects.each do |project|</span>
+<span class="-w">+     project.build_configurations.each do |config|</span>
+<span class="-w">+         fix_config(config)</span>
+<span class="-w">+     end</span>
+<span class="-w">+     project.targets.each do |target|</span>
+<span class="-w">+       target.build_configurations.each do |config|</span>
+<span class="-w">+         fix_config(config)</span>
+<span class="-w">+       end</span>
+<span class="-w">+     end</span>
+<span class="-w">+   end</span>
+<span class="-w">+ end</span>
 </code></pre>
 <p>This is a hack (I’ve attached a link to the issue comment detailing this) — but this is a workaround you’ll have to use for now.</p>
 <p>After all this, your app should build.</p>
 <p>But it won’t pass an app review. The menu bar added by default has items added that lead to nowvere. I tell you this from experience.</p>
 <p>It’s easiest to just remove the items that you don’t need. You can do this in <code>AppDelegate.m</code> by adding this method.</p>
-<pre><code>- (<span class="-D">void</span>)buildMenuWithBuilder:(<span class="-D">id</span>&lt;<span class="-k">UIMenuBuilder</span>&gt;)builder
+<pre><code>- (<span class="-E">void</span>)buildMenuWithBuilder:(<span class="-E">id</span>&lt;<span class="-l">UIMenuBuilder</span>&gt;)builder
 {
-  [builder removeMenuForIdentifier:<span class="-k">UIMenuEdit</span>];
-  [builder removeMenuForIdentifier:<span class="-k">UIMenuFormat</span>];
-  [builder removeMenuForIdentifier:<span class="-k">UIMenuHelp</span>];
+  [builder removeMenuForIdentifier:<span class="-l">UIMenuEdit</span>];
+  [builder removeMenuForIdentifier:<span class="-l">UIMenuFormat</span>];
+  [builder removeMenuForIdentifier:<span class="-l">UIMenuHelp</span>];
 }
 </code></pre>
 <h2>The Mac Window</h2>
 <p>Now your app is running on Mac, try resizing the window. Chances are, it didn’t work so well and the content lagged while resizing. Catalyst can already be a bit sluggish sluggish, and the async layout in React Native only makes matters worse.</p>
 <p>You can disable the resizing if you wish. In your <code>AppDelegate.m</code>, you can add the following lines.</p>
-<pre><code>- (<span class="-D">BOOL</span>)application:(<span class="-k">UIApplication</span> *)application
-  didFinishLaunchingWithOptions:(<span class="-k">NSDictionary</span> *)launchOptions
+<pre><code>- (<span class="-E">BOOL</span>)application:(<span class="-l">UIApplication</span> *)application
+  didFinishLaunchingWithOptions:(<span class="-l">NSDictionary</span> *)launchOptions
 {
-  <span class="-j">// ...</span>
+  <span class="-k">// ...</span>
 
-  <span class="-k">CGSize</span> size = <span class="-k">CGSizeMake</span>(width, height);
-  [<span class="-a">self</span>.window.windowScene.sizeRestrictions setMinimumSize:size];
-  [<span class="-a">self</span>.window.windowScene.sizeRestrictions setMaximumSize:size];
+  <span class="-l">CGSize</span> size = <span class="-l">CGSizeMake</span>(width, height);
+  [<span class="-b">self</span>.window.windowScene.sizeRestrictions setMinimumSize:size];
+  [<span class="-b">self</span>.window.windowScene.sizeRestrictions setMaximumSize:size];
 
-  <span class="-a">return</span> <span class="-h">YES</span>;
+  <span class="-b">return</span> <span class="-i">YES</span>;
 }
 </code></pre>
 <p>If you disable sizing, double check it fits on a regular MacBook Pro 13″ screen!</p>
@@ -73,46 +73,46 @@
 <p>The window configuration from UIKit is very limited — you can set minimum and maximum sizes, change the title bar, but not much else.</p>
 <p>However, remember when I told you you couldn’t mix AppKit and UIKit? I lied. But it’s not pretty. You can follow <a href="https://crunchybagel.com/disabling-the-mac-zoom-maximise-button-in-catalyst/">this guide</a> to do so.</p>
 <p>Once you’ve set up the bundle, you can get it running in your React Native application by making the following changes to <code>AppDelegate.m</code>.</p>
-<pre><code><span class="-K">#<span class="-a">if</span> TARGET_OS_MACCATALYST</span>
-<span class="-K">#import <span class="-t">&lt;React/RCTConstants.h&gt;</span></span>
+<pre><code><span class="-L">#<span class="-b">if</span> TARGET_OS_MACCATALYST</span>
+<span class="-L">#import <span class="-u">&lt;React/RCTConstants.h&gt;</span></span>
 
-<span class="-y"><span class="-a">@interface</span> <span class="-z">InteropViewController</span> : <span class="-z">UIViewController</span></span>
-<span class="-a">@end</span>
+<span class="-z"><span class="-b">@interface</span> <span class="-A">InteropViewController</span> : <span class="-A">UIViewController</span></span>
+<span class="-b">@end</span>
 
-<span class="-y"><span class="-a">@implementation</span> <span class="-z">InteropViewController</span></span>
+<span class="-z"><span class="-b">@implementation</span> <span class="-A">InteropViewController</span></span>
 
-- (<span class="-D">void</span>)viewDidAppear:(<span class="-D">BOOL</span>)animated
+- (<span class="-E">void</span>)viewDidAppear:(<span class="-E">BOOL</span>)animated
 {
-  [<span class="-B -V">super</span> viewDidAppear:animated];
+  [<span class="-C -W">super</span> viewDidAppear:animated];
 
-  <span class="-k">NSURL</span> *bundleUrl = [<span class="-k">NSBundle</span>.mainBundle.builtInPlugInsURL URLByAppendingPathComponent:<span class="-t">@&quot;MacInterop.bundle&quot;</span>];
-  <span class="-k">NSBundle</span> *bundle = [<span class="-k">NSBundle</span> bundleWithURL:bundleUrl];
+  <span class="-l">NSURL</span> *bundleUrl = [<span class="-l">NSBundle</span>.mainBundle.builtInPlugInsURL URLByAppendingPathComponent:<span class="-u">@&quot;MacInterop.bundle&quot;</span>];
+  <span class="-l">NSBundle</span> *bundle = [<span class="-l">NSBundle</span> bundleWithURL:bundleUrl];
   [bundle load];
-  Class macInterop = <span class="-k">NSClassFromString</span>(<span class="-t">@&quot;MacApp&quot;</span>);
-  SEL selector = <span class="-k">NSSelectorFromString</span>(<span class="-t">@&quot;configureApp&quot;</span>);
+  Class macInterop = <span class="-l">NSClassFromString</span>(<span class="-u">@&quot;MacApp&quot;</span>);
+  SEL selector = <span class="-l">NSSelectorFromString</span>(<span class="-u">@&quot;configureApp&quot;</span>);
   [macInterop performSelector:selector];
 
-  <span class="-j">// Force update react-native Dimensions</span>
-  [<span class="-k">NSNotificationCenter</span>.defaultCenter postNotificationName:RCTUserInterfaceStyleDidChangeNotification object:<span class="-h">nil</span>];
+  <span class="-k">// Force update react-native Dimensions</span>
+  [<span class="-l">NSNotificationCenter</span>.defaultCenter postNotificationName:RCTUserInterfaceStyleDidChangeNotification object:<span class="-i">nil</span>];
 }
 
-<span class="-a">@end</span>
-<span class="-K">#<span class="-a">else</span></span>
-<span class="-K">#<span class="-a">define</span> InteropViewController UIViewController</span>
-<span class="-K">#<span class="-a">endif</span></span>
+<span class="-b">@end</span>
+<span class="-L">#<span class="-b">else</span></span>
+<span class="-L">#<span class="-b">define</span> InteropViewController UIViewController</span>
+<span class="-L">#<span class="-b">endif</span></span>
 
-<span class="-y"><span class="-a">@implementation</span> <span class="-z">AppDelegate</span></span>
+<span class="-z"><span class="-b">@implementation</span> <span class="-A">AppDelegate</span></span>
 
-- (<span class="-D">BOOL</span>)application:(<span class="-k">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="-k">NSDictionary</span> *)launchOptions
+- (<span class="-E">BOOL</span>)application:(<span class="-l">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="-l">NSDictionary</span> *)launchOptions
 {
-  <span class="-j">// ...</span>
+  <span class="-k">// ...</span>
 
-  <span class="-k">UIViewController</span> *rootViewController = [InteropViewController new];
+  <span class="-l">UIViewController</span> *rootViewController = [InteropViewController new];
   rootViewController.view = rootView;
-  <span class="-a">self</span>.window.rootViewController = rootViewController;
-  [<span class="-a">self</span>.window makeKeyAndVisible];
+  <span class="-b">self</span>.window.rootViewController = rootViewController;
+  [<span class="-b">self</span>.window makeKeyAndVisible];
 
-  <span class="-a">return</span> <span class="-h">YES</span>;
+  <span class="-b">return</span> <span class="-i">YES</span>;
 }
 </code></pre>
 <p>Now you have your bundle running, you should be able to access all the low-level functions you need to customise the window. If you want to see what happens in TechniCalc, check out <a href="https://gist.github.com/jacobp100/e7ee89f3324b36cb8a4f7547b0fbcd90">this gist</a>.</p><span class="f">Published on <time dateTime="2020-11-20T00:00:00.000Z">20th November 2020</time></span></body></html>

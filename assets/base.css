@@ -51,12 +51,10 @@
 :root {
   --pocket-jam: #f97f51;
   --piano-tabs: #fc427b;
-  --technicalc-light: #0652dd;
-  --technicalc-dark: #2771f9; /* 12% lighter */
-  --technicalc: var(--technicalc-light);
+  --technicalc: #2874ff;
   --calipers: #ffc312;
-  --freebies: #5f27cd;
-  --blog: #341f97;
+  --freebies: var(--color);
+  --blog: var(--color);
   --primary: var(--color);
   --color: black;
   --background: white;
@@ -157,7 +155,6 @@ a.header__logo {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --technicalc: var(--technicalc-dark);
     --color: white;
     --background: black;
   }

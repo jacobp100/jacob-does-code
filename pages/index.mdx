@@ -7,8 +7,8 @@ export const css = "/assets/index.css";
 <div className={classNames("links")}>
   <A
     href="/pages/pocket-jam.mdx"
-    className={"link"}
-    style={{ color: `var(${cssVariable("--pocket-jam")})` }}
+    className="link link--primary"
+    style={{ [cssVariable('--color')]: `var(${cssVariable("--pocket-jam")})` }}
   >
     <Icon name="pocket-jam" className="link__app" />
     {/* MDX makes this a paragraph element without using the string */}
@@ -19,8 +19,8 @@ export const css = "/assets/index.css";
   </A>
   <A
     href="/pages/piano-tabs.mdx"
-    className={"link"}
-    style={{ color: `var(${cssVariable("--piano-tabs")})` }}
+    className="link link--primary"
+    style={{ [cssVariable('--color')]: `var(${cssVariable("--piano-tabs")})` }}
   >
     <Icon name="piano-tabs" className="link__app" />
     <span
@@ -30,8 +30,8 @@ export const css = "/assets/index.css";
   </A>
   <A
     href="/pages/technicalc.mdx"
-    className={"link"}
-    style={{ color: `var(${cssVariable("--technicalc")})` }}
+    className="link link--primary"
+    style={{ [cssVariable('--color')]: `var(${cssVariable("--technicalc")})` }}
   >
     <Icon name="technicalc" className="link__app" />
     <span
@@ -41,8 +41,8 @@ export const css = "/assets/index.css";
   </A>
   <A
     href="/pages/calipers.mdx"
-    className={"link"}
-    style={{ color: `var(${cssVariable("--calipers")})` }}
+    className="link link--primary"
+    style={{ [cssVariable('--color')]: `var(${cssVariable("--calipers")})` }}
   >
     <Icon name="calipers" className="link__app" />
     <span
@@ -52,16 +52,16 @@ export const css = "/assets/index.css";
   </A>
   <A
     href="/pages/freebies.mdx"
-    className={"link"}
-    style={{ color: `var(${cssVariable("--freebies")})` }}
+    className="link link--secondary"
+    style={{ [cssVariable('--color')]: `var(${cssVariable("--freebies")})` }}
   >
     <Icon name="link" className="link__app" />
     <span className={classNames("link__title")} children="Freebies" />
   </A>
   <A
     href="/pages/blog.mdx"
-    className={"link"}
-    style={{ color: `var(${cssVariable("--blog")})` }}
+    className="link link--secondary"
+    style={{ [cssVariable('--color')]: `var(${cssVariable("--blog")})` }}
   >
     <Icon name="link" className="link__app" />
     <span className={classNames("link__title")} children="Blog" />

@@ -1,3 +1,8 @@
+:root {
+  /* Lighter to fit other app colours better */
+  --calipers: #ffc636;
+}
+
 .links {
   display: grid;
   grid-template-columns: repeat(auto-fit, calc(100% / var(--columns)));
@@ -6,15 +11,23 @@
 
 .link {
   position: relative;
-  background-color: currentColor;
   overflow: hidden;
   --allow-font-scaling: 0;
+}
+
+.link--primary {
+  color: white;
+  background: var(--color);
+}
+
+.link--secondary {
+  color: var(--color);
 }
 
 .link__app {
   display: block;
   width: 100%;
-  fill: white;
+  fill: currentColor;
   transform-origin: center;
   transition-duration: 300ms;
 }
@@ -26,7 +39,7 @@
   bottom: 0.5em;
   text-align: center;
   --font-weight: 600;
-  color: white;
+  color: currentColor;
 }
 
 .link__title--discretionary {

@@ -16,16 +16,17 @@ const transform = assetTransform<string, [string[]]>(
 
 type Props = {
   files: string[];
-  className: string | string[];
+  className?: string | string[];
+  download?: string;
   children?: any;
 };
 
-export default ({ files, className, children }: Props) => {
+export default ({ files, className, download, children }: Props) => {
   const content = useContent();
   const zip = transform(content, files);
 
   return (
-    <a href={zip} className={classNames(className)}>
+    <a href={zip} download={download} className={classNames(className)}>
       {children}
     </a>
   );

@@ -1,59 +1,59 @@
 <!DOCTYPE html><html lang="en"><head><title>Polymorphic Variants in ReasonML</title><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="icon" href="/res/19f82827.png" sizes="16x16" type="image/png"/><link rel="icon" href="/res/eb210940.png" sizes="32x32" type="image/png"/><link rel="apple-touch-icon" href="/res/346f150e.png"/><link rel="apple-touch-icon" sizes="57x57" href="/res/96dcd9a9.png"/><link rel="apple-touch-icon" sizes="72x72" href="/res/cf5ba76d.png"/><link rel="apple-touch-icon" sizes="76x76" href="/res/4ba903c3.png"/><link rel="apple-touch-icon" sizes="114x114" href="/res/a58fed4c.png"/><link rel="apple-touch-icon" sizes="120x120" href="/res/a5e39fa5.png"/><link rel="apple-touch-icon" sizes="152x152" href="/res/ca89aad4.png"/><link rel="apple-touch-icon" sizes="167x167" href="/res/5d37ba5a.png"/><link rel="apple-touch-icon" sizes="180x180" href="/res/f0517911.png"/><script>document.documentElement.style.setProperty("--d",1/(window.devicePixelRatio||1)+"px");</script><style>@font-face{font-family:Inter;font-weight:100 900;font-display:swap;font-style:normal;font-named-instance:"Regular";src:url(/res/541fae2e.woff2);font-display:fallback}@font-face{font-family:Inter;font-weight:100 900;font-display:swap;font-style:italic;font-named-instance:"Regular";src:url(/res/1517082.woff2);font-display:fallback}*,::after,::before{box-sizing:border-box}*{font-size:calc(var(--e)*var(--i));line-height:calc(var(--f)*var(--i));letter-spacing:calc(var(--g)*var(--i));font-weight:var(--h);--i:calc(
     (var(--j) * 1rem / 16) +
       ((1 - var(--j)) * 1px)
-  )}@supports (font-variation-settings:"wght"400){*{font-weight:inherit;font-variation-settings:"wght"var(--h)}}:root{--k:#f97f51;--l:#fc427b;--m:#2874ff;--a:#ffc312;--b:var(--n);--o:var(--n);--c:var(--n);--n:black;--p:white;--q:12px;--r:12px;--j:1}::selection{background:var(--c);color:#fff}body{margin:var(--q) var(--r) 64px;--e:18;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--n);background:var(--p);--f:26}a{color:var(--c);text-decoration:none}a:active,a:focus,a:hover{text-decoration:underline}.a{display:flex;padding-top:12px;margin:-12px calc(-1*var(--r)) 48px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}.a::after,.a::before{display:block;content:"";padding-right:var(--r)}.b,.d{flex:none;--h:700}.d{display:block;--e:24;--f:18;--g:-1;text-transform:lowercase;border-top:4px solid;padding:6px 4px 0 0}a.d{color:currentColor;text-decoration:none}.b{margin:0 0 0 24px;--e:6;--f:10;--g:1;--j:0;text-transform:uppercase;width:0;overflow-wrap:normal}.c{margin-left:auto}.e{flex:none;display:block;margin:10px 24px 0 0;--e:14;--f:18;--h:400}.e:last-child{margin-right:0}@media (prefers-color-scheme:dark){:root{--n:white;--p:black}}@media (min-width:768px){:root{--r:64px}}@media (min-width:1024px){:root{--r:128px}}*{overflow-wrap:break-word}:root{--r:max(12px, (100vw - var(--s)) / 2);--s:800px;--c:var(--o)}h1{margin:48px 0 32px;--e:36;--f:48;--g:-0.8}h2,h3{margin:42px 0 18px}h1,h2{font-weight:700}h2{--e:26;--f:34;--g:-0.3}h3{--e:22;--f:30;--g:-0.18}p{margin:18px 0}h3,strong{font-weight:600}ol,ul{margin:24px 0;padding-left:32px;margin-left:calc(-32*min(max(var(--r) - 32px,0px),1px))}li{position:relative;margin:2px 0;list-style:none}li::before{position:absolute;content:var(--t, "👉");right:calc(100% + 12px)}li[data-bullet]{--t:attr(data-bullet)}blockquote{margin:32px 24px 32px 48px;--e:22;--f:32;font-weight:300;font-style:italic}table{margin:24px;border-collapse:separate;border-spacing:12px 0}thead th{border-bottom:var(--d) solid;--h:600;text-align:left}code,hr{background-color:#f4f4f4}hr{margin:32px calc(-1*var(--r));height:var(--d);border:0}code{font-size:.9em;font-family:monospace;padding:0 3px;border:1px solid #eee;border-radius:6px}pre code{display:block;width:100vw;margin:48px calc(-1*var(--r));padding:18px var(--r);background-color:#fafafa;border:1px solid #f4f4f4;border-width:1px 0;border-radius:0;overflow-x:scroll}video{display:block;max-width:100%;margin:32px auto}iframe{width:calc(var(--u)*1);height:calc(var(--u)*.66);border:1px solid rgba(0,0,0,.1);--u:calc(100vw - 2 * var(--r))}.f,blockquote{color:#9e9e9e}@media (min-width:768px){a,p>code{word-break:initial}}@media (prefers-color-scheme:dark){hr,pre code{background-color:#080808}code{background-color:#111;border-color:#222}pre code{border-color:#111}}.-m,.-o{color:#a0a1a7;font-style:italic}.-d,.-p,.-q{color:#a626a4}.-r,.-s,.-t,.-u,.-v{color:#e45649}.-k{color:#0184bb}.-A,.-w,.-x,.-y,.-z{color:#50a14f}.-B .-C,.-n{color:#c18401}.-D,.-E,.-F,.-G,.-H,.-I,.-J,.-j{color:#986801}.-C,.-K,.-L,.-M,.-N,.-O{color:#4078f2}.-P{font-style:italic}.-Q{font-weight:700}.-M{text-decoration:underline}@media (prefers-color-scheme:dark){.-m,.-o{color:#5c6370;font-style:italic}.-d,.-p,.-q{color:#c678dd}.-r,.-s,.-t,.-u,.-v{color:#e06c75}.-k{color:#56b6c2}.-A,.-w,.-x,.-y,.-z{color:#98c379}.-B .-C,.-n{color:#e6c07b}.-D,.-E,.-F,.-G,.-H,.-I,.-J,.-j{color:#d19a66}.-C,.-K,.-L,.-M,.-N,.-O{color:#61aeee}.-P{font-style:italic}.-Q{font-weight:700}.-M{text-decoration:underline}}</style></head><body><div class="a"><a href="/" class="d">Jacob<br/>does<br/>code</a><div class="b">Apps</div><a href="/pocket-jam" class="e">Pocket Jam</a><a href="/piano-tabs" class="e">Piano Tabs</a><a href="/technicalc" class="e">TechniCalc</a><a href="/calipers" class="e">Calipers</a><a href="/freebies" class="e">Freebies</a><div class="b c">Developement</div><a href="/blog" class="e">Blog</a><a href="https://github.com/jacobp100" class="e">Github</a></div><h1>Polymorphic Variants in ReasonML</h1>
+  )}@supports (font-variation-settings:"wght"400){*{font-weight:inherit;font-variation-settings:"wght"var(--h)}}:root{--k:#f97f51;--l:#fc427b;--m:#2874ff;--a:#ffc312;--b:var(--n);--o:var(--n);--c:var(--n);--n:black;--p:white;--q:12px;--r:12px;--j:1}::selection{background:var(--c);color:#fff}body{margin:var(--q) var(--r) 64px;--e:18;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--n);background:var(--p);--f:26}a{color:var(--c);text-decoration:none}a:active,a:focus,a:hover{text-decoration:underline}.a{display:flex;padding-top:12px;margin:-12px calc(-1*var(--r)) 48px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}.a::after,.a::before{display:block;content:"";padding-right:var(--r)}.b,.d{flex:none;--h:700}.d{display:block;--e:24;--f:18;--g:-1;text-transform:lowercase;border-top:4px solid;padding:6px 4px 0 0}a.d{color:currentColor;text-decoration:none}.b{margin:0 0 0 24px;--e:6;--f:10;--g:1;--j:0;text-transform:uppercase;width:0;overflow-wrap:normal}.c{margin-left:auto}.e{flex:none;display:block;margin:10px 24px 0 0;--e:14;--f:18;--h:400}.e:last-child{margin-right:0}@media (prefers-color-scheme:dark){:root{--n:white;--p:black}}@media (min-width:768px){:root{--r:64px}}@media (min-width:1024px){:root{--r:128px}}*{overflow-wrap:break-word}:root{--r:max(12px, (100vw - var(--s)) / 2);--s:800px;--c:var(--o)}h1{margin:48px 0 32px;--e:36;--f:48;--g:-0.8}h2,h3{margin:42px 0 18px}h1,h2{font-weight:700}h2{--e:26;--f:34;--g:-0.3}h3{--e:22;--f:30;--g:-0.18}p{margin:18px 0}h3,strong{font-weight:600}ol,ul{margin:24px 0;padding-left:32px;margin-left:calc(-32*min(max(var(--r) - 32px,0px),1px))}li{position:relative;margin:2px 0;list-style:none}li::before{position:absolute;content:var(--t, "👉");right:calc(100% + 12px)}li[data-bullet]{--t:attr(data-bullet)}blockquote{margin:32px 24px 32px 48px;--e:22;--f:32;font-weight:300;font-style:italic}table{margin:24px;border-collapse:separate;border-spacing:12px 0}thead th{border-bottom:var(--d) solid;--h:600;text-align:left}code,hr{background-color:#f4f4f4}hr{margin:32px calc(-1*var(--r));height:var(--d);border:0}code{font-size:.9em;font-family:monospace;padding:0 3px;border:1px solid #eee;border-radius:6px}pre code{display:block;width:100vw;margin:48px calc(-1*var(--r));padding:18px var(--r);background-color:#fafafa;border:1px solid #f4f4f4;border-width:1px 0;border-radius:0;overflow-x:scroll}video{display:block;max-width:100%;margin:32px auto}iframe{width:calc(var(--u)*1);height:calc(var(--u)*.66);border:1px solid rgba(0,0,0,.1);--u:calc(100vw - 2 * var(--r))}.f,blockquote{color:#9e9e9e}@media (min-width:768px){a,p>code{word-break:initial}}@media (prefers-color-scheme:dark){hr,pre code{background-color:#080808}code{background-color:#111;border-color:#222}pre code{border-color:#111}}.-n,.-p{color:#a0a1a7;font-style:italic}.-e,.-q,.-r{color:#a626a4}.-s,.-t,.-u,.-v,.-w{color:#e45649}.-l{color:#0184bb}.-A,.-B,.-x,.-y,.-z{color:#50a14f}.-C .-D,.-o{color:#c18401}.-E,.-F,.-G,.-H,.-I,.-J,.-K,.-k{color:#986801}.-D,.-L,.-M,.-N,.-O,.-P{color:#4078f2}.-Q{font-style:italic}.-R{font-weight:700}.-N{text-decoration:underline}@media (prefers-color-scheme:dark){.-n,.-p{color:#5c6370;font-style:italic}.-e,.-q,.-r{color:#c678dd}.-s,.-t,.-u,.-v,.-w{color:#e06c75}.-l{color:#56b6c2}.-A,.-B,.-x,.-y,.-z{color:#98c379}.-C .-D,.-o{color:#e6c07b}.-E,.-F,.-G,.-H,.-I,.-J,.-K,.-k{color:#d19a66}.-D,.-L,.-M,.-N,.-O,.-P{color:#61aeee}.-Q{font-style:italic}.-R{font-weight:700}.-N{text-decoration:underline}}</style></head><body><div class="a"><a href="/" class="d">Jacob<br/>does<br/>code</a><div class="b">Apps</div><a href="/pocket-jam" class="e">Pocket Jam</a><a href="/piano-tabs" class="e">Piano Tabs</a><a href="/technicalc" class="e">TechniCalc</a><a href="/calipers" class="e">Calipers</a><a href="/freebies" class="e">Freebies</a><div class="b c">Developement</div><a href="/blog" class="e">Blog</a><a href="https://github.com/jacobp100" class="e">Github</a></div><h1>Polymorphic Variants in ReasonML</h1>
 <p>Polymorphic variants are one of the more unique features of OCaml (or ReasonML if you prefer). These are actually one of the things that aren’t documented ReasonML site, but they can be really useful nonetheless.</p>
 <p>At their simplest, they work exactly the same as regular variants. The first difference is that these variants begin with a <code>`</code> character. They can also be used without a type definition. Let’s find the index of a pair of brackets in a list of characters.</p>
-<pre><code><span class="-d">let</span> firstBracketPair =<span class="-e"> <span class="-f">inputChars</span> =&gt;</span> {
-  <span class="-d">let</span> <span class="-d">rec</span> iter =<span class="-e"> (<span class="-f">currentState</span>, <span class="-f">chars</span>, <span class="-f">currentIndex</span>) =&gt;</span>
+<pre><code><span class="-e">let</span> firstBracketPair =<span class="-f"> <span class="-g">inputChars</span> =&gt;</span> {
+  <span class="-e">let</span> <span class="-e">rec</span> iter =<span class="-f"> (<span class="-g">currentState</span>, <span class="-g">chars</span>, <span class="-g">currentIndex</span>) =&gt;</span>
     switch (currentState, chars) {
-    <span class="-g">| (<span class="-h">`FoundBracket(<span class="-f">startIndex</span>)</span>, [&#x27;)&#x27;, <span class="-i">...</span><span class="-h">_</span>]) =&gt;</span>
-      <span class="-h">Some((<span class="-f">startIndex</span>, <span class="-f">currentIndex</span>)</span>)
-    <span class="-g">| (<span class="-h">_</span>, [&#x27;(&#x27;, <span class="-i">...</span>tail]) =&gt;</span>
-      iter(<span class="-h">`FoundBracket(<span class="-f">currentIndex</span>)</span>, tail, currentIndex + <span class="-j">1</span>)
-    <span class="-g">| (<span class="-h">_</span>, [<span class="-h">_</span>, <span class="-i">...</span>tail]) =&gt;</span>
-      iter(currentState, tail, currentIndex + <span class="-j">1</span>)
-    <span class="-g">| (<span class="-h">_</span>, []) =&gt;</span>
+    <span class="-h">| (<span class="-i">`FoundBracket(<span class="-g">startIndex</span>)</span>, [&#x27;)&#x27;, <span class="-j">...</span><span class="-i">_</span>]) =&gt;</span>
+      <span class="-i">Some((<span class="-g">startIndex</span>, <span class="-g">currentIndex</span>)</span>)
+    <span class="-h">| (<span class="-i">_</span>, [&#x27;(&#x27;, <span class="-j">...</span>tail]) =&gt;</span>
+      iter(<span class="-i">`FoundBracket(<span class="-g">currentIndex</span>)</span>, tail, currentIndex + <span class="-k">1</span>)
+    <span class="-h">| (<span class="-i">_</span>, [<span class="-i">_</span>, <span class="-j">...</span>tail]) =&gt;</span>
+      iter(currentState, tail, currentIndex + <span class="-k">1</span>)
+    <span class="-h">| (<span class="-i">_</span>, []) =&gt;</span>
       None
     };
-  iter(`NoBrackets, inputChars, <span class="-j">0</span>);
+  iter(`NoBrackets, inputChars, <span class="-k">0</span>);
 };
 </code></pre>
 <p>In the above example, we could have defined a type just for the iteration state, but with polymorphic variants, we don’t have to.</p>
 <h2>Diving Deeper</h2>
 <p>Unlike when defining the types for regular variants, you can build polymorphic variants using other variants. Other than the backtick for each name, the types for polymorphic variants also need square brackets around them.</p>
-<pre><code><span class="-d">type</span> primary = <span class="-k">[ | `R<span class="-l">ed</span> | `G<span class="-l">reen</span> | `B<span class="-l">lue</span>]</span>;
-<span class="-d">type</span> colorFunctions = <span class="-k">[ | `R<span class="-l">gb</span>(<span class="-l">int</span>, <span class="-l">int</span>, <span class="-l">int</span>) | `H<span class="-l">sl</span>(<span class="-l">int</span>, <span class="-l">int</span>, <span class="-l">int</span>)]</span>;
-<span class="-m">/* Combiles both the variants primary and colorFunctions */</span>
-<span class="-d">type</span> colors = <span class="-k">[ <span class="-l">primary</span> | <span class="-l">colorFunctions</span>]</span>;
+<pre><code><span class="-e">type</span> primary = <span class="-l">[ | `R<span class="-m">ed</span> | `G<span class="-m">reen</span> | `B<span class="-m">lue</span>]</span>;
+<span class="-e">type</span> colorFunctions = <span class="-l">[ | `R<span class="-m">gb</span>(<span class="-m">int</span>, <span class="-m">int</span>, <span class="-m">int</span>) | `H<span class="-m">sl</span>(<span class="-m">int</span>, <span class="-m">int</span>, <span class="-m">int</span>)]</span>;
+<span class="-n">/* Combiles both the variants primary and colorFunctions */</span>
+<span class="-e">type</span> colors = <span class="-l">[ <span class="-m">primary</span> | <span class="-m">colorFunctions</span>]</span>;
 </code></pre>
 <p>Now that our types are a bit more complicated, you’ll want to actually write the type definitions. You’ll be able to compile without them, but when you do get errors — especially with large types — the error messages will be multiple pages on your terminal and won’t help you at all.</p>
 <p>The above example is a common way for articles to demonstrate polymorphic variants. But it’s not a great example — this could be a regular variant type, and it might be better that way. So I’m going to give two examples of cases where polymorphic variants actually helped.</p>
 <h2>Units of Measure</h2>
 <p>When converting between units — like meters to inches — it’s normally just multiplying by something. However, Celsius and Fahrenheit do their own thing, and need to be handled differently.</p>
 <p>For this example, we want to take a unit and a value, and convert it into standard units (<em>si</em> units). I represent this with polymorphic variants, and have one function that handles all the ‘nice’ values, and another function that handles the edge cases.</p>
-<pre><code><span class="-d">type</span> length = <span class="-k">[ | `M<span class="-l">eter</span> | `I<span class="-l">nch</span>]</span>;
-<span class="-d">type</span> time = <span class="-k">[ | `S<span class="-l">econd</span> | `M<span class="-l">inute</span> | `H<span class="-l">our</span>]</span>;
-<span class="-d">type</span> temperatureLinear = <span class="-k">[ | `K<span class="-l">elvin</span>]</span>;
-<span class="-d">type</span> temperatureNonLinear = <span class="-k">[ | `C<span class="-l">elsius</span>]</span>;
+<pre><code><span class="-e">type</span> length = <span class="-l">[ | `M<span class="-m">eter</span> | `I<span class="-m">nch</span>]</span>;
+<span class="-e">type</span> time = <span class="-l">[ | `S<span class="-m">econd</span> | `M<span class="-m">inute</span> | `H<span class="-m">our</span>]</span>;
+<span class="-e">type</span> temperatureLinear = <span class="-l">[ | `K<span class="-m">elvin</span>]</span>;
+<span class="-e">type</span> temperatureNonLinear = <span class="-l">[ | `C<span class="-m">elsius</span>]</span>;
 
-<span class="-d">type</span> unitLinear = <span class="-k">[ <span class="-l">length</span> | <span class="-l">time</span> | <span class="-l">temperatureLinear</span>]</span>;
-<span class="-d">type</span> anyUnit = <span class="-k">[ <span class="-l">unitLinear</span> | <span class="-l">temperatureNonLinear</span>]</span>;
+<span class="-e">type</span> unitLinear = <span class="-l">[ <span class="-m">length</span> | <span class="-m">time</span> | <span class="-m">temperatureLinear</span>]</span>;
+<span class="-e">type</span> anyUnit = <span class="-l">[ <span class="-m">unitLinear</span> | <span class="-m">temperatureNonLinear</span>]</span>;
 
-<span class="-d">let</span> siScale =<span class="-e"> (<span class="-f">unit</span>: <span class="-f">unitLinear</span>) =&gt;</span>
-  switch (<span class="-n">unit</span>) {
-  <span class="-g">| <span class="-h">`Meter</span> =&gt;</span> <span class="-j">1.</span>
-  <span class="-g">| <span class="-h">`Inch</span> =&gt;</span> <span class="-j">0.0254</span>
-  <span class="-g">| <span class="-h">`Second</span> =&gt;</span> <span class="-j">1.</span>
-  <span class="-g">| <span class="-h">`Minute</span> =&gt;</span> <span class="-j">60.</span>
-  <span class="-g">| <span class="-h">`Hour</span> =&gt;</span> <span class="-j">3600.</span>
-  <span class="-g">| <span class="-h">`Kelvin</span> =&gt;</span> <span class="-j">1.</span>
+<span class="-e">let</span> siScale =<span class="-f"> (<span class="-g">unit</span>: <span class="-g">unitLinear</span>) =&gt;</span>
+  switch (<span class="-o">unit</span>) {
+  <span class="-h">| <span class="-i">`Meter</span> =&gt;</span> <span class="-k">1.</span>
+  <span class="-h">| <span class="-i">`Inch</span> =&gt;</span> <span class="-k">0.0254</span>
+  <span class="-h">| <span class="-i">`Second</span> =&gt;</span> <span class="-k">1.</span>
+  <span class="-h">| <span class="-i">`Minute</span> =&gt;</span> <span class="-k">60.</span>
+  <span class="-h">| <span class="-i">`Hour</span> =&gt;</span> <span class="-k">3600.</span>
+  <span class="-h">| <span class="-i">`Kelvin</span> =&gt;</span> <span class="-k">1.</span>
   };
 
-<span class="-d">let</span> toSi =<span class="-e"> (<span class="-f">value</span>, <span class="-f">unit</span>: <span class="-f">anyUnit</span>) =&gt;</span>
-  switch (<span class="-n">unit</span>) {
-  <span class="-g">| #<span class="-n">unit</span><span class="-h">Linear</span> <span class="-d">as</span> linear<span class="-h">Unit</span> =&gt;</span> value<span class="-i"> *. </span>si<span class="-h">Scale(<span class="-f">linearUnit</span>)</span>
-  <span class="-g">| <span class="-h">`Celsius</span> =&gt;</span> value<span class="-i"> +. </span><span class="-j">273.15</span>
+<span class="-e">let</span> toSi =<span class="-f"> (<span class="-g">value</span>, <span class="-g">unit</span>: <span class="-g">anyUnit</span>) =&gt;</span>
+  switch (<span class="-o">unit</span>) {
+  <span class="-h">| #<span class="-o">unit</span><span class="-i">Linear</span> <span class="-e">as</span> linear<span class="-i">Unit</span> =&gt;</span> value<span class="-j"> *. </span>si<span class="-i">Scale(<span class="-g">linearUnit</span>)</span>
+  <span class="-h">| <span class="-i">`Celsius</span> =&gt;</span> value<span class="-j"> +. </span><span class="-k">273.15</span>
   };
 </code></pre>
 <blockquote>
@@ -64,25 +64,25 @@
 <p>If we used regular variants, we could put all the units in one variant, but then we’d lose the ability to abstract things out like we did, and the type-checker would not be as helpful. Or we’d be able to keep the abstraction, but introducing more variants: we’d need one variant for all the linear units, one variant for temperature units, and one more to wrap it, like <code>LinearUnit(linearUnit) | TemperatureUnit(temperatureUnit)</code>. The user would then have to give units in this format. 🤮</p>
 <h2>Mixing Scalars and Vectors</h2>
 <p>Say we have a numeric type that’s more complicated than a float. Maybe it’s an exact fraction, or a decimal. We can also have vectors built up of that type, and nan types. We want to build a maths library where you can add and subtract anything of these types. Polymorphic variants are also a good fit here!</p>
-<pre><code><span class="-d">type</span> scalar = <span class="-k">[ | `F<span class="-l">raction</span>(<span class="-l">int</span>, <span class="-l">int</span>) | `D<span class="-l">ecimal</span>(<span class="-l">float</span>)]</span>;
-<span class="-d">type</span> value = <span class="-k">[ <span class="-l">scalar</span> | `V<span class="-l">ector</span>(<span class="-l">list</span>(<span class="-l">scalar</span>)) | `N<span class="-l">aN</span>]</span>;
+<pre><code><span class="-e">type</span> scalar = <span class="-l">[ | `F<span class="-m">raction</span>(<span class="-m">int</span>, <span class="-m">int</span>) | `D<span class="-m">ecimal</span>(<span class="-m">float</span>)]</span>;
+<span class="-e">type</span> value = <span class="-l">[ <span class="-m">scalar</span> | `V<span class="-m">ector</span>(<span class="-m">list</span>(<span class="-m">scalar</span>)) | `N<span class="-m">aN</span>]</span>;
 
-<span class="-d">let</span> addScalar =<span class="-e"> (<span class="-f">a</span>, <span class="-f">b</span>) =&gt;</span>
+<span class="-e">let</span> addScalar =<span class="-f"> (<span class="-g">a</span>, <span class="-g">b</span>) =&gt;</span>
   switch (a, b) {
-  <span class="-g">| (<span class="-h">`Fraction(<span class="-f">n1</span>, <span class="-f">d1</span>)</span>, <span class="-h">`Fraction(<span class="-f">n2</span>, <span class="-f">d2</span>)</span>) =&gt;</span>
-    <span class="-h">`Fraction((<span class="-f">n1</span> <span class="-i">*</span> <span class="-f">d2</span> + <span class="-f">n2</span> <span class="-i">*</span> <span class="-f">d1</span>, <span class="-f">d1</span> <span class="-i">*</span> <span class="-f">d2</span>)</span>)
-  <span class="-g">| (<span class="-h">`Fraction(<span class="-f">n</span>, <span class="-f">d</span>)</span>, <span class="-h">`Decimal(<span class="-f">f</span>)</span>)
-  | (<span class="-h">`Decimal(<span class="-f">f</span>)</span>, <span class="-h">`Fraction(<span class="-f">n</span>, <span class="-f">d</span>)</span>) =&gt;</span>
-    <span class="-h">`Decimal(<span class="-f">f</span> <span class="-i">*</span>. <span class="-f">float_of_int</span>(<span class="-f">n</span>)</span><span class="-i"> /. </span><span class="-n">float</span><span class="-h">_of_int(<span class="-f">d</span>)</span>)
-  <span class="-g">| (<span class="-h">`Decimal(<span class="-f">f1</span>)</span>, <span class="-h">`Decimal(<span class="-f">f2</span>)</span>) =&gt;</span>
-    <span class="-h">`Decimal(<span class="-f">f1</span> <span class="-i">*</span>. <span class="-f">f2</span>)</span>
+  <span class="-h">| (<span class="-i">`Fraction(<span class="-g">n1</span>, <span class="-g">d1</span>)</span>, <span class="-i">`Fraction(<span class="-g">n2</span>, <span class="-g">d2</span>)</span>) =&gt;</span>
+    <span class="-i">`Fraction((<span class="-g">n1</span> <span class="-j">*</span> <span class="-g">d2</span> + <span class="-g">n2</span> <span class="-j">*</span> <span class="-g">d1</span>, <span class="-g">d1</span> <span class="-j">*</span> <span class="-g">d2</span>)</span>)
+  <span class="-h">| (<span class="-i">`Fraction(<span class="-g">n</span>, <span class="-g">d</span>)</span>, <span class="-i">`Decimal(<span class="-g">f</span>)</span>)
+  | (<span class="-i">`Decimal(<span class="-g">f</span>)</span>, <span class="-i">`Fraction(<span class="-g">n</span>, <span class="-g">d</span>)</span>) =&gt;</span>
+    <span class="-i">`Decimal(<span class="-g">f</span> <span class="-j">*</span>. <span class="-g">float_of_int</span>(<span class="-g">n</span>)</span><span class="-j"> /. </span><span class="-o">float</span><span class="-i">_of_int(<span class="-g">d</span>)</span>)
+  <span class="-h">| (<span class="-i">`Decimal(<span class="-g">f1</span>)</span>, <span class="-i">`Decimal(<span class="-g">f2</span>)</span>) =&gt;</span>
+    <span class="-i">`Decimal(<span class="-g">f1</span> <span class="-j">*</span>. <span class="-g">f2</span>)</span>
   };
 
-<span class="-d">let</span> add =<span class="-e"> (<span class="-f">a</span>, <span class="-f">b</span>) =&gt;</span>
+<span class="-e">let</span> add =<span class="-f"> (<span class="-g">a</span>, <span class="-g">b</span>) =&gt;</span>
   switch (a, b) {
-  <span class="-g">| (#scalar <span class="-d">as</span> a, #scalar <span class="-d">as</span> b) =&gt;</span> add<span class="-h">Scalar(<span class="-f">a</span>, <span class="-f">b</span>)</span>
-  <span class="-g">| (<span class="-h">`Vector(<span class="-f">a</span>)</span>, <span class="-h">`Vector(<span class="-f">b</span>)</span>) =&gt;</span> <span class="-h">`Vector(List.<span class="-f">map2</span>(<span class="-f">addScalar</span>)</span>)
-  <span class="-g">| <span class="-h">_</span> =&gt;</span> `NaN
+  <span class="-h">| (#scalar <span class="-e">as</span> a, #scalar <span class="-e">as</span> b) =&gt;</span> add<span class="-i">Scalar(<span class="-g">a</span>, <span class="-g">b</span>)</span>
+  <span class="-h">| (<span class="-i">`Vector(<span class="-g">a</span>)</span>, <span class="-i">`Vector(<span class="-g">b</span>)</span>) =&gt;</span> <span class="-i">`Vector(List.<span class="-g">map2</span>(<span class="-g">addScalar</span>)</span>)
+  <span class="-h">| <span class="-i">_</span> =&gt;</span> `NaN
   };
 </code></pre>
 <p>In the same manner as the previous examples, we <em>could</em> use regular variants here, but it would be less nice for the same reasons.</p>

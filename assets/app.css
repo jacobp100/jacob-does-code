@@ -87,6 +87,14 @@ hr {
   text-align: center;
 }
 
+.press-kit {
+  display: block;
+  width: max-content;
+  margin: 72px auto 72px;
+  --font-size: 16;
+  --line-height: 20;
+}
+
 .legal-links {
   margin: 72px auto 12px;
   text-align: center;

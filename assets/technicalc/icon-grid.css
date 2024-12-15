@@ -1,0 +1,25 @@
+.icon-grid {
+  display: grid;
+  grid:
+    "ai bi ci" auto
+    "at bt ct" auto
+    "di ei fi" 120px
+    "dt et ft" auto
+    "gi hi ii" 120px
+    "gt ht it" auto /
+    200px 200px 200px;
+  grid-auto-flow: column;
+  place-content: center;
+  align-items: end;
+  justify-items: center;
+  gap: 18px 72px;
+  text-align: center;
+  --font-weight: 500;
+  --font-size: 18;
+  --line-height: 22;
+}
+
+.icon-grid__title {
+  margin: 0;
+  align-self: start;
+}

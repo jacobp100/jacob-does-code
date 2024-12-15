@@ -102,6 +102,12 @@ hr {
   --line-height: 18;
 }
 
+@media (max-width: 767px) {
+  .not-mobile {
+    display: none;
+  }
+}
+
 @media (min-width: 768px) {
   body {
     --font-size: 24;

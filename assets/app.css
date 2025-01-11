@@ -166,23 +166,6 @@ hr {
   .preview {
     --max-size: 400px;
   }
-
-  .side-by-side {
-    display: flex;
-    align-items: center;
-    margin: 120px 0;
-  }
-
-  .side-by-side__item {
-    flex: 1 1 auto;
-  }
-
-  .side-by-side hr {
-    align-self: stretch;
-    height: auto;
-    width: var(--hairline-width);
-    margin: 0 24px;
-  }
 }
 
 @media (min-width: 1600px) {

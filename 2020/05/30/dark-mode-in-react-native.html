@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><title>Dark Mode in React Native</title><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="icon" href="/res/19f82827.png" sizes="16x16" type="image/png"/><link rel="icon" href="/res/eb210940.png" sizes="32x32" type="image/png"/><link rel="apple-touch-icon" href="/res/346f150e.png"/><link rel="apple-touch-icon" sizes="57x57" href="/res/96dcd9a9.png"/><link rel="apple-touch-icon" sizes="72x72" href="/res/cf5ba76d.png"/><link rel="apple-touch-icon" sizes="76x76" href="/res/4ba903c3.png"/><link rel="apple-touch-icon" sizes="114x114" href="/res/a58fed4c.png"/><link rel="apple-touch-icon" sizes="120x120" href="/res/a5e39fa5.png"/><link rel="apple-touch-icon" sizes="152x152" href="/res/ca89aad4.png"/><link rel="apple-touch-icon" sizes="167x167" href="/res/5d37ba5a.png"/><link rel="apple-touch-icon" sizes="180x180" href="/res/f0517911.png"/><script>document.documentElement.style.setProperty("--d",1/(window.devicePixelRatio||1)+"px");</script><style>@font-face{font-family:Inter;font-weight:100 900;font-display:swap;font-style:normal;font-named-instance:"Regular";src:url(/res/541fae2e.woff2);font-display:fallback}@font-face{font-family:Inter;font-weight:100 900;font-display:swap;font-style:italic;font-named-instance:"Regular";src:url(/res/1517082.woff2);font-display:fallback}*,::after,::before{box-sizing:border-box}*{font-size:calc(var(--e)*var(--i));line-height:calc(var(--f)*var(--i));letter-spacing:calc(var(--g)*var(--i));font-weight:var(--h);--i:calc(
     (var(--j) * 1rem / 16) +
       ((1 - var(--j)) * 1px)
-  )}@supports (font-variation-settings:"wght"400){*{font-weight:inherit;font-variation-settings:"wght"var(--h)}}:root{--k:#f97f51;--l:#fc427b;--m:#2874ff;--a:#ffc312;--b:var(--n);--o:var(--n);--c:var(--n);--n:black;--p:white;--q:12px;--r:12px;--j:1}::selection{background:var(--c);color:#fff}body{margin:var(--q) var(--r) 64px;--e:18;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--n);background:var(--p);--f:26}a{color:var(--c);text-decoration:none}a:active,a:focus,a:hover{text-decoration:underline}.a{display:flex;padding-top:12px;margin:-12px calc(-1*var(--r)) 48px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}.a::after,.a::before{display:block;content:"";padding-right:var(--r)}.b,.d{flex:none;--h:700}.d{display:block;--e:24;--f:18;--g:-1;text-transform:lowercase;border-top:4px solid;padding:6px 4px 0 0}a.d{color:currentColor;text-decoration:none}.b{margin:0 0 0 24px;--e:6;--f:10;--g:1;--j:0;text-transform:uppercase;width:0;overflow-wrap:normal}.c{margin-left:auto}.e{flex:none;display:block;margin:10px 24px 0 0;--e:14;--f:18;--h:400}.e:last-child{margin-right:0}@media (prefers-color-scheme:dark){:root{--n:white;--p:black}}@media (min-width:768px){:root{--r:64px}}@media (min-width:1024px){:root{--r:128px}}*{overflow-wrap:break-word}:root{--r:max(12px, (100vw - var(--s)) / 2);--s:800px;--c:var(--o)}h1{margin:48px 0 32px;--e:36;--f:48;--g:-0.8}h2,h3{margin:42px 0 18px}h1,h2{font-weight:700}h2{--e:26;--f:34;--g:-0.3}h3{--e:22;--f:30;--g:-0.18}p{margin:18px 0}h3,strong{font-weight:600}ol,ul{margin:24px 0;padding-left:32px;margin-left:calc(-32*min(max(var(--r) - 32px,0px),1px))}li{position:relative;margin:2px 0;list-style:none}li::before{position:absolute;content:var(--t, "👉");right:calc(100% + 12px)}li[data-bullet]{--t:attr(data-bullet)}blockquote{margin:32px 24px 32px 48px;--e:22;--f:32;font-weight:300;font-style:italic}table{margin:24px;border-collapse:separate;border-spacing:12px 0}thead th{border-bottom:var(--d) solid;--h:600;text-align:left}code,hr{background-color:#f4f4f4}hr{margin:32px calc(-1*var(--r));height:var(--d);border:0}code{font-size:.9em;font-family:monospace;padding:0 3px;border:1px solid #eee;border-radius:6px}pre code{display:block;width:100vw;margin:48px calc(-1*var(--r));padding:18px var(--r);background-color:#fafafa;border:1px solid #f4f4f4;border-width:1px 0;border-radius:0;overflow-x:scroll}video{display:block;max-width:100%;margin:32px auto}iframe{width:calc(var(--u)*1);height:calc(var(--u)*.66);border:1px solid rgba(0,0,0,.1);--u:calc(100vw - 2 * var(--r))}.f,blockquote{color:#9e9e9e}@media (min-width:768px){a,p>code{word-break:initial}}@media (prefers-color-scheme:dark){hr,pre code{background-color:#080808}code{background-color:#111;border-color:#222}pre code{border-color:#111}}.-q,.-s{color:#a0a1a7;font-style:italic}.-h,.-t,.-u{color:#a626a4}.-v,.-w,.-x,.-y,.-z{color:#e45649}.-o{color:#0184bb}.-A,.-B,.-C,.-D,.-E{color:#50a14f}.-F .-G,.-r{color:#c18401}.-H,.-I,.-J,.-K,.-L,.-M,.-N,.-n{color:#986801}.-G,.-O,.-P,.-Q,.-R,.-S{color:#4078f2}.-T{font-style:italic}.-U{font-weight:700}.-Q{text-decoration:underline}@media (prefers-color-scheme:dark){.-q,.-s{color:#5c6370;font-style:italic}.-h,.-t,.-u{color:#c678dd}.-v,.-w,.-x,.-y,.-z{color:#e06c75}.-o{color:#56b6c2}.-A,.-B,.-C,.-D,.-E{color:#98c379}.-F .-G,.-r{color:#e6c07b}.-H,.-I,.-J,.-K,.-L,.-M,.-N,.-n{color:#d19a66}.-G,.-O,.-P,.-Q,.-R,.-S{color:#61aeee}.-T{font-style:italic}.-U{font-weight:700}.-Q{text-decoration:underline}}</style></head><body><div class="a"><a href="/" class="d">Jacob<br/>does<br/>code</a><div class="b">Apps</div><a href="/pocket-jam" class="e">Pocket Jam</a><a href="/piano-tabs" class="e">Piano Tabs</a><a href="/technicalc" class="e">TechniCalc</a><a href="/calipers" class="e">Calipers</a><a href="/freebies" class="e">Freebies</a><div class="b c">Developement</div><a href="/blog" class="e">Blog</a><a href="https://github.com/jacobp100" class="e">Github</a></div><h1>Dark Mode in React Native</h1>
+  )}@supports (font-variation-settings:"wght"400){*{font-weight:inherit;font-variation-settings:"wght"var(--h)}}:root{--k:#f97f51;--l:#fc427b;--m:#2874ff;--a:#ffc312;--b:var(--n);--o:var(--n);--c:var(--n);--n:black;--p:white;--q:12px;--r:12px;--j:1}::selection{background:var(--c);color:#fff}body{margin:var(--q) var(--r) 64px;--e:18;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--n);background:var(--p);--f:26}a{color:var(--c);text-decoration:none}a:active,a:focus,a:hover{text-decoration:underline}.a{display:flex;padding-top:12px;margin:-12px calc(-1*var(--r)) 48px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}.a::after,.a::before{display:block;content:"";padding-right:var(--r)}.b,.d{flex:none;--h:700}.d{display:block;--e:24;--f:18;--g:-1;text-transform:lowercase;border-top:4px solid;padding:6px 4px 0 0}a.d{color:currentColor;text-decoration:none}.b{margin:0 0 0 24px;--e:6;--f:10;--g:1;--j:0;text-transform:uppercase;width:0;overflow-wrap:normal}.c{margin-left:auto}.e{flex:none;display:block;margin:10px 24px 0 0;--e:14;--f:18;--h:400}.e:last-child{margin-right:0}@media (prefers-color-scheme:dark){:root{--n:white;--p:black}}@media (min-width:768px){:root{--r:64px}}@media (min-width:1024px){:root{--r:128px}}*{overflow-wrap:break-word}:root{--r:max(12px, (100vw - var(--s)) / 2);--s:800px;--c:var(--o)}h1{margin:48px 0 32px;--e:36;--f:48;--g:-0.8}h2,h3{margin:42px 0 18px}h1,h2{font-weight:700}h2{--e:26;--f:34;--g:-0.3}h3{--e:22;--f:30;--g:-0.18}p{margin:18px 0}h3,strong{font-weight:600}ol,ul{margin:24px 0;padding-left:32px;margin-left:calc(-32*min(max(var(--r) - 32px,0px),1px))}li{position:relative;margin:2px 0;list-style:none}li::before{position:absolute;content:var(--t, "👉");right:calc(100% + 12px)}li[data-bullet]{--t:attr(data-bullet)}blockquote{margin:32px 24px 32px 48px;--e:22;--f:32;font-weight:300;font-style:italic}table{margin:24px;border-collapse:separate;border-spacing:12px 0}thead th{border-bottom:var(--d) solid;--h:600;text-align:left}code,hr{background-color:#f4f4f4}hr{margin:32px calc(-1*var(--r));height:var(--d);border:0}code{font-size:.9em;font-family:monospace;padding:0 3px;border:1px solid #eee;border-radius:6px}pre code{display:block;width:100vw;margin:48px calc(-1*var(--r));padding:18px var(--r);background-color:#fafafa;border:1px solid #f4f4f4;border-width:1px 0;border-radius:0;overflow-x:scroll}video{display:block;max-width:100%;margin:32px auto}iframe{width:calc(var(--u)*1);height:calc(var(--u)*.66);border:1px solid rgba(0,0,0,.1);--u:calc(100vw - 2 * var(--r))}.f,blockquote{color:#9e9e9e}@media (min-width:768px){a,p>code{word-break:initial}}@media (prefers-color-scheme:dark){hr,pre code{background-color:#080808}code{background-color:#111;border-color:#222}pre code{border-color:#111}}.-o,.-q{color:#a0a1a7;font-style:italic}.-f,.-r,.-s{color:#a626a4}.-t,.-u,.-v,.-w,.-x{color:#e45649}.-m{color:#0184bb}.-A,.-B,.-C,.-y,.-z{color:#50a14f}.-D .-E,.-p{color:#c18401}.-F,.-G,.-H,.-I,.-J,.-K,.-L,.-l{color:#986801}.-E,.-M,.-N,.-O,.-P,.-Q{color:#4078f2}.-R{font-style:italic}.-S{font-weight:700}.-O{text-decoration:underline}@media (prefers-color-scheme:dark){.-o,.-q{color:#5c6370;font-style:italic}.-f,.-r,.-s{color:#c678dd}.-t,.-u,.-v,.-w,.-x{color:#e06c75}.-m{color:#56b6c2}.-A,.-B,.-C,.-y,.-z{color:#98c379}.-D .-E,.-p{color:#e6c07b}.-F,.-G,.-H,.-I,.-J,.-K,.-L,.-l{color:#d19a66}.-E,.-M,.-N,.-O,.-P,.-Q{color:#61aeee}.-R{font-style:italic}.-S{font-weight:700}.-O{text-decoration:underline}}</style></head><body><div class="a"><a href="/" class="d">Jacob<br/>does<br/>code</a><div class="b">Apps</div><a href="/pocket-jam" class="e">Pocket Jam</a><a href="/piano-tabs" class="e">Piano Tabs</a><a href="/technicalc" class="e">TechniCalc</a><a href="/calipers" class="e">Calipers</a><a href="/freebies" class="e">Freebies</a><div class="b c">Developement</div><a href="/blog" class="e">Blog</a><a href="https://github.com/jacobp100" class="e">Github</a></div><h1>Dark Mode in React Native</h1>
 <p>Half way through 2019, both Android and iOS announced they would be getting dark mode in their next major updates — and in September of that year, those updates were released. You’ll need to be on at least iOS 13, or Android 10 — although some Android 9 phones seem to support dark mode anyway.</p>
 <p>From the design perspective, it is a much more complicated than just making the text white and the background black. To complicate it further, the individual platform guidelines for dark mode differ. For example, iOS will slightly tweak accent colours very slightly in dark mode, where Android will recommend using different accent colours, and using them in different places too. iOS also has a set of elevated colours that are different to the base colours in dark mode, and identical to the base colours in light mode. However, you don’t have to follow the guidelines to the letter — especially if your app is heavily branded. They are worth a read for ideas nevertheless.</p>
 <ul>
@@ -16,25 +16,25 @@
 <h2>useColorScheme()</h2>
 <p>This is a hook that’ll give you the string <code>&quot;light&quot;</code> or <code>&quot;dark&quot;</code>.</p>
 <p>Because it’s a hook, it doesn’t work inside <code>StyleSheet.create</code>, so you’ll likely need to define duplicates of styles for light/dark mode, or add the colours inline in the style prop.</p>
-<pre><code><span class="-h">import</span> { useColorScheme } <span class="-h">from</span> <span class="-A">&quot;react-native&quot;</span>;
+<pre><code><span class="-f">import</span> { useColorScheme } <span class="-f">from</span> <span class="-y">&quot;react-native&quot;</span>;
 
-<span class="-h">const</span> styles = <span class="-G -X">StyleSheet</span>.<span class="-G -Y">create</span>({
-  <span class="-H">titleLight</span>: {
-    <span class="-H">color</span>: <span class="-A">&quot;black&quot;</span>,
+<span class="-f">const</span> styles = <span class="-E -V">StyleSheet</span>.<span class="-E -W">create</span>({
+  <span class="-F">titleLight</span>: {
+    <span class="-F">color</span>: <span class="-y">&quot;black&quot;</span>,
   },
-  <span class="-H">titleDark</span>: {
-    <span class="-H">color</span>: <span class="-A">&quot;white&quot;</span>,
+  <span class="-F">titleDark</span>: {
+    <span class="-F">color</span>: <span class="-y">&quot;white&quot;</span>,
   },
 });
 
-<span class="-h">const</span> <span class="-G -Y">Example</span> = (<span class="-j"></span>) =&gt; {
-  <span class="-h">const</span> colorScheme = <span class="-G -Y">useColorScheme</span>();
-  <span class="-h">const</span> isDark = colorScheme === <span class="-A">&quot;dark&quot;</span>;
+<span class="-f">const</span> <span class="-E -W">Example</span> = (<span class="-h"></span>) =&gt; {
+  <span class="-f">const</span> colorScheme = <span class="-E -W">useColorScheme</span>();
+  <span class="-f">const</span> isDark = colorScheme === <span class="-y">&quot;dark&quot;</span>;
 
-  <span class="-h">return</span> (
-    <span class="-Z"><span class="-_">&lt;<span class="-w">Text</span> <span class="-H">style</span>=<span class="-A">{isDark</span> ? <span class="-H">styles.titleDark</span> <span class="-H">:</span> <span class="-H">styles.titleLight</span>}&gt;</span>
+  <span class="-f">return</span> (
+    <span class="-X"><span class="-Y">&lt;<span class="-u">Text</span> <span class="-F">style</span>=<span class="-y">{isDark</span> ? <span class="-F">styles.titleDark</span> <span class="-F">:</span> <span class="-F">styles.titleLight</span>}&gt;</span>
       Some text...
-    <span class="-_">&lt;/<span class="-w">Text</span>&gt;</span></span>
+    <span class="-Y">&lt;/<span class="-u">Text</span>&gt;</span></span>
   );
 };
 </code></pre>
@@ -46,31 +46,31 @@
 </blockquote>
 <p>Note — I don’t work for Microsoft or anything, it’s just incredible to see the positive impact they’re having.</p>
 <p><code>DynamicColorIOS</code> is the easiest to explain — and use. It takes an object with keys <code>light</code> and <code>dark</code>, and values of the regular colour strings you’re already used to.</p>
-<pre><code><span class="-h">import</span> { <span class="-G -X">DynamicColorIOS</span> } <span class="-h">from</span> <span class="-A">&quot;react-native&quot;</span>;
+<pre><code><span class="-f">import</span> { <span class="-E -V">DynamicColorIOS</span> } <span class="-f">from</span> <span class="-y">&quot;react-native&quot;</span>;
 
-<span class="-h">const</span> styles = <span class="-G -X">StyleSheet</span>.<span class="-G -Y">create</span>({
-  <span class="-H">title</span>: {
-    <span class="-H">color</span>: <span class="-G -X">DynamicColorIOS</span>({
-      <span class="-H">light</span>: <span class="-A">&quot;black&quot;</span>,
-      <span class="-H">dark</span>: <span class="-A">&quot;white&quot;</span>,
+<span class="-f">const</span> styles = <span class="-E -V">StyleSheet</span>.<span class="-E -W">create</span>({
+  <span class="-F">title</span>: {
+    <span class="-F">color</span>: <span class="-E -V">DynamicColorIOS</span>({
+      <span class="-F">light</span>: <span class="-y">&quot;black&quot;</span>,
+      <span class="-F">dark</span>: <span class="-y">&quot;white&quot;</span>,
     }),
   },
 });
 
-<span class="-h">const</span> <span class="-G -Y">Example</span> = (<span class="-j"></span>) =&gt; {
-  <span class="-q">// Look mum, no hooks!</span>
-  <span class="-h">return</span> <span class="-Z"><span class="-_">&lt;<span class="-w">Text</span> <span class="-H">style</span>=<span class="-A">{styles.title}</span>&gt;</span>Some text...<span class="-_">&lt;/<span class="-w">Text</span>&gt;</span></span>;
+<span class="-f">const</span> <span class="-E -W">Example</span> = (<span class="-h"></span>) =&gt; {
+  <span class="-o">// Look mum, no hooks!</span>
+  <span class="-f">return</span> <span class="-X"><span class="-Y">&lt;<span class="-u">Text</span> <span class="-F">style</span>=<span class="-y">{styles.title}</span>&gt;</span>Some text...<span class="-Y">&lt;/<span class="-u">Text</span>&gt;</span></span>;
 };
 </code></pre>
 <p>If you didn’t guess from the name, this function only works on iOS. On Android, it’ll actually crash — you’ll need to make sure you don’t call this function on there.</p>
 <p>Next up is <code>PlatformColor</code>, which takes a string of a platform colour. On iOS, the platform colours are anything in <a href="https://noahgilmore.com/blog/dark-mode-uicolor-compatibility/">this list</a> — scroll down to the tables at the bottom.</p>
 <p>On Android, there technically is the ability to reference system colours, but they tend to be a bit of a mess and not too useful. However, <strong>you can define your own platform colours on Android</strong>.</p>
 <p>First, copy the example below into <code>android/app/src/main/res/values/colors.xml</code>. You can add as many colours as you want, and you don’t need to keep the ones I added. All values must be 6 or 8 digit hex values (8 digits for adding opacity).</p>
-<pre><code><span class="-R">&lt;?xml version=<span class="-A">&quot;1.0&quot;</span> encoding=<span class="-A">&quot;utf-8&quot;</span>?&gt;</span>
-<span class="-_">&lt;<span class="-w">resources</span>&gt;</span>
-  <span class="-_">&lt;<span class="-w">color</span> <span class="-H">name</span>=<span class="-A">&quot;background&quot;</span>&gt;</span>#FFFFFF<span class="-_">&lt;/<span class="-w">color</span>&gt;</span>
-  <span class="-_">&lt;<span class="-w">color</span> <span class="-H">name</span>=<span class="-A">&quot;color&quot;</span>&gt;</span>#212121<span class="-_">&lt;/<span class="-w">color</span>&gt;</span>
-<span class="-_">&lt;/<span class="-w">resources</span>&gt;</span>
+<pre><code><span class="-P">&lt;?xml version=<span class="-y">&quot;1.0&quot;</span> encoding=<span class="-y">&quot;utf-8&quot;</span>?&gt;</span>
+<span class="-Y">&lt;<span class="-u">resources</span>&gt;</span>
+  <span class="-Y">&lt;<span class="-u">color</span> <span class="-F">name</span>=<span class="-y">&quot;background&quot;</span>&gt;</span>#FFFFFF<span class="-Y">&lt;/<span class="-u">color</span>&gt;</span>
+  <span class="-Y">&lt;<span class="-u">color</span> <span class="-F">name</span>=<span class="-y">&quot;color&quot;</span>&gt;</span>#212121<span class="-Y">&lt;/<span class="-u">color</span>&gt;</span>
+<span class="-Y">&lt;/<span class="-u">resources</span>&gt;</span>
 </code></pre>
 <p>Next, make the copy the file into <code>android/app/src/main/res/values-night/colors.xml</code> — note the folder is now <code>values-night</code>. In this file, you keep the same names, but you change the hex values the values to your dark mode theme.</p>
 <p>Now when you want to use them, you can use <code>PlatformColor</code> with the string <code>@color/</code>followed by the name of the colour you defined in your xml. For example, <code>PlatformColor(&quot;@color/background&quot;)</code>.</p>
@@ -78,23 +78,23 @@
 <h2>Ironing out Platform Differences</h2>
 <p>In most projects I work on, I have a style guide file that has all the brand colours, but for the one-off colours that are only used for a single component, I usually prefer to just put them in the file they’re used. It makes it less likely you’ll have unused colours lying around as your app progresses.</p>
 <p>However, here I would recommend putting every single colour in a single file. This is because this file will need to be in sync with your xml files.</p>
-<pre><code><span class="-h">import</span> {
-  <span class="-G -X">PlatformColor</span>,
-  <span class="-G -X">DynamicColorIOS</span> <span class="-h">as</span> <span class="-G -X">BaseDynamicColorIOS</span>,
-  <span class="-G -X">Platform</span>,
-} <span class="-h">from</span> <span class="-A">&quot;react-native&quot;</span>;
+<pre><code><span class="-f">import</span> {
+  <span class="-E -V">PlatformColor</span>,
+  <span class="-E -V">DynamicColorIOS</span> <span class="-f">as</span> <span class="-E -V">BaseDynamicColorIOS</span>,
+  <span class="-E -V">Platform</span>,
+} <span class="-f">from</span> <span class="-y">&quot;react-native&quot;</span>;
 
-<span class="-q">// Stops this crashing when called on other platforms</span>
-<span class="-h">const</span> <span class="-G -X">DynamicColorIOS</span> = <span class="-G -X">Platform</span>.<span class="-G -Y">select</span>({
-  <span class="-H">ios</span>: <span class="-G -X">BaseDynamicColorIOS</span>,
-  <span class="-H">default</span>: <span class="-i">() =&gt;</span> <span class="-o">null</span>,
+<span class="-o">// Stops this crashing when called on other platforms</span>
+<span class="-f">const</span> <span class="-E -V">DynamicColorIOS</span> = <span class="-E -V">Platform</span>.<span class="-E -W">select</span>({
+  <span class="-F">ios</span>: <span class="-E -V">BaseDynamicColorIOS</span>,
+  <span class="-F">default</span>: <span class="-g">() =&gt;</span> <span class="-m">null</span>,
 });
 
-<span class="-h">export</span> <span class="-h">const</span> backgroundColor = <span class="-G -X">Platform</span>.<span class="-G -Y">select</span>({
-  <span class="-H">ios</span>: <span class="-G -X">DynamicColorIOS</span>({ <span class="-H">light</span>: <span class="-A">&quot;white&quot;</span>, <span class="-H">dark</span>: <span class="-A">&quot;black&quot;</span> }),
-  <span class="-H">android</span>: <span class="-G -X">PlatformColor</span>(<span class="-A">&quot;@color/background&quot;</span>),
+<span class="-f">export</span> <span class="-f">const</span> backgroundColor = <span class="-E -V">Platform</span>.<span class="-E -W">select</span>({
+  <span class="-F">ios</span>: <span class="-E -V">DynamicColorIOS</span>({ <span class="-F">light</span>: <span class="-y">&quot;white&quot;</span>, <span class="-F">dark</span>: <span class="-y">&quot;black&quot;</span> }),
+  <span class="-F">android</span>: <span class="-E -V">PlatformColor</span>(<span class="-y">&quot;@color/background&quot;</span>),
 });
-<span class="-h">export</span> <span class="-h">const</span> textColor = <span class="-G -X">Platform</span>.<span class="-G -Y">select</span>(etc);
+<span class="-f">export</span> <span class="-f">const</span> textColor = <span class="-E -V">Platform</span>.<span class="-E -W">select</span>(etc);
 </code></pre>
 <p>Now when you’re making changes, you only need to look in this file, and the xml files in the <code>android</code> folder.</p>
 <h2>Just a Note</h2>

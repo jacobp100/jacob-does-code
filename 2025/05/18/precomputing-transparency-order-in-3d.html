@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="en"><head><title>Precomputing Transparency Order in 3D</title><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="icon" href="/res/19f82827.png" sizes="16x16" type="image/png"/><link rel="icon" href="/res/eb210940.png" sizes="32x32" type="image/png"/><link rel="apple-touch-icon" href="/res/346f150e.png"/><link rel="apple-touch-icon" sizes="57x57" href="/res/96dcd9a9.png"/><link rel="apple-touch-icon" sizes="72x72" href="/res/cf5ba76d.png"/><link rel="apple-touch-icon" sizes="76x76" href="/res/4ba903c3.png"/><link rel="apple-touch-icon" sizes="114x114" href="/res/a58fed4c.png"/><link rel="apple-touch-icon" sizes="120x120" href="/res/a5e39fa5.png"/><link rel="apple-touch-icon" sizes="152x152" href="/res/ca89aad4.png"/><link rel="apple-touch-icon" sizes="167x167" href="/res/5d37ba5a.png"/><link rel="apple-touch-icon" sizes="180x180" href="/res/f0517911.png"/><script>document.documentElement.style.setProperty("--d",1/(window.devicePixelRatio||1)+"px");</script><style>@font-face{font-family:Inter;font-weight:100 900;font-display:swap;font-style:normal;font-named-instance:"Regular";src:url(/res/541fae2e.woff2);font-display:fallback}@font-face{font-family:Inter;font-weight:100 900;font-display:swap;font-style:italic;font-named-instance:"Regular";src:url(/res/1517082.woff2);font-display:fallback}*,::after,::before{box-sizing:border-box}*{font-size:calc(var(--e)*var(--i));line-height:calc(var(--f)*var(--i));letter-spacing:calc(var(--g)*var(--i));font-weight:var(--h);--i:calc(
+    (var(--j) * 1rem / 16) +
+      ((1 - var(--j)) * 1px)
+  )}@supports (font-variation-settings:"wght"400){*{font-weight:inherit;font-variation-settings:"wght"var(--h)}}:root{--k:#f97f51;--l:#fc427b;--m:#2874ff;--a:#ffc312;--b:var(--n);--o:var(--n);--c:var(--n);--n:black;--p:white;--q:12px;--r:12px;--j:1}::selection{background:var(--c);color:#fff}body{margin:var(--q) var(--r) 64px;--e:18;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--n);background:var(--p);--f:26}a{color:var(--c);text-decoration:none}a:active,a:focus,a:hover{text-decoration:underline}.a{display:flex;padding-top:12px;margin:-12px calc(-1*var(--r)) 48px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}.a::after,.a::before{display:block;content:"";padding-right:var(--r)}.b,.d{flex:none;--h:700}.d{display:block;--e:24;--f:18;--g:-1;text-transform:lowercase;border-top:4px solid;padding:6px 4px 0 0}a.d{color:currentColor;text-decoration:none}.b{margin:0 0 0 24px;--e:6;--f:10;--g:1;--j:0;text-transform:uppercase;width:0;overflow-wrap:normal}.c{margin-left:auto}.e{flex:none;display:block;margin:10px 24px 0 0;--e:14;--f:18;--h:400}.e:last-child{margin-right:0}@media (prefers-color-scheme:dark){:root{--n:white;--p:black}}@media (min-width:768px){:root{--r:64px}}@media (min-width:1024px){:root{--r:128px}}*{overflow-wrap:break-word}:root{--r:max(12px, (100vw - var(--s)) / 2);--s:800px;--c:var(--o)}h1{margin:48px 0 32px;--e:36;--f:48;--g:-0.8}h2,h3{margin:42px 0 18px}h1,h2{font-weight:700}h2{--e:26;--f:34;--g:-0.3}h3{--e:22;--f:30;--g:-0.18}p{margin:18px 0}p a{text-decoration:underline}h3,strong{font-weight:600}ol,ul{margin:24px 0;padding-left:32px;margin-left:calc(-32*min(max(var(--r) - 32px,0px),1px))}ul li{position:relative;margin:2px 0;list-style:none}ul li::before{position:absolute;content:var(--t, "👉");right:calc(100% + 12px)}li[data-bullet]{--t:attr(data-bullet)}blockquote{margin:32px 24px 32px 48px;--e:22;--f:32;font-weight:300;font-style:italic}table{margin:24px;border-collapse:separate;border-spacing:12px 0}thead th{border-bottom:var(--d) solid;--h:600;text-align:left}table.f{border-collapse:collapse}table.f td{padding:0 12px;border:1px solid currentColor}code,hr{background-color:#f4f4f4}hr{margin:32px calc(-1*var(--r));height:var(--d);border:0}code{font-size:.9em;font-family:monospace;padding:0 3px;border:1px solid #eee;border-radius:6px}pre code{width:100vw;margin:48px calc(-1*var(--r));padding:18px var(--r);background-color:#fafafa;border:1px solid #f4f4f4;border-width:1px 0;border-radius:0;overflow-x:scroll}video{max-width:100%;margin:32px auto}img,pre code,video{display:block}iframe{width:calc(var(--u)*1);height:calc(var(--u)*.66);border:1px solid rgba(0,0,0,.1);--u:calc(100vw - 2 * var(--r))}.g,blockquote{color:#9e9e9e}@media (min-width:768px){a,p>code{word-break:initial}}@media (prefers-color-scheme:dark){hr,pre code{background-color:#080808}code{background-color:#111;border-color:#222}pre code{border-color:#111}}</style></head><body><div class="a"><a href="/" class="d">Jacob<br/>does<br/>code</a><div class="b">Apps</div><a href="/pocket-jam" class="e">Pocket Jam</a><a href="/piano-tabs" class="e">Piano Tabs</a><a href="/technicalc" class="e">TechniCalc</a><a href="/calipers" class="e">Calipers</a><a href="/freebies" class="e">Freebies</a><div class="b c">Developement</div><a href="/blog" class="e">Blog</a><a href="https://github.com/jacobp100" class="e">Github</a></div><h1>Precomputing Transparency Order in 3D</h1>
+<p>Transparency — or more precisely, translucency — remains a problem when rendering in 3D. When you have translucent shapes, the order in which they get rendered is very important. Consider what happens if this is done incorrectly.</p>
+<picture><source srcSet="/res/e6bb2bea.webp" type="image/webp"/><img src="/res/af9136ea.png"/></picture>
+<p>Today, getting the correct order for translucent faces typically involves sorting the faces by their distance to the camera on the CPU, then sending the sorted faces to the GPU. This means every time the camera moves, you need to re-sort the translucent faces.</p>
+<p>In this post, I will show a method I believe may be unique to sort faces independently of the camera position. This sorting is more expensive — O(n²) compared to O(n log n) — but it only needs to be done once. As this sorting is more expensive, it is only really suitable to places where the translucent faces do not move much. There are also some cases where it won’t work, and will have to fall back to CPU sorting.</p>
+<h2>A Bit About GPUs</h2>
+<p>We don’t need to know too much about GPUs for this post, but you do need to know <strong>GPUs will do anything other than sort geometry.</strong></p>
+<p>For opaque faces, you can imagine the GPU takes an array of faces, and each face is drawn one-by-one, in the order. To make sure faces farther away from the camera don’t start drawing over faces closer to the camera, they keep a per-pixel record of the closest distance rendered from the camera. Then when drawing each pixel in a new face, they’ll only draw it if it’s actually closer to the camera. This means they can avoid sorting the geometry, for opaque faces at least.</p>
+<p>There’s one more thing about GPUs you’ll need to know to understand this post, which is face culling. This is an optimisation available to reduce the number of faces you have to consider. If you imagine each face like a coin, with heads and tails, face culling is a way to say only draw faces if you see ‘heads’ on the face. Typical use for this is when rendering volumes. First, you would set up a cube where the faces on the outside are all heads. Now when rendering, the faces at the back would show tails. The GPU can very quickly discard these faces — it doesn’t even need to do the depth testing we described before.</p>
+<h2>Precomputing Sort Order</h2>
+<p>Face culling may seem like an odd thing to use for translucent faces — after all, you need to see the face from whichever way you look at it. However, if you split the face into two sides, and the two sides are flipped opposite to each other, you will always see one of the sides regardless of your camera position. Importantly, this means we can sort the two sides of this face into two different positions in an array.</p>
+<picture><source srcSet="/res/7c2e7b75.webp" type="image/webp"/><img src="/res/e036b17f.png"/></picture>
+<p>Above, we show a single face split into two. In the blue section, you’ll see the blue side of the face; and in the yellow section, you’ll see the yellow side of the face. Notice there is no point where you can see both sides at once.</p>
+<h3>Multiple Faces</h3>
+<p>Now, we’ll look at what camera perspectives are available when we add another face. To simplify the example, we’ll only look at one side of each face at a time, and in two dimensions.</p>
+<img src="/res/8ddeb559.png"/>
+<p>In this example, we can see the green and red areas overlap in exactly one area.</p>
+<p>The grey-dotted area corresponds to a camera position where you <em>could</em> see an overlap of the faces. In the left half, looking at these two faces would show both green and red. In the middle section, it’s not possible to see two faces. In the right section, neither face is visible, so you won’t see an overlap.</p>
+<p>Considering the areas where you can see both sides of the faces and where you could see an overlap, you can safely say for this example, you can <strong>always</strong> render green on-top of red.</p>
+<p>Now we’ll look at the other permutations of each side of these faces.</p>
+<img src="/res/d16d2554.png"/>
+<p>This is the exact opposite of the case above. The red and green areas are flipped. With this face-side combination, you can <strong>always</strong> render red on-top of green. Remember that because these are different sides of the face, they can be sorted differently — so this doesn’t contradict the previous example.</p>
+<img src="/res/7b021854.png"/>
+<p>In this case, it’s not possible to see both faces at the same time — sorting order is unimportant.</p>
+<img src="/res/24797dc.png"/>
+<p>Here, you can see both faces at the same time. However, they won’t overlap at any point. Again, the sorting order is unimportant.</p>
+<h2>The Algorithm</h2>
+<p>Consider a pair of faces, <code>A</code> and <code>B</code>. Consider the plane <code>A</code> is on, and all the vertices (‘corners’) from <code>B</code>. The vertices from <code>B</code> will either be wholly above the plane, wholly below, a mix of above and below (intersecting), or exactly on the plane (coplanar).</p>
+<p>For the coplanar case, you can ignore the sorting order, as the faces won’t be able to overlap from any camera perspective.</p>
+<h3>Above &amp; Below</h3>
+<p>If the vertices from <code>B</code> are wholly above the plane of <code>A</code>, your first instinct may be <code>A</code> must be rendered before <code>B</code> (farthest away faces get rendered first).</p>
+<p>We actually have to look the reverse case too — if you flip the arguments.</p>
+<img src="/res/3d3f86a5.png"/>
+<p>In this case, green is wholly above red, and red is also wholly above green. As you can only see at most once face at a time, the sort order does not matter.</p>
+<p>Only if <code>B</code> is wholly above <code>A</code>, and <code>A</code> is wholly below <code>B</code> can you guarantee <code>A</code> is rendered before <code>B</code>.</p>
+<h3>Intersecting</h3>
+<p>Now consider a case where the faces intersect. It’s still possible to have one of the faces be wholly above or below.</p>
+<img src="/res/d6fb787b.png"/>
+<p>From this example, you can see that even though red intersects green, red is wholly above green.</p>
+<h3>All Cases</h3>
+<p>Below is a table showing face configurations and their corresponding sort order.</p>
+<table class="f" style="text-align:center"><tr><td colspan="2" rowspan="2"></td><td colspan="3">A→B (A’s vertices against B’s plane)</td></tr><tr><td>↑ Above</td>
+<td>↕ Intersecting</td>
+<td>↓ Below</td></tr><tr><td rowspan="3">B→A</td>
+<td>↑</td>
+<td>*1</td>
+<td><code>AB</code></td>
+<td><code>AB</code></td></tr><tr><td>↕</td>
+<td><code>BA</code></td>
+<td>*2</td>
+<td><code>AB</code></td></tr><tr><td>↓</td>
+<td><code>BA</code></td>
+<td><code>BA</code></td>
+<td>*1</td></tr></table>
+<ol>
+<li>No sort order (either order is fine)</li>
+<li>It is not possible to pre-compute a sort order — fall back to CPU sorting</li>
+</ol>
+<p>You’ll note because it’s possible to have <em>no</em> sort order for some pairs, there is no overall sorting order — just constraints on some pairs. This means to sort, you have to check every face against every other face — O(n²).</p>
+<p>Lastly, if you have to fall back to CPU sorting, it should be possible to only dynamically sort the groups that contain double intersections, and leave the rest pre-sorted. You will, however, have to track groups that need dynamically sorting — which I won’t cover.</p>
+<h2>Demo</h2>
+<p>I’ve written a quick implementation of this with Three, which you can <a href="https://stackblitz.com/edit/vitejs-vite-gegeycyu">open on StackBlitz</a>. Note this example only handles rotating faces about the Y-axis. This is just for simplicity’s sake rather than being a limitation.</p>
+<p>Pan around using the arrow keys — or if you’re on mobile, you can just look at the screenshot below showing a few faces from two opposite-facing camera perspectives.</p>
+<picture><source srcSet="/res/95379dea.webp" type="image/webp"/><img src="/res/d406a7f1.png"/></picture><span class="g">Published on <time dateTime="2025-05-18T00:00:00.000Z">18th May 2025</time></span></body></html>

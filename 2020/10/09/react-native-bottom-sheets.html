@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><title>React Native Bottom Sheets</title><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="icon" href="/res/19f82827.png" sizes="16x16" type="image/png"/><link rel="icon" href="/res/eb210940.png" sizes="32x32" type="image/png"/><link rel="apple-touch-icon" href="/res/346f150e.png"/><link rel="apple-touch-icon" sizes="57x57" href="/res/96dcd9a9.png"/><link rel="apple-touch-icon" sizes="72x72" href="/res/cf5ba76d.png"/><link rel="apple-touch-icon" sizes="76x76" href="/res/4ba903c3.png"/><link rel="apple-touch-icon" sizes="114x114" href="/res/a58fed4c.png"/><link rel="apple-touch-icon" sizes="120x120" href="/res/a5e39fa5.png"/><link rel="apple-touch-icon" sizes="152x152" href="/res/ca89aad4.png"/><link rel="apple-touch-icon" sizes="167x167" href="/res/5d37ba5a.png"/><link rel="apple-touch-icon" sizes="180x180" href="/res/f0517911.png"/><script>document.documentElement.style.setProperty("--d",1/(window.devicePixelRatio||1)+"px");</script><style>@font-face{font-family:Inter;font-weight:100 900;font-display:swap;font-style:normal;font-named-instance:"Regular";src:url(/res/541fae2e.woff2);font-display:fallback}@font-face{font-family:Inter;font-weight:100 900;font-display:swap;font-style:italic;font-named-instance:"Regular";src:url(/res/1517082.woff2);font-display:fallback}*,::after,::before{box-sizing:border-box}*{font-size:calc(var(--e)*var(--i));line-height:calc(var(--f)*var(--i));letter-spacing:calc(var(--g)*var(--i));font-weight:var(--h);--i:calc(
     (var(--j) * 1rem / 16) +
       ((1 - var(--j)) * 1px)
-  )}@supports (font-variation-settings:"wght"400){*{font-weight:inherit;font-variation-settings:"wght"var(--h)}}:root{--k:#f97f51;--l:#fc427b;--m:#2874ff;--a:#ffc312;--b:var(--n);--o:var(--n);--c:var(--n);--n:black;--p:white;--q:12px;--r:12px;--j:1}::selection{background:var(--c);color:#fff}body{margin:var(--q) var(--r) 64px;--e:18;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--n);background:var(--p);--f:26}a{color:var(--c);text-decoration:none}a:active,a:focus,a:hover{text-decoration:underline}.a{display:flex;padding-top:12px;margin:-12px calc(-1*var(--r)) 48px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}.a::after,.a::before{display:block;content:"";padding-right:var(--r)}.b,.d{flex:none;--h:700}.d{display:block;--e:24;--f:18;--g:-1;text-transform:lowercase;border-top:4px solid;padding:6px 4px 0 0}a.d{color:currentColor;text-decoration:none}.b{margin:0 0 0 24px;--e:6;--f:10;--g:1;--j:0;text-transform:uppercase;width:0;overflow-wrap:normal}.c{margin-left:auto}.e{flex:none;display:block;margin:10px 24px 0 0;--e:14;--f:18;--h:400}.e:last-child{margin-right:0}@media (prefers-color-scheme:dark){:root{--n:white;--p:black}}@media (min-width:768px){:root{--r:64px}}@media (min-width:1024px){:root{--r:128px}}*{overflow-wrap:break-word}:root{--r:max(12px, (100vw - var(--s)) / 2);--s:800px;--c:var(--o)}h1{margin:48px 0 32px;--e:36;--f:48;--g:-0.8}h2,h3{margin:42px 0 18px}h1,h2{font-weight:700}h2{--e:26;--f:34;--g:-0.3}h3{--e:22;--f:30;--g:-0.18}p{margin:18px 0}h3,strong{font-weight:600}ol,ul{margin:24px 0;padding-left:32px;margin-left:calc(-32*min(max(var(--r) - 32px,0px),1px))}li{position:relative;margin:2px 0;list-style:none}li::before{position:absolute;content:var(--t, "👉");right:calc(100% + 12px)}li[data-bullet]{--t:attr(data-bullet)}blockquote{margin:32px 24px 32px 48px;--e:22;--f:32;font-weight:300;font-style:italic}table{margin:24px;border-collapse:separate;border-spacing:12px 0}thead th{border-bottom:var(--d) solid;--h:600;text-align:left}code,hr{background-color:#f4f4f4}hr{margin:32px calc(-1*var(--r));height:var(--d);border:0}code{font-size:.9em;font-family:monospace;padding:0 3px;border:1px solid #eee;border-radius:6px}pre code{display:block;width:100vw;margin:48px calc(-1*var(--r));padding:18px var(--r);background-color:#fafafa;border:1px solid #f4f4f4;border-width:1px 0;border-radius:0;overflow-x:scroll}video{display:block;max-width:100%;margin:32px auto}iframe{width:calc(var(--u)*1);height:calc(var(--u)*.66);border:1px solid rgba(0,0,0,.1);--u:calc(100vw - 2 * var(--r))}.f,blockquote{color:#9e9e9e}@media (min-width:768px){a,p>code{word-break:initial}}@media (prefers-color-scheme:dark){hr,pre code{background-color:#080808}code{background-color:#111;border-color:#222}pre code{border-color:#111}}.-o,.-q{color:#a0a1a7;font-style:italic}.-f,.-r,.-s{color:#a626a4}.-t,.-u,.-v,.-w,.-x{color:#e45649}.-m{color:#0184bb}.-A,.-B,.-C,.-y,.-z{color:#50a14f}.-D .-E,.-p{color:#c18401}.-F,.-G,.-H,.-I,.-J,.-K,.-L,.-l{color:#986801}.-E,.-M,.-N,.-O,.-P,.-Q{color:#4078f2}.-R{font-style:italic}.-S{font-weight:700}.-O{text-decoration:underline}@media (prefers-color-scheme:dark){.-o,.-q{color:#5c6370;font-style:italic}.-f,.-r,.-s{color:#c678dd}.-t,.-u,.-v,.-w,.-x{color:#e06c75}.-m{color:#56b6c2}.-A,.-B,.-C,.-y,.-z{color:#98c379}.-D .-E,.-p{color:#e6c07b}.-F,.-G,.-H,.-I,.-J,.-K,.-L,.-l{color:#d19a66}.-E,.-M,.-N,.-O,.-P,.-Q{color:#61aeee}.-R{font-style:italic}.-S{font-weight:700}.-O{text-decoration:underline}}</style></head><body><div class="a"><a href="/" class="d">Jacob<br/>does<br/>code</a><div class="b">Apps</div><a href="/pocket-jam" class="e">Pocket Jam</a><a href="/piano-tabs" class="e">Piano Tabs</a><a href="/technicalc" class="e">TechniCalc</a><a href="/calipers" class="e">Calipers</a><a href="/freebies" class="e">Freebies</a><div class="b c">Developement</div><a href="/blog" class="e">Blog</a><a href="https://github.com/jacobp100" class="e">Github</a></div><h1>React Native Bottom Sheets</h1>
+  )}@supports (font-variation-settings:"wght"400){*{font-weight:inherit;font-variation-settings:"wght"var(--h)}}:root{--k:#f97f51;--l:#fc427b;--m:#2874ff;--a:#ffc312;--b:var(--n);--o:var(--n);--c:var(--n);--n:black;--p:white;--q:12px;--r:12px;--j:1}::selection{background:var(--c);color:#fff}body{margin:var(--q) var(--r) 64px;--e:18;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--n);background:var(--p);--f:26}a{color:var(--c);text-decoration:none}a:active,a:focus,a:hover{text-decoration:underline}.a{display:flex;padding-top:12px;margin:-12px calc(-1*var(--r)) 48px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}.a::after,.a::before{display:block;content:"";padding-right:var(--r)}.b,.d{flex:none;--h:700}.d{display:block;--e:24;--f:18;--g:-1;text-transform:lowercase;border-top:4px solid;padding:6px 4px 0 0}a.d{color:currentColor;text-decoration:none}.b{margin:0 0 0 24px;--e:6;--f:10;--g:1;--j:0;text-transform:uppercase;width:0;overflow-wrap:normal}.c{margin-left:auto}.e{flex:none;display:block;margin:10px 24px 0 0;--e:14;--f:18;--h:400}.e:last-child{margin-right:0}@media (prefers-color-scheme:dark){:root{--n:white;--p:black}}@media (min-width:768px){:root{--r:64px}}@media (min-width:1024px){:root{--r:128px}}*{overflow-wrap:break-word}:root{--r:max(12px, (100vw - var(--s)) / 2);--s:800px;--c:var(--o)}h1{margin:48px 0 32px;--e:36;--f:48;--g:-0.8}h2,h3{margin:42px 0 18px}h1,h2{font-weight:700}h2{--e:26;--f:34;--g:-0.3}h3{--e:22;--f:30;--g:-0.18}p{margin:18px 0}p a{text-decoration:underline}h3,strong{font-weight:600}ol,ul{margin:24px 0;padding-left:32px;margin-left:calc(-32*min(max(var(--r) - 32px,0px),1px))}ul li{position:relative;margin:2px 0;list-style:none}ul li::before{position:absolute;content:var(--t, "👉");right:calc(100% + 12px)}li[data-bullet]{--t:attr(data-bullet)}blockquote{margin:32px 24px 32px 48px;--e:22;--f:32;font-weight:300;font-style:italic}table{margin:24px;border-collapse:separate;border-spacing:12px 0}thead th{border-bottom:var(--d) solid;--h:600;text-align:left}table.f{border-collapse:collapse}table.f td{padding:0 12px;border:1px solid currentColor}code,hr{background-color:#f4f4f4}hr{margin:32px calc(-1*var(--r));height:var(--d);border:0}code{font-size:.9em;font-family:monospace;padding:0 3px;border:1px solid #eee;border-radius:6px}pre code{width:100vw;margin:48px calc(-1*var(--r));padding:18px var(--r);background-color:#fafafa;border:1px solid #f4f4f4;border-width:1px 0;border-radius:0;overflow-x:scroll}video{max-width:100%;margin:32px auto}img,pre code,video{display:block}iframe{width:calc(var(--u)*1);height:calc(var(--u)*.66);border:1px solid rgba(0,0,0,.1);--u:calc(100vw - 2 * var(--r))}.g,blockquote{color:#9e9e9e}@media (min-width:768px){a,p>code{word-break:initial}}@media (prefers-color-scheme:dark){hr,pre code{background-color:#080808}code{background-color:#111;border-color:#222}pre code{border-color:#111}}.-p,.-r{color:#a0a1a7;font-style:italic}.-g,.-s,.-t{color:#a626a4}.-u,.-v,.-w,.-x,.-y{color:#e45649}.-n{color:#0184bb}.-A,.-B,.-C,.-D,.-z{color:#50a14f}.-E .-F,.-q{color:#c18401}.-G,.-H,.-I,.-J,.-K,.-L,.-M,.-m{color:#986801}.-F,.-N,.-O,.-P,.-Q,.-R{color:#4078f2}.-S{font-style:italic}.-T{font-weight:700}.-P{text-decoration:underline}@media (prefers-color-scheme:dark){.-p,.-r{color:#5c6370;font-style:italic}.-g,.-s,.-t{color:#c678dd}.-u,.-v,.-w,.-x,.-y{color:#e06c75}.-n{color:#56b6c2}.-A,.-B,.-C,.-D,.-z{color:#98c379}.-E .-F,.-q{color:#e6c07b}.-G,.-H,.-I,.-J,.-K,.-L,.-M,.-m{color:#d19a66}.-F,.-N,.-O,.-P,.-Q,.-R{color:#61aeee}.-S{font-style:italic}.-T{font-weight:700}.-P{text-decoration:underline}}</style></head><body><div class="a"><a href="/" class="d">Jacob<br/>does<br/>code</a><div class="b">Apps</div><a href="/pocket-jam" class="e">Pocket Jam</a><a href="/piano-tabs" class="e">Piano Tabs</a><a href="/technicalc" class="e">TechniCalc</a><a href="/calipers" class="e">Calipers</a><a href="/freebies" class="e">Freebies</a><div class="b c">Developement</div><a href="/blog" class="e">Blog</a><a href="https://github.com/jacobp100" class="e">Github</a></div><h1>React Native Bottom Sheets</h1>
 <p><a href="/technicalc">TechniCalc</a> is an advanced scientific and engineering calculator. The UI uses TypeScript and React Native, and the (<a href="https://github.com/jacobp100/technicalc-calculator">open</a> <a href="https://github.com/jacobp100/technicalc-editor">source</a>) core is done in ReasonML.</p>
 <p>The app has always had a bottom sheet menu navigation system, which lets you always see the equation while navigating through the menus. But until the most recent update, each menu could only be dismissed by pressing the title or the back button — which can be quite a reach on larger phones.</p>
 <p>Now in the latest update, you’ll be able to dismiss them by swiping down — much like the bottom sheet in Apple Maps.</p>
@@ -19,51 +19,51 @@
 <h2>Bottom Sheet</h2>
 <p>Rather than putting layout logic (headers, footers etc.) in the bottom sheet component, we’ll split it up into a core bottom sheet component, and few views that will add gesture interactions. You’ll then be able to construct your own layouts with these views, and pass them to the bottom sheet component as children.</p>
 <p>The end goal is to have an API that looks like the following.</p>
-<pre><code><span class="-f">const</span> <span class="-E -W">Example</span> = (<span class="-h"></span>) =&gt; (
-  <span class="-X"><span class="-Y">&lt;<span class="-u">BottomSheet</span> <span class="-F">onDismissed</span>=<span class="-y">{()</span> =&gt;</span> console.log(&quot;Dismissed&quot;)}&gt;
-    <span class="-Y">&lt;<span class="-u">BottomSheetDismissView</span>&gt;</span>
-      <span class="-Y">&lt;<span class="-u">Text</span>&gt;</span>Title (drag down to close)<span class="-Y">&lt;/<span class="-u">Text</span>&gt;</span>
-    <span class="-Y">&lt;/<span class="-u">BottomSheetDismissView</span>&gt;</span>
-    <span class="-Y">&lt;<span class="-u">BottomSheetDismissScrollView</span>&gt;</span>
-      <span class="-Y">&lt;<span class="-u">Text</span>&gt;</span>Content (scroll down past the top to close)<span class="-Y">&lt;/<span class="-u">Text</span>&gt;</span>
-    <span class="-Y">&lt;/<span class="-u">BottomSheetDismissScrollView</span>&gt;</span>
-  <span class="-Y">&lt;/<span class="-u">BottomSheet</span>&gt;</span></span>
+<pre><code><span class="-g">const</span> <span class="-F -X">Example</span> = (<span class="-i"></span>) =&gt; (
+  <span class="-Y"><span class="-Z">&lt;<span class="-v">BottomSheet</span> <span class="-G">onDismissed</span>=<span class="-z">{()</span> =&gt;</span> console.log(&quot;Dismissed&quot;)}&gt;
+    <span class="-Z">&lt;<span class="-v">BottomSheetDismissView</span>&gt;</span>
+      <span class="-Z">&lt;<span class="-v">Text</span>&gt;</span>Title (drag down to close)<span class="-Z">&lt;/<span class="-v">Text</span>&gt;</span>
+    <span class="-Z">&lt;/<span class="-v">BottomSheetDismissView</span>&gt;</span>
+    <span class="-Z">&lt;<span class="-v">BottomSheetDismissScrollView</span>&gt;</span>
+      <span class="-Z">&lt;<span class="-v">Text</span>&gt;</span>Content (scroll down past the top to close)<span class="-Z">&lt;/<span class="-v">Text</span>&gt;</span>
+    <span class="-Z">&lt;/<span class="-v">BottomSheetDismissScrollView</span>&gt;</span>
+  <span class="-Z">&lt;/<span class="-v">BottomSheet</span>&gt;</span></span>
 );
 </code></pre>
 <p>For demonstration purposes, we’ll use a really basic bottom sheet overlay that can be moved via an animation.</p>
 <p>We’ll drive everything by a single <code>Animated.Value</code>. Because some of the the gesture views we’ll be making will also operate on this value, we’ll expose it via React’s context.</p>
-<pre><code><span class="-f">const</span> <span class="-E -V">InteractiveGestureContext</span> = <span class="-E -V">React</span>.<span class="-E -W">createContext</span>();
-<span class="-f">const</span> bottomSheetHeight = <span class="-l">100</span>;
+<pre><code><span class="-g">const</span> <span class="-F -W">InteractiveGestureContext</span> = <span class="-F -W">React</span>.<span class="-F -X">createContext</span>();
+<span class="-g">const</span> bottomSheetHeight = <span class="-m">100</span>;
 
-<span class="-f">const</span> <span class="-E -W">BottomSheet</span> = (<span class="-h">{ onDismissed, children }</span>) =&gt; {
-  <span class="-f">const</span> [interactiveGesture] = <span class="-E -V">React</span>.<span class="-E -W">useState</span>(<span class="-g">() =&gt;</span> <span class="-f">new</span> <span class="-E -V">Animated</span>.<span class="-E -V">Value</span>(<span class="-l">0</span>));
+<span class="-g">const</span> <span class="-F -X">BottomSheet</span> = (<span class="-i">{ onDismissed, children }</span>) =&gt; {
+  <span class="-g">const</span> [interactiveGesture] = <span class="-F -W">React</span>.<span class="-F -X">useState</span>(<span class="-h">() =&gt;</span> <span class="-g">new</span> <span class="-F -W">Animated</span>.<span class="-F -W">Value</span>(<span class="-m">0</span>));
 
-  <span class="-o">// Clamp interactive gesture between 0 and bottomSheetHeight</span>
-  <span class="-f">const</span> translateY = interactiveGesture.<span class="-E -W">interpolate</span>({
-    <span class="-F">inputRange</span>: [<span class="-l">0</span>, bottomSheetHeight],
-    <span class="-F">outputRange</span>: [<span class="-l">0</span>, bottomSheetHeight],
-    <span class="-F">extrapolate</span>: <span class="-y">&quot;clamp&quot;</span>,
+  <span class="-p">// Clamp interactive gesture between 0 and bottomSheetHeight</span>
+  <span class="-g">const</span> translateY = interactiveGesture.<span class="-F -X">interpolate</span>({
+    <span class="-G">inputRange</span>: [<span class="-m">0</span>, bottomSheetHeight],
+    <span class="-G">outputRange</span>: [<span class="-m">0</span>, bottomSheetHeight],
+    <span class="-G">extrapolate</span>: <span class="-z">&quot;clamp&quot;</span>,
   });
 
-  <span class="-f">const</span> bottomSheetStyle = {
-    <span class="-F">position</span>: <span class="-y">&quot;absolute&quot;</span>,
-    <span class="-F">width</span>: <span class="-y">&quot;100%&quot;</span>,
-    <span class="-F">height</span>: bottomSheetHeight,
-    <span class="-F">bottom</span>: <span class="-l">0</span>,
-    <span class="-F">backgroundColor</span>: <span class="-y">&quot;white&quot;</span>,
-    <span class="-F">transform</span>: [{ translateY }],
+  <span class="-g">const</span> bottomSheetStyle = {
+    <span class="-G">position</span>: <span class="-z">&quot;absolute&quot;</span>,
+    <span class="-G">width</span>: <span class="-z">&quot;100%&quot;</span>,
+    <span class="-G">height</span>: bottomSheetHeight,
+    <span class="-G">bottom</span>: <span class="-m">0</span>,
+    <span class="-G">backgroundColor</span>: <span class="-z">&quot;white&quot;</span>,
+    <span class="-G">transform</span>: [{ translateY }],
   };
 
-  <span class="-f">const</span> contextValue = {
+  <span class="-g">const</span> contextValue = {
     interactiveGesture,
-    <span class="-o">// This will later be called from child components</span>
+    <span class="-p">// This will later be called from child components</span>
     onDismissed,
   };
 
-  <span class="-f">return</span> (
-    <span class="-X"><span class="-Y">&lt;<span class="-u">InteractiveGestureContext.Provider</span> <span class="-F">value</span>=<span class="-y">{contextValue}</span>&gt;</span>
-      <span class="-Y">&lt;<span class="-u">Animated.View</span> <span class="-F">style</span>=<span class="-y">{bottomSheetStyle}</span>&gt;</span>{children}<span class="-Y">&lt;/<span class="-u">Animated.View</span>&gt;</span>
-    <span class="-Y">&lt;/<span class="-u">InteractiveGestureContext.Provider</span>&gt;</span></span>
+  <span class="-g">return</span> (
+    <span class="-Y"><span class="-Z">&lt;<span class="-v">InteractiveGestureContext.Provider</span> <span class="-G">value</span>=<span class="-z">{contextValue}</span>&gt;</span>
+      <span class="-Z">&lt;<span class="-v">Animated.View</span> <span class="-G">style</span>=<span class="-z">{bottomSheetStyle}</span>&gt;</span>{children}<span class="-Z">&lt;/<span class="-v">Animated.View</span>&gt;</span>
+    <span class="-Z">&lt;/<span class="-v">InteractiveGestureContext.Provider</span>&gt;</span></span>
   );
 };
 </code></pre>
@@ -71,49 +71,49 @@
 <p>As mentioned in the introduction, we’ll use <a href="https://docs.swmansion.com/react-native-gesture-handler/">react-native-gesture-handler</a> for the gestures. We need to use this rather than the one build into React Native, because it has ways to run gestures in parallel with the scroll view gestures.</p>
 <p>For dismissing non-scrolling content, we can use <code>&lt;PanGestureHandler&gt;</code>, and have this gesture feed directly into <code>interactiveGesture</code> via <code>Animated.event</code>.</p>
 <p>Note that to use <code>Animated.event</code>, you’ll need to wrap any children in an <code>&lt;Animated.View&gt;</code>.</p>
-<pre><code><span class="-f">const</span> <span class="-E -W">BottomSheetDismissGestureView</span> = (<span class="-h">{ children }</span>) =&gt; {
-  <span class="-f">const</span> { interactiveGesture, onDismissed } = <span class="-E -V">React</span>.<span class="-E -W">useContext</span>(
-    <span class="-E -V">InteractiveGestureContext</span>
+<pre><code><span class="-g">const</span> <span class="-F -X">BottomSheetDismissGestureView</span> = (<span class="-i">{ children }</span>) =&gt; {
+  <span class="-g">const</span> { interactiveGesture, onDismissed } = <span class="-F -W">React</span>.<span class="-F -X">useContext</span>(
+    <span class="-F -W">InteractiveGestureContext</span>
   );
 
-  <span class="-f">return</span> (
-    <span class="-X"><span class="-Y">&lt;<span class="-u">PanGestureHandler</span>
-      <span class="-F">onGestureEvent</span>=<span class="-y">{Animated.event(</span>
-        [{ <span class="-F">nativeEvent:</span> { <span class="-F">translationY:</span> <span class="-F">interactiveGesture</span> } }],
-        { <span class="-F">useNativeDriver:</span> <span class="-F">true</span> }
+  <span class="-g">return</span> (
+    <span class="-Y"><span class="-Z">&lt;<span class="-v">PanGestureHandler</span>
+      <span class="-G">onGestureEvent</span>=<span class="-z">{Animated.event(</span>
+        [{ <span class="-G">nativeEvent:</span> { <span class="-G">translationY:</span> <span class="-G">interactiveGesture</span> } }],
+        { <span class="-G">useNativeDriver:</span> <span class="-G">true</span> }
       )}
     &gt;</span>
-      <span class="-Y">&lt;<span class="-u">Animated.View</span>&gt;</span>{children}<span class="-Y">&lt;/<span class="-u">Animated.View</span>&gt;</span>
-    <span class="-Y">&lt;/<span class="-u">PanGestureHandler</span>&gt;</span></span>
+      <span class="-Z">&lt;<span class="-v">Animated.View</span>&gt;</span>{children}<span class="-Z">&lt;/<span class="-v">Animated.View</span>&gt;</span>
+    <span class="-Z">&lt;/<span class="-v">PanGestureHandler</span>&gt;</span></span>
   );
 };
 </code></pre>
 <p>This works while the user is actively dragging the content, but once they stop, we either need to re-open or close the bottom sheet. For this, we need to look for <code>State.END</code> events in <code>onHandlerStateChange</code>.</p>
-<pre><code><span class="-o">// Implementation for &lt;PanGestureHandler onHandlerStateChange={...} /&gt;</span>
-<span class="-f">const</span> <span class="-E -W">onHandlerStateChange</span> = (<span class="-h">e</span>) =&gt; {
-  <span class="-f">const</span> { state, velocityY, translationY } = e.<span class="-Z">nativeEvent</span>;
+<pre><code><span class="-p">// Implementation for &lt;PanGestureHandler onHandlerStateChange={...} /&gt;</span>
+<span class="-g">const</span> <span class="-F -X">onHandlerStateChange</span> = (<span class="-i">e</span>) =&gt; {
+  <span class="-g">const</span> { state, velocityY, translationY } = e.<span class="-_">nativeEvent</span>;
 
-  <span class="-f">if</span> (state !== <span class="-E -V">State</span>.<span class="-Z">END</span>) {
-    <span class="-f">return</span>; <span class="-o">// Ignore all unfinished gesture events</span>
+  <span class="-g">if</span> (state !== <span class="-F -W">State</span>.<span class="-_">END</span>) {
+    <span class="-g">return</span>; <span class="-p">// Ignore all unfinished gesture events</span>
   }
 
-  <span class="-o">// This seemed to work well when trying</span>
-  <span class="-f">const</span> momentumThreshold = <span class="-l">100</span>;
-  <span class="-f">const</span> hasMomentum = <span class="-E -V">Math</span>.<span class="-E -W">abs</span>(velocityY) &gt; momentumThreshold;
+  <span class="-p">// This seemed to work well when trying</span>
+  <span class="-g">const</span> momentumThreshold = <span class="-m">100</span>;
+  <span class="-g">const</span> hasMomentum = <span class="-F -W">Math</span>.<span class="-F -X">abs</span>(velocityY) &gt; momentumThreshold;
 
-  <span class="-f">const</span> shouldClose = hasMomentum
-    ? velocityY &gt; <span class="-l">0</span>
-    : translationY &gt; bottomSheetHeight / <span class="-l">2</span>;
+  <span class="-g">const</span> shouldClose = hasMomentum
+    ? velocityY &gt; <span class="-m">0</span>
+    : translationY &gt; bottomSheetHeight / <span class="-m">2</span>;
 
-  <span class="-o">// Perform open/close animation</span>
-  <span class="-o">// You&#x27;ll need more logic to actually remove the bottom sheet if you close</span>
-  <span class="-E -V">Animated</span>.<span class="-E -W">timing</span>(interactiveGesture, {
-    <span class="-F">toValue</span>: shouldClose ? bottomSheetHeight : <span class="-l">0</span>,
-    <span class="-F">duration</span>: <span class="-l">300</span>,
-    <span class="-F">useNativeDriver</span>: <span class="-m">true</span>,
-  }).<span class="-E -W">start</span>(<span class="-g">() =&gt;</span> {
-    <span class="-f">if</span> (shouldClose) {
-      <span class="-E -W">onDismissed</span>();
+  <span class="-p">// Perform open/close animation</span>
+  <span class="-p">// You&#x27;ll need more logic to actually remove the bottom sheet if you close</span>
+  <span class="-F -W">Animated</span>.<span class="-F -X">timing</span>(interactiveGesture, {
+    <span class="-G">toValue</span>: shouldClose ? bottomSheetHeight : <span class="-m">0</span>,
+    <span class="-G">duration</span>: <span class="-m">300</span>,
+    <span class="-G">useNativeDriver</span>: <span class="-n">true</span>,
+  }).<span class="-F -X">start</span>(<span class="-h">() =&gt;</span> {
+    <span class="-g">if</span> (shouldClose) {
+      <span class="-F -X">onDismissed</span>();
     }
   });
 };
@@ -128,56 +128,56 @@
 <p>In the code, however, these gestures are never turned on or off. They run at the same time, for the same duration. Neither gesture is ever disabled — we only hide the effects of the gesture that is not the ‘current’ gesture.</p>
 <p>Like last time, we’ll use a pan gesture handler. Also like last time, we’ll use the exact same <code>onGestureEvent</code> and <code>onHandlerStateChange</code> implementations.</p>
 <p>Having simultaneous gesture handlers is documented in react-native-gesture-handler, but having one of those gestures be from a scroll view is not. Looking at react-native-modalize, this can be achieved with the following.</p>
-<pre><code><span class="-f">const</span> <span class="-E -W">BottomSheetDismissScrollView</span> = (<span class="-h">scrollViewProps</span>) =&gt; {
-  <span class="-f">const</span> panGesture = <span class="-E -V">React</span>.<span class="-E -W">useRef</span>(<span class="-m">null</span>);
-  <span class="-f">const</span> nativeViewGesture = <span class="-E -V">React</span>.<span class="-E -W">useRef</span>(<span class="-m">null</span>);
+<pre><code><span class="-g">const</span> <span class="-F -X">BottomSheetDismissScrollView</span> = (<span class="-i">scrollViewProps</span>) =&gt; {
+  <span class="-g">const</span> panGesture = <span class="-F -W">React</span>.<span class="-F -X">useRef</span>(<span class="-n">null</span>);
+  <span class="-g">const</span> nativeViewGesture = <span class="-F -W">React</span>.<span class="-F -X">useRef</span>(<span class="-n">null</span>);
 
-  <span class="-f">return</span> (
-    <span class="-X"><span class="-Y">&lt;<span class="-u">PanGestureHandler</span>
-      <span class="-F">ref</span>=<span class="-y">{panGesture}</span>
-      <span class="-F">simultaneousHandlers</span>=<span class="-y">{nativeViewGesture}</span>
-      <span class="-F">onGestureEvent</span>=<span class="-y">{sameOnGestureEventAsLastTime}</span>
-      <span class="-F">onHandlerStateChange</span>=<span class="-y">{sameOnHandlerStateChangeAsLastTime}</span>
+  <span class="-g">return</span> (
+    <span class="-Y"><span class="-Z">&lt;<span class="-v">PanGestureHandler</span>
+      <span class="-G">ref</span>=<span class="-z">{panGesture}</span>
+      <span class="-G">simultaneousHandlers</span>=<span class="-z">{nativeViewGesture}</span>
+      <span class="-G">onGestureEvent</span>=<span class="-z">{sameOnGestureEventAsLastTime}</span>
+      <span class="-G">onHandlerStateChange</span>=<span class="-z">{sameOnHandlerStateChangeAsLastTime}</span>
     &gt;</span>
-      <span class="-Y">&lt;<span class="-u">Animated.View</span> <span class="-F">style</span>=<span class="-y">{styles.container}</span>&gt;</span>
-        <span class="-Y">&lt;<span class="-u">NativeViewGestureHandler</span>
-          <span class="-F">ref</span>=<span class="-y">{nativeViewGesture}</span>
-          <span class="-F">simultaneousHandlers</span>=<span class="-y">{panGesture}</span>
+      <span class="-Z">&lt;<span class="-v">Animated.View</span> <span class="-G">style</span>=<span class="-z">{styles.container}</span>&gt;</span>
+        <span class="-Z">&lt;<span class="-v">NativeViewGestureHandler</span>
+          <span class="-G">ref</span>=<span class="-z">{nativeViewGesture}</span>
+          <span class="-G">simultaneousHandlers</span>=<span class="-z">{panGesture}</span>
         &gt;</span>
-          <span class="-Y">&lt;<span class="-u">ScrollView</span> {<span class="-F">...scrollViewProps</span>} /&gt;</span>
-        <span class="-Y">&lt;/<span class="-u">NativeViewGestureHandler</span>&gt;</span>
-      <span class="-Y">&lt;/<span class="-u">Animated.View</span>&gt;</span>
-    <span class="-Y">&lt;/<span class="-u">PanGestureHandler</span>&gt;</span></span>
+          <span class="-Z">&lt;<span class="-v">ScrollView</span> {<span class="-G">...scrollViewProps</span>} /&gt;</span>
+        <span class="-Z">&lt;/<span class="-v">NativeViewGestureHandler</span>&gt;</span>
+      <span class="-Z">&lt;/<span class="-v">Animated.View</span>&gt;</span>
+    <span class="-Z">&lt;/<span class="-v">PanGestureHandler</span>&gt;</span></span>
   );
 };
 
-<span class="-f">const</span> styles = <span class="-E -V">StyleSheet</span>.<span class="-E -W">create</span>({
-  <span class="-F">container</span>: { <span class="-F">flex</span>: <span class="-l">1</span> },
+<span class="-g">const</span> styles = <span class="-F -W">StyleSheet</span>.<span class="-F -X">create</span>({
+  <span class="-G">container</span>: { <span class="-G">flex</span>: <span class="-m">1</span> },
 });
 </code></pre>
 <p>These gestures will now run at exactly the same time. We now need to disable the effects from each gesture when they aren’t the ‘current’ gesture.</p>
 <p>For the pan gesture handler, we can start with setting <code>activeOffsetY</code>. This will allow the gesture to run, but it won’t start firing gesture events until we’ve moved our finger by at least this distance. Because we want this gesture to start once we scroll past the top of the scroll view, this value needs to be equal the scroll y position when the finger was placed on the screen.</p>
 <p>To get the scroll y position, we could use the <code>onScroll</code> event. However, we don’t want this value to update and change <code>activeOffsetY</code> as we scroll. We can instead use <code>onScrollEndDrag</code> and <code>onMomentumScrollEnd</code>.</p>
-<pre><code><span class="-f">const</span> <span class="-E -W">BottomSheetDismissScrollView</span> = (<span class="-h">scrollViewProps</span>) =&gt; {
-  <span class="-o">// ...</span>
-  <span class="-f">const</span> [scrollY, setScrollY] = <span class="-E -V">React</span>.<span class="-E -W">useState</span>(<span class="-l">0</span>);
+<pre><code><span class="-g">const</span> <span class="-F -X">BottomSheetDismissScrollView</span> = (<span class="-i">scrollViewProps</span>) =&gt; {
+  <span class="-p">// ...</span>
+  <span class="-g">const</span> [scrollY, setScrollY] = <span class="-F -W">React</span>.<span class="-F -X">useState</span>(<span class="-m">0</span>);
 
-  <span class="-f">return</span> (
-    <span class="-X"><span class="-Y">&lt;<span class="-u">PanGestureHandler</span>
-      <span class="-F">ref</span>=<span class="-y">{panGesture}</span>
-      <span class="-F">simultaneousHandlers</span>=<span class="-y">{nativeViewGesture}</span>
-      // <span class="-F">We</span> <span class="-F">can</span> <span class="-F">still</span> <span class="-F">use</span> <span class="-F">these</span> <span class="-F">handlers</span> <span class="-F">unchanged</span>, <span class="-F">because</span> <span class="-F">the</span> <span class="-F">event</span>&#x27;<span class="-F">s</span>
-      // <span class="-F">translateY</span> <span class="-F">will</span> <span class="-F">be</span> <span class="-F">the</span> <span class="-F">distance</span> <span class="-F">between</span> <span class="-F">the</span> <span class="-F">position</span> <span class="-F">from</span> <span class="-F">when</span>
-      // <span class="-F">activeOffsetY</span> <span class="-F">was</span> <span class="-F">met</span> <span class="-F">and</span> <span class="-F">the</span> <span class="-F">current</span> <span class="-F">gesture</span> <span class="-F">position</span>
-      <span class="-F">onGestureEvent</span>=<span class="-y">{sameOnGestureEventAsLastTime}</span>
-      <span class="-F">onHandlerStateChange</span>=<span class="-y">{sameOnHandlerStateChangeAsLastTime}</span>
-      <span class="-F">activeOffsetY</span>=<span class="-y">{scrollY}</span>
+  <span class="-g">return</span> (
+    <span class="-Y"><span class="-Z">&lt;<span class="-v">PanGestureHandler</span>
+      <span class="-G">ref</span>=<span class="-z">{panGesture}</span>
+      <span class="-G">simultaneousHandlers</span>=<span class="-z">{nativeViewGesture}</span>
+      // <span class="-G">We</span> <span class="-G">can</span> <span class="-G">still</span> <span class="-G">use</span> <span class="-G">these</span> <span class="-G">handlers</span> <span class="-G">unchanged</span>, <span class="-G">because</span> <span class="-G">the</span> <span class="-G">event</span>&#x27;<span class="-G">s</span>
+      // <span class="-G">translateY</span> <span class="-G">will</span> <span class="-G">be</span> <span class="-G">the</span> <span class="-G">distance</span> <span class="-G">between</span> <span class="-G">the</span> <span class="-G">position</span> <span class="-G">from</span> <span class="-G">when</span>
+      // <span class="-G">activeOffsetY</span> <span class="-G">was</span> <span class="-G">met</span> <span class="-G">and</span> <span class="-G">the</span> <span class="-G">current</span> <span class="-G">gesture</span> <span class="-G">position</span>
+      <span class="-G">onGestureEvent</span>=<span class="-z">{sameOnGestureEventAsLastTime}</span>
+      <span class="-G">onHandlerStateChange</span>=<span class="-z">{sameOnHandlerStateChangeAsLastTime}</span>
+      <span class="-G">activeOffsetY</span>=<span class="-z">{scrollY}</span>
     &gt;</span>
-      <span class="-Y">&lt;<span class="-u">Animated.View</span> /* <span class="-F">...</span> */&gt;</span>
-        <span class="-Y">&lt;<span class="-u">NativeViewGestureHandler</span> /* <span class="-F">...</span> */&gt;</span>
-          <span class="-Y">&lt;<span class="-u">ScrollView</span>
-            {<span class="-F">...scrollViewProps</span>}
-            <span class="-F">onScrollEndDrag</span>=<span class="-y">{(e)</span> =&gt;</span> {
+      <span class="-Z">&lt;<span class="-v">Animated.View</span> /* <span class="-G">...</span> */&gt;</span>
+        <span class="-Z">&lt;<span class="-v">NativeViewGestureHandler</span> /* <span class="-G">...</span> */&gt;</span>
+          <span class="-Z">&lt;<span class="-v">ScrollView</span>
+            {<span class="-G">...scrollViewProps</span>}
+            <span class="-G">onScrollEndDrag</span>=<span class="-z">{(e)</span> =&gt;</span> {
               // Technically we could could be a momentum scroll
               // But this detail will become irrelevant later
               setScrollY(e.nativeEvent.targetContentOffset.y);
@@ -186,81 +186,81 @@
               setScrollY(e.nativeEvent.contentOffset.y);
             }}
           /&gt;
-        <span class="-Y">&lt;/<span class="-u">NativeViewGestureHandler</span>&gt;</span></span>
-      &lt;/<span class="-E -V">Animated</span>.<span class="-Z">View</span>&gt;
-    &lt;/<span class="-E -V">PanGestureHandler</span>&gt;
+        <span class="-Z">&lt;/<span class="-v">NativeViewGestureHandler</span>&gt;</span></span>
+      &lt;/<span class="-F -W">Animated</span>.<span class="-_">View</span>&gt;
+    &lt;/<span class="-F -W">PanGestureHandler</span>&gt;
   );
 };
 </code></pre>
 <p>Next up, we need to stop scrolling when the dismiss gesture is the ‘current’ gesture. We can determine whether the gesture is active by modifying the existing implementations of <code>onGestureEvent</code> and <code>onHandlerStateChange</code>.</p>
-<pre><code><span class="-f">const</span> <span class="-E -W">BottomSheetDismissScrollView</span> = (<span class="-h">scrollViewProps</span>) =&gt; {
-  <span class="-o">// ...</span>
-  <span class="-f">const</span> [dismissGestureIsInProgress, setDismissGestureIsInProgress] =
-    <span class="-E -V">React</span>.<span class="-E -W">useState</span>(<span class="-m">false</span>);
+<pre><code><span class="-g">const</span> <span class="-F -X">BottomSheetDismissScrollView</span> = (<span class="-i">scrollViewProps</span>) =&gt; {
+  <span class="-p">// ...</span>
+  <span class="-g">const</span> [dismissGestureIsInProgress, setDismissGestureIsInProgress] =
+    <span class="-F -W">React</span>.<span class="-F -X">useState</span>(<span class="-n">false</span>);
 
-  <span class="-f">const</span> onGestureEvent = <span class="-E -V">Animated</span>.<span class="-E -W">event</span>(
-    [{ <span class="-F">nativeEvent</span>: { <span class="-F">translationY</span>: interactiveGesture } }],
+  <span class="-g">const</span> onGestureEvent = <span class="-F -W">Animated</span>.<span class="-F -X">event</span>(
+    [{ <span class="-G">nativeEvent</span>: { <span class="-G">translationY</span>: interactiveGesture } }],
     {
-      <span class="-F">useNativeDriver</span>: <span class="-m">true</span>,
-      <span class="-F">listener</span>: <span class="-g">(<span class="-h">e</span>) =&gt;</span> {
-        <span class="-f">const</span> { translateY } = e.<span class="-Z">nativeEvent</span>;
-        <span class="-E -W">setDismissGestureIsInProgress</span>(translateY &gt; <span class="-l">0</span>);
+      <span class="-G">useNativeDriver</span>: <span class="-n">true</span>,
+      <span class="-G">listener</span>: <span class="-h">(<span class="-i">e</span>) =&gt;</span> {
+        <span class="-g">const</span> { translateY } = e.<span class="-_">nativeEvent</span>;
+        <span class="-F -X">setDismissGestureIsInProgress</span>(translateY &gt; <span class="-m">0</span>);
       },
     }
   );
 
-  <span class="-f">const</span> <span class="-E -W">onHandlerStateChange</span> = (<span class="-h">e</span>) =&gt; {
-    <span class="-f">if</span> (e.<span class="-Z">nativeEvent</span>.<span class="-Z">state</span> !== <span class="-E -V">State</span>.<span class="-Z">ACTIVE</span>) {
-      <span class="-E -W">setInteractiveGestureActive</span>(<span class="-m">false</span>);
+  <span class="-g">const</span> <span class="-F -X">onHandlerStateChange</span> = (<span class="-i">e</span>) =&gt; {
+    <span class="-g">if</span> (e.<span class="-_">nativeEvent</span>.<span class="-_">state</span> !== <span class="-F -W">State</span>.<span class="-_">ACTIVE</span>) {
+      <span class="-F -X">setInteractiveGestureActive</span>(<span class="-n">false</span>);
     }
 
-    <span class="-o">// ... re-use rest of previous implementation</span>
+    <span class="-p">// ... re-use rest of previous implementation</span>
   };
 
-  <span class="-o">// ...</span>
+  <span class="-p">// ...</span>
 };
 </code></pre>
 <p>We can stop the scrolling gestures being visible by using <code>bounces</code>, which will stop the rubber banding effect on iOS when scrolling past the top of the scroll view.</p>
 <p>Because the <code>dismissGestureIsInProgress</code> has to go through the bridge, there is a slight delay between the dismiss gesture starting and scroll view’s scrolling stopping. This can lead to a small amount of content jumping, so we also need to scroll to the top once the dismiss gesture becomes active. For this case, it’s easier to set the <code>contentOffset</code> prop rather than calling the <code>.scrollTo</code> method.</p>
-<pre><code><span class="-f">const</span> <span class="-E -W">BottomSheetDismissScrollView</span> = (<span class="-h">scrollViewProps</span>) =&gt; {
-  <span class="-o">// ...</span>
+<pre><code><span class="-g">const</span> <span class="-F -X">BottomSheetDismissScrollView</span> = (<span class="-i">scrollViewProps</span>) =&gt; {
+  <span class="-p">// ...</span>
 
-  <span class="-f">return</span> (
-    <span class="-o">// ...</span>
-    <span class="-X"><span class="-Y">&lt;<span class="-u">ScrollView</span>
-      // <span class="-F">...</span>
-      <span class="-F">bounces</span>=<span class="-y">{!dismissGestureIsInProgress}</span>
-      <span class="-F">contentOffset</span>=<span class="-y">{dismissGestureIsInProgress</span> ? { <span class="-F">x:</span> <span class="-F">0</span>, <span class="-F">y:</span> <span class="-F">0</span> } <span class="-F">:</span> <span class="-F">undefined</span>}
+  <span class="-g">return</span> (
+    <span class="-p">// ...</span>
+    <span class="-Y"><span class="-Z">&lt;<span class="-v">ScrollView</span>
+      // <span class="-G">...</span>
+      <span class="-G">bounces</span>=<span class="-z">{!dismissGestureIsInProgress}</span>
+      <span class="-G">contentOffset</span>=<span class="-z">{dismissGestureIsInProgress</span> ? { <span class="-G">x:</span> <span class="-G">0</span>, <span class="-G">y:</span> <span class="-G">0</span> } <span class="-G">:</span> <span class="-G">undefined</span>}
     /&gt;</span></span>
-    <span class="-o">// ...</span>
+    <span class="-p">// ...</span>
   );
 };
 </code></pre>
 <p>Lastly, we need to disable the dismiss gesture when momentum scrolling is in progress. Luckily, we already have most of the callbacks to determine if this is the case.</p>
-<pre><code><span class="-f">const</span> <span class="-E -W">BottomSheetDismissScrollView</span> = (<span class="-h">scrollViewProps</span>) =&gt; {
-  <span class="-o">// ...</span>
-  <span class="-f">const</span> [isMomentumScrolling, setIsMomentumScrolling] = <span class="-E -V">React</span>.<span class="-E -W">useState</span>(<span class="-m">false</span>);
+<pre><code><span class="-g">const</span> <span class="-F -X">BottomSheetDismissScrollView</span> = (<span class="-i">scrollViewProps</span>) =&gt; {
+  <span class="-p">// ...</span>
+  <span class="-g">const</span> [isMomentumScrolling, setIsMomentumScrolling] = <span class="-F -W">React</span>.<span class="-F -X">useState</span>(<span class="-n">false</span>);
 
-  <span class="-f">const</span> <span class="-E -W">onMomentumScrollBegin</span> = (<span class="-h">e</span>) =&gt; {
-    <span class="-E -W">setIsMomentumScrolling</span>(<span class="-m">true</span>);
+  <span class="-g">const</span> <span class="-F -X">onMomentumScrollBegin</span> = (<span class="-i">e</span>) =&gt; {
+    <span class="-F -X">setIsMomentumScrolling</span>(<span class="-n">true</span>);
   };
 
-  <span class="-f">const</span> <span class="-E -W">onMomentumScrollEnd</span> = (<span class="-h">e</span>) =&gt; {
-    <span class="-E -W">setScrollY</span>(e.<span class="-Z">nativeEvent</span>.<span class="-Z">contentOffset</span>.<span class="-Z">y</span>);
-    <span class="-E -W">setIsMomentumScrolling</span>(<span class="-m">false</span>);
+  <span class="-g">const</span> <span class="-F -X">onMomentumScrollEnd</span> = (<span class="-i">e</span>) =&gt; {
+    <span class="-F -X">setScrollY</span>(e.<span class="-_">nativeEvent</span>.<span class="-_">contentOffset</span>.<span class="-_">y</span>);
+    <span class="-F -X">setIsMomentumScrolling</span>(<span class="-n">false</span>);
   };
 
-  <span class="-f">return</span> (
-    <span class="-X"><span class="-Y">&lt;<span class="-u">PanGestureHandler</span>
-      /* <span class="-F">...</span> */
-      <span class="-F">disabled</span>=<span class="-y">{isMomentumScrolling}</span>
+  <span class="-g">return</span> (
+    <span class="-Y"><span class="-Z">&lt;<span class="-v">PanGestureHandler</span>
+      /* <span class="-G">...</span> */
+      <span class="-G">disabled</span>=<span class="-z">{isMomentumScrolling}</span>
     &gt;</span>
       {/* ... */}
-    <span class="-Y">&lt;/<span class="-u">PanGestureHandler</span>&gt;</span></span>
+    <span class="-Z">&lt;/<span class="-v">PanGestureHandler</span>&gt;</span></span>
   );
 };
 </code></pre>
 <p>And that’s the scrollable content done too. There is a good amount going on here, which is somewhat to be expected. Even implementing this purely in native code would require a lot of code too.</p>
 <h2>Conclusion</h2>
 <p>There’s still a few things missing (opening animations, changing the size of the bottom sheet, etc.). This is also completely untested on Android. However, this should at least serve as a foundation on how to build these kind of components.</p>
-<p>Some of the benefits you’ll find to this over react-native-modalize is that there is no prescription on how to layout your bottom sheet — you layout a page as you would any other, and opt in to the gestures on a per element basis. A subtle improvement too is that react-native-modalize disables the rubber banding effect on the bottom of the scroll view once the dismiss gesture has been started — whereas this method does not. This makes it feel much more like a native app.</p><span class="f">Published on <time dateTime="2020-10-09T00:00:00.000Z">9th October 2020</time></span></body></html>
+<p>Some of the benefits you’ll find to this over react-native-modalize is that there is no prescription on how to layout your bottom sheet — you layout a page as you would any other, and opt in to the gestures on a per element basis. A subtle improvement too is that react-native-modalize disables the rubber banding effect on the bottom of the scroll view once the dismiss gesture has been started — whereas this method does not. This makes it feel much more like a native app.</p><span class="g">Published on <time dateTime="2020-10-09T00:00:00.000Z">9th October 2020</time></span></body></html>

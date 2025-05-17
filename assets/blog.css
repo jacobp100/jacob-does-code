@@ -41,6 +41,10 @@ p {
   margin: 18px 0;
 }
 
+p a {
+  text-decoration: underline;
+}
+
 strong {
   font-weight: 600;
 }
@@ -52,13 +56,13 @@ ol {
   margin-left: calc(-32 * min(max(var(--gutters) - 32px, 0px), 1px));
 }
 
-li {
+ul li {
   position: relative;
   margin: 2px 0;
   list-style: none;
 }
 
-li::before {
+ul li::before {
   position: absolute;
   content: var(--bullet, "👉");
   right: calc(100% + 12px);
@@ -87,6 +91,15 @@ thead th {
   border-bottom: var(--hairline-width) solid;
   --font-weight: 600;
   text-align: left;
+}
+
+table.bordered {
+  border-collapse: collapse;
+}
+
+table.bordered td {
+  padding: 0 12px;
+  border: 1px solid currentColor;
 }
 
 hr {
@@ -121,6 +134,10 @@ video {
   display: block;
   max-width: 100%;
   margin: 32px auto;
+}
+
+img {
+  display: block;
 }
 
 /* Figma embeds */
